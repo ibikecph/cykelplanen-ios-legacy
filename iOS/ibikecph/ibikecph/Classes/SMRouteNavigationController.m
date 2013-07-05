@@ -35,7 +35,7 @@
 #import "SMDirectionsFooter.h"
 #import "SMSearchHistory.h"
 #import "SMRouteTypeSelectCell.h"
-
+#import "SMTripRoute.h"
 
 typedef enum {
     directionsFullscreen,
@@ -57,6 +57,7 @@ typedef enum {
 
 @property (nonatomic, strong) NSArray* cargoItems;
 @property (nonatomic, strong) SMRoute *route;
+@property (nonatomic, strong) SMTripRoute* brokenRoute;
 @property (nonatomic, strong) IBOutlet RMMapView * mpView;
 @property int directionsShownCount; // How many directions are shown in the directions table at the moment:
                                     // -1 means no direction is shown and minimized directions view is not shown (this happens before first call to showDirections())
@@ -235,6 +236,7 @@ typedef enum {
     blockingView = nil;
     mapContainer = nil;
     overviewDestinationBottom = nil;
+    breakRouteButton = nil;
     [super viewDidUnload];
 }
 
@@ -517,6 +519,16 @@ typedef enum {
     }
     
     return [string length];
+}
+
+- (IBAction)onBreakRoute:(id)sender {
+    if(self.brokenRoute){
+        // route is already broken
+        return;
+    }
+    
+
+    [self performSegueWithIdentifier:@"breakRoute" sender:self];
 }
 
 - (IBAction)startRouting:(id)sender {
@@ -821,6 +833,18 @@ typedef enum {
 }
 
 #pragma mark - route delegate
+
+-(void)didStartBreakingRoute:(SMRoute *)route{
+    
+}
+
+-(void)didFinishBreakingRoute:(SMRoute *)route{
+    
+}
+
+-(void)didFailBreakingRoute:(SMRoute *)route{
+    
+}
 
 - (void)routeNotFound {
     self.currentlyRouting = NO;
@@ -1687,4 +1711,6 @@ typedef enum {
         }];
     }];
 }
+
+
 @end
