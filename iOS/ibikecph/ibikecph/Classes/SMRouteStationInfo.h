@@ -13,6 +13,6 @@
 -(id)initWithLongitude:(double)lon latitude:(double)lat;
 
 @property(nonatomic, strong) CLLocation* location;
-@property(nonatomic, assign) NSNumber* startDistance;
-@property(nonatomic, assign) NSNumber* endDistance;
+@property(nonatomic, assign, readonly) double longitude;
+@property(nonatomic, assign, readonly) double latitude;
 @end

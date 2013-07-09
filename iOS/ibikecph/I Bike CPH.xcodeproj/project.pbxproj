@@ -822,6 +822,7 @@
 		F6922798178718C400C8CD76 /* SMBikeWaypointCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6922797178718C400C8CD76 /* SMBikeWaypointCell.m */; };
 		F692279B178723E200C8CD76 /* SMTransportationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F692279A178723E200C8CD76 /* SMTransportationCell.m */; };
 		F69227A51787326800C8CD76 /* SMBrokenRouteInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F69227A41787326800C8CD76 /* SMBrokenRouteInfo.m */; };
+		F695EFCE178AA95000D3E83D /* SMSingleRouteInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F695EFCD178AA95000D3E83D /* SMSingleRouteInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1757,6 +1758,8 @@
 		F692279A178723E200C8CD76 /* SMTransportationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTransportationCell.m; sourceTree = "<group>"; };
 		F69227A31787326800C8CD76 /* SMBrokenRouteInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMBrokenRouteInfo.h; sourceTree = "<group>"; };
 		F69227A41787326800C8CD76 /* SMBrokenRouteInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBrokenRouteInfo.m; sourceTree = "<group>"; };
+		F695EFCC178AA95000D3E83D /* SMSingleRouteInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSingleRouteInfo.h; sourceTree = "<group>"; };
+		F695EFCD178AA95000D3E83D /* SMSingleRouteInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSingleRouteInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3033,6 +3036,8 @@
 				F692279017870DAE00C8CD76 /* SMRouteTransportationInfo.m */,
 				F69227A31787326800C8CD76 /* SMBrokenRouteInfo.h */,
 				F69227A41787326800C8CD76 /* SMBrokenRouteInfo.m */,
+				F695EFCC178AA95000D3E83D /* SMSingleRouteInfo.h */,
+				F695EFCD178AA95000D3E83D /* SMSingleRouteInfo.m */,
 			);
 			name = route;
 			sourceTree = "<group>";
@@ -3600,10 +3605,8 @@
 				4C979C451784782C004D1E06 /* fav_plus_none_grey@2x.png in Resources */,
 				4C979C4D17847C61004D1E06 /* profile_default_image.png in Resources */,
 				4C979C4E17847C61004D1E06 /* profile_default_image@2x.png in Resources */,
-
 				F692278A178702F900C8CD76 /* Albertslundruten.line in Resources */,
 				F692278B178702F900C8CD76 /* Farumruten.line in Resources */,
-
 				7838B17F178710A3005C2AA1 /* 15b.iPhone_CSS_No_fav.png in Resources */,
 				7838B180178710A3005C2AA1 /* 15b.iPhone_CSS_No_fav@2x.png in Resources */,
 				7838B181178710A3005C2AA1 /* 00.iPhone_CSS_intro.png in Resources */,
@@ -3872,7 +3875,6 @@
 				7838B288178710A3005C2AA1 /* splash_illustration@2x.png in Resources */,
 				7838B289178710A3005C2AA1 /* splash_sky.png in Resources */,
 				7838B28A178710A3005C2AA1 /* splash_sky@2x.png in Resources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3965,6 +3967,7 @@
 				F6922798178718C400C8CD76 /* SMBikeWaypointCell.m in Sources */,
 				F692279B178723E200C8CD76 /* SMTransportationCell.m in Sources */,
 				F69227A51787326800C8CD76 /* SMBrokenRouteInfo.m in Sources */,
+				F695EFCE178AA95000D3E83D /* SMSingleRouteInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

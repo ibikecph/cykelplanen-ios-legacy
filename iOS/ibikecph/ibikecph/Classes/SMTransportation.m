@@ -23,6 +23,13 @@
     return instance;
 }
 
+-(id)init{
+    if(self= [super init]){
+        [self loadDummyData];
+    }
+    return self;
+}
+
 +(NSOperationQueue*) transportationQueue{
     static NSOperationQueue * sRequestQueue;
     

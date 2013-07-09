@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "SMTripRoute.h"
 
-@interface SMBreakRouteViewController : UITableViewController<UIPickerViewDelegate, UIPickerViewDataSource, SMBreakRouteDelegate>
+@interface SMBreakRouteViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, SMBreakRouteDelegate>
 
-@property (weak, nonatomic) IBOutlet UIButton *buttonSourceAddress;
-@property (weak, nonatomic) IBOutlet UIButton *buttonDestinationAddress;
-@property(nonatomic, strong) SMTripRoute* route;
+@property (weak, nonatomic) IBOutlet UITableView* tableView;
+
+@property(nonatomic, strong) SMTripRoute* tripRoute;
 @property(nonatomic, strong) SMRoute* fullRoute;
 @end

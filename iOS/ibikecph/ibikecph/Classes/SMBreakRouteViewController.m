@@ -7,6 +7,7 @@
 //
 
 #import "SMBreakRouteViewController.h"
+#import "SMSingleRouteInfo.h"
 
 @interface SMBreakRouteViewController (){
     UIPickerView* pickerView;
@@ -31,32 +32,109 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+
+    
     pickerView= [[UIPickerView alloc] init];
     pickerView.delegate= self;
     pickerView.dataSource= self;
     
     [self.view addSubview:pickerView];
     pickerView.hidden= YES;
+
+    self.tableView.separatorStyle= UITableViewCellSeparatorStyleNone;
+
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if(self.tripRoute){
+        self.tripRoute.delegate= self;
+        [self.tripRoute breakRoute];
+    }
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    switch (indexPath.row) {
+        case 0:
+        case 2:
+            return 106;
+        case 1:
+            return 176;
+        case 3:
+            return 80;
+    }
+    
+    return 50;
+}
+
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    return nil;
+}
+
 -(int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    return 4;
 }
 
 -(int)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell* cell;
+    NSString* CellId;
+    switch (indexPath.row) {
+        case 0:
+        {
+            CellId= @"BikeCell";
+            cell= [tableView dequeueReusableCellWithIdentifier:CellId];
+            break;
+        }
+        case 1:{
+            CellId= @"TransportCell";
+            cell= [tableView dequeueReusableCellWithIdentifier:CellId];
+            break;
+        }
+        case 2:{
+            CellId= @"BikeCell";
+            cell= [tableView dequeueReusableCellWithIdentifier:CellId];
+            break;
+        }
+        case 3:{
+            CellId= @"ButtonCell";
+            cell= [tableView dequeueReusableCellWithIdentifier:CellId];
+            break;
+        }
+        default:
+            break;
+    }
+    
+    cell.selectionStyle= UITableViewCellSelectionStyleNone;
+    
+    return cell;
+}
+
+- (IBAction)onBack:(id)sender {
+    [self dismiss];
+
+}
+
+-(void)dismiss{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+}
+
 - (void)viewDidUnload {
-    [self setButtonSourceAddress:nil];
-    [self setButtonDestinationAddress:nil];
     [super viewDidUnload];
 }
+
 
 -(IBAction)onSourceAddressButtonTap:(id)sender {
     
@@ -95,7 +173,53 @@
 }
 
 -(void)didFinishBreakingRoute:(SMTripRoute*)route{
+//    NSLog(@"%d routes:",route.transportationRoutes.count);
+//    for(SMSingleRouteInfo* routeInfo in route.transportationRoutes){
+//        NSLog(@"%lf - %lf %lf",routeInfo.bikeDistance, routeInfo.distance1, routeInfo.distance2);
+//    }
     
+//    if(route.transportationRoutes.count > 0){
+//        SMSingleRouteInfo* routeInfo= [route.transportationRoutes objectAtIndex:0];
+//        
+//        NSArray* endStationsSorted= [route.transportationRoutes filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.sourceStation.longitude == %lf AND SELF.sourceStation.latitude == %lf",routeInfo.sourceStation.longitude, routeInfo.sourceStation.latitude]];
+//        
+//        NSLog(@"Start: %lf %lf", routeInfo.sourceStation.location.coordinate.latitude, routeInfo.sourceStation.location.coordinate.longitude);
+//        NSLog(@"End stations:");
+//        for(SMSingleRouteInfo* endRouteInfo in endStationsSorted){
+//            NSLog(@"%lf - %lf %lf",endRouteInfo.bikeDistance, endRouteInfo.destStation.location.coordinate.latitude, endRouteInfo.destStation.location.coordinate.longitude);
+//        }
+//        if(endStationsSorted.count>0){
+//            SMBrokenRouteInfo* brokenRouteInfo= [[SMBrokenRouteInfo alloc] init];
+//            brokenRouteInfo.sourceStation= routeInfo.sourceStation;
+//            brokenRouteInfo.destinationStation= ((SMSingleRouteInfo*)[endStationsSorted objectAtIndex:0]).destStation;
+//            self.tripRoute.brokenRouteInfo= brokenRouteInfo;
+//        }
+//        
+//    }
+    
+    [self dismiss];
+}
+
+-(void)didCalculateRouteDistances:(SMTripRoute*)route{
+    if(route.transportationRoutes.count > 0){
+        SMSingleRouteInfo* routeInfo= [route.transportationRoutes objectAtIndex:0];
+        
+        NSArray* endStationsSorted= [route.transportationRoutes filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.sourceStation.longitude == %lf AND SELF.sourceStation.latitude == %lf",routeInfo.sourceStation.longitude, routeInfo.sourceStation.latitude]];
+        
+        NSLog(@"Start: %lf %lf", routeInfo.sourceStation.location.coordinate.latitude, routeInfo.sourceStation.location.coordinate.longitude);
+        NSLog(@"End stations:");
+        for(SMSingleRouteInfo* endRouteInfo in endStationsSorted){
+            NSLog(@"%lf - %lf %lf",endRouteInfo.bikeDistance, endRouteInfo.destStation.location.coordinate.latitude, endRouteInfo.destStation.location.coordinate.longitude);
+        }
+        if(endStationsSorted.count>0){
+            SMBrokenRouteInfo* brokenRouteInfo= [[SMBrokenRouteInfo alloc] init];
+            brokenRouteInfo.sourceStation= routeInfo.sourceStation;
+            brokenRouteInfo.destinationStation= ((SMSingleRouteInfo*)[endStationsSorted objectAtIndex:0]).destStation;
+            self.tripRoute.brokenRouteInfo= brokenRouteInfo;
+        }
+        
+    }
+
 }
 
 -(void)didFailBreakingRoute:(SMTripRoute*)route{

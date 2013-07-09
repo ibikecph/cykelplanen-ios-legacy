@@ -13,8 +13,16 @@
 -(id)initWithLongitude:(double)lon latitude:(double)lat{
     if(self= [super init]){
         self.location= [[CLLocation alloc] initWithLatitude:lat longitude:lon];
+        _longitude= lon;
+        _latitude= lat;
     }
     return self;
+}
+
+-(void)setLocation:(CLLocation *)pLocation{
+    _location= pLocation;
+    _longitude= pLocation.coordinate.longitude;
+    _latitude= pLocation.coordinate.latitude;
 }
 
 @end

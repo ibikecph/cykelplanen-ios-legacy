@@ -36,7 +36,9 @@
 #import "SMSearchHistory.h"
 #import "SMRouteTypeSelectCell.h"
 #import "SMTripRoute.h"
+#import "SMBreakRouteViewController.h"
 
+#include "float.h"
 typedef enum {
     directionsFullscreen,
     directionsNormal,
@@ -120,11 +122,6 @@ typedef enum {
     [v setDelegate:self];
     [tblDirections setTableFooterView:v];
     
-    if (self.startLocation && self.endLocation) {
-        [self start:self.startLocation.coordinate end:self.endLocation.coordinate withJSON:self.jsonRoot];
-    }
-    
-
     
     [centerView setupForHorizontalSwipeWithStart:0.0f andEnd:260.0f andStart:0.0f andPullView:self.cargoHandleImageView];
     
@@ -144,6 +141,9 @@ typedef enum {
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackTranslucent];
     
+    if (self.startLocation && self.endLocation) {
+        [self start:self.startLocation.coordinate end:self.endLocation.coordinate withJSON:self.jsonRoot];
+    }
     [self.mpView addObserver:self forKeyPath:@"userTrackingMode" options:0 context:nil];
     [self.mpView addObserver:self forKeyPath:@"zoom" options:0 context:nil];
     [self addObserver:self forKeyPath:@"currentlyRouting" options:0 context:nil];
@@ -171,6 +171,7 @@ typedef enum {
         [labelTimeLeft setTextColor:[UIColor darkGrayColor]];
     }
     
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -242,9 +243,7 @@ typedef enum {
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-
 }
-
 
 #pragma mark - custom methods
 
@@ -292,7 +291,13 @@ typedef enum {
     [progressView setHidden:YES];
     [self setDirectionsState:directionsNormal];
     // Display new path
-    NSDictionary * coordinates = [self addRouteAnnotation:self.route];
+    
+    NSMutableArray * coordinates= [NSMutableArray new];
+    
+    for(SMRoute* rt in self.brokenRoute.brokenRoutes){
+        [coordinates addObject:[self addRouteAnnotation:rt]];
+
+    }
     [self.mpView setRoutingDelegate:self];
     [tblDirections reloadData];
     
@@ -301,6 +306,8 @@ typedef enum {
     [routeOverview setFrame:instructionsView.frame];
     
     [overviewTimeDistance setText:[NSString stringWithFormat:@"%@, via %@", formatDistance(self.route.estimatedRouteDistance), self.route.longestStreet]];
+    
+
     
     NSArray * a = [self.destination componentsSeparatedByString:@","];
     NSString* streetName= [a objectAtIndex:0];
@@ -330,9 +337,19 @@ typedef enum {
 //        [overviewDestination setText:newValue];
 //    }
     
+    CLLocationCoordinate2D sw= CLLocationCoordinate2DMake(DBL_MAX, DBL_MAX);
+    CLLocationCoordinate2D ne= CLLocationCoordinate2DMake(-DBL_MAX, -DBL_MAX);
     
-    CLLocationCoordinate2D ne = ((CLLocation*)[coordinates objectForKey:@"neCoordinate"]).coordinate;
-    CLLocationCoordinate2D sw = ((CLLocation*)[coordinates objectForKey:@"swCoordinate"]).coordinate;
+    for(NSDictionary* coords in coordinates){
+        CLLocationCoordinate2D swTemp = ((CLLocation*)[coords objectForKey:@"swCoordinate"]).coordinate;
+        CLLocationCoordinate2D neTemp= ((CLLocation*)[coords objectForKey:@"neCoordinate"]).coordinate;
+        
+        sw.longitude= MIN(sw.longitude, swTemp.longitude);
+        sw.latitude= MIN(sw.latitude, swTemp.latitude);
+        
+        ne.longitude= MAX(ne.longitude, neTemp.longitude);
+        ne.latitude= MAX(ne.latitude,neTemp.latitude);
+    }
     
     float latDiff = (ne.latitude - sw.latitude);
     float lonDiff = (ne.longitude - sw.longitude);
@@ -371,7 +388,7 @@ typedef enum {
     sw.latitude -= latDiff * LATITUDE_PADDING;
     sw.longitude -= lonDiff * LONGITUDE_PADDING;
 
-    
+    NSLog(@"COORDS %lf %lf",(ne.latitude+sw.latitude) / 2.0, (ne.longitude+sw.longitude) / 2.0);
     [self.mpView setCenterCoordinate:CLLocationCoordinate2DMake((ne.latitude+sw.latitude) / 2.0, (ne.longitude+sw.longitude) / 2.0)];
     [self.mpView zoomWithLatitudeLongitudeBoundsSouthWest:sw northEast:ne animated:YES];
     
@@ -522,10 +539,10 @@ typedef enum {
 }
 
 - (IBAction)onBreakRoute:(id)sender {
-    if(self.brokenRoute){
-        // route is already broken
-        return;
-    }
+//    if(self.brokenRoute){
+//        // route is already broken
+//        return;
+//    }
     
 
     [self performSegueWithIdentifier:@"breakRoute" sender:self];
@@ -582,40 +599,70 @@ typedef enum {
     for (RMAnnotation *annotation in self.mpView.annotations) {
         [self.mpView removeAnnotation:annotation];
     }
+    if(!self.route){
+        self.route = [[SMRoute alloc] initWithRouteStart:from andEnd:to andDelegate:self andJSON:jsonRoot];
+        self.route.osrmServer = self.osrmServer;
+    }
+    if(!self.brokenRoute)
+        self.brokenRoute= [[SMTripRoute alloc] initWithRoute:self.route];
 
-    self.route = [[SMRoute alloc] initWithRouteStart:from andEnd:to andDelegate:self andJSON:jsonRoot];
-    self.route.osrmServer = self.osrmServer;
     if (!self.route) {
         return;
     }
-
-    SMAnnotation *startMarkerAnnotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:from andTitle:@"A"];
-    startMarkerAnnotation.annotationType = @"marker";
-    startMarkerAnnotation.annotationIcon = [UIImage imageNamed:@"markerStart"];
-    startMarkerAnnotation.anchorPoint = CGPointMake(0.5, 1.0);
-    NSMutableArray * arr = [[self.source componentsSeparatedByString:@","] mutableCopy];
-    startMarkerAnnotation.title = [[arr objectAtIndex:0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    if ([startMarkerAnnotation.title isEqualToString:@""]) {
-        startMarkerAnnotation.title = translateString(@"marker_start");
-    }
-    [arr removeObjectAtIndex:0];
-    startMarkerAnnotation.subtitle = [[arr componentsJoinedByString:@","] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    [self.mpView addAnnotation:startMarkerAnnotation];
-
-    SMAnnotation *endMarkerAnnotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:to andTitle:@"B"];
-    endMarkerAnnotation.annotationType = @"marker";
-    endMarkerAnnotation.annotationIcon = [UIImage imageNamed:@"markerFinish"];
-    endMarkerAnnotation.anchorPoint = CGPointMake(0.5, 1.0);
-    arr = [[self.destination componentsSeparatedByString:@","] mutableCopy];
-    endMarkerAnnotation.title = [[arr objectAtIndex:0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    [arr removeObjectAtIndex:0];
-    endMarkerAnnotation.subtitle = [[arr componentsJoinedByString:@","] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    [self.mpView addAnnotation:endMarkerAnnotation];
     
+    // station markers
+    for(int i=0; i<self.brokenRoute.brokenRoutes.count; i++){
+        SMRoute* rt= [self.brokenRoute.brokenRoutes objectAtIndex:i];
+        NSArray* locations;
+        if(i==0 && i!=self.brokenRoute.brokenRoutes.count-1){
+            // first route, display only destination
+            locations= [NSArray arrayWithObject:[rt getEndLocation]];
+        }else if(i!=0 && i==self.brokenRoute.brokenRoutes.count-1){
+            // last route, display only source
+            locations= [NSArray arrayWithObject:[rt getStartLocation]];
+        }else if(i!=0 && i!=self.brokenRoute.brokenRoutes.count-1){
+            locations= [NSArray arrayWithObjects:[rt getStartLocation], [rt getEndLocation], nil];
+        }
+        
+        if(locations){
+            for(CLLocation* loc in locations){
+                [self addMarkerToMapView:self.mpView withCoordinate:CLLocationCoordinate2DMake(loc.coordinate.latitude, loc.coordinate.longitude) title:@"S" imageName:@"markerStart" annotationTitle:nil alternateTitle:nil];
+            }
+        }
+    }
+
+    // start marker (A)
+    NSMutableArray * arr = [[self.source componentsSeparatedByString:@","] mutableCopy];
+    NSString* startTitle = [[arr objectAtIndex:0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    [arr removeObjectAtIndex:0];
+    [self addMarkerToMapView:self.mpView withCoordinate:from title:@"A" imageName:@"markerStart" annotationTitle:startTitle alternateTitle:translateString(@"marker_start")];
+
+    // end marker (B)
+    arr = [[self.destination componentsSeparatedByString:@","] mutableCopy];
+    NSString* endTitle = [[arr objectAtIndex:0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    [arr removeObjectAtIndex:0];
+    [self addMarkerToMapView:self.mpView withCoordinate:to title:@"B" imageName:@"markerFinish" annotationTitle:endTitle alternateTitle:nil];
+
 
     [self.mpView setCenterCoordinate:CLLocationCoordinate2DMake(from.latitude,from.longitude)];
 
     [self showRouteOverview];
+}
+
+-(void)addMarkerToMapView:(RMMapView*)mapView withCoordinate:(CLLocationCoordinate2D)coord title:(NSString*)title imageName:(NSString*)imageName annotationTitle:(NSString*)annotationTitle alternateTitle:(NSString*)alternateTitle{
+    SMAnnotation *annotation = [SMAnnotation annotationWithMapView:mapView coordinate:coord andTitle:title];
+    annotation.annotationType = @"marker";
+    annotation.annotationIcon = [UIImage imageNamed:imageName];
+    annotation.anchorPoint = CGPointMake(0.5, 1.0);
+    NSMutableArray * arr = [[self.source componentsSeparatedByString:@","] mutableCopy];
+    annotation.title = annotationTitle;
+
+    if ([annotation.title isEqualToString:@""] && alternateTitle) {
+        annotation.title = alternateTitle;
+    }
+
+    annotation.subtitle = [[arr componentsJoinedByString:@","] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    [self.mpView addAnnotation:annotation];
 }
 
 - (void) renderMinimizedDirectionsViewFromInstruction {
@@ -628,7 +675,10 @@ typedef enum {
     }
 }
 
+
+
 - (NSDictionary*) addRouteAnnotation:(SMRoute *)r {
+
     RMAnnotation *calculatedPathAnnotation = [RMAnnotation annotationWithMapView:self.mpView coordinate:[r getStartLocation].coordinate andTitle:nil];
     calculatedPathAnnotation.annotationType = @"path";
     calculatedPathAnnotation.userInfo = @{
@@ -637,6 +687,7 @@ typedef enum {
                                          @"fillColor" : [UIColor clearColor],
                                          @"lineWidth" : [NSNumber numberWithFloat:10.0f],
                                          };
+    
     [calculatedPathAnnotation setBoundingBoxFromLocations:[NSArray arrayWithArray:r.waypoints]];
     [self.mpView addAnnotation:calculatedPathAnnotation];
     return @{
@@ -846,6 +897,10 @@ typedef enum {
     
 }
 
+-(void)didCalculateRouteDistances:(SMTripRoute*)route{
+    
+}
+
 - (void)routeNotFound {
     self.currentlyRouting = NO;
     
@@ -866,7 +921,8 @@ typedef enum {
     [routeOverview setHidden:YES];
     
     // Display new path
-    [self addRouteAnnotation:self.route];
+    for(SMRoute* route in self.brokenRoute.brokenRoutes)
+        [self addRouteAnnotation:self.route];
     
     [self.mpView setRoutingDelegate:self];
     
@@ -1173,6 +1229,9 @@ typedef enum {
         [destViewController setSource:self.source];
         [destViewController setDestinationLoc:self.endLocation];
         [destViewController setSourceLoc:self.startLocation];
+    }else if([segue.identifier isEqualToString:@"breakRoute"]){
+        SMBreakRouteViewController* brVC= segue.destinationViewController;
+        brVC.tripRoute= self.brokenRoute;
     }
 }
 
