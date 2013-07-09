@@ -499,7 +499,6 @@
 		4CDD1E3317553AF500E45101 /* drop_pin_add_fav_btn_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CDD1E2D17553AF500E45101 /* drop_pin_add_fav_btn_active@2x.png */; };
 		4CE84E8316C404A3006931CC /* SMRadioCheckedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE84E8216C404A3006931CC /* SMRadioCheckedCell.m */; };
 		4CE84E8616C404B9006931CC /* SMRadioUncheckedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE84E8516C404B9006931CC /* SMRadioUncheckedCell.m */; };
-		4CE8D7BA16F3985D00D0213D /* libHockeySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA06F3816EF8BE4007603B4 /* libHockeySDK.a */; };
 		4CE8D7BB16F3986300D0213D /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAF95C316D50B3A002C047B /* libMapView.a */; };
 		4CE8D7BD16F3987B00D0213D /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4CA06F3A16EF8BE4007603B4 /* HockeySDKResources.bundle */; };
 		4CF7E28B16B68D170082078E /* SMEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF7E28A16B68D170082078E /* SMEvents.m */; };
@@ -536,7 +535,7 @@
 		7867355B178C55CD00DF978F /* splash_illustration@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7867354F178C55CD00DF978F /* splash_illustration@2x.png */; };
 		7867355C178C55CD00DF978F /* splash_sky.png in Resources */ = {isa = PBXBuildFile; fileRef = 78673550178C55CD00DF978F /* splash_sky.png */; };
 		7867355D178C55CD00DF978F /* splash_sky@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78673551178C55CD00DF978F /* splash_sky@2x.png */; };
-		78E64DF9178AA8C2008135B3 /* Temp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78E64DF8178AA8C2008135B3 /* Temp.xib */; };
+		
 		78E64E08178AEEFE008135B3 /* SMCyLwReminderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E64E07178AEEFE008135B3 /* SMCyLwReminderVC.m */; };
 		78E64E22178B0044008135B3 /* SMCyLwFirstTimeIntro.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E64E21178B0044008135B3 /* SMCyLwFirstTimeIntro.m */; };
 		C040365417424D4E00FC12B6 /* routeEnterBottomRowPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = C040364C17424D4E00FC12B6 /* routeEnterBottomRowPressed.png */; };
@@ -569,10 +568,28 @@
 		C0C94742173BE40E00FE834D /* SMLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C94741173BE40E00FE834D /* SMLoginController.m */; };
 		C0C94747173BF47500FE834D /* field_email_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C0C94745173BF47500FE834D /* field_email_icon.png */; };
 		C0C94748173BF47500FE834D /* field_password_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C0C94746173BF47500FE834D /* field_password_icon.png */; };
-		F68C641F1768A946009B4A21 /* smroute_settings_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = F68C641E1768A946009B4A21 /* smroute_settings_private.plist */; };
 		F68C64231768B453009B4A21 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C48641616F099BE00F01A7C /* MainStoryboard_iPhone.storyboard */; };
 		F68F9DE71765CDC500578FFE /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F68F9DE61765CDC500578FFE /* FBUserSettingsViewResources.bundle */; };
 		F68F9DEB1765CEF900578FFE /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68F9DEA1765CEF900578FFE /* FacebookSDK.framework */; };
+		F690C471178C147C006A6FEA /* metro_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F690C46D178C147C006A6FEA /* metro_icon.png */; };
+		F690C472178C147C006A6FEA /* metro_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F690C46E178C147C006A6FEA /* metro_icon@2x.png */; };
+		F690C473178C147C006A6FEA /* station_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F690C46F178C147C006A6FEA /* station_icon.png */; };
+		F690C474178C147C006A6FEA /* station_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F690C470178C147C006A6FEA /* station_icon@2x.png */; };
+		F690C47B178C3395006A6FEA /* smroute_settings_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = F690C47A178C3395006A6FEA /* smroute_settings_private.plist */; };
+		F69227711786E8ED00C8CD76 /* libHockeySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA06F3816EF8BE4007603B4 /* libHockeySDK.a */; };
+		F69227761786FD0B00C8CD76 /* SMTripRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = F69227751786FD0B00C8CD76 /* SMTripRoute.m */; };
+		F69227801786FF5700C8CD76 /* SMTransportationRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = F692277F1786FF5700C8CD76 /* SMTransportationRoute.m */; };
+		F69227841787003A00C8CD76 /* SMTransportationLine.m in Sources */ = {isa = PBXBuildFile; fileRef = F69227831787003A00C8CD76 /* SMTransportationLine.m */; };
+		F6922787178700BC00C8CD76 /* SMTransportation.m in Sources */ = {isa = PBXBuildFile; fileRef = F6922786178700BC00C8CD76 /* SMTransportation.m */; };
+		F692278A178702F900C8CD76 /* Albertslundruten.line in Resources */ = {isa = PBXBuildFile; fileRef = F6922788178702F900C8CD76 /* Albertslundruten.line */; };
+		F692278B178702F900C8CD76 /* Farumruten.line in Resources */ = {isa = PBXBuildFile; fileRef = F6922789178702F900C8CD76 /* Farumruten.line */; };
+		F692278E17870A7700C8CD76 /* SMRouteStationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F692278D17870A7700C8CD76 /* SMRouteStationInfo.m */; };
+		F692279117870DAF00C8CD76 /* SMRouteTransportationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F692279017870DAE00C8CD76 /* SMRouteTransportationInfo.m */; };
+		F69227941787181600C8CD76 /* SMBreakRouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F69227931787181600C8CD76 /* SMBreakRouteViewController.m */; };
+		F6922798178718C400C8CD76 /* SMBikeWaypointCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6922797178718C400C8CD76 /* SMBikeWaypointCell.m */; };
+		F692279B178723E200C8CD76 /* SMTransportationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F692279A178723E200C8CD76 /* SMTransportationCell.m */; };
+		F69227A51787326800C8CD76 /* SMBrokenRouteInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F69227A41787326800C8CD76 /* SMBrokenRouteInfo.m */; };
+		F695EFCE178AA95000D3E83D /* SMSingleRouteInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F695EFCD178AA95000D3E83D /* SMSingleRouteInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1247,10 +1264,38 @@
 		C0C94741173BE40E00FE834D /* SMLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLoginController.m; sourceTree = "<group>"; };
 		C0C94745173BF47500FE834D /* field_email_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = field_email_icon.png; sourceTree = "<group>"; };
 		C0C94746173BF47500FE834D /* field_password_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = field_password_icon.png; sourceTree = "<group>"; };
-		F68C641E1768A946009B4A21 /* smroute_settings_private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings_private.plist; sourceTree = "<group>"; };
 		F68C64251768B5B3009B4A21 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		F68F9DE61765CDC500578FFE /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
-		F68F9DEA1765CEF900578FFE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		F68F9DEA1765CEF900578FFE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		F690C46D178C147C006A6FEA /* metro_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metro_icon.png; sourceTree = "<group>"; };
+		F690C46E178C147C006A6FEA /* metro_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "metro_icon@2x.png"; sourceTree = "<group>"; };
+		F690C46F178C147C006A6FEA /* station_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = station_icon.png; sourceTree = "<group>"; };
+		F690C470178C147C006A6FEA /* station_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "station_icon@2x.png"; sourceTree = "<group>"; };
+		F690C47A178C3395006A6FEA /* smroute_settings_private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings_private.plist; sourceTree = "<group>"; };
+		F69227741786FD0B00C8CD76 /* SMTripRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTripRoute.h; sourceTree = "<group>"; };
+		F69227751786FD0B00C8CD76 /* SMTripRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTripRoute.m; sourceTree = "<group>"; };
+		F692277E1786FF5700C8CD76 /* SMTransportationRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTransportationRoute.h; sourceTree = "<group>"; };
+		F692277F1786FF5700C8CD76 /* SMTransportationRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTransportationRoute.m; sourceTree = "<group>"; };
+		F69227821787003A00C8CD76 /* SMTransportationLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTransportationLine.h; sourceTree = "<group>"; };
+		F69227831787003A00C8CD76 /* SMTransportationLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTransportationLine.m; sourceTree = "<group>"; };
+		F6922785178700BC00C8CD76 /* SMTransportation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTransportation.h; sourceTree = "<group>"; };
+		F6922786178700BC00C8CD76 /* SMTransportation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTransportation.m; sourceTree = "<group>"; };
+		F6922788178702F900C8CD76 /* Albertslundruten.line */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Albertslundruten.line; sourceTree = "<group>"; };
+		F6922789178702F900C8CD76 /* Farumruten.line */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Farumruten.line; sourceTree = "<group>"; };
+		F692278C17870A7700C8CD76 /* SMRouteStationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRouteStationInfo.h; sourceTree = "<group>"; };
+		F692278D17870A7700C8CD76 /* SMRouteStationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRouteStationInfo.m; sourceTree = "<group>"; };
+		F692278F17870DAE00C8CD76 /* SMRouteTransportationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRouteTransportationInfo.h; sourceTree = "<group>"; };
+		F692279017870DAE00C8CD76 /* SMRouteTransportationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRouteTransportationInfo.m; sourceTree = "<group>"; };
+		F69227921787181600C8CD76 /* SMBreakRouteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMBreakRouteViewController.h; sourceTree = "<group>"; };
+		F69227931787181600C8CD76 /* SMBreakRouteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBreakRouteViewController.m; sourceTree = "<group>"; };
+		F6922796178718C400C8CD76 /* SMBikeWaypointCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMBikeWaypointCell.h; sourceTree = "<group>"; };
+		F6922797178718C400C8CD76 /* SMBikeWaypointCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBikeWaypointCell.m; sourceTree = "<group>"; };
+		F6922799178723E200C8CD76 /* SMTransportationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTransportationCell.h; sourceTree = "<group>"; };
+		F692279A178723E200C8CD76 /* SMTransportationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTransportationCell.m; sourceTree = "<group>"; };
+		F69227A31787326800C8CD76 /* SMBrokenRouteInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMBrokenRouteInfo.h; sourceTree = "<group>"; };
+		F69227A41787326800C8CD76 /* SMBrokenRouteInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBrokenRouteInfo.m; sourceTree = "<group>"; };
+		F695EFCC178AA95000D3E83D /* SMSingleRouteInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSingleRouteInfo.h; sourceTree = "<group>"; };
+		F695EFCD178AA95000D3E83D /* SMSingleRouteInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSingleRouteInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1258,10 +1303,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F69227711786E8ED00C8CD76 /* libHockeySDK.a in Frameworks */,
 				4C1D27B21761BE9C00018196 /* Security.framework in Frameworks */,
 				4C693ABC16F74E8B00B63475 /* MobileCoreServices.framework in Frameworks */,
 				4CE8D7BB16F3986300D0213D /* libMapView.a in Frameworks */,
-				4CE8D7BA16F3985D00D0213D /* libHockeySDK.a in Frameworks */,
 				4C365DD616F323BB00A836B3 /* CoreText.framework in Frameworks */,
 				4C77EF8316CB8E7B0062360C /* CoreData.framework in Frameworks */,
 				4C77EF8416CB8E7B0062360C /* SystemConfiguration.framework in Frameworks */,
@@ -1884,9 +1929,10 @@
 		4C73D21516AEDCDA00AED42A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F690C47A178C3395006A6FEA /* smroute_settings_private.plist */,
+				F6922788178702F900C8CD76 /* Albertslundruten.line */,
+				F6922789178702F900C8CD76 /* Farumruten.line */,
 				4C48641616F099BE00F01A7C /* MainStoryboard_iPhone.storyboard */,
-				78E64DF8178AA8C2008135B3 /* Temp.xib */,
-				F68C641E1768A946009B4A21 /* smroute_settings_private.plist */,
 				C09AB42917688AC40098AA9C /* smroute_settings.plist */,
 				4C3B3EB5170493CC00F098AD /* routeme.plist */,
 				4C6C48F616CD3FE600E57F59 /* Languages */,
@@ -1954,6 +2000,8 @@
 		4C73D23A16AEDD3F00AED42A /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				F69227811786FF7900C8CD76 /* transportation */,
+				F692277C1786FD0F00C8CD76 /* route */,
 				C09AB42B176890100098AA9C /* global-utils */,
 				4C73FD69170C36E200199E9C /* API */,
 				4C9D152216BAB94700B73393 /* Menus */,
@@ -2110,6 +2158,7 @@
 		4C90468916B91154004BA3DD /* Turn by  Turn & Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				F6922795178718A300C8CD76 /* BreakRoute */,
 				4C8546BE16E64D3B004E8902 /* routing-engine */,
 				4C8BB0A016B80D2000F1ADF2 /* SMRouteNavigationController.h */,
 				4C8BB0A116B80D2000F1ADF2 /* SMRouteNavigationController.m */,
@@ -2223,6 +2272,49 @@
 				C09AB433176890100098AA9C /* Reachability.m */,
 			);
 			path = Reachability;
+			sourceTree = "<group>";
+		};
+		F692277C1786FD0F00C8CD76 /* route */ = {
+			isa = PBXGroup;
+			children = (
+				F692278C17870A7700C8CD76 /* SMRouteStationInfo.h */,
+				F692278D17870A7700C8CD76 /* SMRouteStationInfo.m */,
+				F69227741786FD0B00C8CD76 /* SMTripRoute.h */,
+				F69227751786FD0B00C8CD76 /* SMTripRoute.m */,
+				F692277E1786FF5700C8CD76 /* SMTransportationRoute.h */,
+				F692277F1786FF5700C8CD76 /* SMTransportationRoute.m */,
+				F692278F17870DAE00C8CD76 /* SMRouteTransportationInfo.h */,
+				F692279017870DAE00C8CD76 /* SMRouteTransportationInfo.m */,
+				F69227A31787326800C8CD76 /* SMBrokenRouteInfo.h */,
+				F69227A41787326800C8CD76 /* SMBrokenRouteInfo.m */,
+				F695EFCC178AA95000D3E83D /* SMSingleRouteInfo.h */,
+				F695EFCD178AA95000D3E83D /* SMSingleRouteInfo.m */,
+			);
+			name = route;
+			sourceTree = "<group>";
+		};
+		F69227811786FF7900C8CD76 /* transportation */ = {
+			isa = PBXGroup;
+			children = (
+				F69227821787003A00C8CD76 /* SMTransportationLine.h */,
+				F69227831787003A00C8CD76 /* SMTransportationLine.m */,
+				F6922785178700BC00C8CD76 /* SMTransportation.h */,
+				F6922786178700BC00C8CD76 /* SMTransportation.m */,
+			);
+			name = transportation;
+			sourceTree = "<group>";
+		};
+		F6922795178718A300C8CD76 /* BreakRoute */ = {
+			isa = PBXGroup;
+			children = (
+				F69227921787181600C8CD76 /* SMBreakRouteViewController.h */,
+				F69227931787181600C8CD76 /* SMBreakRouteViewController.m */,
+				F6922796178718C400C8CD76 /* SMBikeWaypointCell.h */,
+				F6922797178718C400C8CD76 /* SMBikeWaypointCell.m */,
+				F6922799178723E200C8CD76 /* SMTransportationCell.h */,
+				F692279A178723E200C8CD76 /* SMTransportationCell.m */,
+			);
+			name = BreakRoute;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2758,7 +2850,6 @@
 				4C0E15C41760B3AD006F81C1 /* warning_popup_bgr@2x.png in Resources */,
 				F68F9DE71765CDC500578FFE /* FBUserSettingsViewResources.bundle in Resources */,
 				C09AB42A17688AC40098AA9C /* smroute_settings.plist in Resources */,
-				F68C641F1768A946009B4A21 /* smroute_settings_private.plist in Resources */,
 				F68C64231768B453009B4A21 /* MainStoryboard_iPhone.storyboard in Resources */,
 				4C979C441784782C004D1E06 /* fav_plus_none_grey.png in Resources */,
 				4C979C451784782C004D1E06 /* fav_plus_none_grey@2x.png in Resources */,
@@ -2793,6 +2884,13 @@
 				7867355B178C55CD00DF978F /* splash_illustration@2x.png in Resources */,
 				7867355C178C55CD00DF978F /* splash_sky.png in Resources */,
 				7867355D178C55CD00DF978F /* splash_sky@2x.png in Resources */,
+				F692278A178702F900C8CD76 /* Albertslundruten.line in Resources */,
+				F692278B178702F900C8CD76 /* Farumruten.line in Resources */,
+				F690C471178C147C006A6FEA /* metro_icon.png in Resources */,
+				F690C472178C147C006A6FEA /* metro_icon@2x.png in Resources */,
+				F690C473178C147C006A6FEA /* station_icon.png in Resources */,
+				F690C474178C147C006A6FEA /* station_icon@2x.png in Resources */,
+				F690C47B178C3395006A6FEA /* smroute_settings_private.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2877,6 +2975,17 @@
 				C09AB439176890100098AA9C /* SMTranslation.m in Sources */,
 				78E64E08178AEEFE008135B3 /* SMCyLwReminderVC.m in Sources */,
 				78E64E22178B0044008135B3 /* SMCyLwFirstTimeIntro.m in Sources */,
+				F69227761786FD0B00C8CD76 /* SMTripRoute.m in Sources */,
+				F69227801786FF5700C8CD76 /* SMTransportationRoute.m in Sources */,
+				F69227841787003A00C8CD76 /* SMTransportationLine.m in Sources */,
+				F6922787178700BC00C8CD76 /* SMTransportation.m in Sources */,
+				F692278E17870A7700C8CD76 /* SMRouteStationInfo.m in Sources */,
+				F692279117870DAF00C8CD76 /* SMRouteTransportationInfo.m in Sources */,
+				F69227941787181600C8CD76 /* SMBreakRouteViewController.m in Sources */,
+				F6922798178718C400C8CD76 /* SMBikeWaypointCell.m in Sources */,
+				F692279B178723E200C8CD76 /* SMTransportationCell.m in Sources */,
+				F69227A51787326800C8CD76 /* SMBrokenRouteInfo.m in Sources */,
+				F695EFCE178AA95000D3E83D /* SMSingleRouteInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

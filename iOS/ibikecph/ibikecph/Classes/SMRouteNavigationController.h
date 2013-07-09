@@ -43,6 +43,7 @@
     __weak IBOutlet UILabel *finishStreet;
     __weak IBOutlet UIView *routeOverviewBottom;
     __weak IBOutlet FlickableView *centerView;
+    __weak IBOutlet UIButton *breakRouteButton;
     __weak IBOutlet UIView *blockingView;
     __weak IBOutlet UIView *mapContainer;
 }
