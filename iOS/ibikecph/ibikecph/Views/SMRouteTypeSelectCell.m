@@ -15,11 +15,11 @@
     if (selected) {
         [cellText setTextColor:[UIColor whiteColor]];
         [cellImage setHighlighted:YES];
-        [self setBackgroundColor:[UIColor colorWithRed:29.0f/255.0f green:175.0f/255.0f blue:236.0f/255.0f alpha:1.0f]];
+        [self setBackgroundColor:[UIColor colorWithRed:242.0f/255.0f green:130.0f/255.0f blue:49.0f/255.0f alpha:1.0f]];
     } else {
-        [cellText setTextColor:[UIColor lightGrayColor]];
+        [cellText setTextColor:[UIColor colorWithRed:82.0f/255.0f green:82.0f/255.0f blue:82.0f/255.0f alpha:1.0f]];
         [cellImage setHighlighted:NO];
-        [self setBackgroundColor:[UIColor colorWithRed:34.0f/255.0f green:34.0f/255.0f blue:34.0f/255.0f alpha:1.0f]];
+        [self setBackgroundColor:[UIColor whiteColor]];
     }
 }
 

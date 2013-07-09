@@ -60,7 +60,8 @@ typedef enum {
 #pragma mark - button actions
 
 - (IBAction)skipOver:(id)sender {
-    [self performSegueWithIdentifier:@"favoritesToMain" sender:nil];
+    // [self performSegueWithIdentifier:@"favoritesToMain" sender:nil];
+    [self performSegueWithIdentifier:@"favoritesToFirstTimeIntro" sender:nil];
 }
 
 - (IBAction)saveFavorites:(id)sender {

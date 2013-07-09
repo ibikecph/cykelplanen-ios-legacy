@@ -51,7 +51,7 @@ typedef enum {
     frame.origin.x = locationArrow.frame.origin.x + 20.0f;
     frame.size.width = 269.0f - frame.origin.x;
     [fromLabel setFrame:frame];
-    [fromLabel setTextColor:[UIColor colorWithRed:39.0f/255.0f green:111.0f/255.0f blue:183.0f/255.0f alpha:1.0f]];
+    [fromLabel setTextColor:[UIColor colorWithRed:7.0f/255.0f green:86.0f/255.0f blue:135.0f/255.0f alpha:1.0f]];
     
     
     
