@@ -805,10 +805,14 @@
 		C0C94742173BE40E00FE834D /* SMLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C94741173BE40E00FE834D /* SMLoginController.m */; };
 		C0C94747173BF47500FE834D /* field_email_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C0C94745173BF47500FE834D /* field_email_icon.png */; };
 		C0C94748173BF47500FE834D /* field_password_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C0C94746173BF47500FE834D /* field_password_icon.png */; };
-		F68C641F1768A946009B4A21 /* smroute_settings_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = F68C641E1768A946009B4A21 /* smroute_settings_private.plist */; };
 		F68C64231768B453009B4A21 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C48641616F099BE00F01A7C /* MainStoryboard_iPhone.storyboard */; };
 		F68F9DE71765CDC500578FFE /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F68F9DE61765CDC500578FFE /* FBUserSettingsViewResources.bundle */; };
 		F68F9DEB1765CEF900578FFE /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68F9DEA1765CEF900578FFE /* FacebookSDK.framework */; };
+		F690C471178C147C006A6FEA /* metro_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F690C46D178C147C006A6FEA /* metro_icon.png */; };
+		F690C472178C147C006A6FEA /* metro_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F690C46E178C147C006A6FEA /* metro_icon@2x.png */; };
+		F690C473178C147C006A6FEA /* station_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F690C46F178C147C006A6FEA /* station_icon.png */; };
+		F690C474178C147C006A6FEA /* station_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F690C470178C147C006A6FEA /* station_icon@2x.png */; };
+		F690C47B178C3395006A6FEA /* smroute_settings_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = F690C47A178C3395006A6FEA /* smroute_settings_private.plist */; };
 		F69227711786E8ED00C8CD76 /* libHockeySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA06F3816EF8BE4007603B4 /* libHockeySDK.a */; };
 		F69227761786FD0B00C8CD76 /* SMTripRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = F69227751786FD0B00C8CD76 /* SMTripRoute.m */; };
 		F69227801786FF5700C8CD76 /* SMTransportationRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = F692277F1786FF5700C8CD76 /* SMTransportationRoute.m */; };
@@ -1732,10 +1736,14 @@
 		C0C94741173BE40E00FE834D /* SMLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLoginController.m; sourceTree = "<group>"; };
 		C0C94745173BF47500FE834D /* field_email_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = field_email_icon.png; sourceTree = "<group>"; };
 		C0C94746173BF47500FE834D /* field_password_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = field_password_icon.png; sourceTree = "<group>"; };
-		F68C641E1768A946009B4A21 /* smroute_settings_private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings_private.plist; sourceTree = "<group>"; };
 		F68C64251768B5B3009B4A21 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		F68F9DE61765CDC500578FFE /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
 		F68F9DEA1765CEF900578FFE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		F690C46D178C147C006A6FEA /* metro_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metro_icon.png; sourceTree = "<group>"; };
+		F690C46E178C147C006A6FEA /* metro_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "metro_icon@2x.png"; sourceTree = "<group>"; };
+		F690C46F178C147C006A6FEA /* station_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = station_icon.png; sourceTree = "<group>"; };
+		F690C470178C147C006A6FEA /* station_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "station_icon@2x.png"; sourceTree = "<group>"; };
+		F690C47A178C3395006A6FEA /* smroute_settings_private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings_private.plist; sourceTree = "<group>"; };
 		F69227741786FD0B00C8CD76 /* SMTripRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTripRoute.h; sourceTree = "<group>"; };
 		F69227751786FD0B00C8CD76 /* SMTripRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTripRoute.m; sourceTree = "<group>"; };
 		F692277E1786FF5700C8CD76 /* SMTransportationRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTransportationRoute.h; sourceTree = "<group>"; };
@@ -2366,10 +2374,10 @@
 		4C73D21516AEDCDA00AED42A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F690C47A178C3395006A6FEA /* smroute_settings_private.plist */,
 				F6922788178702F900C8CD76 /* Albertslundruten.line */,
 				F6922789178702F900C8CD76 /* Farumruten.line */,
 				4C48641616F099BE00F01A7C /* MainStoryboard_iPhone.storyboard */,
-				F68C641E1768A946009B4A21 /* smroute_settings_private.plist */,
 				C09AB42917688AC40098AA9C /* smroute_settings.plist */,
 				4C3B3EB5170493CC00F098AD /* routeme.plist */,
 				4C6C48F616CD3FE600E57F59 /* Languages */,
@@ -2815,6 +2823,10 @@
 		7838B0DE178710A3005C2AA1 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				F690C46D178C147C006A6FEA /* metro_icon.png */,
+				F690C46E178C147C006A6FEA /* metro_icon@2x.png */,
+				F690C46F178C147C006A6FEA /* station_icon.png */,
+				F690C470178C147C006A6FEA /* station_icon@2x.png */,
 				7838B0DF178710A3005C2AA1 /* a_pin.png */,
 				7838B0E0178710A3005C2AA1 /* a_pin@2x.png */,
 				7838B0E1178710A3005C2AA1 /* about_bgr.png */,
@@ -3599,7 +3611,6 @@
 				4C0E15C41760B3AD006F81C1 /* warning_popup_bgr@2x.png in Resources */,
 				F68F9DE71765CDC500578FFE /* FBUserSettingsViewResources.bundle in Resources */,
 				C09AB42A17688AC40098AA9C /* smroute_settings.plist in Resources */,
-				F68C641F1768A946009B4A21 /* smroute_settings_private.plist in Resources */,
 				F68C64231768B453009B4A21 /* MainStoryboard_iPhone.storyboard in Resources */,
 				4C979C441784782C004D1E06 /* fav_plus_none_grey.png in Resources */,
 				4C979C451784782C004D1E06 /* fav_plus_none_grey@2x.png in Resources */,
@@ -3875,6 +3886,11 @@
 				7838B288178710A3005C2AA1 /* splash_illustration@2x.png in Resources */,
 				7838B289178710A3005C2AA1 /* splash_sky.png in Resources */,
 				7838B28A178710A3005C2AA1 /* splash_sky@2x.png in Resources */,
+				F690C471178C147C006A6FEA /* metro_icon.png in Resources */,
+				F690C472178C147C006A6FEA /* metro_icon@2x.png in Resources */,
+				F690C473178C147C006A6FEA /* station_icon.png in Resources */,
+				F690C474178C147C006A6FEA /* station_icon@2x.png in Resources */,
+				F690C47B178C3395006A6FEA /* smroute_settings_private.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

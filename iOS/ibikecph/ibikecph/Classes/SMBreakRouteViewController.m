@@ -51,6 +51,7 @@
         self.tripRoute.delegate= self;
         [self.tripRoute breakRoute];
     }
+    self.tripRoute.brokenRouteInfo= nil;
 }
 - (void)didReceiveMemoryWarning
 {
@@ -90,7 +91,7 @@
     switch (indexPath.row) {
         case 0:
         {
-            CellId= @"BikeCell";
+            CellId= @"SourceCell";
             cell= [tableView dequeueReusableCellWithIdentifier:CellId];
             break;
         }
@@ -100,7 +101,7 @@
             break;
         }
         case 2:{
-            CellId= @"BikeCell";
+            CellId= @"DestinationCell";
             cell= [tableView dequeueReusableCellWithIdentifier:CellId];
             break;
         }

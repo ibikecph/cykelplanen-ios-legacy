@@ -2977,7 +2977,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="BikeCell" rowHeight="106" id="qZ8-lS-blI" customClass="SMBikeWaypointCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="SourceCell" rowHeight="106" id="qZ8-lS-blI" customClass="SMBikeWaypointCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="106"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -3002,8 +3002,8 @@
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="Efe-PE-dvX">
-                                                            <rect key="frame" x="20" y="1" width="41" height="41"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="a_pin.png" id="Efe-PE-dvX">
+                                                            <rect key="frame" x="25" y="1" width="30" height="41"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
                                                     </subviews>
@@ -3040,8 +3040,71 @@
                                             <outlet property="viewDistance" destination="juL-dS-RP5" id="BJf-FG-pPe"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="DestinationCell" rowHeight="106" id="nZJ-Fd-Ylk" customClass="SMBikeWaypointCell">
+                                        <rect key="frame" x="0.0" y="128" width="320" height="106"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="105"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" id="yJC-gX-6ug">
+                                                    <rect key="frame" x="0.0" y="58" width="320" height="42"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Norrebrogade 42c" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qNh-0G-Fr0">
+                                                            <rect key="frame" x="80" y="1" width="220" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="2200 Kobnhavn N" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aol-6s-4jM">
+                                                            <rect key="frame" x="80" y="20" width="220" height="22"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="a_pin.png" id="8IW-Cx-7Ok">
+                                                            <rect key="frame" x="26" y="1" width="30" height="41"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                </view>
+                                                <view contentMode="scaleToFill" id="23F-vh-b6k">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="CIb-77-n94">
+                                                            <rect key="frame" x="20" y="0.0" width="41" height="55"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        </imageView>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="7 min. 1.2 km." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NLk-og-9W5">
+                                                            <rect key="frame" x="84" y="17" width="203" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="imageViewAddress" destination="8IW-Cx-7Ok" id="D6c-3b-hHh"/>
+                                            <outlet property="imageViewDistance" destination="CIb-77-n94" id="9H3-iC-mvi"/>
+                                            <outlet property="labelAddressBottom" destination="aol-6s-4jM" id="QDJ-kv-GVC"/>
+                                            <outlet property="labelAddressTop" destination="qNh-0G-Fr0" id="sGd-dB-eGo"/>
+                                            <outlet property="labelDistance" destination="NLk-og-9W5" id="y2L-Xi-RwA"/>
+                                            <outlet property="viewAddress" destination="yJC-gX-6ug" id="9G8-mK-Vaa"/>
+                                            <outlet property="viewDistance" destination="23F-vh-b6k" id="zwW-UT-iaG"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="TransportCell" rowHeight="176" id="GdF-Mp-4Wf" customClass="SMTransportationCell">
-                                        <rect key="frame" x="0.0" y="128" width="320" height="176"/>
+                                        <rect key="frame" x="0.0" y="234" width="320" height="176"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="175"/>
@@ -3092,6 +3155,14 @@
                                                         <action selector="onInfoTap:" destination="jAP-nA-y1g" eventType="touchUpInside" id="eII-jc-I9q"/>
                                                     </connections>
                                                 </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="station_icon.png" id="K39-DH-zv6">
+                                                    <rect key="frame" x="20" y="16" width="31" height="28"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="station_icon.png" id="bhT-tI-Tb4">
+                                                    <rect key="frame" x="20" y="132" width="31" height="28"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -3102,7 +3173,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ButtonCell" rowHeight="80" id="Sct-qe-98z">
-                                        <rect key="frame" x="0.0" y="304" width="320" height="80"/>
+                                        <rect key="frame" x="0.0" y="410" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
@@ -3769,6 +3840,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="a_pin.png" width="30" height="44"/>
         <image name="about_bgr.png" width="320" height="411"/>
         <image name="about_header.png" width="286" height="77"/>
         <image name="autocompleteHeader.png" width="152" height="4"/>
@@ -3814,9 +3886,9 @@
         <image name="favWorkBlack.png" width="22" height="22"/>
         <image name="favoritesInput.png" width="306" height="119"/>
         <image name="fb_linked_icon.png" width="54" height="54"/>
-        <image name="field_email_icon.png" width="54" height="54"/>
+        <image name="field_email_icon.png" width="27" height="27"/>
         <image name="field_password_icon.png" width="54" height="54"/>
-        <image name="field_user_icon.png" width="27" height="27"/>
+        <image name="field_user_icon.png" width="54" height="54"/>
         <image name="findRouteCalendar.png" width="21" height="22"/>
         <image name="gray_btn.png" width="11" height="11"/>
         <image name="gray_btn_pressed.png" width="11" height="11"/>
@@ -3836,7 +3908,7 @@
         <image name="overviewBG.png" width="320" height="106"/>
         <image name="profile.png" width="22" height="22"/>
         <image name="profile_default_image.png" width="80" height="80"/>
-        <image name="pullHandle.png" width="42" height="25"/>
+        <image name="pullHandle.png" width="60" height="30"/>
         <image name="radioChecked.png" width="22" height="22"/>
         <image name="radioUnchecked.png" width="22" height="22"/>
         <image name="red_btn.png" width="22" height="22"/>
@@ -3867,7 +3939,7 @@
         <image name="routeEnterSingleRowPressed.png" width="320" height="44"/>
         <image name="routeEnterStart_active.png" width="61" height="35"/>
         <image name="routeEnterStart_inactive.png" width="61" height="35"/>
-        <image name="routeEnterSwitchIcon.png" width="23" height="23"/>
+        <image name="routeEnterSwitchIcon.png" width="25" height="23"/>
         <image name="routeEnterTopRow.png" width="320" height="44"/>
         <image name="routeEnterTopRowPressed.png" width="320" height="44"/>
         <image name="routeEnterViewMoreRow.png" width="320" height="47"/>
@@ -3883,7 +3955,8 @@
         <image name="splash_cloud.png" width="124" height="137"/>
         <image name="splash_exclamation.png" width="91" height="88"/>
         <image name="splash_rider.png" width="277" height="478"/>
-        <image name="white_btn.png" width="12" height="12"/>
+        <image name="station_icon.png" width="31" height="28"/>
+        <image name="white_btn.png" width="11" height="11"/>
         <image name="white_btn_pressed.png" width="11" height="11"/>
     </resources>
     <classes>
@@ -3953,6 +4026,7 @@
         <class className="SMBreakRouteViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SMBreakRouteViewController.h"/>
             <relationships>
+                <relationship kind="action" name="onBack:"/>
                 <relationship kind="action" name="onDestinationAddressButtonTap:"/>
                 <relationship kind="action" name="onInfoTap:"/>
                 <relationship kind="action" name="onSourceAddressButtonTap:"/>
