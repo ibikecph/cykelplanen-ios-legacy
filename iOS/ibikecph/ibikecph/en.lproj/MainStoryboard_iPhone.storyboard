@@ -4178,6 +4178,7 @@
         <image name="drop_pin_add_fav_btn_active.png" width="37" height="77"/>
         <image name="drop_pin_add_fav_btn_press.png" width="37" height="77"/>
         <image name="drop_pin_start_bgr.png" width="320" height="113"/>
+        <image name="favAdd.png" width="22" height="22"/>
         <image name="drop_shadow_sliding_image.png" width="10" height="2"/>
         <image name="favAdd_grey.png" width="16" height="16"/>
         <image name="favEdit.png" width="22" height="22"/>
@@ -4185,7 +4186,7 @@
         <image name="favEditBtnPressed.png" width="33" height="33"/>
         <image name="favEditDoneBtn.png" width="72" height="33"/>
         <image name="favListRow.png" width="260" height="45"/>
-        <image name="favSearch_Name_icon.png" width="19" height="21"/>
+        <image name="favSearch_Name_icon.png" width="17" height="21"/>
         <image name="favSearch_icon.png" width="17" height="21"/>
         <image name="favStarWhiteLarge.png" width="22" height="22"/>
         <image name="favTypeFavoriteButton.png" width="85" height="85"/>
@@ -4223,7 +4224,7 @@
         <image name="pin_b_orange.png" width="30" height="43"/>
         <image name="profile.png" width="22" height="22"/>
         <image name="profile_default_image.png" width="80" height="80"/>
-        <image name="pullHandle.png" width="60" height="30"/>
+        <image name="pullHandle.png" width="42" height="25"/>
         <image name="radioChecked.png" width="22" height="22"/>
         <image name="radioUnchecked.png" width="22" height="22"/>
         <image name="red_btn.png" width="22" height="22"/>
@@ -4255,7 +4256,7 @@
         <image name="routeEnterSingleRowPressed.png" width="320" height="44"/>
         <image name="routeEnterStart_active.png" width="61" height="35"/>
         <image name="routeEnterStart_inactive.png" width="61" height="35"/>
-        <image name="routeEnterSwitchIcon.png" width="25" height="23"/>
+        <image name="routeEnterSwitchIcon.png" width="23" height="23"/>
         <image name="routeEnterTopRow.png" width="320" height="44"/>
         <image name="routeEnterTopRowPressed.png" width="320" height="44"/>
         <image name="routeEnterViewMoreRow.png" width="320" height="47"/>
@@ -4278,6 +4279,7 @@
         <image name="white_btn.png" width="12" height="12"/>
         <image name="white_btn_pressed.png" width="11" height="11"/>
     </resources>
+
     <classes>
         <class className="AsyncImageView" superclassName="UIImageView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AsyncImageView.h"/>
@@ -4640,6 +4642,7 @@
             </relationships>
         </class>
     </classes>
+
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

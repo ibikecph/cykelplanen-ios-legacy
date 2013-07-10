@@ -11,7 +11,7 @@
 
 @interface SMBreakRouteViewController (){
     UIPickerView* pickerView;
-    NSArray* pickerModel;
+    NSArray* sourceStations;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -35,10 +35,10 @@
 	// Do any additional setup after loading the view.
     
     [self.titleLabel setText:translateString(@"break_route_title")];
-    
-    pickerView= [[UIPickerView alloc] init];
-    pickerView.delegate= self;
-    pickerView.dataSource= self;
+
+   pickerView= [[UIPickerView alloc] init];
+   pickerView.delegate= self;
+   pickerView.dataSource= self;
     
     [self.view addSubview:pickerView];
     pickerView.hidden= YES;
@@ -167,11 +167,12 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    return pickerModel.count;
+    return sourceStations.count;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    return [pickerModel objectAtIndex:row];
+    SMRouteStationInfo* stationInfo= [sourceStations objectAtIndex:row];
+    return stationInfo.name;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
@@ -213,6 +214,8 @@
 }
 
 -(void)didCalculateRouteDistances:(SMTripRoute*)route{
+    sourceStations= [route.transportationRoutes valueForKey:@"sourceStation"];
+
     if(route.transportationRoutes.count > 0){
         SMSingleRouteInfo* routeInfo= [route.transportationRoutes objectAtIndex:0];
         
@@ -235,6 +238,14 @@
 }
 
 -(void)didFailBreakingRoute:(SMTripRoute*)route{
+    
+}
+
+-(void)displayStationViewAnimated{
+
+}
+
+-(void)hideStationViewAnimated{
     
 }
 

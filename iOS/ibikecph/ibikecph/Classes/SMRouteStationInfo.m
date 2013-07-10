@@ -15,6 +15,7 @@
         self.location= [[CLLocation alloc] initWithLatitude:lat longitude:lon];
         _longitude= lon;
         _latitude= lat;
+        self.name= [NSString stringWithFormat:@"Station %lf %lf",_latitude,_longitude];
     }
     return self;
 }
@@ -23,6 +24,7 @@
     _location= pLocation;
     _longitude= pLocation.coordinate.longitude;
     _latitude= pLocation.coordinate.latitude;
+    self.name= [NSString stringWithFormat:@"Station %lf %lf",_latitude,_longitude];
 }
 
 @end
