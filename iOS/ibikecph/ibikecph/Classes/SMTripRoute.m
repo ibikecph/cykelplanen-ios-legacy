@@ -144,13 +144,10 @@
     _brokenRouteInfo= pBrokenRouteInfo;
     
     [self performSelectorOnMainThread:@selector(createSplitRoutes) withObject:nil waitUntilDone:NO];
-//    [self createSplitRoutes];
+
 }
 
 -(void)createSplitRoutes{
-    if(!self.brokenRouteInfo)
-        self.brokenRoutes= nil;
-    
     SMRoute* startRoute= [[SMRoute alloc] initWithRouteStart:[self start].coordinate andEnd:self.brokenRouteInfo.sourceStation.location.coordinate andDelegate:self];
     SMRoute* endRoute= [[SMRoute alloc] initWithRouteStart:self.brokenRouteInfo.destinationStation.location.coordinate andEnd:[self end].coordinate andDelegate:self];
     
@@ -172,7 +169,6 @@
     
 }
 - (void) startRoute{
-    NSLog(@"waypoint count ");
     
     for(SMRoute* route in self.brokenRoutes){
         if(!route.waypoints)

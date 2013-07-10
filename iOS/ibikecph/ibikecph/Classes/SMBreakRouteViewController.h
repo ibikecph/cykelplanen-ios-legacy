@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "SMTripRoute.h"
-
+#import "SMStationPickerView.h"
 @interface SMBreakRouteViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, SMBreakRouteDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView* tableView;
 
 @property(nonatomic, strong) SMTripRoute* tripRoute;
 @property(nonatomic, strong) SMRoute* fullRoute;
+
 @end

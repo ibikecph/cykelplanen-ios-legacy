@@ -826,6 +826,7 @@
 		F6922798178718C400C8CD76 /* SMBikeWaypointCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6922797178718C400C8CD76 /* SMBikeWaypointCell.m */; };
 		F692279B178723E200C8CD76 /* SMTransportationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F692279A178723E200C8CD76 /* SMTransportationCell.m */; };
 		F69227A51787326800C8CD76 /* SMBrokenRouteInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F69227A41787326800C8CD76 /* SMBrokenRouteInfo.m */; };
+		F6928783178D664300267A09 /* SMStationPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F6928782178D664300267A09 /* SMStationPickerView.m */; };
 		F695EFCE178AA95000D3E83D /* SMSingleRouteInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F695EFCD178AA95000D3E83D /* SMSingleRouteInfo.m */; };
 /* End PBXBuildFile section */
 
@@ -1766,6 +1767,8 @@
 		F692279A178723E200C8CD76 /* SMTransportationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTransportationCell.m; sourceTree = "<group>"; };
 		F69227A31787326800C8CD76 /* SMBrokenRouteInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMBrokenRouteInfo.h; sourceTree = "<group>"; };
 		F69227A41787326800C8CD76 /* SMBrokenRouteInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBrokenRouteInfo.m; sourceTree = "<group>"; };
+		F6928781178D664300267A09 /* SMStationPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMStationPickerView.h; sourceTree = "<group>"; };
+		F6928782178D664300267A09 /* SMStationPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMStationPickerView.m; sourceTree = "<group>"; };
 		F695EFCC178AA95000D3E83D /* SMSingleRouteInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSingleRouteInfo.h; sourceTree = "<group>"; };
 		F695EFCD178AA95000D3E83D /* SMSingleRouteInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSingleRouteInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -3074,6 +3077,8 @@
 				F6922797178718C400C8CD76 /* SMBikeWaypointCell.m */,
 				F6922799178723E200C8CD76 /* SMTransportationCell.h */,
 				F692279A178723E200C8CD76 /* SMTransportationCell.m */,
+				F6928781178D664300267A09 /* SMStationPickerView.h */,
+				F6928782178D664300267A09 /* SMStationPickerView.m */,
 			);
 			name = BreakRoute;
 			sourceTree = "<group>";
@@ -3984,6 +3989,7 @@
 				F692279B178723E200C8CD76 /* SMTransportationCell.m in Sources */,
 				F69227A51787326800C8CD76 /* SMBrokenRouteInfo.m in Sources */,
 				F695EFCE178AA95000D3E83D /* SMSingleRouteInfo.m in Sources */,
+				F6928783178D664300267A09 /* SMStationPickerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

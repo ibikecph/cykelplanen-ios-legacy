@@ -15,4 +15,5 @@
 @property(nonatomic, strong) CLLocation* location;
 @property(nonatomic, assign, readonly) double longitude;
 @property(nonatomic, assign, readonly) double latitude;
+@property(nonatomic, strong) NSString* name;
 @end
