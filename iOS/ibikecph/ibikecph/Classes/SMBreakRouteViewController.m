@@ -61,19 +61,27 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.row) {
         case 0:
+            return 94;
         case 2:
-            return 106;
+            return 82;
         case 1:
-            return 176;
+            return 132;
         case 3:
             return 80;
     }
     
-    return 50;
+    return 52;
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if ( section == 0 ) {
+        return [tableView dequeueReusableCellWithIdentifier:@"breakRouteHeader"];
+    }
     return nil;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 52.0f;
 }
 
 -(int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -198,7 +206,7 @@
 //        
 //    }
     
-    [self dismiss];
+    //[self dismiss];
 }
 
 -(void)didCalculateRouteDistances:(SMTripRoute*)route{
