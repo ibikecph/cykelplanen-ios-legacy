@@ -163,12 +163,12 @@ typedef enum {
     }
     
     if (self.mapFade.alpha > 0.7f) {
-        [arrivalBG setImage:[UIImage imageNamed:@"distance_black"]];
-        [closeButton setImage:[UIImage imageNamed:@"btnCloseDark"] forState:UIControlStateNormal];
-        [labelDistanceLeft setTextColor:[UIColor whiteColor]];
-        [labelTimeLeft setTextColor:[UIColor whiteColor]];
+//        [arrivalBG setImage:[UIImage imageNamed:@"distance_black"]];
+//        [closeButton setImage:[UIImage imageNamed:@"btnCloseDark"] forState:UIControlStateNormal];
+        [labelDistanceLeft setTextColor:[UIColor darkGrayColor]];
+        [labelTimeLeft setTextColor:[UIColor darkGrayColor]];
     } else {
-        [arrivalBG setImage:[UIImage imageNamed:@"distance_white"]];
+        //[arrivalBG setImage:[UIImage imageNamed:@"distance_white"]];
         [closeButton setImage:[UIImage imageNamed:@"btnClose"] forState:UIControlStateNormal];
         [labelDistanceLeft setTextColor:[UIColor darkGrayColor]];
         [labelTimeLeft setTextColor:[UIColor darkGrayColor]];
@@ -1557,7 +1557,7 @@ typedef enum {
     } else {
         [self.recycledItems removeObject:cell];
     }
-//    [cell setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"tableViewBG"]]];    
+    //[cell setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"tableViewBG"]]];
     return cell;
 }
 
@@ -1714,12 +1714,12 @@ typedef enum {
         }
         
         if (self.mapFade.alpha > 0.7f) {
-            [arrivalBG setImage:[UIImage imageNamed:@"distance_black"]];
-            [closeButton setImage:[UIImage imageNamed:@"btnCloseDark"] forState:UIControlStateNormal];
-            [labelDistanceLeft setTextColor:[UIColor whiteColor]];
-            [labelTimeLeft setTextColor:[UIColor whiteColor]];
+//            [arrivalBG setImage:[UIImage imageNamed:@"distance_black"]];
+//            [closeButton setImage:[UIImage imageNamed:@"btnCloseDark"] forState:UIControlStateNormal];
+            [labelDistanceLeft setTextColor:[UIColor darkGrayColor]];
+            [labelTimeLeft setTextColor:[UIColor darkGrayColor]];
         } else {
-            [arrivalBG setImage:[UIImage imageNamed:@"distance_white"]];
+            //[arrivalBG setImage:[UIImage imageNamed:@"distance_white"]];
             [closeButton setImage:[UIImage imageNamed:@"btnClose"] forState:UIControlStateNormal];
             [labelDistanceLeft setTextColor:[UIColor darkGrayColor]];
             [labelTimeLeft setTextColor:[UIColor darkGrayColor]];

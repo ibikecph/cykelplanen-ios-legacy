@@ -14,6 +14,8 @@
     NSArray* pickerModel;
 }
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
 @end
 
 @implementation SMBreakRouteViewController
@@ -32,7 +34,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-
+    [self.titleLabel setText:translateString(@"break_route_title")];
     
     pickerView= [[UIPickerView alloc] init];
     pickerView.delegate= self;
@@ -141,6 +143,7 @@
 }
 
 - (void)viewDidUnload {
+    [self setTitle:nil];
     [super viewDidUnload];
 }
 
