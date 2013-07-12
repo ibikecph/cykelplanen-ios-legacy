@@ -332,7 +332,10 @@ typedef enum {
 
 - (CGFloat)heightForFavorites {
     if ([self.favoritesList count] == 0) {
-        return [SMEmptyFavoritesCell getHeight] + 45.0f;
+        //return [SMEmptyFavoritesCell getHeight] + 45.0f * 2.0;
+        CGFloat startY = favHeader.frame.origin.y;
+        CGFloat maxHeight = menuView.frame.size.height - startY;
+        return MIN(tblMenu.contentSize.height + 45.0f, maxHeight - 2 * 45.0f);
     } else {
         CGFloat startY = favHeader.frame.origin.y;
         CGFloat maxHeight = menuView.frame.size.height - startY;
@@ -1058,7 +1061,8 @@ typedef enum {
     NSIndexSet* sections = [NSIndexSet indexSetWithIndex:1];
     [tblMenu reloadSections:sections withRowAnimation:UITableViewRowAnimationAutomatic];
     
-    if ( self.reminderFolded == NO ) {
+    [self tapFavorites:sender];
+    if ( self.reminderFolded == NO && [self.favoritesList count] > 0 ) {
         [tblMenu setContentOffset:CGPointMake(0, 408) animated:YES];
     }
 }
@@ -1081,7 +1085,7 @@ typedef enum {
         if ( self.reminderFolded ){
             return 0;
         } else {
-            return 7;
+            return 5;
         }
     }
 }
