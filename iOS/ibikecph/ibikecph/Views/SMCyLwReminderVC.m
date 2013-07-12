@@ -7,6 +7,7 @@
 //
 
 #import "SMCyLwReminderVC.h"
+#import "SMReminder.h"
 //#import "SMCySettings.h"
 
 @interface SMCyLwReminderVC ()
@@ -45,15 +46,15 @@
 }
 
 - (IBAction)saveReminder:(UIButton *)sender {
-//    SMCySettings * settings = [SMCySettings sharedInstance];
-//    
-//    [settings setReminder:self.swMonday.isOn forDay:MONDAY];
-//    [settings setReminder:self.swTuesday.isOn forDay:TUESDAY];
-//    [settings setReminder:self.swWednesday.isOn forDay:WEDNESDAY];
-//    [settings setReminder:self.swThursday.isOn forDay:THURSDAY];
-//    [settings setReminder:self.swFriday.isOn forDay:FRIDAY];
-//    
-//    [settings saveToFileNamed:nil];
+    SMReminder * reminder = [SMReminder sharedInstance];
+
+    [reminder setReminder:self.swMonday.isOn forDay:DayMonday];
+    [reminder setReminder:self.swTuesday.isOn forDay:DayTuesday];
+    [reminder setReminder:self.swWednesday.isOn forDay:DayWednesday];
+    [reminder setReminder:self.swThursday.isOn forDay:DayThursday];
+    [reminder setReminder:self.swFriday.isOn forDay:DayFriday];
+    
+    [reminder save];
     
     [self goToNextView];
 }
