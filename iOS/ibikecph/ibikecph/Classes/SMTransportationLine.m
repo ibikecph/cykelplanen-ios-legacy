@@ -7,7 +7,7 @@
 //
 
 #import "SMTransportationLine.h"
-#import "SMRouteStationInfo.h"
+#import "SMStationInfo.h"
 
 @interface SMTransportationLine()
 @property(nonatomic, strong, readwrite) NSArray * stations;
@@ -36,7 +36,7 @@
     for(NSArray * arr in coord){
         lon = [arr objectAtIndex:0];
         lat = [arr objectAtIndex:1];
-        SMRouteStationInfo* stationInfo= [[SMRouteStationInfo alloc] initWithLongitude:lon.doubleValue latitude:lat.doubleValue];
+        SMStationInfo* stationInfo= [[SMStationInfo alloc] initWithLongitude:lon.doubleValue latitude:lat.doubleValue];
 
         [stations addObject:stationInfo];
     }

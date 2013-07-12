@@ -18,7 +18,8 @@
 #import "UIImage+Resize.h"
 #import "Base64.h"
 #import "SMFavoritesUtil.h"
-
+#import "SMReminder.h"
+                        
 typedef enum {
     dialogLogin,
     dialogRegister,
@@ -196,7 +197,11 @@ typedef enum {
 //        [self performSegueWithIdentifier:@"splashToFavorites" sender:nil];
 //    }
     
-    [self performSegueWithIdentifier:@"loginToReminder" sender:nil];
+    if(! [[SMReminder sharedInstance] isReminderScreenShown]){
+        [self performSegueWithIdentifier:@"loginToReminder" sender:nil];
+    }else{
+        [self performSegueWithIdentifier:@"goToFavorites" sender:nil];
+    }
 }
 
 - (IBAction)showRegister:(id)sender {

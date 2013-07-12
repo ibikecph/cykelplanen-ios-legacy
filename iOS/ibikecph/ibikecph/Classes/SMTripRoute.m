@@ -10,7 +10,7 @@
 #import "SMTransportationRoute.h"
 #import "SMTransportation.h"
 #import "SMTransportationLine.h"
-#import "SMRouteStationInfo.h"
+#import "SMStationInfo.h"
 #import "SMRouteTransportationInfo.h"
 #import "SMBrokenRouteInfo.h"
 #import "SMSingleRouteInfo.h"
@@ -74,13 +74,13 @@
     for( SMTransportationLine* transportationLine in lines){
 
         for(int i=0; i<transportationLine.stations.count; i++){
-            SMRouteStationInfo* stationLocation= [transportationLine.stations objectAtIndex:i];
+            SMStationInfo* stationLocation= [transportationLine.stations objectAtIndex:i];
             
             for(int j=0; j<transportationLine.stations.count; j++){
                 if(i==j)
                     continue;
                 
-                SMRouteStationInfo* stationLocationDest= [transportationLine.stations objectAtIndex:j];
+                SMStationInfo* stationLocationDest= [transportationLine.stations objectAtIndex:j];
                 float bikeDistanceToSourceStation= [start distanceFromLocation:stationLocation.location];
                 float bikeDistanceFromDestinationStation= [end distanceFromLocation:stationLocationDest.location];
                 float bikeDistance= bikeDistanceToSourceStation + bikeDistanceFromDestinationStation;
@@ -113,7 +113,7 @@
 }
 
 -(NSArray*)sortedEndStationsForTransportationLine:(SMTransportationLine*)pTransportationLine{
-    NSArray* endDistances= [pTransportationLine.stations sortedArrayUsingComparator:^NSComparisonResult(SMRouteStationInfo* s1, SMRouteStationInfo* s2){
+    NSArray* endDistances= [pTransportationLine.stations sortedArrayUsingComparator:^NSComparisonResult(SMStationInfo* s1, SMStationInfo* s2){
         if( [s1.location distanceFromLocation:[self end]] < [s2.location distanceFromLocation:[self end]])
             return NSOrderedAscending;
         else

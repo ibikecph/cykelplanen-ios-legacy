@@ -726,6 +726,39 @@ typedef enum {
     }
 }
 
+- (void)saveRoute {
+    if (fullRoute && fullRoute.visitedLocations && ([self.route.visitedLocations count] > 0)) {
+        NSDictionary *dt = [fullRoute save];
+        NSData * data = [dt objectForKey:@"data"];
+        NSDictionary * d = @{
+                             @"startDate" : [NSKeyedArchiver archivedDataWithRootObject:[[self.route.visitedLocations objectAtIndex:0] objectForKey:@"date"]],
+                             @"endDate" : [NSKeyedArchiver archivedDataWithRootObject:[[self.route.visitedLocations lastObject] objectForKey:@"date"]],
+                             @"visitedLocations" : data,
+                             @"fromName" : self.source,
+                             @"toName" : self.destination,
+                             @"fromLocation" : [NSKeyedArchiver archivedDataWithRootObject:self.startLocation],
+                             @"toLocation" : [NSKeyedArchiver archivedDataWithRootObject:self.endLocation]
+                             };
+        BOOL x = [d writeToFile:[SMRouteUtils routeFilenameFromTimestampForExtension:@"plist"] atomically:YES];
+        if (x == NO) {
+            NSLog(@"Route not saved!");
+        }
+        
+        if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
+            SMSearchHistory * sh = [SMSearchHistory instance];
+            [sh addFinishedRouteToServer:@{
+             @"startDate" : [[self.route.visitedLocations objectAtIndex:0] objectForKey:@"date"],
+             @"endDate" : [[self.route.visitedLocations lastObject] objectForKey:@"date"],
+             @"visitedLocations" : [dt objectForKey:@"polyline"],
+             @"fromName" : self.source,
+             @"toName" : self.destination,
+             @"fromLocation" : self.startLocation,
+             @"toLocation" : self.endLocation
+             }];
+        }
+    }
+}
+
 - (void)saveRoute:(SMTripRoute*)pRoute {
     NSMutableArray* routesArr= [NSMutableArray new];
     BOOL shouldSaveRoute= NO;
@@ -761,18 +794,18 @@ typedef enum {
         }
     }
     
-    if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
-        SMSearchHistory * sh = [SMSearchHistory instance];
-        [sh addFinishedRouteToServer:@{
-         @"startDate" : [[self.route.visitedLocations objectAtIndex:0] objectForKey:@"date"],
-         @"endDate" : [[self.route.visitedLocations lastObject] objectForKey:@"date"],
-         @"visitedLocations" : [dt objectForKey:@"polyline"],
-         @"fromName" : self.source,
-         @"toName" : self.destination,
-         @"fromLocation" : self.startLocation,
-         @"toLocation" : self.endLocation
-         }];
-    }
+//    if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
+//        SMSearchHistory * sh = [SMSearchHistory instance];
+//        [sh addFinishedRouteToServer:@{
+//         @"startDate" : [[self.route.visitedLocations objectAtIndex:0] objectForKey:@"date"],
+//         @"endDate" : [[self.route.visitedLocations lastObject] objectForKey:@"date"],
+//         @"visitedLocations" : [dt objectForKey:@"polyline"],
+//         @"fromName" : self.source,
+//         @"toName" : self.destination,
+//         @"fromLocation" : self.startLocation,
+//         @"toLocation" : self.endLocation
+//         }];
+//    }
 }
 
 #pragma mark - mapView delegate
@@ -1031,7 +1064,7 @@ typedef enum {
     /**
      * save route data
      */
-    [self saveRoute:self.brokenRoute];
+    [self saveRoute];
     
     self.currentlyRouting = NO;
     
@@ -1213,7 +1246,7 @@ typedef enum {
 
     [[NSFileManager defaultManager] removeItemAtPath:[[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"lastRoute.plist"] error:nil];
     
-    [self saveRoute:self.brokenRoute];
+    [self saveRoute];
     
     [self.navigationController popViewControllerAnimated:YES];
 }

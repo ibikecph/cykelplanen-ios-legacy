@@ -541,11 +541,12 @@
                         <outlet property="registerView" destination="FRP-eR-IZ0" id="W9P-6u-Jzp"/>
                         <segue destination="2" kind="push" identifier="splashToMain" id="SAG-9b-Vbu"/>
                         <segue destination="6Ly-Lj-EL8" kind="push" identifier="loginToReminder" id="J1u-WU-rpd"/>
+                        <segue destination="CUg-gL-lxU" kind="push" identifier="goToFavorites" id="yP5-9Q-UWd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XAc-Zb-36j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3651" y="-1600"/>
+            <point key="canvasLocation" x="-3663" y="-1614"/>
         </scene>
         <!--Report Error Controller-->
         <scene sceneID="IGg-80-pv0">
@@ -3149,7 +3150,7 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="onSourceAddressButtonTap:" destination="jAP-nA-y1g" eventType="touchUpInside" id="VIZ-u4-IEa"/>
+                                                        <action selector="onSourceAddressButtonTap:" destination="mvk-ry-IY6" eventType="touchUpInside" id="twP-aB-Ega"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uKG-fY-IFy" customClass="SMPatternedButton">
@@ -3165,7 +3166,7 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="onDestinationAddressButtonTap:" destination="jAP-nA-y1g" eventType="touchUpInside" id="ilE-0t-1fo"/>
+                                                        <action selector="onDestinationAddressButtonTap:" destination="mvk-ry-IY6" eventType="touchUpInside" id="3cC-HF-oUN"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="n6p-di-lm1">
@@ -3223,6 +3224,9 @@
                                                     <state key="highlighted" backgroundImage="blue_btn_pressed.png">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="onBreakRoute:" destination="mvk-ry-IY6" eventType="touchUpInside" id="gzb-6m-0Qu"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -4278,8 +4282,6 @@
         <image name="white_btn.png" width="12" height="12"/>
         <image name="white_btn_pressed.png" width="11" height="11"/>
     </resources>
-
-
     <classes>
         <class className="AsyncImageView" superclassName="UIImageView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AsyncImageView.h"/>
@@ -4347,6 +4349,12 @@
         <class className="SMBreakRouteViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SMBreakRouteViewController.h"/>
             <relationships>
+                <relationship kind="action" name="onBack:"/>
+                <relationship kind="action" name="onDestinationAddressButtonTap:"/>
+                <relationship kind="action" name="onInfoTap:"/>
+                <relationship kind="action" name="onSourceAddressButtonTap:"/>
+                <relationship kind="outlet" name="buttonAddressDestination" candidateClass="SMPatternedButton"/>
+                <relationship kind="outlet" name="buttonAddressSource" candidateClass="SMPatternedButton"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
             </relationships>
@@ -4565,6 +4573,19 @@
         <class className="SMSplashController" superclassName="SMTranslatedViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SMSplashController.h"/>
             <relationships>
+                <relationship kind="action" name="doFBLogin:" candidateClass="NSString"/>
+                <relationship kind="action" name="doLogin:"/>
+                <relationship kind="action" name="doRegister:"/>
+                <relationship kind="action" name="goToFavorites:"/>
+                <relationship kind="action" name="hideLogin:"/>
+                <relationship kind="action" name="hideRegister:"/>
+                <relationship kind="action" name="loginToRegister:"/>
+                <relationship kind="action" name="loginWithFB:"/>
+                <relationship kind="action" name="loginWithFacebook:"/>
+                <relationship kind="action" name="selectImageSource:"/>
+                <relationship kind="action" name="showLogin:"/>
+                <relationship kind="action" name="showRegister:"/>
+                <relationship kind="action" name="skipLogin:"/>
                 <relationship kind="outlet" name="dialogView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="loginDialog" candidateClass="UIView"/>
@@ -4595,6 +4616,29 @@
         <class className="SMViewController" superclassName="SMTranslatedViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SMViewController.h"/>
             <relationships>
+                <relationship kind="action" name="addFavoriteHide:"/>
+                <relationship kind="action" name="addFavoriteShow:"/>
+                <relationship kind="action" name="addSelectFavorite:"/>
+                <relationship kind="action" name="addSelectHome:"/>
+                <relationship kind="action" name="addSelectSchool:"/>
+                <relationship kind="action" name="addSelectWork:"/>
+                <relationship kind="action" name="deleteFavorite:"/>
+                <relationship kind="action" name="doubleTap:" candidateClass="UITapGestureRecognizer"/>
+                <relationship kind="action" name="editFavoriteShow:"/>
+                <relationship kind="action" name="editSaveFavorite:"/>
+                <relationship kind="action" name="enterRoute:"/>
+                <relationship kind="action" name="findAddress:"/>
+                <relationship kind="action" name="goToPin:"/>
+                <relationship kind="action" name="pinAddToFavorites:"/>
+                <relationship kind="action" name="saveFavorite:"/>
+                <relationship kind="action" name="showMenu:"/>
+                <relationship kind="action" name="slideMenuOpen:"/>
+                <relationship kind="action" name="startEdit:"/>
+                <relationship kind="action" name="stopEdit:"/>
+                <relationship kind="action" name="tapAccount:"/>
+                <relationship kind="action" name="tapFavorites:"/>
+                <relationship kind="action" name="tapInfo:"/>
+                <relationship kind="action" name="trackUser:"/>
                 <relationship kind="outlet" name="accHeader" candidateClass="UIView"/>
                 <relationship kind="outlet" name="account_label" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="addFavAddress" candidateClass="UITextField"/>
@@ -4642,15 +4686,14 @@
             </relationships>
         </class>
     </classes>
-
-
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="e6x-Rl-rMW"/>
+        <segue reference="SAG-9b-Vbu"/>
+        <segue reference="yP5-9Q-UWd"/>
         <segue reference="6eV-Lw-Uga"/>
     </inferredMetricsTieBreakers>
 </document>

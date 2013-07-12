@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 City of Copenhagen. All rights reserved.
 //
 
-#import "SMRouteStationInfo.h"
+#import "SMStationInfo.h"
 
-@implementation SMRouteStationInfo
+@implementation SMStationInfo
 
 -(id)initWithLongitude:(double)lon latitude:(double)lat{
     if(self= [super init]){

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SMRouteStationInfo : NSObject
+@interface SMStationInfo : NSObject
 
 -(id)initWithLongitude:(double)lon latitude:(double)lat;
 
