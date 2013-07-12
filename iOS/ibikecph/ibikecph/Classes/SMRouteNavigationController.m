@@ -761,18 +761,18 @@ typedef enum {
         }
     }
     
-    if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
-        SMSearchHistory * sh = [SMSearchHistory instance];
-        [sh addFinishedRouteToServer:@{
-         @"startDate" : [[self.route.visitedLocations objectAtIndex:0] objectForKey:@"date"],
-         @"endDate" : [[self.route.visitedLocations lastObject] objectForKey:@"date"],
-         @"visitedLocations" : [dt objectForKey:@"polyline"],
-         @"fromName" : self.source,
-         @"toName" : self.destination,
-         @"fromLocation" : self.startLocation,
-         @"toLocation" : self.endLocation
-         }];
-    }
+//    if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
+//        SMSearchHistory * sh = [SMSearchHistory instance];
+//        [sh addFinishedRouteToServer:@{
+//         @"startDate" : [[self.route.visitedLocations objectAtIndex:0] objectForKey:@"date"],
+//         @"endDate" : [[self.route.visitedLocations lastObject] objectForKey:@"date"],
+//         @"visitedLocations" : [dt objectForKey:@"polyline"],
+//         @"fromName" : self.source,
+//         @"toName" : self.destination,
+//         @"fromLocation" : self.startLocation,
+//         @"toLocation" : self.endLocation
+//         }];
+//    }
 }
 
 #pragma mark - mapView delegate

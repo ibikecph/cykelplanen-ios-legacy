@@ -11,6 +11,10 @@
 //#import "SMCySettings.h"
 
 @interface SMCyLwReminderVC ()
+@property (weak, nonatomic) IBOutlet UILabel *screenTitle;
+@property (weak, nonatomic) IBOutlet UILabel *screenText;
+@property (weak, nonatomic) IBOutlet SMPatternedButton *btnSave;
+@property (weak, nonatomic) IBOutlet UIButton *btnSkip;
 
 @end
 
@@ -29,6 +33,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self.screenTitle setText:translateString(@"reminder_title")];
+    [self.screenText setText:translateString(@"reminder_text")];
+    [self.btnSave setTitle:translateString(@"reminder_save_btn") forState:UIControlStateNormal];
+    [self.btnSkip setTitle:translateString(@"btn_skip") forState:UIControlStateNormal];
     
     // Set tint color for switches
     UIColor* orange = [UIColor colorWithRed:232.0f/255.0f green:123.0f/255.0f blue:30.0f/255.0f alpha:1.0f];
@@ -65,5 +73,12 @@
 
 - (void) goToNextView{
     [self performSegueWithIdentifier:@"goToFavorites" sender:self];
+}
+- (void)viewDidUnload {
+    [self setScreenTitle:nil];
+    [self setScreenText:nil];
+    [self setBtnSave:nil];
+    [self setBtnSkip:nil];
+    [super viewDidUnload];
 }
 @end

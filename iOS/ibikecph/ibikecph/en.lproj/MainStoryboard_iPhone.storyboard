@@ -244,7 +244,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6fd-IW-YEk">
                                 <rect key="frame" x="0.0" y="508" width="160" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                 <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="register_with_mail" image="register_orange.png">
                                     <color key="titleColor" red="0.96078431369999995" green="0.50980392159999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -261,9 +261,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sNv-b4-HrW">
                                 <rect key="frame" x="160" y="508" width="160" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                 <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="skip" image="skip_orange.png">
+                                <state key="normal" image="skip_orange.png">
                                     <color key="titleColor" red="0.96078431369999995" green="0.50980392159999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
@@ -276,7 +276,7 @@
                                 </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="bottom_divider_vertical.png" id="aOm-dZ-x3f">
-                                <rect key="frame" x="159" y="516" width="2" height="44"/>
+                                <rect key="frame" x="174" y="516" width="2" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
@@ -525,6 +525,8 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="btnRegisterWithMail" destination="6fd-IW-YEk" id="kFc-SD-eVS"/>
+                        <outlet property="btnSkip" destination="sNv-b4-HrW" id="W7Z-Re-SVa"/>
                         <outlet property="dialogView" destination="6fq-sT-tGF" id="WX4-am-pPI"/>
                         <outlet property="emailField" destination="hL5-ey-U7f" id="mIP-gH-H4R"/>
                         <outlet property="loginDialog" destination="7Bm-s1-xl4" id="B0F-6s-WTK"/>
@@ -895,10 +897,10 @@
                                 <rect key="contentStretch" x="0.5" y="0.0" width="0.0" height="1"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nTw-h1-3wk">
-                                <rect key="frame" x="210" y="508" width="110" height="60"/>
+                                <rect key="frame" x="203" y="508" width="117" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                <state key="normal" title="skip" image="skip_orange.png">
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <state key="normal" image="skip_orange.png">
                                     <color key="titleColor" red="0.96078431369999995" green="0.50980392159999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -923,7 +925,8 @@
                             <textField opaque="NO" clipsSubviews="YES" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="favorites_home_placeholder" minimumFontSize="17" id="8Ix-zi-AwT">
                                 <rect key="frame" x="74" y="319" width="191" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" red="0.54117647059999996" green="0.54117647059999996" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
                                     <outlet property="delegate" destination="CUg-gL-lxU" id="3vr-HA-S74"/>
@@ -932,7 +935,8 @@
                             <textField opaque="NO" clipsSubviews="YES" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="favorites_work_placeholder" minimumFontSize="17" id="sKi-Tn-cQF">
                                 <rect key="frame" x="74" y="371" width="191" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" red="0.54117647059999996" green="0.54117647059999996" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
                                     <outlet property="delegate" destination="CUg-gL-lxU" id="aME-kB-29N"/>
@@ -943,7 +947,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <state key="normal">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.54117647059999996" green="0.54117647059999996" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -958,7 +962,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.54117647059999996" green="0.54117647059999996" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -969,10 +973,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lZ6-Mf-iCA" customClass="SMPatternedButton">
-                                <rect key="frame" x="7" y="516" width="195" height="44"/>
+                                <rect key="frame" x="7" y="516" width="182" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <rect key="contentStretch" x="0.5" y="0.5" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                 <state key="normal" title="save_favorites" backgroundImage="blue_btn.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -985,7 +989,7 @@
                                 </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="bottom_divider_vertical.png" id="CfF-Mz-eUy">
-                                <rect key="frame" x="216" y="516" width="2" height="44"/>
+                                <rect key="frame" x="202" y="516" width="2" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
@@ -995,8 +999,12 @@
                     <navigationItem key="navigationItem" id="f9I-1w-bGt"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="btnSave" destination="lZ6-Mf-iCA" id="qJT-lR-gKI"/>
+                        <outlet property="btnSkip" destination="nTw-h1-3wk" id="mRh-Zx-F8d"/>
                         <outlet property="favoriteHome" destination="8Ix-zi-AwT" id="8SD-hb-zTS"/>
                         <outlet property="favoriteWork" destination="sKi-Tn-cQF" id="ifY-v9-r3l"/>
+                        <outlet property="screenText" destination="6ZT-I3-K7E" id="B39-Yc-gJv"/>
+                        <outlet property="screenTitle" destination="wgK-BP-Yqo" id="7Mb-3A-mjr"/>
                         <segue destination="2" kind="push" identifier="favoritesToMain" id="e6x-Rl-rMW"/>
                         <segue destination="Z0Q-Xf-vK7" kind="modal" identifier="favToSearch" id="6eV-Lw-Uga"/>
                         <segue destination="5oS-e3-Yw0" kind="push" identifier="favoritesToFirstTimeIntro" id="5Xc-1u-zsj"/>
@@ -1059,8 +1067,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </scrollView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="about_ibikecph_title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zcS-KW-NIW">
-                                <rect key="frame" x="52" y="94" width="217" height="54"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="about_ibikecph_title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zcS-KW-NIW">
+                                <rect key="frame" x="20" y="70" width="280" height="78"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1459,13 +1467,81 @@
                                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </label>
                                                     <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="46" sectionHeaderHeight="22" sectionFooterHeight="22" id="ofH-TZ-2iy">
-                                                        <rect key="frame" x="0.0" y="46" width="260" height="304"/>
+                                                        <rect key="frame" x="0.0" y="45" width="260" height="305"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                        <color key="backgroundColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                        <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="separatorColor" white="0.88" alpha="1" colorSpace="calibratedWhite"/>
                                                         <prototypes>
+                                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="reminderHeader" rowHeight="46" id="pXH-cP-DRy">
+                                                                <rect key="frame" x="0.0" y="22" width="260" height="46"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="260" height="45"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                    <subviews>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5Wc-Mb-zmx">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="260" height="45"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                                                            <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                            <inset key="titleEdgeInsets" minX="14" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                            <state key="normal" title="Reminders" image="reminder_icon.png" backgroundImage="favListRow.png">
+                                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            </state>
+                                                                            <state key="selected" image="reminder_icon.png" backgroundImage="favListRowSelected.png"/>
+                                                                            <state key="highlighted" image="reminder_icon.png" backgroundImage="favListRowSelected.png">
+                                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            </state>
+                                                                            <connections>
+                                                                                <action selector="toggleReminders:" destination="2" eventType="touchUpInside" id="1Am-gw-Icg"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                </view>
+                                                            </tableViewCell>
+                                                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="reminderCell" selectionStyle="blue" indentationWidth="10" reuseIdentifier="reminderTableCell" rowHeight="46" id="Med-35-RFP" customClass="SMReminderTableViewCell">
+                                                                <rect key="frame" x="0.0" y="68" width="260" height="46"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="260" height="45"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                    <subviews>
+                                                                        <view contentMode="scaleToFill" restorationIdentifier="" id="79q-Fi-ug5" userLabel="Monday">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="260" height="45"/>
+                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                            <subviews>
+                                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="favListRowLight.png" id="Xbe-bk-KwA">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="260" height="45"/>
+                                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                                </imageView>
+                                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Monday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cxi-i1-vnI">
+                                                                                    <rect key="frame" x="45" y="12" width="110" height="21"/>
+                                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                                                                    <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                                <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="wht-9N-zzJ">
+                                                                                    <rect key="frame" x="166" y="9" width="79" height="27"/>
+                                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                                    <color key="onTintColor" red="0.96078431369999995" green="0.50980392159999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                </switch>
+                                                                            </subviews>
+                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                                            <accessibility key="accessibilityConfiguration" label=""/>
+                                                                        </view>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                </view>
+                                                                <connections>
+                                                                    <outlet property="day" destination="Cxi-i1-vnI" id="DoF-xF-55M"/>
+                                                                    <outlet property="reminderSwitch" destination="wht-9N-zzJ" id="7UV-hi-yUf"/>
+                                                                </connections>
+                                                            </tableViewCell>
                                                             <tableViewCell autoresizesSubviews="NO" contentMode="scaleToFill" selectionStyle="none" showsReorderControl="YES" indentationLevel="1" indentationWidth="20" reuseIdentifier="favoritesCell" rowHeight="45" id="tHq-Sb-yjs" customClass="SMMenuCell">
-                                                                <rect key="frame" x="0.0" y="22" width="260" height="45"/>
+                                                                <rect key="frame" x="0.0" y="114" width="260" height="45"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                     <rect key="frame" x="0.0" y="0.0" width="260" height="44"/>
@@ -1512,7 +1588,7 @@
                                                                 </connections>
                                                             </tableViewCell>
                                                             <tableViewCell autoresizesSubviews="NO" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="20" reuseIdentifier="favoritesEmptyCell" rowHeight="150" id="hCR-J7-U3g" customClass="SMEmptyFavoritesCell">
-                                                                <rect key="frame" x="0.0" y="67" width="260" height="150"/>
+                                                                <rect key="frame" x="0.0" y="159" width="260" height="150"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="149"/>
@@ -1592,7 +1668,24 @@
                                                 <rect key="frame" x="0.0" y="370" width="260" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="favListRow.png" id="f8v-dV-vop">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iEt-vQ-T3N">
+                                                        <rect key="frame" x="0.0" y="0.0" width="260" height="45"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                                        <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="titleEdgeInsets" minX="14" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="Account" image="profile.png" backgroundImage="favListRow.png">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <state key="highlighted" image="profile.png" backgroundImage="favListRowSelected.png">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="onSelectAccount:" destination="2" eventType="touchUpInside" id="GbL-Cf-krg"/>
+                                                        </connections>
+                                                    </button>
+                                                    <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="favListRow.png" id="f8v-dV-vop">
                                                         <rect key="frame" x="0.0" y="0.0" width="260" height="45"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <gestureRecognizers/>
@@ -1600,11 +1693,11 @@
                                                             <outletCollection property="gestureRecognizers" destination="M5O-3N-TWa" appends="YES" id="5im-Of-4Ea"/>
                                                         </connections>
                                                     </imageView>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" image="profile.png" id="xC3-tt-tbw">
+                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" image="profile.png" id="xC3-tt-tbw">
                                                         <rect key="frame" x="5" y="5" width="35" height="35"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
-                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="account" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RAY-w5-U8Z">
+                                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="account" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RAY-w5-U8Z">
                                                         <rect key="frame" x="48" y="12" width="186" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -1618,7 +1711,24 @@
                                                 <rect key="frame" x="0.0" y="415" width="260" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="favListRow.png" id="NWG-c6-MbH">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IFF-t3-67r">
+                                                        <rect key="frame" x="0.0" y="0.0" width="260" height="45"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                                        <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="titleEdgeInsets" minX="14" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="About Cykelsuperstier" image="info.png" backgroundImage="favListRow.png">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <state key="highlighted" image="info.png" backgroundImage="favListRowSelected.png">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="onSelectInfo:" destination="2" eventType="touchUpInside" id="3Ci-s8-cMW"/>
+                                                        </connections>
+                                                    </button>
+                                                    <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="favListRow.png" id="NWG-c6-MbH">
                                                         <rect key="frame" x="0.0" y="0.0" width="260" height="45"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <gestureRecognizers/>
@@ -1626,11 +1736,11 @@
                                                             <outletCollection property="gestureRecognizers" destination="tQQ-JZ-zoX" appends="YES" id="YcT-Xb-yNR"/>
                                                         </connections>
                                                     </imageView>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" image="info.png" id="dRo-X2-hxA">
+                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" image="info.png" id="dRo-X2-hxA">
                                                         <rect key="frame" x="5" y="5" width="35" height="35"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
-                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="about_ibikecph" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8gP-hB-GLM">
+                                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="about_ibikecph" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8gP-hB-GLM">
                                                         <rect key="frame" x="48" y="12" width="186" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -1857,6 +1967,99 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gcQ-1K-OFb">
+                                        <rect key="frame" x="0.0" y="316" width="260" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                        <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="titleEdgeInsets" minX="14" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Reminders" image="reminder_icon.png" backgroundImage="favListRow.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" image="reminder_icon.png" backgroundImage="favListRowSelected.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <view hidden="YES" contentMode="scaleToFill" id="UjV-gE-MRb">
+                                        <rect key="frame" x="0.0" y="115" width="260" height="230"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" restorationIdentifier="" id="Wkq-Vt-T13" userLabel="Monday">
+                                                <rect key="frame" x="0.0" y="0.0" width="260" height="45"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="favListRowLight.png" id="wsX-nG-RTB">
+                                                        <rect key="frame" x="0.0" y="0.0" width="260" height="45"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </imageView>
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Monday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F2u-gh-cMe">
+                                                        <rect key="frame" x="45" y="12" width="110" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                                        <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="WFI-kc-oMn">
+                                                        <rect key="frame" x="166" y="9" width="79" height="27"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="onTintColor" red="0.96078431369999995" green="0.50980392159999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </switch>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                <accessibility key="accessibilityConfiguration" label=""/>
+                                            </view>
+                                            <view contentMode="scaleToFill" restorationIdentifier="" id="Q0i-Wq-I1J" userLabel="Tuesday">
+                                                <rect key="frame" x="0.0" y="45" width="260" height="45"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="favListRowLight.png" id="riV-we-DMz">
+                                                        <rect key="frame" x="0.0" y="0.0" width="260" height="45"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </imageView>
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tuesday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1KK-U9-xFp">
+                                                        <rect key="frame" x="45" y="12" width="110" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                                        <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="J9s-qi-tKT">
+                                                        <rect key="frame" x="166" y="9" width="79" height="27"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="onTintColor" red="0.96078431369999995" green="0.50980392159999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </switch>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                <accessibility key="accessibilityConfiguration" label=""/>
+                                            </view>
+                                            <view contentMode="scaleToFill" restorationIdentifier="" id="Tyq-1q-TdG" userLabel="Wednesday">
+                                                <rect key="frame" x="0.0" y="93" width="260" height="45"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="favListRowLight.png" id="muy-ZZ-KFS">
+                                                        <rect key="frame" x="0.0" y="0.0" width="260" height="45"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </imageView>
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tuesday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5oS-nj-Nzz">
+                                                        <rect key="frame" x="45" y="12" width="110" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                                        <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="cGV-b7-tVm">
+                                                        <rect key="frame" x="166" y="9" width="79" height="27"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="onTintColor" red="0.96078431369999995" green="0.50980392159999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </switch>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                <accessibility key="accessibilityConfiguration" label=""/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
                                     <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="drop_shadow_sliding_image.png" id="aQl-EY-jry">
                                         <rect key="frame" x="255" y="0.0" width="5" height="461"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
@@ -2010,6 +2213,7 @@
                         <outlet property="addMenu" destination="Ucg-S3-ith" id="fgM-xU-IJ3"/>
                         <outlet property="addSaveButton" destination="99B-ng-o6M" id="KSA-wl-tO8"/>
                         <outlet property="blockingView" destination="4qF-59-xup" id="e3h-Tq-I0b"/>
+                        <outlet property="btnReminders" destination="gcQ-1K-OFb" id="p4f-gp-mBC"/>
                         <outlet property="buttonTrackUser" destination="FSD-PE-lob" id="4qY-o9-1Ks"/>
                         <outlet property="centerView" destination="3yz-md-642" id="d3k-J0-6bV"/>
                         <outlet property="debugLabel" destination="iqL-K9-CLg" id="8MO-mv-N9W"/>
@@ -3996,10 +4200,10 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tDu-gg-9Tq" customClass="SMPatternedButton">
-                                        <rect key="frame" x="7" y="9" width="195" height="44"/>
+                                        <rect key="frame" x="7" y="9" width="178" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                        <state key="normal" title="save_reminder" backgroundImage="blue_btn.png">
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                        <state key="normal" title="save_reminder_btn_title" backgroundImage="blue_btn.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -4011,9 +4215,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5ci-r1-3Zs">
-                                        <rect key="frame" x="210" y="9" width="103" height="44"/>
+                                        <rect key="frame" x="193" y="9" width="120" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                         <state key="normal" title="skip" image="skip_orange.png">
                                             <color key="titleColor" red="0.96078431369999995" green="0.50980392159999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -4033,21 +4237,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="reminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qfb-L1-PGc">
-                                <rect key="frame" x="19" y="93" width="280" height="36"/>
+                                <rect key="frame" x="19" y="80" width="280" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
-                                <color key="textColor" red="0.84705882349999995" green="0.38823529410000002" blue="0.090196078430000007" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.96078431369999995" green="0.50980392159999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="lw_reminder_text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6gm-RQ-APM">
-                                <rect key="frame" x="14" y="128" width="294" height="76"/>
+                                <rect key="frame" x="14" y="114" width="294" height="76"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" red="0.14117647059999999" green="0.14117647059999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="bottom_divider_vertical.png" id="hup-gv-136">
-                                <rect key="frame" x="216" y="517" width="2" height="44"/>
+                                <rect key="frame" x="195" y="517" width="2" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
@@ -4056,6 +4260,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="DC8-Jn-dqh"/>
                     <connections>
+                        <outlet property="btnSave" destination="tDu-gg-9Tq" id="R7G-vL-TBI"/>
+                        <outlet property="btnSkip" destination="5ci-r1-3Zs" id="yMC-OJ-UJD"/>
+                        <outlet property="screenText" destination="6gm-RQ-APM" id="0FL-Rc-o4H"/>
+                        <outlet property="screenTitle" destination="qfb-L1-PGc" id="8Kh-0Z-ZUE"/>
                         <outlet property="swFriday" destination="1Fz-IU-wHA" id="Vea-zB-l8o"/>
                         <outlet property="swMonday" destination="4YF-sX-cTE" id="CJQ-2A-wU0"/>
                         <outlet property="swThursday" destination="pQO-ok-cgE" id="F1m-Fx-1wQ"/>
@@ -4096,7 +4304,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="lw_break_rote_info_top" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bQu-zQ-09K">
-                                <rect key="frame" x="14" y="117" width="294" height="76"/>
+                                <rect key="frame" x="31" y="117" width="257" height="76"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" red="0.14117647059999999" green="0.14117647059999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -4111,9 +4319,9 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AnN-By-yzu">
-                                        <rect key="frame" x="121" y="8" width="189" height="44"/>
+                                        <rect key="frame" x="107" y="8" width="193" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                         <state key="normal" title="exit_guide" image="skip_orange.png">
                                             <color key="titleColor" red="0.96078431369999995" green="0.50980392159999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -4129,11 +4337,11 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="splash_break_route.png" id="tCe-nZ-Tpb">
-                                <rect key="frame" x="0.0" y="233" width="320" height="263"/>
+                                <rect key="frame" x="0.0" y="228" width="320" height="263"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="lw_break_rote_info_bottom" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qht-2d-yuS">
-                                <rect key="frame" x="110" y="406" width="191" height="99"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="lw_break_rote_info_bottom" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qht-2d-yuS">
+                                <rect key="frame" x="110" y="401" width="191" height="99"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" red="0.5450980392" green="0.5450980392" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
@@ -4146,6 +4354,9 @@
                     <connections>
                         <outlet property="btnExitGuide" destination="AnN-By-yzu" id="i0d-5O-3uj"/>
                         <outlet property="exitButton" destination="AnN-By-yzu" id="4O0-al-LoB"/>
+                        <outlet property="screenBottomText" destination="Qht-2d-yuS" id="U9B-p0-bMf"/>
+                        <outlet property="screenTitle" destination="Moa-hc-297" id="dnh-K8-9SK"/>
+                        <outlet property="screenTopText" destination="bQu-zQ-09K" id="A55-s6-Yxi"/>
                         <segue destination="2" kind="push" identifier="firstTimeIntroToMap" id="FqQ-pD-Lrh"/>
                     </connections>
                 </viewController>
@@ -4160,7 +4371,7 @@
         <image name="autocompleteHeader.png" width="152" height="4"/>
         <image name="back_arrow_btn.png" width="46" height="34"/>
         <image name="back_arrow_btn_black_press.png" width="46" height="34"/>
-        <image name="back_arrow_btn_press.png" width="16" height="16"/>
+        <image name="back_arrow_btn_press.png" width="46" height="34"/>
         <image name="bike_route.png" width="30" height="39"/>
         <image name="blue_btn.png" width="11" height="11"/>
         <image name="blue_btn_pressed.png" width="11" height="11"/>
@@ -4185,6 +4396,8 @@
         <image name="favEditBtnPressed.png" width="33" height="33"/>
         <image name="favEditDoneBtn.png" width="72" height="33"/>
         <image name="favListRow.png" width="260" height="45"/>
+        <image name="favListRowLight.png" width="130" height="23"/>
+        <image name="favListRowSelected.png" width="260" height="45"/>
         <image name="favSearch_Name_icon.png" width="19" height="21"/>
         <image name="favSearch_icon.png" width="17" height="21"/>
         <image name="favStarWhiteLarge.png" width="22" height="22"/>
@@ -4232,6 +4445,7 @@
         <image name="registerBG.png" width="320" height="457"/>
         <image name="registerBlueButton.png" width="16" height="16"/>
         <image name="register_orange.png" width="22" height="22"/>
+        <image name="reminder_icon.png" width="22" height="22"/>
         <image name="reminder_table_bgr.png" width="288" height="225"/>
         <image name="reportBottom.png" width="320" height="64"/>
         <image name="reportBulb.png" width="82" height="121"/>
@@ -4278,370 +4492,6 @@
         <image name="white_btn.png" width="12" height="12"/>
         <image name="white_btn_pressed.png" width="11" height="11"/>
     </resources>
-
-    <classes>
-        <class className="AsyncImageView" superclassName="UIImageView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AsyncImageView.h"/>
-        </class>
-        <class className="FlickableView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FlickableView.h"/>
-        </class>
-        <class className="GAITrackedViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GAITrackedViewController.h"/>
-        </class>
-        <class className="RMMapView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RMMapView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="delegate"/>
-            </relationships>
-        </class>
-        <class className="SMAboutController" superclassName="SMTranslatedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMAboutController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="scrlView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="SMAccountController" superclassName="SMTranslatedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMAccountController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="fbImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="fbName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="fbView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="name" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordRepeat" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="regularImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="regularView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="scrlView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="SMAddFavoriteCell" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMAddFavoriteCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="addFavoritesSymbol" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="cellBG" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="image" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="text" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SMAutocompleteHeader" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMAutocompleteHeader.h"/>
-            <relationships>
-                <relationship kind="outlet" name="headerTitle" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SMBikeWaypointCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMBikeWaypointCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imageViewAddress" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="imageViewDistance" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="labelAddressBottom" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="labelAddressTop" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="labelDistance" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="viewAddress" candidateClass="UIView"/>
-                <relationship kind="outlet" name="viewDistance" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="SMBreakRouteViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMBreakRouteViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SMCustomButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMCustomButton.h"/>
-        </class>
-        <class className="SMCustomCheckbox" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMCustomCheckbox.h"/>
-        </class>
-        <class className="SMCyLwFirstTimeIntro" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMCyLwFirstTimeIntro.h"/>
-            <relationships>
-                <relationship kind="action" name="onExit:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="btnExitGuide" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="exitButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="SMCyLwReminderVC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMCyLwReminderVC.h"/>
-            <relationships>
-                <relationship kind="action" name="saveReminder:" candidateClass="UIButton"/>
-                <relationship kind="action" name="skip:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="swFriday" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="swMonday" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="swThursday" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="swTuesday" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="swWednesday" candidateClass="UISwitch"/>
-            </relationships>
-        </class>
-        <class className="SMDirectionCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMDirectionCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imgDirection" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="lblDescription" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblDistance" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblWayname" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SMDirectionTopCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMDirectionTopCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imgDirection" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="lblDescription" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblDistance" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblWayname" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SMEmptyFavoritesCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMEmptyFavoritesCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="addFavoritesSymbol" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="addFavoritesText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="text" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SMEnterRouteCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMEnterRouteCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="backImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="iconImage" candidateClass="AsyncImageView"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="TTTAttributedLabel"/>
-            </relationships>
-        </class>
-        <class className="SMEnterRouteController" superclassName="SMTranslatedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMEnterRouteController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="fadeView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="fromLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="locationArrow" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="startButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="swapButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="tblView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="toLabel" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="SMFavoritesController" superclassName="SMTranslatedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMFavoritesController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="favoriteHome" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="favoriteWork" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="favoritesView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="scrlView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="SMGPSTrackButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMGPSTrackButton.h"/>
-        </class>
-        <class className="SMLoginController" superclassName="SMTranslatedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMLoginController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="loginEmail" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="loginPassword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="scrlView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="SMMenuCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMMenuCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="cellBG" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="editBtn" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="image" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="text" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SMPatternedButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMPatternedButton.h"/>
-        </class>
-        <class className="SMRadioCheckedCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRadioCheckedCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="radioTextBox" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="radioTitle" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SMRadioUncheckedCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRadioUncheckedCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="radioTitle" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SMRegisterController" superclassName="SMTranslatedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRegisterController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="registerEmail" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="registerImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="registerName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="registerPassword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="registerRepeatPassword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="scrlView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="SMReportErrorController" superclassName="SMTranslatedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMReportErrorController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="bottomView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="btnSelectRouteSegment" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="fadeView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="pckrView" candidateClass="UIPickerView"/>
-                <relationship kind="outlet" name="reportEmail" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="reportSentView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="scrlView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="switchContactMe" candidateClass="SMCustomCheckbox"/>
-                <relationship kind="outlet" name="tblView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="SMRouteNavigationController" superclassName="SMTranslatedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRouteNavigationController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="arrivalBG" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="blockingView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="breakRouteButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonTrackUser" candidateClass="SMGPSTrackButton"/>
-                <relationship kind="outlet" name="cargoHandleImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="cargoTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="centerView" candidateClass="FlickableView"/>
-                <relationship kind="outlet" name="closeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="finishDestination" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="finishDistance" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="finishFadeView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="finishStreet" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="finishTime" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="finishView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="imgNextTurnDirection" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="instructionsView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="labelDistanceLeft" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="labelDistanceToNextTurn" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="labelTimeLeft" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="mapContainer" candidateClass="UIView"/>
-                <relationship kind="outlet" name="mapFade" candidateClass="UIView"/>
-                <relationship kind="outlet" name="minimizedInstructionsView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="mpView" candidateClass="RMMapView"/>
-                <relationship kind="outlet" name="noConnectionView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="overviewDestination" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="overviewDestinationBottom" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="overviewTimeDistance" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="progressView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="recalculatingView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="routeOverview" candidateClass="UIView"/>
-                <relationship kind="outlet" name="routeOverviewBottom" candidateClass="UIView"/>
-                <relationship kind="outlet" name="stopView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="swipableView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="swipeLeftArrow" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="swipeRightArrow" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="tblDirections" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="SMRouteTypeSelectCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRouteTypeSelectCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="cellImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="cellText" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SMSearchCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMSearchCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="iconImage" candidateClass="AsyncImageView"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="TTTAttributedLabel"/>
-            </relationships>
-        </class>
-        <class className="SMSearchController" superclassName="SMTranslatedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMSearchController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="searchField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="tblFade" candidateClass="UIView"/>
-                <relationship kind="outlet" name="tblView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="SMSearchTwoRowCell" superclassName="SMSearchCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMSearchTwoRowCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="addressLabel" candidateClass="TTTAttributedLabel"/>
-            </relationships>
-        </class>
-        <class className="SMSplashController" superclassName="SMTranslatedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMSplashController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="dialogView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="loginDialog" candidateClass="UIView"/>
-                <relationship kind="outlet" name="loginEmail" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="loginPassword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="loginScroll" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="loginView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="nameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordRepeatField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="registerDialog" candidateClass="UIView"/>
-                <relationship kind="outlet" name="registerImage" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="registerScroll" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="registerView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="SMTranslatedViewController" superclassName="GAITrackedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMTranslatedViewController.h"/>
-        </class>
-        <class className="SMTransportationCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMTransportationCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="buttonAddressDestination" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonAddressInfo" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonAddressSource" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="SMViewController" superclassName="SMTranslatedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="accHeader" candidateClass="UIView"/>
-                <relationship kind="outlet" name="account_label" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="addFavAddress" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="addFavFavoriteButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="addFavHomeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="addFavName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="addFavSchoolButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="addFavWorkButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="addMenu" candidateClass="UIView"/>
-                <relationship kind="outlet" name="addSaveButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="blockingView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="buttonTrackUser" candidateClass="SMGPSTrackButton"/>
-                <relationship kind="outlet" name="centerView" candidateClass="FlickableView"/>
-                <relationship kind="outlet" name="debugLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="dropPinView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="editDeleteButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="editSaveButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="editTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="fadeView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="favEditDone" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="favEditStart" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="favHeader" candidateClass="UIView"/>
-                <relationship kind="outlet" name="findRouteBig" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="findRouteSmall" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="infHeader" candidateClass="UIView"/>
-                <relationship kind="outlet" name="mainMenu" candidateClass="UIView"/>
-                <relationship kind="outlet" name="menuBtn" candidateClass="UIView"/>
-                <relationship kind="outlet" name="menuView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="pinButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="routeStreet" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="tableFooter" candidateClass="SMAddFavoriteCell"/>
-                <relationship kind="outlet" name="tblMenu" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="SMViewMoreCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMViewMoreCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="buttonLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="TTTAttributedLabel" superclassName="UILabel">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TTTAttributedLabel.h"/>
-            <relationships>
-                <relationship kind="outlet" name="delegate"/>
-            </relationships>
-        </class>
-    </classes>
-
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
@@ -4649,6 +4499,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="e6x-Rl-rMW"/>
-        <segue reference="6eV-Lw-Uga"/>
+        <segue reference="wAx-WK-VM3"/>
     </inferredMetricsTieBreakers>
 </document>

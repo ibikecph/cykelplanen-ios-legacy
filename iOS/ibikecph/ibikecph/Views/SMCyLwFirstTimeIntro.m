@@ -10,6 +10,9 @@
 
 @interface SMCyLwFirstTimeIntro ()
 @property (weak, nonatomic) IBOutlet UIButton *btnExitGuide;
+@property (weak, nonatomic) IBOutlet UILabel *screenTitle;
+@property (weak, nonatomic) IBOutlet UILabel *screenTopText;
+@property (weak, nonatomic) IBOutlet UILabel *screenBottomText;
 
 @end
 
@@ -28,6 +31,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self.screenTitle setText:translateString(@"break_route_title")];
+    [self.screenTopText setText:translateString(@"break_route_text_top")];
+    [self.screenBottomText setText:translateString(@"break_route_text_bottom")];
+    [self.exitButton setTitle:translateString(@"break_route_exit") forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,6 +48,9 @@
 }
 - (void)viewDidUnload {
     [self setBtnExitGuide:nil];
+    [self setScreenTitle:nil];
+    [self setScreenTopText:nil];
+    [self setScreenBottomText:nil];
     [super viewDidUnload];
 }
 @end

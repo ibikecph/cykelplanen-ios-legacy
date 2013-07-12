@@ -36,6 +36,8 @@
 #import "SMFavoritesUtil.h"
 #import "SMAPIRequest.h"
 
+#import "SMReminderTableViewCell.h"
+
 typedef enum {
     menuFavorites = 0,
     menuAccount = 1,
@@ -58,6 +60,9 @@ typedef enum {
 
 @property (nonatomic, strong) SMContacts *contacts;
 @property (nonatomic, strong) RMMapView *mpView;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnReminders;
+@property BOOL reminderFolded;
 
 /**
  * data sources for tables
@@ -114,6 +119,7 @@ typedef enum {
     [RMMapView class];
     
     animationShown = NO;
+    self.reminderFolded = NO;
     
     menuOpen = menuFavorites;
     
@@ -212,6 +218,8 @@ typedef enum {
     menuBtn = nil;
     menuBtn = nil;
     pinButton = nil;
+    [self setBtnReminders:nil];
+    [self setBtnReminders:nil];
     [super viewDidUnload];
 }
 
@@ -355,6 +363,11 @@ typedef enum {
             frame.origin.y = startY + 45.0f;
             frame.size.height = 45.0f;
             [accHeader setFrame:frame];
+            
+            frame = self.btnReminders.frame;
+            frame.origin.y = infHeader.frame.origin.y + 45.0f;
+            frame.size.height = 45.0f;
+            [self.btnReminders setFrame:frame];
         }
             break;
         case menuAccount: {
@@ -374,6 +387,11 @@ typedef enum {
             frame.origin.y = accHeader.frame.size.height + accHeader.frame.origin.y;
             frame.size.height = 45.0f;
             [infHeader setFrame:frame];
+            
+            frame = self.btnReminders.frame;
+            frame.origin.y = infHeader.frame.origin.y + 45.0f;
+            frame.size.height = 45.0f;
+            [self.btnReminders setFrame:frame];
         }
             break;
         case menuFavorites: {
@@ -402,6 +420,11 @@ typedef enum {
             frame.size.height = 45.0f;
             [infHeader setFrame:frame];
             
+            frame = self.btnReminders.frame;
+            frame.origin.y = infHeader.frame.origin.y + 45.0f;
+            frame.size.height = 45.0f;
+            [self.btnReminders setFrame:frame];
+            
             if (favHeader.frame.size.height < tblMenu.contentSize.height) {
                 [tblMenu setBounces:YES];
             } else {
@@ -420,13 +443,20 @@ typedef enum {
     }];
 }
 
+- (IBAction)onSelectAccount:(UIButton *)sender {
+    [self tapAccount:sender];
+}
 
-- (IBAction)tapAccount:(id)sender {
+- (IBAction)tapAccount:(id)sender {    
     if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
         [self performSegueWithIdentifier:@"mainToAccount" sender:nil];
     } else {
         [self performSegueWithIdentifier:@"mainToLogin" sender:nil];
     }
+}
+
+- (IBAction)onSelectInfo:(UIButton *)sender {
+    [self tapInfo:sender];
 }
 
 - (IBAction)tapInfo:(id)sender {
@@ -1020,22 +1050,51 @@ typedef enum {
     }
 }
 
+- (IBAction)toggleReminders:(UIButton *)sender {
+    self.reminderFolded = !self.reminderFolded;
+    
+    [sender setSelected:self.reminderFolded];
+    
+    NSIndexSet* sections = [NSIndexSet indexSetWithIndex:1];
+    [tblMenu reloadSections:sections withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    if ( self.reminderFolded == NO ) {
+        [tblMenu setContentOffset:CGPointMake(0, 408) animated:YES];
+    }
+}
+
 #pragma mark - tableview delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if ([self.favoritesList count] > 0) {
+    if (section == 0) {
+        if ([self.favoritesList count] > 0) {
+            return [self.favoritesList count];
+        } else {
+            return 1;
+        }
         return [self.favoritesList count];
     } else {
-        return 1;
+        if ( self.reminderFolded ){
+            return 0;
+        } else {
+            return 7;
+        }
     }
-    return [self.favoritesList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 1) {
+        NSArray* weekDays = @[@"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday", @"Saturday", @"Sunday"];
+        SMReminderTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"reminderTableCell"];
+        [cell setupWithTitle:[weekDays objectAtIndex:indexPath.row]];
+        return cell;
+    }
+    
     if (tableView == tblMenu) {
         if ([self.favoritesList count] > 0) {
             if (tblMenu.isEditing) {
@@ -1107,7 +1166,8 @@ typedef enum {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (tableView == tblMenu) {
+    
+    if (tableView == tblMenu && indexPath.section == 0) {
         if ([self.favoritesList count] == 0) {
             if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
                 /**
@@ -1155,13 +1215,27 @@ typedef enum {
             }
         }
     }
+    
+//    if (tableView == tblMenu && indexPath.section == 1) {
+//        NSArray* rows = @[[NSIndexPath indexPathForItem:0 inSection:1], [NSIndexPath indexPathForItem:1 inSection:1]];
+//        //[tableView reloadRowsAtIndexPaths:rows withRowAnimation:UITableViewRowAnimationTop];
+//        
+//        NSIndexSet* sections = [NSIndexSet indexSetWithIndex:1];
+//        self.reminderFolded = YES;
+//        [tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationFade];
+//        
+//    }
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == tblMenu) {
         if ([self.favoritesList count] == 0) {
-            return [SMEmptyFavoritesCell getHeight];
+            if ( indexPath.section == 0 ) {
+                return [SMEmptyFavoritesCell getHeight];
+            } else if ( indexPath.section == 1) {
+                return 45.0f;
+            }
         } else {
             return [SMMenuCell getHeight];
         }
@@ -1228,7 +1302,7 @@ typedef enum {
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    if (tableView == tblMenu) {
+    if (tableView == tblMenu && section == 0) {
         if (tableView.isEditing) {
             return [[UIView alloc] initWithFrame:CGRectZero];
         } else {
@@ -1239,12 +1313,33 @@ typedef enum {
             }
         }
     } else {
-        return nil;
+        return [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    }
+}
+
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if ( section == 0 ) {
+        return [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    } else {
+        UITableViewCell* header = [tableView dequeueReusableCellWithIdentifier:@"reminderHeader"];
+        return header;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (tableView == tblMenu) {
+        if (section == 0) {
+            return 0;
+        } else {
+            return 46;
+        }
+    } else {
+        return 0;
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    if (tableView == tblMenu) {
+    if (tableView == tblMenu && section == 0) {
         if (tableView.isEditing) {
             return 0.0f;
         } else {

@@ -146,11 +146,26 @@
 "marker_start" = "Start";
 
 // these are in the storyboard
+"register_with_mail" = "Opret med email";
+"btn_skip" = "Spring over";
 
-"reminder_title" = "Reminder";
-"reminder_info" = "Reminder info text";
-"break_route_title" = "Break route";
-"btn_break_route" = "BREAK ROUTE";
+"reminder_title" = "Påmindelser";
+"reminder_text" = "Få hjælp til at komme op på cyklen. Vælg de dage du ønsker at cykle, så hjælper vi dig med at komme igang.";
+"reminder_save_btn" = "GEM PÅMINDELSER";
+
+// Favorites
+"favorites_title" = "Tilføj favoritter";
+"favorites_text" = "Nu kan du nemt og hurtigt navigere til dine foretrukne pendlerruter. Start med at tilføje din hjemme- og arbejdsadresse.";
+"favorites_home_placeholder" = "Hjemmeadresse …";
+"favorites_work_placeholder" = "Arbejdsadresse …";
+"favorites_save_btn" = "GEM FAVORITTER";
+
+// Break route
+"break_route_title" = "Knæk ruten";
+"btn_break_route" = "KNÆK RUTEN";
+"break_route_text_top" = "Vidste du, at du let kan knække din pendlerrute ved at tage toget noget af vejen.";
+"break_route_text_bottom" = "Når du vælger “Knæk ruten” giver vi dig en ny rute til nærmeste S-togsstation og bringer dig frem til din endelige destination.";
+"break_route_exit" = "Afslut guide og ta’ en tur";
 
 "where_are_we_going" = "Where should we go?";
 "ibikecph_route_planner" = "I Bike CPH";
@@ -185,8 +200,8 @@
 "ride_report_a_problem" = "REPORT A PROBLEM";
 
 "login_with_fb" = "LOGIN WITH FACEBOOK";
-"register_with_mail" = "REGISTER";
-"skip" = "SKIP";
+//"register_with_mail" = "REGISTER";
+//"skip" = "SKIP";
 "create_account" = "CREATE AN ACCOUNT";
 "create_account_text" = "Save favorites and searches across mobile and ibikecph.dk";
 "back_splash" = "BACK";
@@ -201,11 +216,11 @@
 "image_source_camera" = "Camera";
 "image_source_library" = "Library";
 "login_new_account" = "Create account";
-"save_favorites" = "SAVE FAVORITES";
-"favorites_title" = "ADD FAVORITES";
-"favorites_text" = "You can save your favorite destinations in the app so it's easy to find your way home, to work or school.";
-"favorites_home_placeholder" = "Home address ...";
-"favorites_work_placeholder" = "Work address ...";
+//"save_favorites" = "SAVE FAVORITES";
+//"favorites_title" = "ADD FAVORITES";
+//"favorites_text" = "You can save your favorite destinations in the app so it's easy to find your way home, to work or school.";
+//"favorites_home_placeholder" = "Home address ...";
+//"favorites_work_placeholder" = "Work address ...";
 "log_in" = "Log in";
 
 "add_favorite" = "ADD A FAVORITE";
@@ -235,7 +250,7 @@
 "home_find_route" = "FIND ROUTE";
 
 "about_text" = "Hvordan kommer jeg hurtigst på cykel til Nordhavn? Hvornår skal jeg cykle hjemmefra, hvis jeg skal være på Kongens Nytorv kl. 14? Kan min daglige pendlerrute optimeres?\n\nEn troværdig og opdateret digital cykelruteplanlægger, der kender de gode smutveje, ved hvilke parker man må cykle i og hvor man må cykle mod ensretningen, vil kunne give dig svaret - så du kan komme hurtigere fra A til B.\n\nSådan en cykelruteplanlægger har vi sat os for at skabe - og du kan være med! Filosofien bag projektet er, at involvere cyklisterne i udviklingen, at anvende open source og at gøre data frit tilgængelig. Vi tror, at det vil give den bedste løsning og medvirke til at skabe innovation på cykelområdet.\n\nProjektet er del af Københavns overordnede målsætning om at blive verdens bedste cykelby.";
-"about_ibikecph_title" = "ABOUT I BIKE CPH";
+"about_ibikecph_title" = "ABOUT CYKELSUPERSTIERNE";
 "delete_my_account" = "DELETE ACCOUNT";
 "you_are_logged_in_as" = "You are logged in as";
 "edit_my_account" = "Edit account";

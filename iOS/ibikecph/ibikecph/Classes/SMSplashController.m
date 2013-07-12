@@ -30,6 +30,9 @@ typedef enum {
     CurrentDialogType currentDialog;
 }
 
+@property (weak, nonatomic) IBOutlet UIButton *btnRegisterWithMail;
+@property (weak, nonatomic) IBOutlet UIButton *btnSkip;
+
 @property (nonatomic, strong) SMAPIRequest * apr;
 @property (nonatomic, strong) UIImage * profileImage;
 @property (nonatomic, strong) SMFavoritesUtil * favfetch;
@@ -57,6 +60,10 @@ typedef enum {
         [sh fetchSearchHistoryFromServer];
         [[SMFavoritesUtil instance] fetchFavoritesFromServer];
     }
+    
+    // Translation
+    [self.btnRegisterWithMail setTitle:translateString(@"register_with_mail") forState:UIControlStateNormal];
+    [self.btnSkip setTitle:translateString(@"btn_skip") forState:UIControlStateNormal];
 }
 
 - (void)viewDidUnload {
@@ -74,6 +81,8 @@ typedef enum {
     loginDialog = nil;
     registerImage = nil;
     dialogView = nil;
+    [self setBtnRegisterWithMail:nil];
+    [self setBtnSkip:nil];
     [super viewDidUnload];
 }
 

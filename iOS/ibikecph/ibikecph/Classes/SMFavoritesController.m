@@ -20,6 +20,11 @@ typedef enum {
 @interface SMFavoritesController () {
     FavoriteType searchFav;
 }
+@property (weak, nonatomic) IBOutlet UILabel *screenTitle;
+@property (weak, nonatomic) IBOutlet UILabel *screenText;
+@property (weak, nonatomic) IBOutlet SMPatternedButton *btnSave;
+@property (weak, nonatomic) IBOutlet UIButton *btnSkip;
+
 @property (nonatomic, strong) NSDictionary * homeDict;
 @property (nonatomic, strong) NSDictionary * workDict;
 @end
@@ -31,6 +36,18 @@ typedef enum {
 	[[UIApplication sharedApplication] setStatusBarHidden:YES];
     self.workDict = nil;
     self.homeDict = nil;
+    
+    // Translation
+    [self.screenTitle setText:translateString(@"favorites_title")];
+    [self.screenText setText:translateString(@"favorites_text")];
+    [self.btnSave setTitle:translateString(@"favorites_save_btn") forState:UIControlStateNormal];
+    [self.btnSkip setTitle:translateString(@"btn_skip") forState:UIControlStateNormal];
+    [favoriteHome setText:translateString(@"favorites_home_placeholder")];
+    [favoriteWork setText:translateString(@"favorites_work_placeholder")];
+    
+//    UIColor* lightGray = [UIColor colorWithRed:139.0/255.0 green:139.0/255.0 blue:139.0/255.0 alpha:139.0/255.0];
+//    [favoriteHome setTextColor:lightGray];
+//    [favoriteWork setTextColor:lightGray];
 }
 
 - (void)viewDidUnload {
@@ -38,6 +55,10 @@ typedef enum {
     favoriteWork = nil;
     scrlView = nil;
     favoritesView = nil;
+    [self setScreenTitle:nil];
+    [self setScreenText:nil];
+    [self setBtnSave:nil];
+    [self setBtnSkip:nil];
     [super viewDidUnload];
 }
 
