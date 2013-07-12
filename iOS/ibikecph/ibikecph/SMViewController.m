@@ -1093,9 +1093,10 @@ typedef enum {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 1) {
-        NSArray* weekDays = @[@"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday", @"Saturday", @"Sunday"];
+        NSArray* weekDays = @[@"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday"];
         SMReminderTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"reminderTableCell"];
         [cell setupWithTitle:[weekDays objectAtIndex:indexPath.row]];
+        cell.currentDay= indexPath.row;
         return cell;
     }
     

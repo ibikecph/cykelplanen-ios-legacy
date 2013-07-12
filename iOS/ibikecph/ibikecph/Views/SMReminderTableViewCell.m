@@ -19,7 +19,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+        
     }
     return self;
 }
@@ -27,12 +27,17 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
+    
+}
 
-    // Configure the view for the selected state
+-(void)stateChanged:(id)sender{
+    [[SMReminder sharedInstance] setReminder:self.reminderSwitch.isOn forDay:self.currentDay];
 }
 
 - (void)setupWithTitle:(NSString*)title {
     [self.day setText:title];
+    [self.reminderSwitch addTarget:self action:@selector(stateChanged:) forControlEvents:UIControlEventValueChanged];
+    [self.reminderSwitch setOn:[[SMReminder sharedInstance] hasReminderForDay:self.currentDay]  animated:NO];
 }
 
 @end

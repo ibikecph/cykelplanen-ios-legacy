@@ -2259,14 +2259,11 @@
 				4C0E15BC1760A9AE006F81C1 /* SMNetworkErrorView.h */,
 				4C0E15BD1760A9AE006F81C1 /* SMNetworkErrorView.m */,
 				4C0E15BE1760A9AE006F81C1 /* SMNetworkErrorView.xib */,
-
 				78FABC0C1790403E00D44488 /* SMReminderTableViewCell.h */,
 				78FABC0D1790403E00D44488 /* SMReminderTableViewCell.m */,
-
 				F698D70B178FF58E00DA6B7B /* SMAddressPickerView.xib */,
 				F698D712178FF64D00DA6B7B /* SMAddressPickerView.h */,
 				F698D713178FF64D00DA6B7B /* SMAddressPickerView.m */,
-
 			);
 			name = Views;
 			path = ibikecph/Views;
@@ -3134,7 +3131,6 @@
 				78C537B7178D898E00F6BAD3 /* sidemenu_handle@2x.png in Resources */,
 				78C537BF178D9EF700F6BAD3 /* tableViewBG.png in Resources */,
 				78C537C0178D9EF700F6BAD3 /* tableViewBG@2x copy.png in Resources */,
-
 				78FABBE9179009F600D44488 /* back_arrow_btn_press.png in Resources */,
 				78FABBEA179009F600D44488 /* back_arrow_btn_press@2x.png in Resources */,
 				78FABBF2179020B800D44488 /* favListRowSelected.png in Resources */,
@@ -3143,9 +3139,7 @@
 				78FABBF71790232800D44488 /* reminder_icon@2x.png in Resources */,
 				78FABBFA17902E2600D44488 /* favListRowLight.png in Resources */,
 				78FABBFB17902E2600D44488 /* favListRowLight@2x.png in Resources */,
-
 				F698D70C178FF58E00DA6B7B /* SMAddressPickerView.xib in Resources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3243,11 +3237,8 @@
 				F695EFCE178AA95000D3E83D /* SMSingleRouteInfo.m in Sources */,
 				F6928783178D664300267A09 /* SMStationPickerView.m in Sources */,
 				F6928797178D883E00267A09 /* SMReminder.m in Sources */,
-
 				78FABC0E1790403E00D44488 /* SMReminderTableViewCell.m in Sources */,
-
 				F698D714178FF64D00DA6B7B /* SMAddressPickerView.m in Sources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3398,7 +3389,7 @@
 					"\"$(SRCROOT)/ibikecph/Libs/GA v2.0b4\"/**",
 				);
 				PRODUCT_NAME = "I Bike CPH";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "442EE0F4-A430-4227-AD84-C77E6DE13E61";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "42D716B8-4A08-4A56-84C6-17F93DD81634";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

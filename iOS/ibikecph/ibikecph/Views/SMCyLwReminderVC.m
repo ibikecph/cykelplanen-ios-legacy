@@ -56,11 +56,11 @@
 - (IBAction)saveReminder:(UIButton *)sender {
     SMReminder * reminder = [SMReminder sharedInstance];
 
-    [reminder setReminder:self.swMonday.isOn forDay:DayMonday];
-    [reminder setReminder:self.swTuesday.isOn forDay:DayTuesday];
-    [reminder setReminder:self.swWednesday.isOn forDay:DayWednesday];
-    [reminder setReminder:self.swThursday.isOn forDay:DayThursday];
-    [reminder setReminder:self.swFriday.isOn forDay:DayFriday];
+    [reminder setReminder:self.swMonday.isOn forDay:DayMonday save:NO];
+    [reminder setReminder:self.swTuesday.isOn forDay:DayTuesday save:NO];
+    [reminder setReminder:self.swWednesday.isOn forDay:DayWednesday save:NO];
+    [reminder setReminder:self.swThursday.isOn forDay:DayThursday save:NO];
+    [reminder setReminder:self.swFriday.isOn forDay:DayFriday save:NO];
     
     [reminder save];
     

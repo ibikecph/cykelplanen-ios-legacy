@@ -81,7 +81,7 @@
     const int SECONDS_IN_DAY= 60*60*24;
     for(int i=0; i<7; i++){
         NSDate* currentDate= [now dateByAddingTimeInterval:i*SECONDS_IN_DAY-1];
-        NSLog(@"currentDate %@",currentDate);
+        
         NSDateComponents *weekdayComponents =[gregorian components:NSWeekdayCalendarUnit fromDate:currentDate];
         NSInteger weekday = [weekdayComponents weekday]-2;
         NSNumber* notifyNum= [days objectForKey:[NSNumber numberWithInt:weekday].stringValue];
@@ -100,16 +100,30 @@
             [notification setHasAction:YES];
             [[UIApplication sharedApplication] scheduleLocalNotification:notification];
         }
+            NSLog(@"%@ %@",currentDate, (notifyNum.boolValue)?@"yes":@"no");
     }
 
 }
 
--(void)setReminder:(BOOL)shouldRemind forDay:(Day)day{
-    if(!days){ 
+-(void)setReminder:(BOOL)shouldRemind forDay:(Day)day save:(BOOL)shouldSave{
+    if(!days){
         days= [NSMutableDictionary new];
         [reminderDict setObject:days forKey:KEY_DAYS];
     }
     [days setObject:[NSNumber numberWithBool:shouldRemind] forKey:[NSNumber numberWithInt:day].stringValue];
+    
+    if(shouldSave){
+        [self save];
+    }
+}
+
+-(void)setReminder:(BOOL)shouldRemind forDay:(Day)day{
+    [self setReminder:shouldRemind forDay:day save:YES];
+}
+
+-(BOOL)hasReminderForDay:(Day)day{
+    NSNumber* notifyNum= [days objectForKey:[NSString stringWithFormat:@"%d",day]];
+    return notifyNum && notifyNum.intValue;
 }
 
 -(BOOL)isReminderScreenShown{

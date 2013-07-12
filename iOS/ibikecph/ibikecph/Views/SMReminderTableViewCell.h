@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SMReminder.h"
 @interface SMReminderTableViewCell : UITableViewCell
 - (void)setupWithTitle:(NSString*)title;
+
+@property(nonatomic, assign) Day currentDay;
+
 @end
