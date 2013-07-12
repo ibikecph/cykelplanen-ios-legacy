@@ -123,10 +123,23 @@
 
 
 // these are in the storyboard
-"reminder_title" = "Reminder";
-"reminder_info" = "Reminder info text";
+"reminder_title" = "Påmindelser";
+"reminder_text" = "Få hjælp til at komme op på cyklen. Vælg de dage du ønsker at cykle, så hjælper vi dig med at komme igang.";
+"reminder_save_btn" = "GEM PÅMINDELSER";
+
+// Favorites
+"favorites_title" = "Tilføj favoritter";
+"favorites_text" = "Nu kan du nemt og hurtigt navigere til dine foretrukne pendlerruter. Start med at tilføje din hjemme- og arbejdsadresse.";
+"favorites_home_address" = "Hjemmeadresse …";
+"favorites_work_address" = "Arbejdsadresse …";
+"favorites_save_btn" = "GEM FAVORITTER";
+
+// Break route
 "break_route_title" = "Break route";
 "btn_break_route" = "BREAK ROUTE";
+"break_route_text_top" = "Vidste du, at du let kan knække din pendlerrute ved at tage toget noget af vejen.";
+"break_route_text_bottom" = "Når du vælger “Knæk ruten” giver vi dig en ny rute til nærmeste S-togsstation og bringer dig frem til din endelige destination.";
+"break_route_spring" = "Afslut guide og ta’ en tur";
 
 "where_are_we_going" = "Ny rute";
 "ibikecph_route_planner" = "Cykelruteplanlægger";
