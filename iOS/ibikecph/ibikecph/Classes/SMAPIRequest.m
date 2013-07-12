@@ -83,7 +83,8 @@
             if ([[params objectForKey:key] isKindOfClass:[NSString class]]) {
                 [d addObject:[NSString stringWithFormat:@"%@=%@", key, [[params objectForKey:key] urlEncode]]];
             } else {
-                [d addObject:[NSString stringWithFormat:@"%@=%@", key, [[params objectForKey:key] stringValue]]];
+                if(![[params objectForKey:key] isEqual:[NSNull null]])
+                    [d addObject:[NSString stringWithFormat:@"%@=%@", key, [[params objectForKey:key] stringValue]]];
             }
         }        
         NSString * urlP = [d componentsJoinedByString:@"&"];

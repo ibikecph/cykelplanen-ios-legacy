@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SMRouteStationInfo.h"
+#import "SMStationInfo.h"
 
 // contains information about a route
 @interface SMBrokenRouteInfo : NSObject
 
-@property(nonatomic, strong) SMRouteStationInfo* sourceStation;
-@property(nonatomic, strong) SMRouteStationInfo* destinationStation;
+@property(nonatomic, strong) SMStationInfo* sourceStation;
+@property(nonatomic, strong) SMStationInfo* destinationStation;
 
 @end

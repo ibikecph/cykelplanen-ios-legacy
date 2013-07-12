@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "SMTransportationLine.h"
-#import "SMRouteStationInfo.h"
+#import "SMStationInfo.h"
 @interface SMSingleRouteInfo : NSObject
 
-@property(nonatomic, strong) SMRouteStationInfo* sourceStation;
-@property(nonatomic, strong) SMRouteStationInfo* destStation;
+@property(nonatomic, strong) SMStationInfo* sourceStation;
+@property(nonatomic, strong) SMStationInfo* destStation;
 @property(nonatomic, strong) SMTransportationLine* transportationLine;
 
 @property(nonatomic, assign) double bikeDistance;

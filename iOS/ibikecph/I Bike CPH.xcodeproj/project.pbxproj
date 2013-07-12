@@ -638,7 +638,7 @@
 		F6922787178700BC00C8CD76 /* SMTransportation.m in Sources */ = {isa = PBXBuildFile; fileRef = F6922786178700BC00C8CD76 /* SMTransportation.m */; };
 		F692278A178702F900C8CD76 /* Albertslundruten.line in Resources */ = {isa = PBXBuildFile; fileRef = F6922788178702F900C8CD76 /* Albertslundruten.line */; };
 		F692278B178702F900C8CD76 /* Farumruten.line in Resources */ = {isa = PBXBuildFile; fileRef = F6922789178702F900C8CD76 /* Farumruten.line */; };
-		F692278E17870A7700C8CD76 /* SMRouteStationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F692278D17870A7700C8CD76 /* SMRouteStationInfo.m */; };
+		F692278E17870A7700C8CD76 /* SMStationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F692278D17870A7700C8CD76 /* SMStationInfo.m */; };
 		F692279117870DAF00C8CD76 /* SMRouteTransportationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F692279017870DAE00C8CD76 /* SMRouteTransportationInfo.m */; };
 		F69227941787181600C8CD76 /* SMBreakRouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F69227931787181600C8CD76 /* SMBreakRouteViewController.m */; };
 		F6922798178718C400C8CD76 /* SMBikeWaypointCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6922797178718C400C8CD76 /* SMBikeWaypointCell.m */; };
@@ -647,6 +647,8 @@
 		F6928783178D664300267A09 /* SMStationPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F6928782178D664300267A09 /* SMStationPickerView.m */; };
 		F6928797178D883E00267A09 /* SMReminder.m in Sources */ = {isa = PBXBuildFile; fileRef = F6928796178D883E00267A09 /* SMReminder.m */; };
 		F695EFCE178AA95000D3E83D /* SMSingleRouteInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F695EFCD178AA95000D3E83D /* SMSingleRouteInfo.m */; };
+		F698D70C178FF58E00DA6B7B /* SMAddressPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F698D70B178FF58E00DA6B7B /* SMAddressPickerView.xib */; };
+		F698D714178FF64D00DA6B7B /* SMAddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F698D713178FF64D00DA6B7B /* SMAddressPickerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1395,8 +1397,8 @@
 		F6922786178700BC00C8CD76 /* SMTransportation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTransportation.m; sourceTree = "<group>"; };
 		F6922788178702F900C8CD76 /* Albertslundruten.line */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Albertslundruten.line; sourceTree = "<group>"; };
 		F6922789178702F900C8CD76 /* Farumruten.line */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Farumruten.line; sourceTree = "<group>"; };
-		F692278C17870A7700C8CD76 /* SMRouteStationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRouteStationInfo.h; sourceTree = "<group>"; };
-		F692278D17870A7700C8CD76 /* SMRouteStationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRouteStationInfo.m; sourceTree = "<group>"; };
+		F692278C17870A7700C8CD76 /* SMStationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMStationInfo.h; sourceTree = "<group>"; };
+		F692278D17870A7700C8CD76 /* SMStationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMStationInfo.m; sourceTree = "<group>"; };
 		F692278F17870DAE00C8CD76 /* SMRouteTransportationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRouteTransportationInfo.h; sourceTree = "<group>"; };
 		F692279017870DAE00C8CD76 /* SMRouteTransportationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRouteTransportationInfo.m; sourceTree = "<group>"; };
 		F69227921787181600C8CD76 /* SMBreakRouteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMBreakRouteViewController.h; sourceTree = "<group>"; };
@@ -1413,6 +1415,9 @@
 		F6928796178D883E00267A09 /* SMReminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMReminder.m; sourceTree = "<group>"; };
 		F695EFCC178AA95000D3E83D /* SMSingleRouteInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSingleRouteInfo.h; sourceTree = "<group>"; };
 		F695EFCD178AA95000D3E83D /* SMSingleRouteInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSingleRouteInfo.m; sourceTree = "<group>"; };
+		F698D70B178FF58E00DA6B7B /* SMAddressPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMAddressPickerView.xib; sourceTree = "<group>"; };
+		F698D712178FF64D00DA6B7B /* SMAddressPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddressPickerView.h; sourceTree = "<group>"; };
+		F698D713178FF64D00DA6B7B /* SMAddressPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddressPickerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2254,8 +2259,14 @@
 				4C0E15BC1760A9AE006F81C1 /* SMNetworkErrorView.h */,
 				4C0E15BD1760A9AE006F81C1 /* SMNetworkErrorView.m */,
 				4C0E15BE1760A9AE006F81C1 /* SMNetworkErrorView.xib */,
+
 				78FABC0C1790403E00D44488 /* SMReminderTableViewCell.h */,
 				78FABC0D1790403E00D44488 /* SMReminderTableViewCell.m */,
+
+				F698D70B178FF58E00DA6B7B /* SMAddressPickerView.xib */,
+				F698D712178FF64D00DA6B7B /* SMAddressPickerView.h */,
+				F698D713178FF64D00DA6B7B /* SMAddressPickerView.m */,
+
 			);
 			name = Views;
 			path = ibikecph/Views;
@@ -2452,8 +2463,8 @@
 		F692277C1786FD0F00C8CD76 /* route */ = {
 			isa = PBXGroup;
 			children = (
-				F692278C17870A7700C8CD76 /* SMRouteStationInfo.h */,
-				F692278D17870A7700C8CD76 /* SMRouteStationInfo.m */,
+				F692278C17870A7700C8CD76 /* SMStationInfo.h */,
+				F692278D17870A7700C8CD76 /* SMStationInfo.m */,
 				F69227741786FD0B00C8CD76 /* SMTripRoute.h */,
 				F69227751786FD0B00C8CD76 /* SMTripRoute.m */,
 				F692277E1786FF5700C8CD76 /* SMTransportationRoute.h */,
@@ -3123,6 +3134,7 @@
 				78C537B7178D898E00F6BAD3 /* sidemenu_handle@2x.png in Resources */,
 				78C537BF178D9EF700F6BAD3 /* tableViewBG.png in Resources */,
 				78C537C0178D9EF700F6BAD3 /* tableViewBG@2x copy.png in Resources */,
+
 				78FABBE9179009F600D44488 /* back_arrow_btn_press.png in Resources */,
 				78FABBEA179009F600D44488 /* back_arrow_btn_press@2x.png in Resources */,
 				78FABBF2179020B800D44488 /* favListRowSelected.png in Resources */,
@@ -3131,6 +3143,9 @@
 				78FABBF71790232800D44488 /* reminder_icon@2x.png in Resources */,
 				78FABBFA17902E2600D44488 /* favListRowLight.png in Resources */,
 				78FABBFB17902E2600D44488 /* favListRowLight@2x.png in Resources */,
+
+				F698D70C178FF58E00DA6B7B /* SMAddressPickerView.xib in Resources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3219,7 +3234,7 @@
 				F69227801786FF5700C8CD76 /* SMTransportationRoute.m in Sources */,
 				F69227841787003A00C8CD76 /* SMTransportationLine.m in Sources */,
 				F6922787178700BC00C8CD76 /* SMTransportation.m in Sources */,
-				F692278E17870A7700C8CD76 /* SMRouteStationInfo.m in Sources */,
+				F692278E17870A7700C8CD76 /* SMStationInfo.m in Sources */,
 				F692279117870DAF00C8CD76 /* SMRouteTransportationInfo.m in Sources */,
 				F69227941787181600C8CD76 /* SMBreakRouteViewController.m in Sources */,
 				F6922798178718C400C8CD76 /* SMBikeWaypointCell.m in Sources */,
@@ -3228,7 +3243,11 @@
 				F695EFCE178AA95000D3E83D /* SMSingleRouteInfo.m in Sources */,
 				F6928783178D664300267A09 /* SMStationPickerView.m in Sources */,
 				F6928797178D883E00267A09 /* SMReminder.m in Sources */,
+
 				78FABC0E1790403E00D44488 /* SMReminderTableViewCell.m in Sources */,
+
+				F698D714178FF64D00DA6B7B /* SMAddressPickerView.m in Sources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

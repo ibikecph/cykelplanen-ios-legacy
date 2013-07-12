@@ -21,7 +21,6 @@ typedef enum {
 
 +(SMReminder*)sharedInstance;
 -(void)setReminder:(BOOL)shouldRemind forDay:(Day)day;
-
 -(void)save;
-
+-(BOOL)isReminderScreenShown;
 @end
