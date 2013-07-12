@@ -174,12 +174,15 @@ typedef enum {
         [labelTimeLeft setTextColor:[UIColor darkGrayColor]];
     }
     
-
+    CGRect rect= self.mapFade.frame;
+    rect.size.height= 0;
+    self.mapFade.frame= rect;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [tblDirections reloadData];
+
     if (self.currentlyRouting) {
         [UIApplication sharedApplication].idleTimerDisabled = YES;
     } else {
@@ -1319,6 +1322,8 @@ typedef enum {
         [destViewController setSourceLoc:self.startLocation];
     }else if([segue.identifier isEqualToString:@"breakRoute"]){
         SMBreakRouteViewController* brVC= segue.destinationViewController;
+        brVC.sourceName= self.source;
+        brVC.destinationName= self.destination;
         brVC.tripRoute= self.brokenRoute;
     }
 }

@@ -15,6 +15,8 @@
 @implementation SMAddressPickerView{
     int sourceCurrentIndex;
     int destinationCurrentIndex;
+    
+    int tempIndex;
 }
 
 
@@ -44,7 +46,7 @@
 }
 
 - (IBAction)didTapOnDone:(id)sender {
-
+    [self setIndex:tempIndex];
     [self.delegate addressView:self didSelectItemAtIndex:[self index] forAddressType:self.addressType];
     
     [self hideAnimated];
@@ -52,6 +54,7 @@
 
 -(void)displayAnimated{
     NSAssert(self.addressType!=AddressTypeUndefined, @"AddressType not set");
+    [self resetTempIndex];
     [self.pickerView selectRow:[self index] inComponent:0 animated:NO];
     [self.pickerView reloadAllComponents];
     [UIView animateWithDuration:ANIMATION_DISPLAY_DURATION
@@ -88,7 +91,7 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    [self setIndex:row];
+    tempIndex= row;
 }
 
 -(int)index{
@@ -102,6 +105,13 @@
     return -1;
 }
 
+-(void)resetTempIndex{
+    if(self.addressType==AddressTypeDestination){
+        tempIndex= destinationCurrentIndex;
+    }else if(self.addressType==AddressTypeSource){
+        tempIndex= sourceCurrentIndex;
+    }
+}
 -(void)setIndex:(int)pIndex{
     NSAssert(self.addressType!=AddressTypeUndefined, @"Address Type is undefined");
     if(self.addressType==AddressTypeDestination)

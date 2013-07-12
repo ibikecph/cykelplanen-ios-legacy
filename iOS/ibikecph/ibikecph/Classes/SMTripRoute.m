@@ -143,8 +143,9 @@
 -(void)setBrokenRouteInfo:(SMBrokenRouteInfo *)pBrokenRouteInfo{
     _brokenRouteInfo= pBrokenRouteInfo;
     
-    [self performSelectorOnMainThread:@selector(createSplitRoutes) withObject:nil waitUntilDone:NO];
-
+    if(pBrokenRouteInfo.sourceStation && pBrokenRouteInfo){
+        [self performSelectorOnMainThread:@selector(createSplitRoutes) withObject:nil waitUntilDone:NO];
+    }
 }
 
 -(void)createSplitRoutes{

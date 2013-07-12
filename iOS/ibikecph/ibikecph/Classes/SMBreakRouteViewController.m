@@ -10,6 +10,7 @@
 #import "SMSingleRouteInfo.h"
 
 #import "SMTransportationCell.h"
+#import "SMBikeWaypointCell.h"
 @interface SMBreakRouteViewController (){
     NSArray* sourceStations;
     NSArray* destinationStations;
@@ -39,7 +40,6 @@
     
     [self.titleLabel setText:translateString(@"break_route_title")];
     
-
     self.tableView.separatorStyle= UITableViewCellSeparatorStyleNone;
 
     // initialize AddressPickerView
@@ -52,15 +52,22 @@
     CGRect frm= addressPickerView.frame;
     frm.origin.y= self.view.frame.size.height;
     addressPickerView.frame= frm;
-}
-
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
+    
     if(self.tripRoute){
         self.tripRoute.delegate= self;
         [self.tripRoute breakRoute];
     }
-    self.tripRoute.brokenRouteInfo= nil;
+
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    if(!sourceStations || sourceStations.count==0){
+        UIAlertView* noRouteAlertView= [[UIAlertView alloc] initWithTitle:@"No route" message:@"Route cannot be broken" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [noRouteAlertView show];
+    }
+   
 }
 - (void)didReceiveMemoryWarning
 {
@@ -103,19 +110,20 @@
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell* cell;
     NSString* CellId;
     switch (indexPath.row) {
         case 0:
         {
             CellId= @"SourceCell";
-            cell= [tableView dequeueReusableCellWithIdentifier:CellId];
+            SMBikeWaypointCell* wpCell= [tableView dequeueReusableCellWithIdentifier:CellId];
+            [wpCell setupWithString:self.sourceName];
+            return wpCell;
             break;
         }
         case 1:{
             CellId= @"TransportCell";
-//            cell= [tableView dequeueReusableCellWithIdentifier:CellId];
             SMTransportationCell* tCell= [tableView dequeueReusableCellWithIdentifier:CellId];
+            tCell.selectionStyle= UITableViewCellSelectionStyleNone;
             [tCell.buttonAddressSource setTitle:self.sourceStation.name forState:UIControlStateNormal];
             [tCell.buttonAddressSource setTitle:self.sourceStation.name forState:UIControlStateHighlighted];
             [tCell.buttonAddressDestination setTitle:self.destinationStation.name forState:UIControlStateNormal];
@@ -125,21 +133,34 @@
         }
         case 2:{
             CellId= @"DestinationCell";
-            cell= [tableView dequeueReusableCellWithIdentifier:CellId];
+            SMBikeWaypointCell* wpCell= [tableView dequeueReusableCellWithIdentifier:CellId];
+            [wpCell setupWithString:self.destinationName];
+            return wpCell;
             break;
         }
         case 3:{
             CellId= @"ButtonCell";
-            cell= [tableView dequeueReusableCellWithIdentifier:CellId];
+            UITableViewCell* cell= [tableView dequeueReusableCellWithIdentifier:CellId];
+            
+            return cell;
             break;
         }
         default:
             break;
     }
     
-    cell.selectionStyle= UITableViewCellSelectionStyleNone;
+    return nil;
+}
+
+-(NSString*)formatAddressComponent:(NSString*)comp{
+    NSString* trimmed= [comp stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    int i = 0;
     
-    return cell;
+    while ((i < [trimmed length])
+           && [[NSCharacterSet whitespaceCharacterSet] characterIsMember:[trimmed characterAtIndex:i]]) {
+        i++;
+    }
+    return [trimmed substringFromIndex:i];
 }
 
 - (IBAction)onBack:(id)sender {
@@ -151,9 +172,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{}
 
 - (void)viewDidUnload {
     [self setTitle:nil];
@@ -214,49 +233,29 @@
     if(pAddressType==AddressTypeDestination){
         SMSingleRouteInfo* routeInfo= [destinationStations objectAtIndex:index];
         self.destinationStation= routeInfo.destStation;
+        
     }else if(pAddressType==AddressTypeSource){
         SMSingleRouteInfo* routeInfo= [self.tripRoute.transportationRoutes objectAtIndex:index];
         self.sourceStation= routeInfo.sourceStation;
+        
     }
+    [self.tableView reloadData];
 }
 
 
 #pragma mark - break route delegate
 
--(void)didStartBreakingRoute:(SMTripRoute*)route{
-    
-}
+-(void)didStartBreakingRoute:(SMTripRoute*)route{}
 
 -(void)didFinishBreakingRoute:(SMTripRoute*)route{
- /*
-    NSLog(@"%d routes:",route.transportationRoutes.count);
-    for(SMSingleRouteInfo* routeInfo in route.transportationRoutes){
-        NSLog(@"%lf - %lf %lf",routeInfo.bikeDistance, routeInfo.distance1, routeInfo.distance2);
-    }
-// /*
-    if(route.transportationRoutes.count > 0){
-        SMSingleRouteInfo* routeInfo= [route.transportationRoutes objectAtIndex:0];
-        
-        NSArray* endStationsSorted= [route.transportationRoutes filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.sourceStation.longitude == %lf AND SELF.sourceStation.latitude == %lf",routeInfo.sourceStation.longitude, routeInfo.sourceStation.latitude]];
-        
-        NSLog(@"Start: %lf %lf", routeInfo.sourceStation.location.coordinate.latitude, routeInfo.sourceStation.location.coordinate.longitude);
-        NSLog(@"End stations:");
-        for(SMSingleRouteInfo* endRouteInfo in endStationsSorted){
-            NSLog(@"%lf - %lf %lf",endRouteInfo.bikeDistance, endRouteInfo.destStation.location.coordinate.latitude, endRouteInfo.destStation.location.coordinate.longitude);
-        }
-        if(endStationsSorted.count>0){
-            SMBrokenRouteInfo* brokenRouteInfo= [[SMBrokenRouteInfo alloc] init];
-            brokenRouteInfo.sourceStation= routeInfo.sourceStation;
-            brokenRouteInfo.destinationStation= ((SMSingleRouteInfo*)[endStationsSorted objectAtIndex:0]).destStation;
-            self.tripRoute.brokenRouteInfo= brokenRouteInfo;
-        }
-        
-    }
-*/
-    
+    [self.tableView reloadData];
+     
     [self dismiss];
-    
 
+}
+
+-(void)didFailBreakingRoute:(SMTripRoute*)route{
+    
 }
 
 -(void)didCalculateRouteDistances:(SMTripRoute*)route{
@@ -272,50 +271,34 @@
         routeInfo=[destinationStations objectAtIndex:0];
         self.destinationStation= routeInfo.destStation;
         
-//        NSLog(@"Start: %lf %lf", routeInfo.sourceStation.location.coordinate.latitude, routeInfo.sourceStation.location.coordinate.longitude);
-//        NSLog(@"End stations:");
-//        for(SMSingleRouteInfo* endRouteInfo in destinationStations){
-//            NSLog(@"%lf - %lf %lf",endRouteInfo.bikeDistance, endRouteInfo.destStation.location.coordinate.latitude, endRouteInfo.destStation.location.coordinate.longitude);
-//        }
-//        if(endStationsSorted.count>0){
-
-//        }
-        
     }else{
-        // TODO: handle no routes found
+        // no routes found
+        // this is handled in the viewDidAppear since the view might not be visible at this point, therefore it cannot be dismissed
+
     }
-    
+
     [self.tableView reloadData];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    [self dismiss];
 }
 
 -(NSArray*)endStationsForSourceStation:(SMStationInfo*)pSourceStation{
     return [self.tripRoute.transportationRoutes filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.sourceStation.longitude == %lf AND SELF.sourceStation.latitude == %lf",pSourceStation.longitude, pSourceStation.latitude]];
 }
 
--(void)didFailBreakingRoute:(SMTripRoute*)route{
-    
-}
 
--(void)displayStationViewAnimated{
-
-}
-
--(void)hideStationViewAnimated{
-    
-}
 
 #pragma mark - getters and setters
 
 -(void)setSourceStation:(SMStationInfo *)pSourceStation{
     _sourceStation= pSourceStation;
-//    [self.buttonAddressSource.titleLabel setText:pSourceStation.name];
-    [self.tableView reloadData];
+
 }
 
 -(void)setDestinationStation:(SMStationInfo *)pDestinationStation{
     _destinationStation= pDestinationStation;
-//    [self.buttonAddressSource.titleLabel setText:pDestinationStation.name];
-    [self.tableView reloadData];
 }
 
 @end

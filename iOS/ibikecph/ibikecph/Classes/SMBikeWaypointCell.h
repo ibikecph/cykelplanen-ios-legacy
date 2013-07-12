@@ -17,4 +17,5 @@
 @property (weak, nonatomic) IBOutlet UIView *viewAddress;
 @property (weak, nonatomic) IBOutlet UIView *viewDistance;
 
+-(void)setupWithString:(NSString*)str;
 @end
