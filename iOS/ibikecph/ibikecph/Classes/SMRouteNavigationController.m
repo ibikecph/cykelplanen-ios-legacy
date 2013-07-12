@@ -163,12 +163,12 @@ typedef enum {
     }
     
     if (self.mapFade.alpha > 0.7f) {
-        [arrivalBG setImage:[UIImage imageNamed:@"distance_black"]];
-        [closeButton setImage:[UIImage imageNamed:@"btnCloseDark"] forState:UIControlStateNormal];
-        [labelDistanceLeft setTextColor:[UIColor whiteColor]];
-        [labelTimeLeft setTextColor:[UIColor whiteColor]];
+//        [arrivalBG setImage:[UIImage imageNamed:@"distance_black"]];
+//        [closeButton setImage:[UIImage imageNamed:@"btnCloseDark"] forState:UIControlStateNormal];
+        [labelDistanceLeft setTextColor:[UIColor darkGrayColor]];
+        [labelTimeLeft setTextColor:[UIColor darkGrayColor]];
     } else {
-        [arrivalBG setImage:[UIImage imageNamed:@"distance_white"]];
+        //[arrivalBG setImage:[UIImage imageNamed:@"distance_white"]];
         [closeButton setImage:[UIImage imageNamed:@"btnClose"] forState:UIControlStateNormal];
         [labelDistanceLeft setTextColor:[UIColor darkGrayColor]];
         [labelTimeLeft setTextColor:[UIColor darkGrayColor]];
@@ -761,18 +761,18 @@ typedef enum {
         }
     }
     
-//    if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
-//        SMSearchHistory * sh = [SMSearchHistory instance];
-//        [sh addFinishedRouteToServer:@{
-//         @"startDate" : [[self.route.visitedLocations objectAtIndex:0] objectForKey:@"date"],
-//         @"endDate" : [[self.route.visitedLocations lastObject] objectForKey:@"date"],
-//         @"visitedLocations" : [dt objectForKey:@"polyline"],
-//         @"fromName" : self.source,
-//         @"toName" : self.destination,
-//         @"fromLocation" : self.startLocation,
-//         @"toLocation" : self.endLocation
-//         }];
-//    }
+    if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
+        SMSearchHistory * sh = [SMSearchHistory instance];
+        [sh addFinishedRouteToServer:@{
+         @"startDate" : [[self.route.visitedLocations objectAtIndex:0] objectForKey:@"date"],
+         @"endDate" : [[self.route.visitedLocations lastObject] objectForKey:@"date"],
+         @"visitedLocations" : [dt objectForKey:@"polyline"],
+         @"fromName" : self.source,
+         @"toName" : self.destination,
+         @"fromLocation" : self.startLocation,
+         @"toLocation" : self.endLocation
+         }];
+    }
 }
 
 #pragma mark - mapView delegate
@@ -1573,7 +1573,7 @@ typedef enum {
     } else {
         [self.recycledItems removeObject:cell];
     }
-//    [cell setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"tableViewBG"]]];    
+    //[cell setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"tableViewBG"]]];
     return cell;
 }
 
@@ -1730,12 +1730,12 @@ typedef enum {
         }
         
         if (self.mapFade.alpha > 0.7f) {
-            [arrivalBG setImage:[UIImage imageNamed:@"distance_black"]];
-            [closeButton setImage:[UIImage imageNamed:@"btnCloseDark"] forState:UIControlStateNormal];
-            [labelDistanceLeft setTextColor:[UIColor whiteColor]];
-            [labelTimeLeft setTextColor:[UIColor whiteColor]];
+//            [arrivalBG setImage:[UIImage imageNamed:@"distance_black"]];
+//            [closeButton setImage:[UIImage imageNamed:@"btnCloseDark"] forState:UIControlStateNormal];
+            [labelDistanceLeft setTextColor:[UIColor darkGrayColor]];
+            [labelTimeLeft setTextColor:[UIColor darkGrayColor]];
         } else {
-            [arrivalBG setImage:[UIImage imageNamed:@"distance_white"]];
+            //[arrivalBG setImage:[UIImage imageNamed:@"distance_white"]];
             [closeButton setImage:[UIImage imageNamed:@"btnClose"] forState:UIControlStateNormal];
             [labelDistanceLeft setTextColor:[UIColor darkGrayColor]];
             [labelTimeLeft setTextColor:[UIColor darkGrayColor]];

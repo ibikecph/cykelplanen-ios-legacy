@@ -147,6 +147,11 @@
 
 // these are in the storyboard
 
+"reminder_title" = "Reminder";
+"reminder_info" = "Reminder info text";
+"break_route_title" = "Break route";
+"btn_break_route" = "BREAK ROUTE";
+
 "where_are_we_going" = "Where should we go?";
 "ibikecph_route_planner" = "I Bike CPH";
 "calculating_new_route" = "Calculating new route...";

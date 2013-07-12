@@ -14,6 +14,8 @@
     NSArray* sourceStations;
 }
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
 @end
 
 @implementation SMBreakRouteViewController
@@ -32,10 +34,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    [self.titleLabel setText:translateString(@"break_route_title")];
 
-//    pickerView= [[UIPickerView alloc] init];
-//    pickerView.delegate= self;
-//    pickerView.dataSource= self;
+   pickerView= [[UIPickerView alloc] init];
+   pickerView.delegate= self;
+   pickerView.dataSource= self;
     
     [self.view addSubview:pickerView];
     pickerView.hidden= YES;
@@ -140,6 +143,7 @@
 }
 
 - (void)viewDidUnload {
+    [self setTitle:nil];
     [super viewDidUnload];
 }
 
