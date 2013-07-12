@@ -155,7 +155,7 @@
 //            CLLocation* loc= [[CLLocation alloc] initWithLatitude:55.663117 longitude:12.542664];
 //    SMRoute* startRoute= [[SMRoute alloc] initWithRouteStart:[self start].coordinate andEnd:CLLocationCoordinate2DMake(55.672820, 12.571004) andDelegate:self];
 //    SMRoute* endRoute= [[SMRoute alloc] initWithRouteStart:CLLocationCoordinate2DMake(55.668344, 12.564604) andEnd:loc.coordinate andDelegate:self];
-//    
+    
 //    self.brokenRoutes= @[startRoute, endRoute];
 }
 

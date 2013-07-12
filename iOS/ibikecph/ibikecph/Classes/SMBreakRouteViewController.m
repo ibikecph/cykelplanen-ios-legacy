@@ -210,7 +210,9 @@
 //        
 //    }
     
-    //[self dismiss];
+//    [self dismiss];
+    
+        [self dismiss];
 }
 
 -(void)didCalculateRouteDistances:(SMTripRoute*)route{

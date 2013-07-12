@@ -993,6 +993,7 @@ typedef enum {
         
         NSDictionary * params = (NSDictionary*)sender;
         SMRouteNavigationController *destViewController = segue.destinationViewController;
+        
         [destViewController setStartLocation:[params objectForKey:@"start"]];
         [destViewController setEndLocation:[params objectForKey:@"end"]];
         [destViewController setDestination:self.destination];

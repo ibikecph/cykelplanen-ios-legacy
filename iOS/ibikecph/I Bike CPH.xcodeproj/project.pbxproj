@@ -636,6 +636,7 @@
 		F692279B178723E200C8CD76 /* SMTransportationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F692279A178723E200C8CD76 /* SMTransportationCell.m */; };
 		F69227A51787326800C8CD76 /* SMBrokenRouteInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F69227A41787326800C8CD76 /* SMBrokenRouteInfo.m */; };
 		F6928783178D664300267A09 /* SMStationPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F6928782178D664300267A09 /* SMStationPickerView.m */; };
+		F6928797178D883E00267A09 /* SMReminder.m in Sources */ = {isa = PBXBuildFile; fileRef = F6928796178D883E00267A09 /* SMReminder.m */; };
 		F695EFCE178AA95000D3E83D /* SMSingleRouteInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F695EFCD178AA95000D3E83D /* SMSingleRouteInfo.m */; };
 /* End PBXBuildFile section */
 
@@ -1389,6 +1390,8 @@
 		F69227A41787326800C8CD76 /* SMBrokenRouteInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBrokenRouteInfo.m; sourceTree = "<group>"; };
 		F6928781178D664300267A09 /* SMStationPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMStationPickerView.h; sourceTree = "<group>"; };
 		F6928782178D664300267A09 /* SMStationPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMStationPickerView.m; sourceTree = "<group>"; };
+		F6928795178D883E00267A09 /* SMReminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMReminder.h; sourceTree = "<group>"; };
+		F6928796178D883E00267A09 /* SMReminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMReminder.m; sourceTree = "<group>"; };
 		F695EFCC178AA95000D3E83D /* SMSingleRouteInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSingleRouteInfo.h; sourceTree = "<group>"; };
 		F695EFCD178AA95000D3E83D /* SMSingleRouteInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSingleRouteInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2142,6 +2145,7 @@
 		4C73D23A16AEDD3F00AED42A /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				F692878F178D882600267A09 /* reminder */,
 				F69227811786FF7900C8CD76 /* transportation */,
 				F692277C1786FD0F00C8CD76 /* route */,
 				C09AB42B176890100098AA9C /* global-utils */,
@@ -2459,6 +2463,15 @@
 				F6928782178D664300267A09 /* SMStationPickerView.m */,
 			);
 			name = BreakRoute;
+			sourceTree = "<group>";
+		};
+		F692878F178D882600267A09 /* reminder */ = {
+			isa = PBXGroup;
+			children = (
+				F6928795178D883E00267A09 /* SMReminder.h */,
+				F6928796178D883E00267A09 /* SMReminder.m */,
+			);
+			name = reminder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3177,6 +3190,7 @@
 				F69227A51787326800C8CD76 /* SMBrokenRouteInfo.m in Sources */,
 				F695EFCE178AA95000D3E83D /* SMSingleRouteInfo.m in Sources */,
 				F6928783178D664300267A09 /* SMStationPickerView.m in Sources */,
+				F6928797178D883E00267A09 /* SMReminder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

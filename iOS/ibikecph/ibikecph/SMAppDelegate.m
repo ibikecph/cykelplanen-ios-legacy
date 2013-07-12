@@ -119,6 +119,10 @@
     return [self.session handleOpenURL:url];
 }
 
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
+
+}
+
 - (void) fbAuth {
     if (!self.session.isOpen) {
         self.session = [[FBSession alloc] initWithPermissions:[NSArray arrayWithObjects:@"publish_stream", @"status_update", nil]];
