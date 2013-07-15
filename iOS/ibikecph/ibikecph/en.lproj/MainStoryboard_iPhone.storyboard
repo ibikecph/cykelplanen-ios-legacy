@@ -2311,7 +2311,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                         </imageView>
                                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="divider_side_menu_btn.png" id="iBx-Xq-ooA">
-                                                            <rect key="frame" x="0.0" y="57" width="260" height="2"/>
+                                                            <rect key="frame" x="0.0" y="57" width="260" height="1"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         </imageView>
@@ -2859,7 +2859,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <imageView contentMode="left" image="sidemenu_handle.png" highlightedImage="sidemenu_handle_press.png" id="h1Q-Jq-Hxq">
-                                        <rect key="frame" x="0.0" y="360" width="51" height="65"/>
+                                        <rect key="frame" x="0.0" y="368" width="51" height="65"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
@@ -3350,12 +3350,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="131"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2iJ-pQ-GOW" customClass="SMPatternedButton">
-                                                    <rect key="frame" x="68" y="0.0" width="232" height="36"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2iJ-pQ-GOW">
+                                                    <rect key="frame" x="68" y="0.0" width="232" height="37"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                    <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                    <state key="normal" title="Addr1" backgroundImage="gray_btn.png">
+                                                    <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="30" maxY="0.0"/>
+                                                    <state key="normal" title="Addr1" backgroundImage="select_station_bgr.png">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -3366,12 +3366,12 @@
                                                         <action selector="onSourceAddressButtonTap:" destination="mvk-ry-IY6" eventType="touchUpInside" id="twP-aB-Ega"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uKG-fY-IFy" customClass="SMPatternedButton">
-                                                    <rect key="frame" x="68" y="96" width="232" height="36"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uKG-fY-IFy">
+                                                    <rect key="frame" x="68" y="96" width="232" height="37"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                    <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                    <state key="normal" title="Addr2" backgroundImage="gray_btn.png">
+                                                    <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="30" maxY="0.0"/>
+                                                    <state key="normal" title="Addr2" backgroundImage="select_station_bgr.png">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -3426,7 +3426,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BbJ-5s-43S" customClass="SMPatternedButton">
-                                                    <rect key="frame" x="14" y="18" width="286" height="44"/>
+                                                    <rect key="frame" x="14" y="9" width="292" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <size key="titleShadowOffset" width="0.0" height="-0.5"/>
@@ -3445,11 +3445,11 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="breakRouteHeader" rowHeight="52" id="aD8-im-jPt">
-                                        <rect key="frame" x="0.0" y="410" width="320" height="52"/>
+                                    <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="breakRouteHeader" rowHeight="42" id="aD8-im-jPt">
+                                        <rect key="frame" x="0.0" y="410" width="320" height="42"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="41"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" id="Zfa-HY-OJO">
@@ -3457,14 +3457,14 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Route" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4hV-64-ggx">
-                                                            <rect key="frame" x="20" y="15" width="127" height="25"/>
+                                                            <rect key="frame" x="20" y="8" width="127" height="25"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="10km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kwf-cf-Z1i">
-                                                            <rect key="frame" x="129" y="15" width="127" height="25"/>
+                                                            <rect key="frame" x="129" y="8" width="127" height="25"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
                                                             <color key="textColor" red="0.96078431369999995" green="0.50980392159999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -4310,14 +4310,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="break_route" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Moa-hc-297">
-                                <rect key="frame" x="19" y="83" width="280" height="36"/>
+                                <rect key="frame" x="19" y="63" width="280" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
                                 <color key="textColor" red="0.96078431369999995" green="0.50980392159999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="lw_break_rote_info_top" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bQu-zQ-09K">
-                                <rect key="frame" x="31" y="117" width="257" height="76"/>
+                                <rect key="frame" x="31" y="97" width="257" height="76"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" red="0.14117647059999999" green="0.14117647059999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -4489,6 +4489,7 @@
         <image name="routeEnterViewMoreRow.png" width="320" height="47"/>
         <image name="routeStopOverlay.png" width="320" height="212"/>
         <image name="search_btn_start.png" width="75" height="37"/>
+        <image name="select_station_bgr.png" width="243" height="37"/>
         <image name="sidemenu_handle.png" width="16" height="62"/>
         <image name="sidemenu_handle_press.png" width="16" height="62"/>
         <image name="skip.png" width="22" height="22"/>
@@ -4531,11 +4532,8 @@
         <class className="SMAccountController" superclassName="SMTranslatedViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SMAccountController.h"/>
             <relationships>
-                <relationship kind="action" name="changeImage:"/>
                 <relationship kind="action" name="deleteAccount:"/>
                 <relationship kind="action" name="goBack:"/>
-                <relationship kind="action" name="logout:"/>
-                <relationship kind="action" name="saveChanges:"/>
                 <relationship kind="outlet" name="email" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="fbImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="fbName" candidateClass="UILabel"/>
@@ -4912,7 +4910,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="e6x-Rl-rMW"/>
+        <segue reference="FqQ-pD-Lrh"/>
         <segue reference="pNO-eB-0CQ"/>
         <segue reference="wAx-WK-VM3"/>
     </inferredMetricsTieBreakers>

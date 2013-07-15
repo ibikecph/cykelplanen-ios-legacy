@@ -612,6 +612,8 @@
 		78EBFE511794277000B67183 /* service_pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBFE4F1794277000B67183 /* service_pin@2x.png */; };
 		78EBFE541794278200B67183 /* metro_logo_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBFE521794278200B67183 /* metro_logo_pin.png */; };
 		78EBFE551794278200B67183 /* metro_logo_pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBFE531794278200B67183 /* metro_logo_pin@2x.png */; };
+		78EBFE5817944D8B00B67183 /* select_station_bgr.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBFE5617944D8B00B67183 /* select_station_bgr.png */; };
+		78EBFE5917944D8B00B67183 /* select_station_bgr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBFE5717944D8B00B67183 /* select_station_bgr@2x.png */; };
 		78FABBE9179009F600D44488 /* back_arrow_btn_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 78FABBE7179009F600D44488 /* back_arrow_btn_press.png */; };
 		78FABBEA179009F600D44488 /* back_arrow_btn_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78FABBE8179009F600D44488 /* back_arrow_btn_press@2x.png */; };
 		78FABBF2179020B800D44488 /* favListRowSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 78FABBF0179020B800D44488 /* favListRowSelected.png */; };
@@ -1383,6 +1385,8 @@
 		78EBFE4F1794277000B67183 /* service_pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "service_pin@2x.png"; sourceTree = "<group>"; };
 		78EBFE521794278200B67183 /* metro_logo_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metro_logo_pin.png; sourceTree = "<group>"; };
 		78EBFE531794278200B67183 /* metro_logo_pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "metro_logo_pin@2x.png"; sourceTree = "<group>"; };
+		78EBFE5617944D8B00B67183 /* select_station_bgr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_station_bgr.png; sourceTree = "<group>"; };
+		78EBFE5717944D8B00B67183 /* select_station_bgr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select_station_bgr@2x.png"; sourceTree = "<group>"; };
 		78FABBE7179009F600D44488 /* back_arrow_btn_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_arrow_btn_press.png; sourceTree = "<group>"; };
 		78FABBE8179009F600D44488 /* back_arrow_btn_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_arrow_btn_press@2x.png"; sourceTree = "<group>"; };
 		78FABBF0179020B800D44488 /* favListRowSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favListRowSelected.png; sourceTree = "<group>"; };
@@ -1610,6 +1614,8 @@
 		4C365DE116F361FE00A836B3 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				78EBFE5617944D8B00B67183 /* select_station_bgr.png */,
+				78EBFE5717944D8B00B67183 /* select_station_bgr@2x.png */,
 				78EBFE521794278200B67183 /* metro_logo_pin.png */,
 				78EBFE531794278200B67183 /* metro_logo_pin@2x.png */,
 				78EBFE4E1794277000B67183 /* service_pin.png */,
@@ -3252,6 +3258,8 @@
 				78EBFE511794277000B67183 /* service_pin@2x.png in Resources */,
 				78EBFE541794278200B67183 /* metro_logo_pin.png in Resources */,
 				78EBFE551794278200B67183 /* metro_logo_pin@2x.png in Resources */,
+				78EBFE5817944D8B00B67183 /* select_station_bgr.png in Resources */,
+				78EBFE5917944D8B00B67183 /* select_station_bgr@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

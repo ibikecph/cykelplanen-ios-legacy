@@ -274,9 +274,9 @@ typedef enum {
     
     // Add station markers
     self.stationMarkers = [[NSMutableArray alloc] init];
-    for (int i=0; i<20; i++) {
-        float jitterx = (rand() % 1000 / 1000.0 * 0.1) - 0.05;
-        float jittery = (rand() % 1000 / 1000.0 * 0.1) - 0.05;
+    for (int i=0; i<200; i++) {
+        float jitterx = (rand() % 1000 / 1000.0 * 0.5) - 0.25;
+        float jittery = (rand() % 1000 / 1000.0 * 0.5) - 0.25;
         CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(55.678974+jitterx, 12.540156+jittery);
         //[self addMarkerToMapView:self.mpView withCoordinate:coord title:@"Marker" imageName:@"station_icon" annotationTitle:@"Marker text" alternateTitle:@"Marker alternate title"];
         
@@ -305,9 +305,9 @@ typedef enum {
     
     // Add metro markers
     self.metroMarkers = [[NSMutableArray alloc] init];
-    for (int i=0; i<15; i++) {
-        float jitterx = (rand() % 1000 / 1000.0 * 0.1) - 0.05;
-        float jittery = (rand() % 1000 / 1000.0 * 0.1) - 0.05;
+    for (int i=0; i<150; i++) {
+        float jitterx = (rand() % 1000 / 1000.0 * 0.5) - 0.25;
+        float jittery = (rand() % 1000 / 1000.0 * 0.5) - 0.25;
         CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(55.678974+jitterx, 12.540156+jittery);
         //[self addMarkerToMapView:self.mpView withCoordinate:coord title:@"Marker" imageName:@"station_icon" annotationTitle:@"Marker text" alternateTitle:@"Marker alternate title"];
         
@@ -335,9 +335,9 @@ typedef enum {
 
     // Add service markers
     self.serviceMarkers = [[NSMutableArray alloc] init];
-    for (int i=0; i<12; i++) {
-        float jitterx = (rand() % 1000 / 1000.0 * 0.1) - 0.05;
-        float jittery = (rand() % 1000 / 1000.0 * 0.1) - 0.05;
+    for (int i=0; i<120; i++) {
+        float jitterx = (rand() % 1000 / 1000.0 * 0.5) - 0.25;
+        float jittery = (rand() % 1000 / 1000.0 * 0.5) - 0.25;
         CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(55.678974+jitterx, 12.540156+jittery);
         //[self addMarkerToMapView:self.mpView withCoordinate:coord title:@"Marker" imageName:@"station_icon" annotationTitle:@"Marker text" alternateTitle:@"Marker alternate title"];
         
