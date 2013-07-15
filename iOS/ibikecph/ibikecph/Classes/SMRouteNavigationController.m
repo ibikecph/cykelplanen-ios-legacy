@@ -655,10 +655,6 @@ typedef enum {
 
 }
 
--(NSArray*)splitIndicesForString:(NSString*)str{
-    return nil;
-}
-
 - (NSUInteger)fitString:(NSString *)string intoLabel:(UILabel *)label size:(CGSize)size
 {
     UIFont *font           = label.font;
@@ -1055,14 +1051,14 @@ typedef enum {
 }
 
 - (void)mapView:(RMMapView *)mapView didUpdateUserLocation:(RMUserLocation *)userLocation {
-    static int count= 1;
-    
-    count ++;
-    
-    if(count==10){
-        count=1;
-        NSLog(@"Location %lf %lf",userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude);
-    }
+//    static int count= 1;
+//    
+//    count ++;
+//    
+//    if(count==10){
+//        count=1;
+//        NSLog(@"Location %lf %lf",userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude);
+//    }
    if (self.currentlyRouting && self.route && userLocation) {
        [self.route visitLocation:userLocation.location];
        
@@ -1091,12 +1087,15 @@ typedef enum {
 
        [tblDirections reloadData];
        [self renderMinimizedDirectionsViewFromInstruction];
-   }else if(nextRoute && userLocation){
-       if([self location:[nextRoute getStartLocation] matchesLocation:userLocation.location]){
+   }else if(nextRoute && userLocation){ // next route exists and userlocation is valid
+       if([self location:[nextRoute getStartLocation] matchesLocation:userLocation.location]){ // check if we reached the beginning of the next route
            self.route= nextRoute;
            self.route.delegate= self;
            
 //           [self startRouting];
+       }else if([fullRoute getEndLocation] && [self location:userLocation.location matchesLocation:[fullRoute getEndLocation]]){ // check if we reached the end of the route
+           // we reached end
+           [self reachedEndOfRoute];
        }
    }
 }
@@ -1210,22 +1209,27 @@ typedef enum {
     }
 }
 
-- (void) reachedDestination {
+- (void)reachedDestination {
     int index= [self.brokenRoute.brokenRoutes indexOfObject:self.route];
-    if(index!=self.brokenRoute.brokenRoutes.count-1){
-        nextRoute= [self.brokenRoute.brokenRoutes objectAtIndex:index+1];
+    if(index!=self.brokenRoute.brokenRoutes.count-1){ // if current route isn't the last route
+        nextRoute= [self.brokenRoute.brokenRoutes objectAtIndex:index+1]; // we set the nextRoute
         self.route.delegate= nil; // remove the delegate from the old route
         self.route= nil;
         
         return;
     }
     
-    [self updateTurn:NO];
+    [self reachedEndOfRoute];
 
+}
+
+-(void)reachedEndOfRoute{
+    [self updateTurn:NO];
+    
     CGFloat distance = [self.route calculateDistanceTraveled];
     [finishDistance setText:formatDistance(distance)];
     [finishTime setText:[self.route timePassed]];
-
+    
     /**
      * save route data
      */
@@ -1239,7 +1243,7 @@ typedef enum {
     [finishDestination setText:[a objectAtIndex:0]];
     
     [[NSFileManager defaultManager] removeItemAtPath:[[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"lastRoute.plist"] error:nil];
-
+    
     /**
      * don't show destination notification
      */
