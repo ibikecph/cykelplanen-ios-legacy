@@ -1132,7 +1132,7 @@
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Labelpq" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" id="eOR-63-WJ5">
                                                     <rect key="frame" x="113" y="9" width="95" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" red="0.96078431369999995" green="0.50980392159999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
@@ -1189,7 +1189,7 @@
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Labelpq" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3a9-cH-4UC" customClass="TTTAttributedLabel">
                                                     <rect key="frame" x="55" y="11" width="254" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="findRouteCalendar.png" id="0G6-om-2cf" customClass="AsyncImageView">
@@ -1220,7 +1220,7 @@
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Labelpq" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SrM-Hs-dQ8" customClass="TTTAttributedLabel">
                                                     <rect key="frame" x="55" y="11" width="254" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="findRouteCalendar.png" id="e5u-UC-fZ2" customClass="AsyncImageView">
@@ -1251,7 +1251,7 @@
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Labelpq" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lNM-Zy-9uR" customClass="TTTAttributedLabel">
                                                     <rect key="frame" x="55" y="11" width="254" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="findRouteCalendar.png" id="KAM-2V-zqM" customClass="AsyncImageView">
@@ -1282,7 +1282,7 @@
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Labelpq" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m3J-PW-8w2" customClass="TTTAttributedLabel">
                                                     <rect key="frame" x="55" y="11" width="254" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="findRouteCalendar.png" id="crZ-W1-SKD" customClass="AsyncImageView">
@@ -1332,13 +1332,17 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <inset key="titleEdgeInsets" minX="-63" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Start" image="routeEnterStart_active.png">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="titleShadowOffset" width="0.0" height="-0.5"/>
+                                <state key="normal" title="Start" image="routeEnterStartOrange_active.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.84705882349999995" green="0.38823529410000002" blue="0.090196078430000007" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <state key="disabled" image="routeEnterStart_inactive.png"/>
-                                <state key="highlighted">
+                                <state key="disabled" image="routeEnterStart_inactive.png">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="findRoute:" destination="ZcI-JG-898" eventType="touchUpInside" id="pOx-0k-Mjj"/>
@@ -1347,7 +1351,7 @@
                             <label opaque="NO" clipsSubviews="YES" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PBs-dj-9tX">
                                 <rect key="frame" x="52" y="70" width="217" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" red="0.027450980392156862" green="0.33725490196078434" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <connections>
@@ -1357,7 +1361,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Indtast vej, gade, post nr. " minimumFontSize="17" id="mPP-cU-gxa">
                                 <rect key="frame" x="52" y="110" width="229" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="70M-mc-O0l">
@@ -1375,7 +1379,7 @@
                                     <action selector="toTapped:" destination="ZcI-JG-898" eventType="touchUpInside" id="1Yn-Y4-gli"/>
                                 </connections>
                             </button>
-                            <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="routeEnterLocateIcon.png" id="whr-md-Ife">
+                            <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="locate_icon.png" id="whr-md-Ife">
                                 <rect key="frame" x="52" y="73" width="15" height="15"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
@@ -4430,6 +4434,7 @@
         <image name="intro_bottom_menu_bgr.png" width="320" height="61"/>
         <image name="leftArrow.png" width="7" height="12"/>
         <image name="list_find_icon.png" width="34" height="34"/>
+        <image name="locate_icon.png" width="13" height="13"/>
         <image name="loginBG.png" width="320" height="318"/>
         <image name="loginFacebook.png" width="216" height="45"/>
         <image name="loginFacebookPressed.png" width="216" height="45"/>
@@ -4466,12 +4471,11 @@
         <image name="routeEnterBottomRowPressed.png" width="300" height="44"/>
         <image name="routeEnterHeader.png" width="320" height="51"/>
         <image name="routeEnterInputBG.png" width="307" height="90"/>
-        <image name="routeEnterLocateIcon.png" width="15" height="15"/>
         <image name="routeEnterMiddleRow.png" width="320" height="44"/>
         <image name="routeEnterMiddleRowPressed.png" width="320" height="44"/>
         <image name="routeEnterSingleRow.png" width="320" height="44"/>
         <image name="routeEnterSingleRowPressed.png" width="320" height="44"/>
-        <image name="routeEnterStart_active.png" width="61" height="35"/>
+        <image name="routeEnterStartOrange_active.png" width="61" height="35"/>
         <image name="routeEnterStart_inactive.png" width="61" height="35"/>
         <image name="routeEnterSwitchIcon.png" width="25" height="23"/>
         <image name="routeEnterTopRow.png" width="320" height="44"/>
@@ -4502,8 +4506,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="yP5-9Q-UWd"/>
         <segue reference="SAG-9b-Vbu"/>
+        <segue reference="yP5-9Q-UWd"/>
         <segue reference="wAx-WK-VM3"/>
     </inferredMetricsTieBreakers>
 </document>
