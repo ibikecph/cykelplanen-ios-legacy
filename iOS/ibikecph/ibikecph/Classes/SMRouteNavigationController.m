@@ -73,6 +73,14 @@ typedef enum {
 @property (nonatomic, strong) NSArray * instructionsForScrollview;
 @property BOOL pulling;
 @property (nonatomic, strong) NSString * osrmServer;
+
+@property (nonatomic, strong) NSMutableArray* stationMarkers;
+@property (nonatomic, strong) NSMutableArray* metroMarkers;
+@property (nonatomic, strong) NSMutableArray* serviceMarkers;
+@property BOOL stationMarkersVisible;
+@property BOOL metroMarkersVisible;
+@property BOOL serviceMarkersVisible;
+
 @end
 
 @implementation SMRouteNavigationController
@@ -137,6 +145,9 @@ typedef enum {
     [self.cargoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
     
     [centerView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
+    
+    [self loadMarkers];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -177,6 +188,11 @@ typedef enum {
     CGRect rect= self.mapFade.frame;
     rect.size.height= 0;
     self.mapFade.frame= rect;
+    
+    // markers visibility
+    self.serviceMarkersVisible = NO;
+    self.stationMarkersVisible = NO;
+    self.metroMarkersVisible = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -189,6 +205,7 @@ typedef enum {
         [UIApplication sharedApplication].idleTimerDisabled = NO;
     }
 //    [self.mapFade setFrame:self.mpView.frame];
+    
 }
 
 
@@ -249,6 +266,129 @@ typedef enum {
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+#pragma mark - station markers
+
+- (void)loadMarkers {
+    
+    // Add station markers
+    self.stationMarkers = [[NSMutableArray alloc] init];
+    for (int i=0; i<20; i++) {
+        float jitterx = (rand() % 1000 / 1000.0 * 0.1) - 0.05;
+        float jittery = (rand() % 1000 / 1000.0 * 0.1) - 0.05;
+        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(55.678974+jitterx, 12.540156+jittery);
+        //[self addMarkerToMapView:self.mpView withCoordinate:coord title:@"Marker" imageName:@"station_icon" annotationTitle:@"Marker text" alternateTitle:@"Marker alternate title"];
+        
+        NSString* imageName = @"station_icon";
+        NSString* title = @"station";
+        NSString* annotationTitle = @"title";
+        NSString* alternateTitle = @"alternate title";
+        
+        SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
+        annotation.annotationType = @"marker";
+        annotation.annotationIcon = [UIImage imageNamed:imageName];
+        annotation.anchorPoint = CGPointMake(0.5, 1.0);
+        NSMutableArray * arr = [[self.source componentsSeparatedByString:@","] mutableCopy];
+        annotation.title = annotationTitle;
+        
+        if ([annotation.title isEqualToString:@""] && alternateTitle) {
+            annotation.title = alternateTitle;
+        }
+        
+        annotation.subtitle = [[arr componentsJoinedByString:@","] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        //[self.mpView addAnnotation:annotation];
+        
+        [self.stationMarkers addObject:annotation];
+    }
+
+    
+    // Add metro markers
+    self.metroMarkers = [[NSMutableArray alloc] init];
+    for (int i=0; i<15; i++) {
+        float jitterx = (rand() % 1000 / 1000.0 * 0.1) - 0.05;
+        float jittery = (rand() % 1000 / 1000.0 * 0.1) - 0.05;
+        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(55.678974+jitterx, 12.540156+jittery);
+        //[self addMarkerToMapView:self.mpView withCoordinate:coord title:@"Marker" imageName:@"station_icon" annotationTitle:@"Marker text" alternateTitle:@"Marker alternate title"];
+        
+        NSString* imageName = @"metro_logo_pin";
+        NSString* title = @"metro";
+        NSString* annotationTitle = @"title";
+        NSString* alternateTitle = @"alternate title";
+        
+        SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
+        annotation.annotationType = @"marker";
+        annotation.annotationIcon = [UIImage imageNamed:imageName];
+        annotation.anchorPoint = CGPointMake(0.5, 1.0);
+        NSMutableArray * arr = [[self.source componentsSeparatedByString:@","] mutableCopy];
+        annotation.title = annotationTitle;
+        
+        if ([annotation.title isEqualToString:@""] && alternateTitle) {
+            annotation.title = alternateTitle;
+        }
+        
+        annotation.subtitle = [[arr componentsJoinedByString:@","] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        //[self.mpView addAnnotation:annotation];
+        
+        [self.metroMarkers addObject:annotation];
+    }
+
+    // Add service markers
+    self.serviceMarkers = [[NSMutableArray alloc] init];
+    for (int i=0; i<12; i++) {
+        float jitterx = (rand() % 1000 / 1000.0 * 0.1) - 0.05;
+        float jittery = (rand() % 1000 / 1000.0 * 0.1) - 0.05;
+        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(55.678974+jitterx, 12.540156+jittery);
+        //[self addMarkerToMapView:self.mpView withCoordinate:coord title:@"Marker" imageName:@"station_icon" annotationTitle:@"Marker text" alternateTitle:@"Marker alternate title"];
+        
+        NSString* imageName = @"service_pin";
+        NSString* title = @"service";
+        NSString* annotationTitle = @"title";
+        NSString* alternateTitle = @"alternate title";
+        
+        SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
+        annotation.annotationType = @"marker";
+        annotation.annotationIcon = [UIImage imageNamed:imageName];
+        annotation.anchorPoint = CGPointMake(0.5, 1.0);
+        NSMutableArray * arr = [[self.source componentsSeparatedByString:@","] mutableCopy];
+        annotation.title = annotationTitle;
+        
+        if ([annotation.title isEqualToString:@""] && alternateTitle) {
+            annotation.title = alternateTitle;
+        }
+        
+        annotation.subtitle = [[arr componentsJoinedByString:@","] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        //[self.mpView addAnnotation:annotation];
+        
+        [self.serviceMarkers addObject:annotation];
+    }
+
+    
+}
+
+- (void)toggleMarkers:(NSString*)markerType {
+    if ( [markerType isEqualToString:@"metro"] ) {
+        self.metroMarkersVisible = !self.metroMarkersVisible;
+        if ( self.metroMarkersVisible ) {
+            [self.mpView addAnnotations:self.metroMarkers];
+        } else {
+            [self.mpView removeAnnotations:self.metroMarkers];
+        }
+    } else if ( [markerType isEqualToString:@"service"] ) {
+        self.serviceMarkersVisible = !self.serviceMarkersVisible;
+        if ( self.serviceMarkersVisible ) {
+            [self.mpView addAnnotations:self.serviceMarkers];
+        } else {
+            [self.mpView removeAnnotations:self.serviceMarkers];
+        }
+    } else if ( [markerType isEqualToString:@"station"] ) {
+        self.stationMarkersVisible = !self.stationMarkersVisible;
+        if ( self.stationMarkersVisible ) {
+            [self.mpView addAnnotations:self.stationMarkers];
+        } else {
+            [self.mpView removeAnnotations:self.stationMarkers];
+        }
+    }
 }
 
 #pragma mark - custom methods
@@ -552,8 +692,30 @@ typedef enum {
     [self startRouting];
 }
 
--(void)startRouting{
+- (void)addMarkers:(NSArray*)markers {
+    for (int i=0; i<[markers count]; i++) {
+        NSDictionary* marker = [markers objectAtIndex:i];
+        
+        double latitude = [(NSNumber*)[marker objectForKey:@"latitude"] doubleValue];
+        double longitude = [(NSNumber*)[marker objectForKey:@"longitude"] doubleValue];
+        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(latitude, longitude);
+        
+        NSString* title = [marker objectForKey:@"title"];
+        NSString* image = [marker objectForKey:@"imageName"];
+        NSString* annotation = [marker objectForKey:@"annotation"];
+        NSString* alternateTitle = [marker objectForKey:@"alternateTitle"];
+        
+        [self addMarkerToMapView:self.mpView withCoordinate:coord title:title imageName:image annotationTitle:annotation alternateTitle:alternateTitle];
+    
+    }
+}
 
+-(void)startRouting{
+    
+    for (int i=0; i<[self.stationMarkers count]; i++) {
+        [self.mpView addAnnotation:[self.stationMarkers objectAtIndex:i]];
+    }
+    
     [self setupMapSize:YES];
     overviewShown = NO;
     
@@ -1394,11 +1556,53 @@ typedef enum {
         [self trackUser:nil];
 }
 
+- (void)slideBackToMap {
+    [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        CGRect frame = centerView.frame;
+        frame.origin.x = centerView.startPos;
+        [centerView setFrame:frame];
+    } completion:^(BOOL finished) {
+    }];
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(tableView==self.cargoTableView){
+        NSDictionary* currentRow = [self.cargoItems objectAtIndex:indexPath.row];
+        //        self.osrmServer = [currentRow objectForKey:@"server"];
+        //        [self newRouteType];
+        
+        NSLog(@"Markers selected: %d", indexPath.row);
+        
+        if ( indexPath.row == 1 ) {
+            [self toggleMarkers:@"service"];
+        } else if ( indexPath.row == 2 ) {
+            [self toggleMarkers:@"station"];
+        } else if ( indexPath.row == 3 ) {
+            [self toggleMarkers:@"metro"];
+        }
+        
+    [self slideBackToMap];
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if(tableView==self.cargoTableView){
         NSDictionary* currentRow = [self.cargoItems objectAtIndex:indexPath.row];
-        self.osrmServer = [currentRow objectForKey:@"server"];
-        [self newRouteType];
+//        self.osrmServer = [currentRow objectForKey:@"server"];
+//        [self newRouteType];
+        
+        NSLog(@"Markers selected: %d", indexPath.row);
+        
+        if ( indexPath.row == 1 ) {
+            [self toggleMarkers:@"service"];
+        } else if ( indexPath.row == 2 ) {
+            [self toggleMarkers:@"station"];
+        } else if ( indexPath.row == 3 ) {
+            [self toggleMarkers:@"metro"];
+        }
+    
+    [self slideBackToMap];
+        
     }else{
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }

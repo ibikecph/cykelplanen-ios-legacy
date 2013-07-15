@@ -892,7 +892,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <imageView contentMode="scaleToFill" image="home_btn_inactive.png" id="ZKm-V3-c90">
-                                <rect key="frame" x="0.0" y="11" width="80" height="80"/>
+                                <rect key="frame" x="0.0" y="7" width="80" height="80"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <rect key="contentStretch" x="0.5" y="0.0" width="0.0" height="1"/>
@@ -4246,7 +4246,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="home_btn_inactive.png" id="UDu-MJ-DIE">
-                                <rect key="frame" x="0.0" y="3" width="80" height="80"/>
+                                <rect key="frame" x="0.0" y="7" width="80" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="reminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qfb-L1-PGc">
@@ -4306,7 +4306,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="home_btn_inactive.png" id="M8M-EI-szO">
-                                <rect key="frame" x="0.0" y="3" width="80" height="80"/>
+                                <rect key="frame" x="0.0" y="7" width="80" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="break_route" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Moa-hc-297">
@@ -4747,6 +4747,15 @@
         <class className="SMRouteNavigationController" superclassName="SMTranslatedViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRouteNavigationController.h"/>
             <relationships>
+                <relationship kind="action" name="buttonPressed:"/>
+                <relationship kind="action" name="goBack:"/>
+                <relationship kind="action" name="hideFinishView:"/>
+                <relationship kind="action" name="hideStopView:"/>
+                <relationship kind="action" name="onBreakRoute:"/>
+                <relationship kind="action" name="onPanGestureDirections:" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="action" name="reportError:"/>
+                <relationship kind="action" name="startRouting:"/>
+                <relationship kind="action" name="trackUser:"/>
                 <relationship kind="outlet" name="arrivalBG" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="blockingView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="breakRouteButton" candidateClass="UIButton"/>
@@ -4903,8 +4912,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="SAG-9b-Vbu"/>
-        <segue reference="yP5-9Q-UWd"/>
+        <segue reference="e6x-Rl-rMW"/>
+        <segue reference="pNO-eB-0CQ"/>
         <segue reference="wAx-WK-VM3"/>
     </inferredMetricsTieBreakers>
 </document>
