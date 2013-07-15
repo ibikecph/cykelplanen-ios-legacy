@@ -604,6 +604,10 @@
 		78EBFE431793F9F900B67183 /* bike_route_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBFE3F1793F9F900B67183 /* bike_route_gray@2x.png */; };
 		78EBFE441793F9F900B67183 /* bike_route_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBFE401793F9F900B67183 /* bike_route_white.png */; };
 		78EBFE451793F9F900B67183 /* bike_route_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBFE411793F9F900B67183 /* bike_route_white@2x.png */; };
+		78EBFE4A179400A200B67183 /* checkbox_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBFE46179400A200B67183 /* checkbox_selected.png */; };
+		78EBFE4B179400A200B67183 /* checkbox_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBFE47179400A200B67183 /* checkbox_selected@2x.png */; };
+		78EBFE4C179400A200B67183 /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBFE48179400A200B67183 /* checkbox.png */; };
+		78EBFE4D179400A200B67183 /* checkbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBFE49179400A200B67183 /* checkbox@2x.png */; };
 		78FABBE9179009F600D44488 /* back_arrow_btn_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 78FABBE7179009F600D44488 /* back_arrow_btn_press.png */; };
 		78FABBEA179009F600D44488 /* back_arrow_btn_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78FABBE8179009F600D44488 /* back_arrow_btn_press@2x.png */; };
 		78FABBF2179020B800D44488 /* favListRowSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 78FABBF0179020B800D44488 /* favListRowSelected.png */; };
@@ -1367,6 +1371,10 @@
 		78EBFE3F1793F9F900B67183 /* bike_route_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bike_route_gray@2x.png"; sourceTree = "<group>"; };
 		78EBFE401793F9F900B67183 /* bike_route_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bike_route_white.png; sourceTree = "<group>"; };
 		78EBFE411793F9F900B67183 /* bike_route_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bike_route_white@2x.png"; sourceTree = "<group>"; };
+		78EBFE46179400A200B67183 /* checkbox_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_selected.png; sourceTree = "<group>"; };
+		78EBFE47179400A200B67183 /* checkbox_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox_selected@2x.png"; sourceTree = "<group>"; };
+		78EBFE48179400A200B67183 /* checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox.png; sourceTree = "<group>"; };
+		78EBFE49179400A200B67183 /* checkbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox@2x.png"; sourceTree = "<group>"; };
 		78FABBE7179009F600D44488 /* back_arrow_btn_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_arrow_btn_press.png; sourceTree = "<group>"; };
 		78FABBE8179009F600D44488 /* back_arrow_btn_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_arrow_btn_press@2x.png"; sourceTree = "<group>"; };
 		78FABBF0179020B800D44488 /* favListRowSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favListRowSelected.png; sourceTree = "<group>"; };
@@ -1594,6 +1602,10 @@
 		4C365DE116F361FE00A836B3 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				78EBFE46179400A200B67183 /* checkbox_selected.png */,
+				78EBFE47179400A200B67183 /* checkbox_selected@2x.png */,
+				78EBFE48179400A200B67183 /* checkbox.png */,
+				78EBFE49179400A200B67183 /* checkbox@2x.png */,
 				78EBFE3E1793F9F900B67183 /* bike_route_gray.png */,
 				78EBFE3F1793F9F900B67183 /* bike_route_gray@2x.png */,
 				78EBFE401793F9F900B67183 /* bike_route_white.png */,
@@ -3220,6 +3232,10 @@
 				78EBFE431793F9F900B67183 /* bike_route_gray@2x.png in Resources */,
 				78EBFE441793F9F900B67183 /* bike_route_white.png in Resources */,
 				78EBFE451793F9F900B67183 /* bike_route_white@2x.png in Resources */,
+				78EBFE4A179400A200B67183 /* checkbox_selected.png in Resources */,
+				78EBFE4B179400A200B67183 /* checkbox_selected@2x.png in Resources */,
+				78EBFE4C179400A200B67183 /* checkbox.png in Resources */,
+				78EBFE4D179400A200B67183 /* checkbox@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -145,6 +145,12 @@
 
 "marker_start" = "Start";
 
+// markers
+"marker_type_1" = "Anlagte Ruter";
+"marker_type_2" = "Servicestationer";
+"marker_type_3" = "S-togs stationer";
+"marker_type_4" = "Metro stationer";
+
 // these are in the storyboard
 "register_with_mail" = "Opret med email";
 "btn_skip" = "Spring over";

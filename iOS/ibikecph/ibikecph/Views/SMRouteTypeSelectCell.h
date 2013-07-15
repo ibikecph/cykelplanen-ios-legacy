@@ -13,6 +13,7 @@
     __weak IBOutlet UIImageView *cellImage;
     __weak IBOutlet UILabel *cellText;
 }
+@property (weak, nonatomic) IBOutlet UIImageView *cellCheckbox;
 
 + (CGFloat)getHeight;
 - (void)setupCellWithData:(NSDictionary*)data;
