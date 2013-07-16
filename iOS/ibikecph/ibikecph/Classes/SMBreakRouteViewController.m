@@ -62,7 +62,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
+    [self.tableView reloadData];
     if(!sourceStations || sourceStations.count==0){
         UIAlertView* noRouteAlertView= [[UIAlertView alloc] initWithTitle:@"No route" message:@"Route cannot be broken" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [noRouteAlertView show];
@@ -141,7 +141,7 @@
         case 3:{
             CellId= @"ButtonCell";
             UITableViewCell* cell= [tableView dequeueReusableCellWithIdentifier:CellId];
-            
+            cell.selectionStyle= UITableViewCellSelectionStyleNone;
             return cell;
             break;
         }
@@ -235,9 +235,22 @@
         self.destinationStation= routeInfo.destStation;
         
     }else if(pAddressType==AddressTypeSource){
-        SMSingleRouteInfo* routeInfo= [self.tripRoute.transportationRoutes objectAtIndex:index];
+        SMSingleRouteInfo* routeInfo= [sourceStations objectAtIndex:index];
         self.sourceStation= routeInfo.sourceStation;
         
+        // TODO: test
+        BOOL found= NO;
+        NSArray* arr= [sourceStations filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.sourceStation == %@",self.sourceStation]];
+        for(SMSingleRouteInfo* ri in arr){
+            if(ri.destStation==self.destinationStation){
+                found= YES;
+                break;
+            }
+        }
+        if(!found){
+            destinationStations= [self endStationsForSourceStation:routeInfo.sourceStation];
+            self.destinationStation= routeInfo.destStation;
+        }
     }
     [self.tableView reloadData];
 }
@@ -259,8 +272,18 @@
 }
 
 -(void)didCalculateRouteDistances:(SMTripRoute*)route{
-    sourceStations= route.transportationRoutes;
 
+
+    NSMutableArray* stations= [NSMutableArray new];
+    
+    for(SMSingleRouteInfo* routeInfo in route.transportationRoutes){
+        if(![stations containsObject:routeInfo]){
+            [stations addObject:routeInfo];
+        }
+    }
+    
+    sourceStations= [NSArray arrayWithArray:stations];
+    
     if(route.transportationRoutes.count > 0){
         SMSingleRouteInfo* routeInfo= [route.transportationRoutes objectAtIndex:0];
         

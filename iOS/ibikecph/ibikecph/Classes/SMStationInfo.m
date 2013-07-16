@@ -27,4 +27,9 @@
     self.name= [NSString stringWithFormat:@"Station %lf %lf",_latitude,_longitude];
 }
 
+-(BOOL)isEqual:(id)object{
+    SMStationInfo* other= object;
+
+    return [self.location isEqual:other.location];
+}
 @end

@@ -102,6 +102,7 @@
         
     }
 
+
     self.transportationRoutes= [transportationRoutesTemp sortedArrayUsingComparator:^NSComparisonResult(SMSingleRouteInfo* r1, SMSingleRouteInfo* r2){
         if(r1.bikeDistance < r2.bikeDistance)
             return NSOrderedAscending;
@@ -170,20 +171,31 @@
     
 }
 - (void) startRoute{
+
+    for(SMRoute* route in self.brokenRoutes){
+        if(!route.waypoints){
+            return;
+        }
+    }
     
     for(SMRoute* route in self.brokenRoutes){
-        if(!route.waypoints)
-            return;
+        if(![route getEndLocation] || ![route getStartLocation]){
+            if([self.delegate respondsToSelector:@selector(didFailBreakingRoute:)]){
+                [self.delegate didFailBreakingRoute:self];
+                return;
+            }
+        }
     }
     
     if([self.delegate respondsToSelector:@selector(didFinishBreakingRoute:)])
         [self.delegate didFinishBreakingRoute:self ];
-
-    
     
 }
 - (void) routeNotFound{
-    
+    if([self.delegate respondsToSelector:@selector(didFailBreakingRoute:)] ){
+        [self.delegate didFailBreakingRoute:self];
+    }
+
 }
 - (void) serverError{
     NSLog(@"Server error");

@@ -681,7 +681,14 @@ typedef enum {
 }
 
 - (IBAction)onBreakRoute:(id)sender {
-    [self performSegueWithIdentifier:@"breakRoute" sender:self];
+    if ([SMLocationManager instance].hasValidLocation == NO) {
+        UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:translateString(@"error_no_gps_location") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+        [av show];
+        return;
+    }else{
+        [self performSegueWithIdentifier:@"breakRoute" sender:self];
+    }
+
 }
 
 - (IBAction)startRouting:(id)sender {
@@ -844,8 +851,6 @@ typedef enum {
         [minimizedInstructionsView setHidden:YES];
     }
 }
-
-
 
 - (NSDictionary*) addRouteAnnotation:(SMRoute *)r {
 
@@ -1196,7 +1201,14 @@ typedef enum {
         
         if (firstElementRemoved) {
             if ([tblDirections numberOfRowsInSection:0] > 0) {
-                [tblDirections deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationLeft];
+                @try {
+                    [tblDirections deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationLeft];
+                }
+                @catch (NSException *exception) {
+                    
+                }
+
+
             }
         }
         

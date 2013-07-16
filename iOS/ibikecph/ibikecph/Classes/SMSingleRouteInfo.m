@@ -18,4 +18,9 @@
     return self.destStation.location;
 }
 
+-(BOOL)isEqual:(id)object{
+    SMSingleRouteInfo* other= object;
+    
+    return [other.sourceStation isEqual:self.sourceStation];
+}
 @end
