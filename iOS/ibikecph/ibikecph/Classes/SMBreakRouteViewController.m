@@ -11,6 +11,9 @@
 
 #import "SMTransportationCell.h"
 #import "SMBikeWaypointCell.h"
+#import "SMBreakRouteHeader.h"
+#import "SMBreakRouteButtonCell.h"
+
 @interface SMBreakRouteViewController (){
     NSArray* sourceStations;
     NSArray* destinationStations;
@@ -55,9 +58,17 @@
     
     if(self.tripRoute){
         self.tripRoute.delegate= self;
+        
+        double startTime = CACurrentMediaTime();
         [self.tripRoute breakRoute];
+        double endTime = CACurrentMediaTime();
+        NSLog(@"BREAK ROUTE time: %4.1fms", endTime - startTime);
     }
 
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -67,6 +78,9 @@
         UIAlertView* noRouteAlertView= [[UIAlertView alloc] initWithTitle:@"No route" message:@"Route cannot be broken" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [noRouteAlertView show];
     }
+    
+    [self.tableView reloadData];
+
    
 }
 - (void)didReceiveMemoryWarning
@@ -92,7 +106,18 @@
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if ( section == 0 ) {
-        return [tableView dequeueReusableCellWithIdentifier:@"breakRouteHeader"];
+        SMBreakRouteHeader* header = [tableView dequeueReusableCellWithIdentifier:@"breakRouteHeader"];
+        [header.title setText:translateString(@"break_route_header_title")];
+        [header.title sizeToFit];
+        CGRect frame = header.title.frame;
+        CGRect newFrame = header.routeDistance.frame;
+        newFrame.origin.x = frame.origin.x + frame.size.width + 0;
+        
+        NSString* routeDistance = [NSString stringWithFormat:@"%4.1f km", self.tripRoute.fullRoute.estimatedRouteDistance / 1000.0];
+        
+        [header.routeDistance setText:routeDistance];
+        [header.routeDistance setFrame:newFrame];
+        return header;
     }
     return nil;
 }
@@ -117,6 +142,17 @@
             CellId= @"SourceCell";
             SMBikeWaypointCell* wpCell= [tableView dequeueReusableCellWithIdentifier:CellId];
             [wpCell setupWithString:self.sourceName];
+            
+            float fDistance = 0;
+            int fTime = 0;
+            SMRoute* route = [self.tripRoute.brokenRoutes objectAtIndex:0];
+            if ( route ) {
+                fDistance = route.estimatedRouteDistance / 1000.0;
+                fTime = route.estimatedTimeForRoute / 60;
+            }
+            NSString* distance = [NSString stringWithFormat:@"%4.1f km  %d min.", fDistance, fTime];
+            [wpCell.labelDistance setText:distance];
+            
             return wpCell;
             break;
         }
@@ -135,13 +171,25 @@
             CellId= @"DestinationCell";
             SMBikeWaypointCell* wpCell= [tableView dequeueReusableCellWithIdentifier:CellId];
             [wpCell setupWithString:self.destinationName];
+            [wpCell.labelAddressBottom setText:@"Some address here"];
+                    
+            float fDistance = 0;
+            int fTime = 0;
+            SMRoute* route = [self.tripRoute.brokenRoutes objectAtIndex:MIN(1, [self.tripRoute.brokenRoutes count]-1)];
+            if ( route ) {
+                fDistance = route.estimatedRouteDistance / 1000.0;
+                fTime = route.estimatedTimeForRoute / 60;
+            }
+            NSString* distance = [NSString stringWithFormat:@"%4.1f km  %d min.", fDistance, fTime];
+            [wpCell.labelDistance setText:distance];
+            
             return wpCell;
             break;
         }
         case 3:{
             CellId= @"ButtonCell";
-            UITableViewCell* cell= [tableView dequeueReusableCellWithIdentifier:CellId];
-            
+            SMBreakRouteButtonCell* cell= [tableView dequeueReusableCellWithIdentifier:CellId];
+            [cell.btnBreakRoute setTitle:translateString(@"break_route_title") forState:UIControlStateNormal];
             return cell;
             break;
         }

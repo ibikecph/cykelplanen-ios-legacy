@@ -261,6 +261,11 @@ typedef enum {
     mapContainer = nil;
     overviewDestinationBottom = nil;
     breakRouteButton = nil;
+    
+    self.metroMarkers = nil;
+    self.serviceMarkers = nil;
+    self.stationMarkers = nil;
+    
     [super viewDidUnload];
 }
 
@@ -274,7 +279,7 @@ typedef enum {
     
     // Add station markers
     self.stationMarkers = [[NSMutableArray alloc] init];
-    for (int i=0; i<200; i++) {
+    for (int i=0; i<200*3; i++) {
         float jitterx = (rand() % 1000 / 1000.0 * 0.5) - 0.25;
         float jittery = (rand() % 1000 / 1000.0 * 0.5) - 0.25;
         CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(55.678974+jitterx, 12.540156+jittery);
@@ -305,7 +310,7 @@ typedef enum {
     
     // Add metro markers
     self.metroMarkers = [[NSMutableArray alloc] init];
-    for (int i=0; i<150; i++) {
+    for (int i=0; i<150*3; i++) {
         float jitterx = (rand() % 1000 / 1000.0 * 0.5) - 0.25;
         float jittery = (rand() % 1000 / 1000.0 * 0.5) - 0.25;
         CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(55.678974+jitterx, 12.540156+jittery);
@@ -335,7 +340,7 @@ typedef enum {
 
     // Add service markers
     self.serviceMarkers = [[NSMutableArray alloc] init];
-    for (int i=0; i<120; i++) {
+    for (int i=0; i<120*3; i++) {
         float jitterx = (rand() % 1000 / 1000.0 * 0.5) - 0.25;
         float jittery = (rand() % 1000 / 1000.0 * 0.5) - 0.25;
         CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(55.678974+jitterx, 12.540156+jittery);
@@ -702,15 +707,10 @@ typedef enum {
         NSString* alternateTitle = [marker objectForKey:@"alternateTitle"];
         
         [self addMarkerToMapView:self.mpView withCoordinate:coord title:title imageName:image annotationTitle:annotation alternateTitle:alternateTitle];
-    
     }
 }
 
 -(void)startRouting{
-    
-    for (int i=0; i<[self.stationMarkers count]; i++) {
-        [self.mpView addAnnotation:[self.stationMarkers objectAtIndex:i]];
-    }
     
     [self setupMapSize:YES];
     overviewShown = NO;
