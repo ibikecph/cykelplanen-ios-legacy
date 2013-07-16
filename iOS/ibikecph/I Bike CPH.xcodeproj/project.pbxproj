@@ -1284,6 +1284,7 @@
 		78192149179551300082BFE2 /* SMBreakRouteHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBreakRouteHeader.m; sourceTree = "<group>"; };
 		78192150179566540082BFE2 /* SMBreakRouteButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMBreakRouteButtonCell.h; sourceTree = "<group>"; };
 		78192151179566540082BFE2 /* SMBreakRouteButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBreakRouteButtonCell.m; sourceTree = "<group>"; };
+		7819215C17958C1D0082BFE2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		7867350E178C049200DF978F /* css_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = css_logo.png; sourceTree = "<group>"; };
 		7867350F178C049200DF978F /* css_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "css_logo@2x.png"; sourceTree = "<group>"; };
 		78673510178C049200DF978F /* reminder_table_bgr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reminder_table_bgr.png; sourceTree = "<group>"; };
@@ -2133,6 +2134,7 @@
 		4C73D1FF16AEDCDA00AED42A = {
 			isa = PBXGroup;
 			children = (
+				7819215C17958C1D0082BFE2 /* CFNetwork.framework */,
 				7867353B178C432D00DF978F /* 114-Retina-Home-Screen@2x.png */,
 				78673539178C431A00DF978F /* 114-Retina-Home-Screen.png */,
 				4C1D27B11761BE9C00018196 /* Security.framework */,
@@ -3466,6 +3468,7 @@
 					"\"$(SRCROOT)/../../../HockeySDK-iOS/Vendor\"",
 					"\"$(SRCROOT)/../../../../../Documents/FacebookSDK\"",
 					"\"$(SRCROOT)/../../../../../FacebookSDK\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ibikecph/I Bike CPH-Prefix.pch";
@@ -3505,6 +3508,7 @@
 					"\"$(SRCROOT)/../../../HockeySDK-iOS/Vendor\"",
 					"\"$(SRCROOT)/../../../../../Documents/FacebookSDK\"",
 					"\"$(SRCROOT)/../../../../../FacebookSDK\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ibikecph/I Bike CPH-Prefix.pch";

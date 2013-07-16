@@ -13,6 +13,7 @@
 #import "SMBikeWaypointCell.h"
 #import "SMBreakRouteHeader.h"
 #import "SMBreakRouteButtonCell.h"
+#import "SMGeocoder.h"
 
 @interface SMBreakRouteViewController (){
     NSArray* sourceStations;
@@ -22,6 +23,7 @@
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) NSMutableArray* stationNames;
 
 @end
 
@@ -160,10 +162,29 @@
             CellId= @"TransportCell";
             SMTransportationCell* tCell= [tableView dequeueReusableCellWithIdentifier:CellId];
             tCell.selectionStyle= UITableViewCellSelectionStyleNone;
-            [tCell.buttonAddressSource setTitle:self.sourceStation.name forState:UIControlStateNormal];
-            [tCell.buttonAddressSource setTitle:self.sourceStation.name forState:UIControlStateHighlighted];
-            [tCell.buttonAddressDestination setTitle:self.destinationStation.name forState:UIControlStateNormal];
-            [tCell.buttonAddressDestination setTitle:self.destinationStation.name forState:UIControlStateHighlighted];
+//            [tCell.buttonAddressSource setTitle:self.sourceStation.name forState:UIControlStateNormal];
+//            [tCell.buttonAddressSource setTitle:self.sourceStation.name forState:UIControlStateHighlighted];
+//            [tCell.buttonAddressDestination setTitle:self.destinationStation.name forState:UIControlStateNormal];
+//            [tCell.buttonAddressDestination setTitle:self.destinationStation.name forState:UIControlStateHighlighted];
+            
+            CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(self.sourceStation.latitude, self.sourceStation.longitude); 
+            [SMGeocoder reverseGeocode:coord completionHandler:^(NSDictionary *response, NSError *error) {
+                NSString* streetName = [response objectForKey:@"title"];
+                if ([streetName isEqualToString:@""]) {
+                    streetName = [NSString stringWithFormat:@"%f, %f", coord.latitude, coord.longitude];
+                }
+                [tCell.buttonAddressSource setTitle:streetName forState:UIControlStateNormal];
+            }];
+            
+            coord = CLLocationCoordinate2DMake(self.destinationStation.latitude, self.destinationStation.longitude);
+            [SMGeocoder reverseGeocode:coord completionHandler:^(NSDictionary *response, NSError *error) {
+                NSString* streetName = [response objectForKey:@"title"];
+                if ([streetName isEqualToString:@""]) {
+                    streetName = [NSString stringWithFormat:@"%f, %f", coord.latitude, coord.longitude];
+                }
+                [tCell.buttonAddressDestination setTitle:streetName forState:UIControlStateNormal];
+            }];
+            
             return tCell;
             break;
         }
@@ -238,7 +259,32 @@
 -(void)displayAddressViewWithAddressType:(AddressType)pAddressType model:(NSArray*)pModel{
     addressPickerView.addressType= pAddressType;
     pickerModel= pModel;
-    [addressPickerView displayAnimated];
+    
+    self.stationNames = nil;
+    self.stationNames = [[NSMutableArray alloc] init];
+    
+    __block int counter = 0;
+    
+    // Get names of stations
+    NSLog(@"Route info: %d", [pickerModel count]);
+    for (SMSingleRouteInfo* routeInfo in pickerModel) {
+        NSLog(@"STATION NAMES");
+        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(routeInfo.sourceStation.latitude, routeInfo.sourceStation.longitude);
+        [SMGeocoder reverseGeocode:coord completionHandler:^(NSDictionary *response, NSError *error) {
+            NSString* streetName = [response objectForKey:@"title"];
+            NSLog(@"Station NAME: %@", streetName);
+            if ([streetName isEqualToString:@""]) {
+                streetName = [NSString stringWithFormat:@"%f, %f", coord.latitude, coord.longitude];
+            }
+            [self.stationNames addObject:streetName];
+            counter++;
+            
+            if (counter >= [pickerModel count]) {
+                [addressPickerView displayAnimated];
+            }
+        }];
+        
+    }
 }
 
 -(IBAction)onDestinationAddressButtonTap:(id)sender {
@@ -269,10 +315,16 @@
 }
 
 -(NSString*)addressView:(SMAddressPickerView *)pAddressPickerView titleForRow:(int)row{
-    if(addressPickerView.addressType==AddressTypeSource)
-        return ((SMSingleRouteInfo*)[pickerModel objectAtIndex:row]).sourceStation.name;
-    else if(addressPickerView.addressType==AddressTypeDestination)
-        return ((SMSingleRouteInfo*)[pickerModel objectAtIndex:row]).destStation.name;
+    if ( addressPickerView.addressType==AddressTypeSource ) {
+        if ( [self.stationNames count] > row )
+            return [self.stationNames objectAtIndex:row];
+        else
+            return @"0";
+    }
+    else if ( addressPickerView.addressType==AddressTypeDestination ) {
+        //return ((SMSingleRouteInfo*)[pickerModel objectAtIndex:row]).destStation.name;
+        return @"station";
+    }
     
     return @"";
 }

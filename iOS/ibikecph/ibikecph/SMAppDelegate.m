@@ -22,7 +22,7 @@
     self.currentContacts = @[];
     self.currentEvents = @[];
     self.searchHistory = [SMSearchHistory getSearchHistory];
-        
+            
     /**
      * initialize Google Analytics
      */

@@ -458,8 +458,6 @@ typedef enum {
     
     [overviewTimeDistance setText:[NSString stringWithFormat:@"%@, via %@", formatDistance(self.route.estimatedRouteDistance), self.route.longestStreet]];
     
-
-    
     NSArray * a = [self.destination componentsSeparatedByString:@","];
     NSString* streetName= [a objectAtIndex:0];
 //    [overviewDestination setText:[a objectAtIndex:0]];
