@@ -24,6 +24,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) NSMutableArray* stationNames;
+@property (strong, nonatomic) NSMutableArray* destStationNames;
 
 @end
 
@@ -260,30 +261,59 @@
     addressPickerView.addressType= pAddressType;
     pickerModel= pModel;
     
-    self.stationNames = nil;
-    self.stationNames = [[NSMutableArray alloc] init];
-    
-    __block int counter = 0;
-    
-    // Get names of stations
-    NSLog(@"Route info: %d", [pickerModel count]);
-    for (SMSingleRouteInfo* routeInfo in pickerModel) {
-        NSLog(@"STATION NAMES");
-        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(routeInfo.sourceStation.latitude, routeInfo.sourceStation.longitude);
-        [SMGeocoder reverseGeocode:coord completionHandler:^(NSDictionary *response, NSError *error) {
-            NSString* streetName = [response objectForKey:@"title"];
-            NSLog(@"Station NAME: %@", streetName);
-            if ([streetName isEqualToString:@""]) {
-                streetName = [NSString stringWithFormat:@"%f, %f", coord.latitude, coord.longitude];
-            }
-            [self.stationNames addObject:streetName];
-            counter++;
-            
-            if (counter >= [pickerModel count]) {
-                [addressPickerView displayAnimated];
-            }
-        }];
+    if ( addressPickerView.addressType == AddressTypeSource ) {
         
+        self.stationNames = nil;
+        self.stationNames = [[NSMutableArray alloc] init];
+        
+        __block int counter = 0;
+        
+        // Get names of stations
+        NSLog(@"Route info: %d", [pickerModel count]);
+        for (SMSingleRouteInfo* routeInfo in pickerModel) {
+            NSLog(@"STATION NAMES");
+            CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(routeInfo.sourceStation.latitude, routeInfo.sourceStation.longitude);
+            [SMGeocoder reverseGeocode:coord completionHandler:^(NSDictionary *response, NSError *error) {
+                NSString* streetName = [response objectForKey:@"title"];
+                NSLog(@"Station NAME: %@", streetName);
+                if ([streetName isEqualToString:@""]) {
+                    streetName = [NSString stringWithFormat:@"%f, %f", coord.latitude, coord.longitude];
+                }
+                [self.stationNames addObject:streetName];
+                counter++;
+                
+                if (counter >= [pickerModel count]) {
+                    [addressPickerView displayAnimated];
+                }
+            }];
+            
+        }
+    } else if ( addressPickerView.addressType == AddressTypeDestination ) {
+        self.destStationNames = nil;
+        self.destStationNames = [[NSMutableArray alloc] init];
+        
+        __block int counter = 0;
+        
+        // Get names of stations
+        NSLog(@"Route info: %d", [pickerModel count]);
+        for (SMSingleRouteInfo* routeInfo in pickerModel) {
+            NSLog(@"STATION NAMES");
+            CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(routeInfo.destStation.latitude, routeInfo.destStation.longitude);
+            [SMGeocoder reverseGeocode:coord completionHandler:^(NSDictionary *response, NSError *error) {
+                NSString* streetName = [response objectForKey:@"title"];
+                NSLog(@"Station NAME: %@", streetName);
+                if ([streetName isEqualToString:@""]) {
+                    streetName = [NSString stringWithFormat:@"%f, %f", coord.latitude, coord.longitude];
+                }
+                [self.destStationNames addObject:streetName];
+                counter++;
+                
+                if (counter >= [pickerModel count]) {
+                    [addressPickerView displayAnimated];
+                }
+            }];
+            
+        }
     }
 }
 
@@ -323,7 +353,10 @@
     }
     else if ( addressPickerView.addressType==AddressTypeDestination ) {
         //return ((SMSingleRouteInfo*)[pickerModel objectAtIndex:row]).destStation.name;
-        return @"station";
+        if ( [self.destStationNames count] > row )
+            return [self.destStationNames objectAtIndex:row];
+        else
+            return @"0";
     }
     
     return @"";
