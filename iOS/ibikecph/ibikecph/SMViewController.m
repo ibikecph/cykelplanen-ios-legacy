@@ -41,7 +41,8 @@
 typedef enum {
     menuFavorites = 0,
     menuAccount = 1,
-    menuInfo = 2
+    menuInfo = 2,
+    menuReminders = 3
 } MenuType;
 
 typedef enum {
@@ -62,6 +63,10 @@ typedef enum {
 @property (nonatomic, strong) RMMapView *mpView;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnReminders;
+@property (weak, nonatomic) IBOutlet UIView *headerReminders;
+@property (weak, nonatomic) IBOutlet UITableView *tblFavorites;
+@property (weak, nonatomic) IBOutlet UIButton *btnFavorites;
+@property (weak, nonatomic) IBOutlet UIImageView *imgReminders;
 @property BOOL reminderFolded;
 
 /**
@@ -220,6 +225,10 @@ typedef enum {
     pinButton = nil;
     [self setBtnReminders:nil];
     [self setBtnReminders:nil];
+    [self setHeaderReminders:nil];
+    [self setTblFavorites:nil];
+    [self setBtnFavorites:nil];
+    [self setImgReminders:nil];
     [super viewDidUnload];
 }
 
@@ -335,11 +344,11 @@ typedef enum {
         //return [SMEmptyFavoritesCell getHeight] + 45.0f * 2.0;
         CGFloat startY = favHeader.frame.origin.y;
         CGFloat maxHeight = menuView.frame.size.height - startY;
-        return MIN(tblMenu.contentSize.height + 45.0f, maxHeight - 2 * 45.0f);
+        return MIN(tblMenu.contentSize.height + 45.0f, maxHeight - 3 * 45.0f);
     } else {
         CGFloat startY = favHeader.frame.origin.y;
         CGFloat maxHeight = menuView.frame.size.height - startY;
-        return MIN(tblMenu.contentSize.height + 45.0f, maxHeight - 2 * 45.0f);
+        return MIN(tblMenu.contentSize.height + 45.0f, maxHeight - 3 * 45.0f);
     }
     return 45.0f;
 }
@@ -349,6 +358,30 @@ typedef enum {
     CGFloat maxHeight = menuView.frame.size.height - startY;
     [tblMenu reloadData];
     switch (menuType) {
+        case menuReminders: {
+            [favEditDone setHidden:YES];
+            [favEditStart setHidden:YES];
+            CGRect frame = infHeader.frame;
+            //frame.origin.y = startY + 2 * 45.0f;
+            frame.size.height = 45.0f;
+            [infHeader setFrame:frame];
+            
+            frame = favHeader.frame;
+            frame.origin.y = startY;
+            frame.size.height = 45.0f;
+            [favHeader setFrame:frame];
+            
+            frame = accHeader.frame;
+            frame.origin.y = startY + 45.0f;
+            frame.size.height = 45.0f;
+            [accHeader setFrame:frame];
+            
+            frame = self.headerReminders.frame;
+            frame.origin.y = favHeader.frame.origin.y + 45.0f;
+            frame.size.height = maxHeight - 3 * 45.0f;
+            [self.headerReminders setFrame:frame];
+        }
+            break;
         case menuInfo: {
             [favEditDone setHidden:YES];
             [favEditStart setHidden:YES];
@@ -398,6 +431,9 @@ typedef enum {
         }
             break;
         case menuFavorites: {
+        
+            [tblMenu reloadData];
+            
             if ([self.favoritesList count] == 0) {
                 [favEditDone setHidden:YES];
                 [favEditStart setHidden:YES];
@@ -408,14 +444,14 @@ typedef enum {
                 } else {
                     [favEditDone setHidden:YES];
                     [favEditStart setHidden:NO];
-                }                
+                }
             }
             CGRect frame = favHeader.frame;
             frame.origin.y = startY;
             frame.size.height = [self heightForFavorites];
             [favHeader setFrame:frame];
             frame = accHeader.frame;
-            frame.origin.y = startY + favHeader.frame.size.height;
+            frame.origin.y = startY + favHeader.frame.size.height + 45.0;
             frame.size.height = 45.0f;
             [accHeader setFrame:frame];
             frame = infHeader.frame;
@@ -423,16 +459,17 @@ typedef enum {
             frame.size.height = 45.0f;
             [infHeader setFrame:frame];
             
-            frame = self.btnReminders.frame;
-            frame.origin.y = infHeader.frame.origin.y + 45.0f;
+            frame = self.headerReminders.frame;
+            frame.origin.y = accHeader.frame.origin.y - 45.0f;
             frame.size.height = 45.0f;
-            [self.btnReminders setFrame:frame];
+            [self.headerReminders setFrame:frame];
             
             if (favHeader.frame.size.height < tblMenu.contentSize.height) {
                 [tblMenu setBounces:YES];
             } else {
                 [tblMenu setBounces:NO];
             }
+            
         }
             break;
         default:
@@ -1053,27 +1090,84 @@ typedef enum {
     }
 }
 
+
 - (IBAction)toggleReminders:(UIButton *)sender {
     self.reminderFolded = !self.reminderFolded;
     
-    [sender setSelected:self.reminderFolded];
-    
-    NSIndexSet* sections = [NSIndexSet indexSetWithIndex:1];
-    [tblMenu reloadSections:sections withRowAnimation:UITableViewRowAnimationAutomatic];
-    
-    [self tapFavorites:sender];
-    if ( self.reminderFolded == NO && [self.favoritesList count] > 0 ) {
-        [tblMenu setContentOffset:CGPointMake(0, 408) animated:YES];
+    if (self.headerReminders.frame.size.height <= 50) {
+        self.reminderFolded = YES;
     }
+    
+    //[sender setSelected:self.reminderFolded];
+    
+//    NSIndexSet* sections = [NSIndexSet indexSetWithIndex:1];
+//    [tblMenu reloadSections:sections withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    //[self tapFavorites:sender];
+    
+    CGFloat startY = favHeader.frame.origin.y;
+    CGFloat maxHeight = menuView.frame.size.height - startY;
+    if ( self.reminderFolded ) {
+        
+        [UIView animateWithDuration:0.4f animations:^{
+            //[self openMenu:menuReminders];
+            
+            [self.imgReminders setImage:[UIImage imageNamed:@"reminders_arrow_down"]];
+            
+            [favEditDone setHidden:YES];
+            [favEditStart setHidden:YES];
+            CGRect frame = favHeader.frame;
+            frame.size.height = 45.0f;
+            [favHeader setFrame:frame];
+            
+            frame = infHeader.frame;
+            frame.origin.y = maxHeight - 45.0f * 0.5;
+            frame.size.height = 45.0f;
+            [infHeader setFrame:frame];
+            
+            frame = accHeader.frame;
+            frame.origin.y = maxHeight - 1.5*45.0f;
+            frame.size.height = 45.0f;
+            [accHeader setFrame:frame];
+            
+            frame = self.headerReminders.frame;
+            frame.origin.y = favHeader.frame.origin.y + 45.0f;
+            frame.size.height = maxHeight - 3 * 45.0f;
+            [self.headerReminders setFrame:frame];
+            
+        }];
+    } else {
+        [UIView animateWithDuration:0.4f animations:^{
+             [self.imgReminders setImage:[UIImage imageNamed:@"reminders_arrow_up"]];
+            [self openMenu:menuFavorites];
+        }];
+        
+    }
+    
+//    if ( self.reminderFolded == NO && [self.favoritesList count] > 0 ) {
+//        int numItems = [tblMenu numberOfRowsInSection:0];
+//        float height = (numItems + 0) * 45.0f + 1.0f;
+//        [tblMenu setContentOffset:CGPointMake(0, height) animated:YES];
+//    }
 }
 
 #pragma mark - tableview delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    
+    if (tableView == self.tblFavorites) {
+        return 1;
+    } else {
+        return 2;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    if (tableView == self.tblFavorites) {
+        return 5;
+    }
+    
     if (section == 0) {
         if ([self.favoritesList count] > 0) {
             return [self.favoritesList count];
@@ -1085,14 +1179,14 @@ typedef enum {
         if ( self.reminderFolded ){
             return 0;
         } else {
-            return 5;
+            return 0;
         }
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.section == 1) {
+    if (tableView == self.tblFavorites) {
         NSArray* weekDays = @[@"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday"];
         SMReminderTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"reminderTableCell"];
         [cell setupWithTitle:[weekDays objectAtIndex:indexPath.row]];
@@ -1326,8 +1420,9 @@ typedef enum {
     if ( section == 0 ) {
         return [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     } else {
-        UITableViewCell* header = [tableView dequeueReusableCellWithIdentifier:@"reminderHeader"];
-        return header;
+//        UITableViewCell* header = [tableView dequeueReusableCellWithIdentifier:@"reminderHeader"];
+//        return header;
+        return [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     }
 }
 
