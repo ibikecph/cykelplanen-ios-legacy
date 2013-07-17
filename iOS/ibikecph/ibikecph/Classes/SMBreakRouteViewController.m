@@ -193,8 +193,8 @@
             CellId= @"DestinationCell";
             SMBikeWaypointCell* wpCell= [tableView dequeueReusableCellWithIdentifier:CellId];
             [wpCell setupWithString:self.destinationName];
-            [wpCell.labelAddressBottom setText:@"Some address here"];
-                    
+//            [wpCell.labelAddressBottom setText:@"Some address here"];
+            
             float fDistance = 0;
             int fTime = 0;
             SMRoute* route = [self.tripRoute.brokenRoutes objectAtIndex:MIN(1, [self.tripRoute.brokenRoutes count]-1)];
