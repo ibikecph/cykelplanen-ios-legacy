@@ -34,7 +34,8 @@
     [self.lblWayname setFrame:frame];
     [self.lblDistance setText:formatDistance(turn.lengthInMeters)]; // dynamic distance
     
-    [self.imgDirection setImage:[turn largeDirectionIcon]];
+    //[self.imgDirection setImage:[turn largeDirectionIcon]];
+    [self.imgDirection setImage:[turn smallDirectionIcon]];
 }
 
 + (CGFloat)getHeight {
