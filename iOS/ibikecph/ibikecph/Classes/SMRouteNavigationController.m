@@ -37,14 +37,17 @@
 #import "SMRouteTypeSelectCell.h"
 #import "SMTripRoute.h"
 #import "SMBreakRouteViewController.h"
-
+#import "SMTransportation.h"
 #include "float.h"
+
 typedef enum {
     directionsFullscreen,
     directionsNormal,
     directionsMini,
     directionsHidden
 } DirectionsState;
+
+
 
 @interface SMRouteNavigationController () {
     DirectionsState currentDirectionsState;
@@ -88,6 +91,10 @@ typedef enum {
 #define MAX_SEGMENTS 1
 #define MAX_TABLE 80.0f
 
+#define keyZIndex @"keyZIndex"
+#define MAP_LEVEL_STATIONS 80
+#define MAP_LEVEL_METRO 80
+#define MAP_LEVEL_SERVICES 80
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -138,7 +145,6 @@ typedef enum {
     
     // setup cargo items
     
-        
     self.cargoItems= OSRM_SERVERS;
     [self.cargoTableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     [self.cargoTableView reloadData];
@@ -147,7 +153,6 @@ typedef enum {
     [centerView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
     
     [self loadMarkers];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -276,37 +281,50 @@ typedef enum {
 #pragma mark - station markers
 
 - (void)loadMarkers {
+       self.stationMarkers = [[NSMutableArray alloc] init]; 
+    NSArray* lines= [SMTransportation instance].lines;
     
-    // Add station markers
-    self.stationMarkers = [[NSMutableArray alloc] init];
-    for (int i=0; i<200*3; i++) {
-        float jitterx = (rand() % 1000 / 1000.0 * 0.5) - 0.25;
-        float jittery = (rand() % 1000 / 1000.0 * 0.5) - 0.25;
-        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(55.678974+jitterx, 12.540156+jittery);
-        //[self addMarkerToMapView:self.mpView withCoordinate:coord title:@"Marker" imageName:@"station_icon" annotationTitle:@"Marker text" alternateTitle:@"Marker alternate title"];
+    for( SMTransportationLine* transportationLine in lines){
         
-        NSString* imageName = @"station_icon";
-        NSString* title = @"station";
-        NSString* annotationTitle = @"title";
-        NSString* alternateTitle = @"alternate title";
-        
-        SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
-        annotation.annotationType = @"marker";
-        annotation.annotationIcon = [UIImage imageNamed:imageName];
-        annotation.anchorPoint = CGPointMake(0.5, 1.0);
-        NSMutableArray * arr = [[self.source componentsSeparatedByString:@","] mutableCopy];
-        annotation.title = annotationTitle;
-        
-        if ([annotation.title isEqualToString:@""] && alternateTitle) {
-            annotation.title = alternateTitle;
-        }
-        
-        annotation.subtitle = [[arr componentsJoinedByString:@","] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        //[self.mpView addAnnotation:annotation];
-        
-        [self.stationMarkers addObject:annotation];
-    }
+        for(int i=0; i<transportationLine.stations.count; i++){
+            SMStationInfo* stationLocation= [transportationLine.stations objectAtIndex:i];
+            
+            CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(stationLocation.latitude, stationLocation.longitude);
+            //[self addMarkerToMapView:self.mpView withCoordinate:coord title:@"Marker" imageName:@"station_icon" annotationTitle:@"Marker text" alternateTitle:@"Marker alternate title"];
+            
+            NSString* imageName = @"station_icon";
+            NSString* title = @"station";
+            NSString* annotationTitle = @"title";
+            NSString* alternateTitle = @"alternate title";
+            
+            SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
+            annotation.annotationType = @"marker";
+            annotation.annotationIcon = [UIImage imageNamed:imageName];
+            annotation.anchorPoint = CGPointMake(0.5, 1.0);
+            NSMutableArray * arr = [[self.source componentsSeparatedByString:@","] mutableCopy];
+            annotation.title = annotationTitle;
+            
+            if ([annotation.title isEqualToString:@""] && alternateTitle) {
+                annotation.title = alternateTitle;
+            }
+            
+           
+            annotation.userInfo= @{keyZIndex: [NSNumber numberWithInt:MAP_LEVEL_STATIONS]};
+            
+            annotation.subtitle = [[arr componentsJoinedByString:@","] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            //[self.mpView addAnnotation:annotation];
+            
+            [self.stationMarkers addObject:annotation];
 
+        }
+    }
+    // Add station markers
+
+//    for (int i=0; i<200*3; i++) {
+//        float jitterx = (rand() % 1000 / 1000.0 * 0.5) - 0.25;
+//        float jittery = (rand() % 1000 / 1000.0 * 0.5) - 0.25;
+//            }
+//
     
     // Add metro markers
     self.metroMarkers = [[NSMutableArray alloc] init];
@@ -355,6 +373,7 @@ typedef enum {
         annotation.annotationType = @"marker";
         annotation.annotationIcon = [UIImage imageNamed:imageName];
         annotation.anchorPoint = CGPointMake(0.5, 1.0);
+
         NSMutableArray * arr = [[self.source componentsSeparatedByString:@","] mutableCopy];
         annotation.title = annotationTitle;
         
@@ -1043,10 +1062,15 @@ typedef enum {
 
         return line;
     }
-    
+
     if ([annotation.annotationType isEqualToString:@"marker"]) {
+        NSNumber* zIndex= [annotation.userInfo objectForKey:keyZIndex];
+        int z= 100;
+        if(zIndex && ![zIndex isEqual:[NSNull null]]){
+            z= zIndex.intValue;
+        }
         RMMarker * rm = [[RMMarker alloc] initWithUIImage:annotation.annotationIcon anchorPoint:annotation.anchorPoint];
-        [rm setZPosition:100];
+        [rm setZPosition:z];
         return rm;
     }
     
