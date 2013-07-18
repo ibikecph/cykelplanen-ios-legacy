@@ -213,7 +213,9 @@
             CellId= @"DestinationCell";
             SMBikeWaypointCell* wpCell= [tableView dequeueReusableCellWithIdentifier:CellId];
             [wpCell setupWithString:self.destinationName];
-//            [wpCell.labelAddressBottom setText:@"Some address here"];
+            [wpCell.labelAddressBottom setText:self.destinationName];
+            
+            NSLog(@"DEST CELL: %@", self.destinationName);
             
             float fDistance = 0;
             int fTime = 0;
