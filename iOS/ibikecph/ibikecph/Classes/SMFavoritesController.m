@@ -42,8 +42,10 @@ typedef enum {
     [self.screenText setText:translateString(@"favorites_text")];
     [self.btnSave setTitle:translateString(@"favorites_save_btn") forState:UIControlStateNormal];
     [self.btnSkip setTitle:translateString(@"btn_skip") forState:UIControlStateNormal];
-    [favoriteHome setText:translateString(@"favorites_home_placeholder")];
-    [favoriteWork setText:translateString(@"favorites_work_placeholder")];
+    
+    // Do not set default text for search fields in search controller
+    //[favoriteHome setText:translateString(@"favorites_home_placeholder")];
+    //[favoriteWork setText:translateString(@"favorites_work_placeholder")];
     
 //    UIColor* lightGray = [UIColor colorWithRed:139.0/255.0 green:139.0/255.0 blue:139.0/255.0 alpha:139.0/255.0];
 //    [favoriteHome setTextColor:lightGray];

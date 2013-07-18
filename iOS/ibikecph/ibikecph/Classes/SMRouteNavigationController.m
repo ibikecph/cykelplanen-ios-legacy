@@ -1644,14 +1644,14 @@ typedef enum {
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     if(tableView==self.cargoTableView){
         [self tappedOnRow:indexPath.row];
-        [self slideBackToMap];
+        //[self slideBackToMap];
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if(tableView==self.cargoTableView){
         [self tappedOnRow:indexPath.row];
-        [self slideBackToMap];
+        //[self slideBackToMap];
     }else{
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }

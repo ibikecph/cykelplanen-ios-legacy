@@ -510,6 +510,9 @@
 		7867358F178C642100DF978F /* about_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7867358D178C642100DF978F /* about_header@2x.png */; };
 		78673592178C643800DF978F /* about_bgr.png in Resources */ = {isa = PBXBuildFile; fileRef = 78673590178C643800DF978F /* about_bgr.png */; };
 		78673593178C643800DF978F /* about_bgr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78673591178C643800DF978F /* about_bgr@2x.png */; };
+		789E797B17980DE600218C73 /* field_user_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 789E797A17980DE600218C73 /* field_user_icon@2x.png */; };
+		789E798417980EC500218C73 /* field_password_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 789E798317980EC500218C73 /* field_password_icon@2x.png */; };
+		789E79861798101200218C73 /* field_email_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 789E79851798101200218C73 /* field_email_icon@2x.png */; };
 		78C53774178D4CF600F6BAD3 /* break_route_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C5375F178D4CF600F6BAD3 /* break_route_active.png */; };
 		78C53775178D4CF600F6BAD3 /* break_route_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C53760178D4CF600F6BAD3 /* break_route_active@2x.png */; };
 		78C53776178D4CF600F6BAD3 /* break_route_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C53761178D4CF600F6BAD3 /* break_route_press.png */; };
@@ -1261,6 +1264,9 @@
 		7867358D178C642100DF978F /* about_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "about_header@2x.png"; path = "../about_header@2x.png"; sourceTree = "<group>"; };
 		78673590178C643800DF978F /* about_bgr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = about_bgr.png; path = ../about_bgr.png; sourceTree = "<group>"; };
 		78673591178C643800DF978F /* about_bgr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "about_bgr@2x.png"; path = "../about_bgr@2x.png"; sourceTree = "<group>"; };
+		789E797A17980DE600218C73 /* field_user_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "field_user_icon@2x.png"; path = "../../../../../../Documents/CSS/iOS/Cykelsuperstierne/Cykelsuperstierne/Assets/icons/field_user_icon@2x.png"; sourceTree = "<group>"; };
+		789E798317980EC500218C73 /* field_password_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "field_password_icon@2x.png"; sourceTree = "<group>"; };
+		789E79851798101200218C73 /* field_email_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "field_email_icon@2x.png"; sourceTree = "<group>"; };
 		78C5375F178D4CF600F6BAD3 /* break_route_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = break_route_active.png; path = ../break_route_active.png; sourceTree = "<group>"; };
 		78C53760178D4CF600F6BAD3 /* break_route_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "break_route_active@2x.png"; path = "../break_route_active@2x.png"; sourceTree = "<group>"; };
 		78C53761178D4CF600F6BAD3 /* break_route_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = break_route_press.png; path = ../break_route_press.png; sourceTree = "<group>"; };
@@ -2009,6 +2015,9 @@
 		4C632D691701E9780027E2D9 /* direction-icons */ = {
 			isa = PBXGroup;
 			children = (
+				789E79851798101200218C73 /* field_email_icon@2x.png */,
+				789E798317980EC500218C73 /* field_password_icon@2x.png */,
+				789E797A17980DE600218C73 /* field_user_icon@2x.png */,
 				4C632D6A1701E9780027E2D9 /* bike.png */,
 				4C632D6B1701E9780027E2D9 /* bike@2x.png */,
 				4C632D6C1701E9780027E2D9 /* down-left.png */,
@@ -3172,6 +3181,9 @@
 				78D3E69F1796F249006D0782 /* reminders_arrow_down@2x.png in Resources */,
 				78D3E6A01796F249006D0782 /* reminders_arrow_up.png in Resources */,
 				78D3E6A11796F249006D0782 /* reminders_arrow_up@2x.png in Resources */,
+				789E797B17980DE600218C73 /* field_user_icon@2x.png in Resources */,
+				789E798417980EC500218C73 /* field_password_icon@2x.png in Resources */,
+				789E79861798101200218C73 /* field_email_icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
