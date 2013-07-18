@@ -14,7 +14,7 @@
 #import "SMBreakRouteHeader.h"
 #import "SMBreakRouteButtonCell.h"
 #import "SMGeocoder.h"
-
+#import "SMTransportation.h"
 @interface SMBreakRouteViewController (){
     NSArray* sourceStations;
     NSArray* destinationStations;
@@ -28,7 +28,10 @@
 
 @end
 
-@implementation SMBreakRouteViewController
+@implementation SMBreakRouteViewController{
+    BOOL breakRouteFailed;
+    BOOL displayed;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,6 +46,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    breakRouteFailed= NO;
+    displayed= NO;
     
     [self.titleLabel setText:translateString(@"break_route_title")];
     
@@ -70,22 +76,36 @@
 
 }
 
+-(void)displayBreakRouteError{
+    UIAlertView* noRouteAlertView= [[UIAlertView alloc] initWithTitle:@"No route" message:@"Route cannot be broken" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [noRouteAlertView show];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self.tableView reloadData];
-    if(!sourceStations || sourceStations.count==0){
-        UIAlertView* noRouteAlertView= [[UIAlertView alloc] initWithTitle:@"No route" message:@"Route cannot be broken" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [noRouteAlertView show];
+
+    NSArray* lines= [SMTransportation instance].lines;
+    
+    for( SMTransportationLine* transportationLine in lines){
+        
+        for(int i=0; i<transportationLine.stations.count; i++){
+            SMStationInfo* stationLocation= [transportationLine.stations objectAtIndex:i];
+            NSLog(@"Station %@",stationLocation.name);
+        }
     }
     
-    [self.tableView reloadData];
-
-   
+    if(breakRouteFailed){
+        [self displayBreakRouteError];
+    }else{
+        [self.tableView reloadData];
+    }
+    
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -392,7 +412,9 @@
 
 #pragma mark - break route delegate
 
--(void)didStartBreakingRoute:(SMTripRoute*)route{}
+-(void)didStartBreakingRoute:(SMTripRoute*)route{
+
+}
 
 -(void)didFinishBreakingRoute:(SMTripRoute*)route{
     [self.tableView reloadData];
@@ -429,9 +451,12 @@
         self.destinationStation= routeInfo.destStation;
         
     }else{
-        // no routes found
-        // this is handled in the viewDidAppear since the view might not be visible at this point, therefore it cannot be dismissed
-
+        if(displayed){
+            [self displayBreakRouteError];
+        }else{
+            breakRouteFailed= YES;
+        }
+        
     }
 
     [self.tableView reloadData];
@@ -444,8 +469,6 @@
 -(NSArray*)endStationsForSourceStation:(SMStationInfo*)pSourceStation{
     return [self.tripRoute.transportationRoutes filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.sourceStation.longitude == %lf AND SELF.sourceStation.latitude == %lf",pSourceStation.longitude, pSourceStation.latitude]];
 }
-
-
 
 #pragma mark - getters and setters
 

@@ -83,6 +83,7 @@ typedef enum {
 @property BOOL stationMarkersVisible;
 @property BOOL metroMarkersVisible;
 @property BOOL serviceMarkersVisible;
+@property BOOL pathVisible;
 
 @end
 
@@ -209,6 +210,8 @@ typedef enum {
     } else {
         [UIApplication sharedApplication].idleTimerDisabled = NO;
     }
+    
+
 //    [self.mapFade setFrame:self.mpView.frame];
     
 }
@@ -288,7 +291,7 @@ typedef enum {
         
         for(int i=0; i<transportationLine.stations.count; i++){
             SMStationInfo* stationLocation= [transportationLine.stations objectAtIndex:i];
-            
+            NSLog(@"Station %@",stationLocation.name);
             CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(stationLocation.latitude, stationLocation.longitude);
             //[self addMarkerToMapView:self.mpView withCoordinate:coord title:@"Marker" imageName:@"station_icon" annotationTitle:@"Marker text" alternateTitle:@"Marker alternate title"];
             
@@ -308,7 +311,6 @@ typedef enum {
                 annotation.title = alternateTitle;
             }
             
-           
             annotation.userInfo= @{keyZIndex: [NSNumber numberWithInt:MAP_LEVEL_STATIONS]};
             
             annotation.subtitle = [[arr componentsJoinedByString:@","] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -390,6 +392,7 @@ typedef enum {
     
 }
 
+
 - (void)toggleMarkers:(NSString*)markerType {
     if ( [markerType isEqualToString:@"metro"] ) {
         self.metroMarkersVisible = !self.metroMarkersVisible;
@@ -411,6 +414,13 @@ typedef enum {
             [self.mpView addAnnotations:self.stationMarkers];
         } else {
             [self.mpView removeAnnotations:self.stationMarkers];
+        }
+    }else if([markerType isEqualToString:@"path"]){
+        self.pathVisible= !self.pathVisible;
+        if ( self.pathVisible ) {
+            [self showRouteAnnotation];
+        } else {
+            [self hideRouteAnnotation];
         }
     }
 }
@@ -870,7 +880,7 @@ typedef enum {
 }
 
 - (NSDictionary*) addRouteAnnotation:(SMRoute *)r {
-
+    self.pathVisible= YES;
     RMAnnotation *calculatedPathAnnotation = [RMAnnotation annotationWithMapView:self.mpView coordinate:[r getStartLocation].coordinate andTitle:nil];
     calculatedPathAnnotation.annotationType = @"path";
     calculatedPathAnnotation.userInfo = @{
@@ -886,6 +896,22 @@ typedef enum {
              @"neCoordinate" : calculatedPathAnnotation.neCoordinate,
              @"swCoordinate" : calculatedPathAnnotation.swCoordinate
              };
+}
+
+-(void)showRouteAnnotation{
+    self.pathVisible= YES;
+    for(SMRoute* rt in self.brokenRoute.brokenRoutes){
+        [self addRouteAnnotation:rt];
+    }
+}
+
+-(void)hideRouteAnnotation{
+    self.pathVisible= NO;
+    for(RMAnnotation* annotation in self.mpView.annotations){
+        if([annotation.annotationType isEqual:@"path"]){
+            [self.mpView removeAnnotation:annotation];
+        }
+    }
 }
 
 - (void)resetZoom {
@@ -1012,6 +1038,12 @@ typedef enum {
         for (id v in self.mpView.subviews) {
             if ([v isKindOfClass:[SMCalloutView class]]) {
                 [v removeFromSuperview];
+            }
+        }
+        
+        for(SMAnnotation* pAnnotation in map.annotations){
+            if([pAnnotation.annotationType isEqualToString:@"marker"]){
+                [pAnnotation hideCallout];
             }
         }
         
@@ -1153,7 +1185,7 @@ typedef enum {
 #pragma mark - route delegate
 
 -(void)didStartBreakingRoute:(SMRoute *)route{
-    
+
 }
 
 -(void)didFinishBreakingRoute:(SMRoute *)route{
@@ -1605,51 +1637,31 @@ typedef enum {
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     if(tableView==self.cargoTableView){
-        NSDictionary* currentRow = [self.cargoItems objectAtIndex:indexPath.row];
-        //        self.osrmServer = [currentRow objectForKey:@"server"];
-        //        [self newRouteType];
-        
-        NSLog(@"Markers selected: %d", indexPath.row);
-        
-        if ( indexPath.row == 1 ) {
-            [self toggleMarkers:@"service"];
-        } else if ( indexPath.row == 2 ) {
-            [self toggleMarkers:@"station"];
-        } else if ( indexPath.row == 3 ) {
-            [self toggleMarkers:@"metro"];
-        }
-        
-    [self slideBackToMap];
+        [self tappedOnRow:indexPath.row];
+        [self slideBackToMap];
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if(tableView==self.cargoTableView){
-        NSDictionary* currentRow = [self.cargoItems objectAtIndex:indexPath.row];
-//        self.osrmServer = [currentRow objectForKey:@"server"];
-//        [self newRouteType];
-        
-        NSLog(@"Markers selected: %d", indexPath.row);
-        
-        if ( indexPath.row == 1 ) {
-            [self toggleMarkers:@"service"];
-        } else if ( indexPath.row == 2 ) {
-            [self toggleMarkers:@"station"];
-        } else if ( indexPath.row == 3 ) {
-            [self toggleMarkers:@"metro"];
-        }
-    
-    [self slideBackToMap];
-        
+        [self tappedOnRow:indexPath.row];
+        [self slideBackToMap];
     }else{
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
-//    int i = [indexPath row];
-//    if (i < 0 || i >= self.route.turnInstructions.count)
-//        return;
-//    SMTurnInstruction *selectedTurn = [self.route.turnInstructions objectAtIndex:i];
-//
-//    [self zoomToLocation:selectedTurn.loc temporary:YES];
+}
+
+-(void) tappedOnRow:(int)row{
+    if (row == 0){
+        [self toggleMarkers:@"path"];
+    } else if ( row == 1 ) {
+        [self toggleMarkers:@"service"];
+    } else if ( row == 2 ) {
+        [self toggleMarkers:@"station"];
+    } else if ( row == 3 ) {
+        [self toggleMarkers:@"metro"];
+    }
+
 }
 
 #pragma mark - alert view delegate

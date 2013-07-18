@@ -7,15 +7,13 @@
 //
 
 #import "SMStationInfo.h"
-
+#import "SMGeocoder.h"
 @implementation SMStationInfo
 
 -(id)initWithLongitude:(double)lon latitude:(double)lat{
     if(self= [super init]){
+        self.name= [NSString stringWithFormat:@"Station %lf %lf",lon, lat];
         self.location= [[CLLocation alloc] initWithLatitude:lat longitude:lon];
-        _longitude= lon;
-        _latitude= lat;
-        self.name= [NSString stringWithFormat:@"Station %lf %lf",_latitude,_longitude];
     }
     return self;
 }
@@ -24,7 +22,24 @@
     _location= pLocation;
     _longitude= pLocation.coordinate.longitude;
     _latitude= pLocation.coordinate.latitude;
-    self.name= [NSString stringWithFormat:@"Station %lf %lf",_latitude,_longitude];
+    [self fetchName];
+//    [self performSelectorOnMainThread:@selector(fetchName) withObject:nil waitUntilDone:NO];
+}
+
+-(void)fetchName{
+//    self.name= @"Statio"
+//    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(_latitude, _longitude);
+//    __weak SMStationInfo* selfRef= self;
+//    [SMGeocoder reverseGeocode:coord completionHandler:^(NSDictionary *response, NSError *error) {
+//
+//        NSString* streetName = [response objectForKey:@"title"];
+//        if (!streetName || [streetName isEqual:[NSNull null]] || [streetName isEqualToString:@""]) {
+//            streetName = [NSString stringWithFormat:@"%f, %f", coord.latitude, coord.longitude];
+//            
+//        }
+//        selfRef.name= @"asdfasd";
+//    }];
+
 }
 
 -(BOOL)isEqual:(id)object{

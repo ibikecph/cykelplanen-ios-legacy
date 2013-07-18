@@ -166,10 +166,8 @@ typedef enum {
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(invalidToken:) name:@"invalidToken" object:nil];
     
-    
     [centerView setupForHorizontalSwipeWithStart:0.0f andEnd:260.0f andStart:0.0f andPullView:menuBtn];
     [centerView addPullView:blockingView];
-
 }
 
 - (void)invalidToken:(NSNotification*)notification {
