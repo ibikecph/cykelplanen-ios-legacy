@@ -1670,7 +1670,7 @@
                                                             <action selector="toggleReminders:" destination="2" eventType="touchUpInside" id="DG2-To-St3"/>
                                                         </connections>
                                                     </button>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="reminders_arrow_up.png" id="dvZ-qI-8Lh">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="reminders_arrow_down.png" id="dvZ-qI-8Lh">
                                                         <rect key="frame" x="226" y="11" width="22" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
@@ -4532,7 +4532,7 @@
         <image name="register_orange.png" width="22" height="22"/>
         <image name="reminder_icon.png" width="22" height="22"/>
         <image name="reminder_table_bgr.png" width="288" height="225"/>
-        <image name="reminders_arrow_up.png" width="22" height="22"/>
+        <image name="reminders_arrow_down.png" width="22" height="22"/>
         <image name="reportBottom.png" width="320" height="64"/>
         <image name="reportBulb.png" width="82" height="121"/>
         <image name="reportClose.png" width="47" height="36"/>
@@ -4578,7 +4578,6 @@
         <image name="white_btn.png" width="12" height="12"/>
         <image name="white_btn_pressed.png" width="11" height="11"/>
     </resources>
-
     <classes>
         <class className="AsyncImageView" superclassName="UIImageView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AsyncImageView.h"/>
@@ -4659,6 +4658,11 @@
         <class className="SMBreakRouteViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SMBreakRouteViewController.h"/>
             <relationships>
+                <relationship kind="action" name="onBack:"/>
+                <relationship kind="action" name="onBreakRoute:"/>
+                <relationship kind="action" name="onDestinationAddressButtonTap:"/>
+                <relationship kind="action" name="onInfoTap:"/>
+                <relationship kind="action" name="onSourceAddressButtonTap:"/>
                 <relationship kind="outlet" name="buttonAddressDestination" candidateClass="SMPatternedButton"/>
                 <relationship kind="outlet" name="buttonAddressSource" candidateClass="SMPatternedButton"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
@@ -4930,6 +4934,29 @@
         <class className="SMViewController" superclassName="SMTranslatedViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SMViewController.h"/>
             <relationships>
+                <relationship kind="action" name="addFavoriteHide:"/>
+                <relationship kind="action" name="addFavoriteShow:"/>
+                <relationship kind="action" name="addSelectFavorite:"/>
+                <relationship kind="action" name="addSelectHome:"/>
+                <relationship kind="action" name="addSelectSchool:"/>
+                <relationship kind="action" name="addSelectWork:"/>
+                <relationship kind="action" name="doubleTap:" candidateClass="UITapGestureRecognizer"/>
+                <relationship kind="action" name="editSaveFavorite:"/>
+                <relationship kind="action" name="enterRoute:"/>
+                <relationship kind="action" name="findAddress:"/>
+                <relationship kind="action" name="onSelectAccount:" candidateClass="UIButton"/>
+                <relationship kind="action" name="onSelectInfo:" candidateClass="UIButton"/>
+                <relationship kind="action" name="pinAddToFavorites:"/>
+                <relationship kind="action" name="saveFavorite:"/>
+                <relationship kind="action" name="showMenu:"/>
+                <relationship kind="action" name="slideMenuOpen:"/>
+                <relationship kind="action" name="startEdit:"/>
+                <relationship kind="action" name="stopEdit:"/>
+                <relationship kind="action" name="tapAccount:"/>
+                <relationship kind="action" name="tapFavorites:"/>
+                <relationship kind="action" name="tapInfo:"/>
+                <relationship kind="action" name="toggleReminders:" candidateClass="UIButton"/>
+                <relationship kind="action" name="trackUser:"/>
                 <relationship kind="outlet" name="accHeader" candidateClass="UIView"/>
                 <relationship kind="outlet" name="account_label" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="addFavAddress" candidateClass="UITextField"/>
@@ -4982,7 +5009,6 @@
             </relationships>
         </class>
     </classes>
-
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

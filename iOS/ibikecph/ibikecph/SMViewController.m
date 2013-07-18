@@ -1104,13 +1104,13 @@ typedef enum {
     //[self tapFavorites:sender];
     
     CGFloat startY = favHeader.frame.origin.y;
-    CGFloat maxHeight = menuView.frame.size.height - startY;
+    CGFloat maxHeight = menuView.frame.size.height - 0;//startY;
     if ( self.reminderFolded ) {
         
         [UIView animateWithDuration:0.4f animations:^{
             //[self openMenu:menuReminders];
             
-            [self.imgReminders setImage:[UIImage imageNamed:@"reminders_arrow_down"]];
+            [self.imgReminders setImage:[UIImage imageNamed:@"reminders_arrow_up"]];
             
             [favEditDone setHidden:YES];
             [favEditStart setHidden:YES];
@@ -1119,12 +1119,12 @@ typedef enum {
             [favHeader setFrame:frame];
             
             frame = infHeader.frame;
-            frame.origin.y = maxHeight - 45.0f * 0.5;
+            frame.origin.y = maxHeight - 45.0f * 1.0;
             frame.size.height = 45.0f;
             [infHeader setFrame:frame];
             
             frame = accHeader.frame;
-            frame.origin.y = maxHeight - 1.5*45.0f;
+            frame.origin.y = maxHeight - 2.0*45.0f;
             frame.size.height = 45.0f;
             [accHeader setFrame:frame];
             
@@ -1136,7 +1136,7 @@ typedef enum {
         }];
     } else {
         [UIView animateWithDuration:0.4f animations:^{
-             [self.imgReminders setImage:[UIImage imageNamed:@"reminders_arrow_up"]];
+             [self.imgReminders setImage:[UIImage imageNamed:@"reminders_arrow_down"]];
             [self openMenu:menuFavorites];
         }];
         
