@@ -47,6 +47,18 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    NSArray* lines= [SMTransportation instance].lines;
+    
+    
+    NSLog(@"============");
+    for( SMTransportationLine* transportationLine in lines){
+        for(int i=0; i<transportationLine.stations.count; i++){
+            SMStationInfo* stationLocation= [transportationLine.stations objectAtIndex:i];
+            NSLog(@"Station %@",stationLocation.name);
+        }
+    }
+    NSLog(@"============");
+    
     breakRouteFailed= NO;
     displayed= NO;
     
@@ -88,16 +100,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 
-    NSArray* lines= [SMTransportation instance].lines;
-    
-    for( SMTransportationLine* transportationLine in lines){
         
-        for(int i=0; i<transportationLine.stations.count; i++){
-            SMStationInfo* stationLocation= [transportationLine.stations objectAtIndex:i];
-            NSLog(@"Station %@",stationLocation.name);
-        }
-    }
-    
     if(breakRouteFailed){
         [self displayBreakRouteError];
     }else{
@@ -282,61 +285,8 @@
 -(void)displayAddressViewWithAddressType:(AddressType)pAddressType model:(NSArray*)pModel{
     addressPickerView.addressType= pAddressType;
     pickerModel= pModel;
-    
-    if ( addressPickerView.addressType == AddressTypeSource ) {
-        
-        self.stationNames = nil;
-        self.stationNames = [[NSMutableArray alloc] init];
-        
-        __block int counter = 0;
-        
-        // Get names of stations
-        NSLog(@"Route info: %d", [pickerModel count]);
-        for (SMSingleRouteInfo* routeInfo in pickerModel) {
-            NSLog(@"STATION NAMES");
-            CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(routeInfo.sourceStation.latitude, routeInfo.sourceStation.longitude);
-            [SMGeocoder reverseGeocode:coord completionHandler:^(NSDictionary *response, NSError *error) {
-                NSString* streetName = [response objectForKey:@"title"];
-                NSLog(@"Station NAME: %@", streetName);
-                if ([streetName isEqualToString:@""]) {
-                    streetName = [NSString stringWithFormat:@"%f, %f", coord.latitude, coord.longitude];
-                }
-                [self.stationNames addObject:streetName];
-                counter++;
-                
-                if (counter >= [pickerModel count]) {
-                    [addressPickerView displayAnimated];
-                }
-            }];
-            
-        }
-    } else if ( addressPickerView.addressType == AddressTypeDestination ) {
-        self.destStationNames = nil;
-        self.destStationNames = [[NSMutableArray alloc] init];
-        
-        __block int counter = 0;
-        
-        // Get names of stations
-        NSLog(@"Route info: %d", [pickerModel count]);
-        for (SMSingleRouteInfo* routeInfo in pickerModel) {
-            NSLog(@"STATION NAMES");
-            CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(routeInfo.destStation.latitude, routeInfo.destStation.longitude);
-            [SMGeocoder reverseGeocode:coord completionHandler:^(NSDictionary *response, NSError *error) {
-                NSString* streetName = [response objectForKey:@"title"];
-                NSLog(@"Station NAME: %@", streetName);
-                if ([streetName isEqualToString:@""]) {
-                    streetName = [NSString stringWithFormat:@"%f, %f", coord.latitude, coord.longitude];
-                }
-                [self.destStationNames addObject:streetName];
-                counter++;
-                
-                if (counter >= [pickerModel count]) {
-                    [addressPickerView displayAnimated];
-                }
-            }];
-            
-        }
-    }
+     [addressPickerView displayAnimated];
+
 }
 
 -(IBAction)onDestinationAddressButtonTap:(id)sender {
@@ -367,21 +317,15 @@
 }
 
 -(NSString*)addressView:(SMAddressPickerView *)pAddressPickerView titleForRow:(int)row{
-    if ( addressPickerView.addressType==AddressTypeSource ) {
-        if ( [self.stationNames count] > row )
-            return [self.stationNames objectAtIndex:row];
-        else
-            return @"0";
-    }
-    else if ( addressPickerView.addressType==AddressTypeDestination ) {
-        //return ((SMSingleRouteInfo*)[pickerModel objectAtIndex:row]).destStation.name;
-        if ( [self.destStationNames count] > row )
-            return [self.destStationNames objectAtIndex:row];
-        else
-            return @"0";
+    SMSingleRouteInfo* routeInfo= [pickerModel objectAtIndex:row];
+    
+    if (addressPickerView.addressType==AddressTypeSource) {
+        return routeInfo.sourceStation.name;
+    }else if(addressPickerView.addressType==AddressTypeDestination){
+        return routeInfo.destStation.name;
     }
     
-    return @"";
+    return @"Invalid value";
 }
 
 -(void)addressView:(SMAddressPickerView*)pAddressPickerView didSelectItemAtIndex:(int)index forAddressType:(AddressType)pAddressType{
@@ -441,7 +385,7 @@
     }
     
     sourceStations= [NSArray arrayWithArray:stations];
-    
+
     if(route.transportationRoutes.count > 0){
         SMSingleRouteInfo* routeInfo= [route.transportationRoutes objectAtIndex:0];
         

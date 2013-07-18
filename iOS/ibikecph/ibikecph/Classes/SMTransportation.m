@@ -41,7 +41,6 @@
     return sRequestQueue;
 }
 
-
 -(void) loadDummyData{
     NSString * filePath0 = [[NSBundle mainBundle] pathForResource:@"Albertslundruten" ofType:@"line"];
     NSString * filePath1 = [[NSBundle mainBundle] pathForResource:@"Farumruten" ofType:@"line"];

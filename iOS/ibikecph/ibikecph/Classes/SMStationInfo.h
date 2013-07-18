@@ -16,4 +16,6 @@
 @property(nonatomic, assign, readonly) double longitude;
 @property(nonatomic, assign, readonly) double latitude;
 @property(nonatomic, strong) NSString* name;
+
+-(void)fetchName;
 @end

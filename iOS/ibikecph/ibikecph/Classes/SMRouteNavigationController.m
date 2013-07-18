@@ -38,6 +38,7 @@
 #import "SMTripRoute.h"
 #import "SMBreakRouteViewController.h"
 #import "SMTransportation.h"
+#import "SMGeocoder.h"
 #include "float.h"
 
 typedef enum {
@@ -154,6 +155,10 @@ typedef enum {
     [centerView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
     
     [self loadMarkers];
+    
+//    [SMGeocoder reverseGeocode:self.route.locationStart completionHandler:^(NSDictionary* resp, NSError* err){
+//        NSLog(@"Asd");
+//    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -284,13 +289,14 @@ typedef enum {
 #pragma mark - station markers
 
 - (void)loadMarkers {
-       self.stationMarkers = [[NSMutableArray alloc] init]; 
+    self.stationMarkers = [[NSMutableArray alloc] init];
     NSArray* lines= [SMTransportation instance].lines;
     
     for( SMTransportationLine* transportationLine in lines){
         
         for(int i=0; i<transportationLine.stations.count; i++){
             SMStationInfo* stationLocation= [transportationLine.stations objectAtIndex:i];
+            [stationLocation fetchName];
             NSLog(@"Station %@",stationLocation.name);
             CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(stationLocation.latitude, stationLocation.longitude);
             //[self addMarkerToMapView:self.mpView withCoordinate:coord title:@"Marker" imageName:@"station_icon" annotationTitle:@"Marker text" alternateTitle:@"Marker alternate title"];
