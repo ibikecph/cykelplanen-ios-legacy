@@ -19,7 +19,7 @@
     } else {
         [self.lblWayname setText:turn.shortDescriptionString];
     }
-    
+
 
 //    CGSize size = [self.lblDescription.text sizeWithFont:[UIFont systemFontOfSize:DIRECTION_FONT_SIZE] constrainedToSize:CGSizeMake(INSTRUCTIONS_LABEL_WIDTH, 50.0f) lineBreakMode:NSLineBreakByWordWrapping];
 //    CGRect frame = self.lblDescription.frame;

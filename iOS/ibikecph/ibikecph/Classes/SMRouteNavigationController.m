@@ -99,7 +99,12 @@ typedef enum {
 #define MAP_LEVEL_SERVICES 80
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    [breakRouteButton.imageView setContentMode:UIViewContentModeScaleAspectFill];
+    UIImageView* imageView= [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mover"]];
     
+    imageView.center= CGPointMake(pullHandleImageView.bounds.size.width/2, pullHandleImageView.frame.size.height-imageView.frame.size.height/2-5);
+    [pullHandleImageView addSubview:imageView];
     shouldShowOverview = NO;
     
     self.osrmServer = OSRM_SERVER;
@@ -135,13 +140,10 @@ typedef enum {
     [labelTimeLeft setText:@""];
     [labelDistanceLeft setText:@""];
     
-//    [tblDirections setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
-    
     SMDirectionsFooter * v = [SMDirectionsFooter getFromNib];
     [v.label setText:translateString(@"ride_report_a_problem")];
     [v setDelegate:self];
     [tblDirections setTableFooterView:v];
-    
     
     [centerView setupForHorizontalSwipeWithStart:0.0f andEnd:260.0f andStart:0.0f andPullView:self.cargoHandleImageView];
     
@@ -155,10 +157,6 @@ typedef enum {
     [centerView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
     
     [self loadMarkers];
-    
-//    [SMGeocoder reverseGeocode:self.route.locationStart completionHandler:^(NSDictionary* resp, NSError* err){
-//        NSLog(@"Asd");
-//    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -279,6 +277,7 @@ typedef enum {
     self.serviceMarkers = nil;
     self.stationMarkers = nil;
     
+    pullHandleImageView = nil;
     [super viewDidUnload];
 }
 
@@ -921,7 +920,7 @@ typedef enum {
 }
 
 - (void)resetZoom {
-    return;
+
     [self.mpView setZoom:DEFAULT_MAP_ZOOM];
     [self.mpView zoomByFactor:1 near:[self.mpView coordinateToPixel:[SMLocationManager instance].lastValidLocation.coordinate] animated:YES];
 }
@@ -1597,7 +1596,7 @@ typedef enum {
              * Replace "Destination reached" message with your address
              */
             if (turn.drivingDirection == 15) {
-                turn.descriptionString = @"AVeryLongDestinationThatCantFit";
+                turn.descriptionString = @"";
                 turn.wayName = self.destination;
             }
             if (i == 0)
@@ -1608,8 +1607,7 @@ typedef enum {
         }
 
         return cell;
-    }
-    
+    }    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -1704,6 +1702,7 @@ typedef enum {
             CGFloat newY = mapContainer.frame.origin.y + MAX_TABLE;
             [self repositionInstructionsView:newY + 1];
             lastDirectionsPos = newY + 1;
+
         }
             break;
         case directionsNormal: {
@@ -2023,8 +2022,14 @@ typedef enum {
         CGFloat maxSize = self.view.frame.size.height - 160.0f;
         if (self.mapFade.frame.size.height > maxSize) {
             [self.mapFade setAlpha:0.0f];
+            breakRouteButton.userInteractionEnabled= YES;
+            [breakRouteButton setImage:[UIImage imageNamed:@"break_route"] forState:UIControlStateNormal];
+            
         } else {
             [self.mapFade setAlpha: 0.8f - ((self.mapFade.frame.size.height - MAX_TABLE) * 0.8f / (maxSize - MAX_TABLE))];
+            breakRouteButton.userInteractionEnabled= NO;
+
+            [breakRouteButton setImage:[UIImage imageNamed:@"break_route_gray"] forState:UIControlStateNormal];
         }
         
         if (self.mapFade.alpha > 0.7f) {

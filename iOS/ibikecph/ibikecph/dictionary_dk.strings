@@ -3,9 +3,9 @@
 "tomorrow" = "I morgen";
 "accounts" = "Konto";
 "settings" = "Indstillinger";
-"about_ibikecph" = "OM I BIKE CPH";
+"about_css" = "Om Cykelsuperstier";
 "contacts" = "Kontakter";
-"favorites" = "FAVORITTER";
+"favorites" = "Favoritter";
 
 "direction_0" = "";
 "direction_1" = "Fortsæt ad";
@@ -47,6 +47,12 @@
 "first_direction_17" = "Gå mod %@ og fortsæt på cykele";
 "first_direction_100" = "Du nærmer dig destinationen";
 
+"monday" = "Monday";
+"tuesday" = "Tuesday";
+"wednesday" = "Wednesday";
+"thursday" = "Thursday";
+"friday" = "Friday";
+
 "direction_N" = "nord";
 "direction_NE" = "nordøst";
 "direction_E" = "øst";
@@ -83,6 +89,11 @@
 
 "new_route" = "Ny rute";
 "Stop" = "Stop";
+
+"marker_type_1" = "Anlagte Ruter";
+"marker_type_2" = "Servicestationer";
+"marker_type_3" = "S-togs stationer";
+"marker_type_4" = "Metro stationer";
 
 "Error" = "Error";
 "OK" = "OK";
@@ -135,12 +146,13 @@
 "favorites_save_btn" = "GEM FAVORITTER";
 
 // Break route
-"break_route_title" = "Break route";
+"break_route_title" = "Knæk ruten";
 "btn_break_route" = "BREAK ROUTE";
 "break_route_text_top" = "Vidste du, at du let kan knække din pendlerrute ved at tage toget noget af vejen.";
 "break_route_text_bottom" = "Når du vælger “Knæk ruten” giver vi dig en ny rute til nærmeste S-togsstation og bringer dig frem til din endelige destination.";
 "break_route_spring" = "Afslut guide og ta’ en tur";
 
+"btn_skip" = "Spring over";
 "where_are_we_going" = "Ny rute";
 "ibikecph_route_planner" = "Cykelruteplanlægger";
 "Cancel" = "Fortryd";
@@ -214,7 +226,7 @@
 "done" = "FÆRDIG";
 "add_favorite_name_placeholder" = "Indtast navn ...";
 "add_favorite_address_placeholder" = "Find adresse ...";
-"account" = "MIN PROFIL";
+"account" = "Min Profil";
 
 "report_send" = "SEND BESKED";
 "describe_problem" = "BESKRIV PROBLEMET";

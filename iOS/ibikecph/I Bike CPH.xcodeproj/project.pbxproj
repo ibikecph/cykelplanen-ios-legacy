@@ -510,7 +510,6 @@
 		7867358F178C642100DF978F /* about_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7867358D178C642100DF978F /* about_header@2x.png */; };
 		78673592178C643800DF978F /* about_bgr.png in Resources */ = {isa = PBXBuildFile; fileRef = 78673590178C643800DF978F /* about_bgr.png */; };
 		78673593178C643800DF978F /* about_bgr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78673591178C643800DF978F /* about_bgr@2x.png */; };
-		789E797B17980DE600218C73 /* field_user_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 789E797A17980DE600218C73 /* field_user_icon@2x.png */; };
 		789E798417980EC500218C73 /* field_password_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 789E798317980EC500218C73 /* field_password_icon@2x.png */; };
 		789E79861798101200218C73 /* field_email_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 789E79851798101200218C73 /* field_email_icon@2x.png */; };
 		78C53774178D4CF600F6BAD3 /* break_route_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C5375F178D4CF600F6BAD3 /* break_route_active.png */; };
@@ -633,13 +632,13 @@
 		C0C94742173BE40E00FE834D /* SMLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C94741173BE40E00FE834D /* SMLoginController.m */; };
 		C0C94747173BF47500FE834D /* field_email_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C0C94745173BF47500FE834D /* field_email_icon.png */; };
 		C0C94748173BF47500FE834D /* field_password_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C0C94746173BF47500FE834D /* field_password_icon.png */; };
+		F64FA44C17995B82008F00AF /* separator.png in Resources */ = {isa = PBXBuildFile; fileRef = F64FA44A17995B82008F00AF /* separator.png */; };
+		F64FA44D17995B82008F00AF /* separator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F64FA44B17995B82008F00AF /* separator@2x.png */; };
+		F64FA45017996617008F00AF /* break_route_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = F64FA44E17996617008F00AF /* break_route_gray.png */; };
+		F64FA45117996617008F00AF /* break_route_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F64FA44F17996617008F00AF /* break_route_gray@2x.png */; };
 		F68C64231768B453009B4A21 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C48641616F099BE00F01A7C /* MainStoryboard_iPhone.storyboard */; };
 		F68F9DE71765CDC500578FFE /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F68F9DE61765CDC500578FFE /* FBUserSettingsViewResources.bundle */; };
 		F68F9DEB1765CEF900578FFE /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68F9DEA1765CEF900578FFE /* FacebookSDK.framework */; };
-		F690C471178C147C006A6FEA /* metro_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F690C46D178C147C006A6FEA /* metro_icon.png */; };
-		F690C472178C147C006A6FEA /* metro_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F690C46E178C147C006A6FEA /* metro_icon@2x.png */; };
-		F690C473178C147C006A6FEA /* station_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F690C46F178C147C006A6FEA /* station_icon.png */; };
-		F690C474178C147C006A6FEA /* station_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F690C470178C147C006A6FEA /* station_icon@2x.png */; };
 		F690C47B178C3395006A6FEA /* smroute_settings_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = F690C47A178C3395006A6FEA /* smroute_settings_private.plist */; };
 		F69227711786E8ED00C8CD76 /* libHockeySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA06F3816EF8BE4007603B4 /* libHockeySDK.a */; };
 		F69227761786FD0B00C8CD76 /* SMTripRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = F69227751786FD0B00C8CD76 /* SMTripRoute.m */; };
@@ -1402,13 +1401,13 @@
 		C0C94741173BE40E00FE834D /* SMLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLoginController.m; sourceTree = "<group>"; };
 		C0C94745173BF47500FE834D /* field_email_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = field_email_icon.png; sourceTree = "<group>"; };
 		C0C94746173BF47500FE834D /* field_password_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = field_password_icon.png; sourceTree = "<group>"; };
+		F64FA44A17995B82008F00AF /* separator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = separator.png; sourceTree = "<group>"; };
+		F64FA44B17995B82008F00AF /* separator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "separator@2x.png"; sourceTree = "<group>"; };
+		F64FA44E17996617008F00AF /* break_route_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = break_route_gray.png; sourceTree = "<group>"; };
+		F64FA44F17996617008F00AF /* break_route_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "break_route_gray@2x.png"; sourceTree = "<group>"; };
 		F68C64251768B5B3009B4A21 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		F68F9DE61765CDC500578FFE /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
 		F68F9DEA1765CEF900578FFE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
-		F690C46D178C147C006A6FEA /* metro_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metro_icon.png; sourceTree = "<group>"; };
-		F690C46E178C147C006A6FEA /* metro_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "metro_icon@2x.png"; sourceTree = "<group>"; };
-		F690C46F178C147C006A6FEA /* station_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = station_icon.png; sourceTree = "<group>"; };
-		F690C470178C147C006A6FEA /* station_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "station_icon@2x.png"; sourceTree = "<group>"; };
 		F690C47A178C3395006A6FEA /* smroute_settings_private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings_private.plist; sourceTree = "<group>"; };
 		F69227741786FD0B00C8CD76 /* SMTripRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTripRoute.h; sourceTree = "<group>"; };
 		F69227751786FD0B00C8CD76 /* SMTripRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTripRoute.m; sourceTree = "<group>"; };
@@ -1577,6 +1576,10 @@
 		4C365DE116F361FE00A836B3 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				F64FA44E17996617008F00AF /* break_route_gray.png */,
+				F64FA44F17996617008F00AF /* break_route_gray@2x.png */,
+				F64FA44A17995B82008F00AF /* separator.png */,
+				F64FA44B17995B82008F00AF /* separator@2x.png */,
 				78D3E69A1796F249006D0782 /* reminders_arrow_down.png */,
 				78D3E69B1796F249006D0782 /* reminders_arrow_down@2x.png */,
 				78D3E69C1796F249006D0782 /* reminders_arrow_up.png */,
@@ -3081,10 +3084,6 @@
 				7867355D178C55CD00DF978F /* splash_sky@2x.png in Resources */,
 				F692278A178702F900C8CD76 /* Albertslundruten.line in Resources */,
 				F692278B178702F900C8CD76 /* Farumruten.line in Resources */,
-				F690C471178C147C006A6FEA /* metro_icon.png in Resources */,
-				F690C472178C147C006A6FEA /* metro_icon@2x.png in Resources */,
-				F690C473178C147C006A6FEA /* station_icon.png in Resources */,
-				F690C474178C147C006A6FEA /* station_icon@2x.png in Resources */,
 				F690C47B178C3395006A6FEA /* smroute_settings_private.plist in Resources */,
 				78673585178C63F600DF978F /* back_arrow_btn.png in Resources */,
 				78673586178C63F600DF978F /* back_arrow_btn@2x.png in Resources */,
@@ -3181,9 +3180,12 @@
 				78D3E69F1796F249006D0782 /* reminders_arrow_down@2x.png in Resources */,
 				78D3E6A01796F249006D0782 /* reminders_arrow_up.png in Resources */,
 				78D3E6A11796F249006D0782 /* reminders_arrow_up@2x.png in Resources */,
-				789E797B17980DE600218C73 /* field_user_icon@2x.png in Resources */,
 				789E798417980EC500218C73 /* field_password_icon@2x.png in Resources */,
 				789E79861798101200218C73 /* field_email_icon@2x.png in Resources */,
+				F64FA44C17995B82008F00AF /* separator.png in Resources */,
+				F64FA44D17995B82008F00AF /* separator@2x.png in Resources */,
+				F64FA45017996617008F00AF /* break_route_gray.png in Resources */,
+				F64FA45117996617008F00AF /* break_route_gray@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

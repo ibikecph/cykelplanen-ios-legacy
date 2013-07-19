@@ -161,7 +161,6 @@ typedef enum {
     UITapGestureRecognizer * dblTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
     [dblTap setNumberOfTapsRequired:2];
     [blockingView addGestureRecognizer:dblTap];
-    
 
     self.tableFooter = [SMAddFavoriteCell getFromNib];
     [self.tableFooter setDelegate:self];
@@ -173,6 +172,18 @@ typedef enum {
     
     [centerView setupForHorizontalSwipeWithStart:0.0f andEnd:260.0f andStart:0.0f andPullView:menuBtn];
     [centerView addPullView:blockingView];
+    
+    [self setTitle:translateString(@"reminder_title") forButton:remindersHeaderButton];
+    [self setTitle:translateString(@"account") forButton:aboutHeaderButton];
+    [self setTitle:translateString(@"about_css") forButton:accountHeaderButton];
+
+    
+}
+
+-(void)setTitle:(NSString*)pTitle forButton:(UIButton*)pButton{
+    [pButton setTitle:pTitle forState:UIControlStateNormal];
+    [pButton setTitle:pTitle forState:UIControlStateHighlighted];
+    [pButton setTitle:pTitle forState:UIControlStateSelected];
 }
 
 - (void)invalidToken:(NSNotification*)notification {
@@ -227,6 +238,9 @@ typedef enum {
     [self setTblFavorites:nil];
     [self setBtnFavorites:nil];
     [self setImgReminders:nil];
+    remindersHeaderButton = nil;
+    accountHeaderButton = nil;
+    aboutHeaderButton = nil;
     [super viewDidUnload];
 }
 
@@ -557,7 +571,8 @@ typedef enum {
             } else {
                 [pinButton setSelected:NO];
             }
-            if ([self.appDelegate.appSettings objectForKey:@"auth_token"] && [[self.appDelegate.appSettings objectForKey:@"auth_token"] isEqualToString:@""] == NO) {
+            NSString* authTokenStr= [self.appDelegate.appSettings objectForKey:@"auth_token"];
+            if ( authTokenStr && ![authTokenStr isEqual:[NSNull null]] && [[self.appDelegate.appSettings objectForKey:@"auth_token"] isEqualToString:@""] == NO) {
                 pinButton.enabled = YES;
             }
             
@@ -1057,7 +1072,6 @@ typedef enum {
                 [v removeFromSuperview];
             }
         }
-
         
         NSDictionary * params = (NSDictionary*)sender;
         SMRouteNavigationController *destViewController = segue.destinationViewController;
@@ -1185,7 +1199,11 @@ typedef enum {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (tableView == self.tblFavorites) {
-        NSArray* weekDays = @[@"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday"];
+        NSArray* weekDays = @[translateString(@"monday"),
+                              translateString(@"tuesday"),
+                              translateString(@"wednesday"),
+                              translateString(@"thursday"),
+                              translateString(@"friday")];
         SMReminderTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"reminderTableCell"];
         [cell setupWithTitle:[weekDays objectAtIndex:indexPath.row]];
         cell.currentDay= indexPath.row;
@@ -1209,7 +1227,7 @@ typedef enum {
                     SMMenuCell * cell = [tableView dequeueReusableCellWithIdentifier:@"favoritesCell"];
                     [cell.image setContentMode:UIViewContentModeCenter];
                     [cell setDelegate:self];
-                [cell setIndentationLevel:2];
+                    [cell setIndentationLevel:2];
                     if ([[currentRow objectForKey:@"subsource"] isEqualToString:@"home"]) {
                         [cell.image setImage:[UIImage imageNamed:@"favHomeGrey"]];
                         [cell.image setHighlightedImage:[UIImage imageNamed:@"favHomeWhite"]];

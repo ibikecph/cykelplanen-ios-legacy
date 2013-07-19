@@ -19,9 +19,14 @@
 - (void)renderViewFromInstruction:(SMTurnInstruction *)turn {
 //    [self.lblDescription setText:[turn descriptionString]];
     if ([turn.shortDescriptionString rangeOfString:@"\\{.+\\:.+\\}" options:NSRegularExpressionSearch].location != NSNotFound) {
+//        [self.lblWayname setText:translateString(turn.shortDescriptionString)];
         [self.lblWayname setText:translateString(turn.shortDescriptionString)];
     } else {
-        [self.lblWayname setText:turn.shortDescriptionString];
+        NSString* value=turn.shortDescriptionString;
+        if([value stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length==0){
+            value= translateString(@"direction_15");
+        }
+        [self.lblWayname setText:value];
     }
 
 //    CGSize size = [self.lblDescription.text sizeWithFont:[UIFont systemFontOfSize:DIRECTION_FONT_SIZE] constrainedToSize:CGSizeMake(INSTRUCTIONS_LABEL_WIDTH, 40.0f) lineBreakMode:NSLineBreakByWordWrapping];

@@ -45,6 +45,9 @@ typedef enum {
 
     __weak IBOutlet SMGPSTrackButton *buttonTrackUser;
     __weak IBOutlet UIView *favHeader;
+    __weak IBOutlet UIButton *remindersHeaderButton;
+    __weak IBOutlet UIButton *accountHeaderButton;
+    __weak IBOutlet UIButton *aboutHeaderButton;
     __weak IBOutlet UIView *accHeader;
     __weak IBOutlet UIView *infHeader;
     __weak IBOutlet UIButton *favEditStart;

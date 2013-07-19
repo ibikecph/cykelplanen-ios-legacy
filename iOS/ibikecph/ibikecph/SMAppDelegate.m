@@ -61,17 +61,18 @@
     [self loadSettings];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:@"dk" forKey:@"appLanguage"];
     if (![defaults stringForKey:@"appLanguage"]) {
         /**
          * init default settings
          */
         NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
         NSArray* languages = [defaults objectForKey:@"AppleLanguages"];
-        if ([[languages objectAtIndex:0] isEqualToString:@"da"] || [[languages objectAtIndex:0] isEqualToString:@"dan"]) {
+//        if ([[languages objectAtIndex:0] isEqualToString:@"da"] || [[languages objectAtIndex:0] isEqualToString:@"dan"]) {
             [defaults setObject:@"dk" forKey:@"appLanguage"];
-        } else {
-            [defaults setObject:@"en" forKey:@"appLanguage"];
-        }
+//        } else {
+//            [defaults setObject:@"en" forKey:@"appLanguage"];
+//        }
         [defaults synchronize];
     }
     

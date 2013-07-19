@@ -11,7 +11,7 @@
 "tomorrow" = "Tomorrow";
 "account" = "Account";
 "settings" = "Settings";
-"about_ibikecph" = "About I Bike CPH";
+"about_css" = "About Cykelsuperstier";
 "contacts" = "CONTACTS";
 "favorites" = "FAVORITES";
 
@@ -55,6 +55,11 @@
 "first_direction_17" = "Head %@ and stop pushing your bike";
 "first_direction_100" = "Reaching destination";
 
+"monday" = "Monday";
+"tuesday" = "Tuesday";
+"wednesday" = "Wednesday";
+"thursday" = "Thursday";
+"friday" = "Friday";
 
 "direction_N" = "north";
 "direction_NE" = "northeast";

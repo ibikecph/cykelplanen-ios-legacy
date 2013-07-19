@@ -63,6 +63,7 @@ typedef enum {
     }
     
     // Translation
+    self.btnRegisterWithMail.titleLabel.adjustsFontSizeToFitWidth= YES;
     [self.btnRegisterWithMail setTitle:translateString(@"register_with_mail") forState:UIControlStateNormal];
     [self.btnSkip setTitle:translateString(@"btn_skip") forState:UIControlStateNormal];
 }
