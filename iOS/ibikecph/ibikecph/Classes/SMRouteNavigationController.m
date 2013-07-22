@@ -878,7 +878,7 @@ typedef enum {
     if (self.route.turnInstructions.count > 0) {
         SMTurnInstruction *nextTurn = [self.route.turnInstructions objectAtIndex:0];
         [labelDistanceToNextTurn setText:formatDistance(nextTurn.lengthInMeters)];
-        [imgNextTurnDirection setImage:[nextTurn largeDirectionIcon]];
+        [imgNextTurnDirection setImage:[nextTurn smallDirectionIcon]];
     } else {
         [minimizedInstructionsView setHidden:YES];
     }

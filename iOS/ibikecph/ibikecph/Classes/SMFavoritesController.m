@@ -66,6 +66,8 @@ typedef enum {
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+
     if ([[SMFavoritesUtil getFavorites] count] > 0) {
         [self.view setAlpha:0.0f];
         [self performSegueWithIdentifier:@"favoritesToMain" sender:nil];
