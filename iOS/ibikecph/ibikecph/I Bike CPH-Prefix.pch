@@ -82,7 +82,7 @@
 #define DEFAULT_MAP_ZOOM 18.5
 #define DEFAULT_TURN_ZOOM 18.5
 #define MAX_MAP_ZOOM 20
-#define PATH_COLOR [UIColor colorWithRed:250.0f/255.0f green:80.0f/255.0f blue:0.0f/255.0f alpha:0.9f]
+#define PATH_COLOR [UIColor colorWithRed:6.0f/255.0f green:63.0f/255.0f blue:114.0f/255.0f alpha:0.85f]
 #define PATH_OPACITY 0.8f
 #define LOCATION_MIN_DISTANCE 30.0
 //#define GEOCODING_SEARCH_RADIUS 50000.0f

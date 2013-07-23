@@ -115,8 +115,6 @@ typedef enum {
     [instructionsView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"tableViewBG"]]];
     self.updateSwipableView = YES;
     
-    [RMMapView class];
-    
     self.currentlyRouting = NO;
     overviewShown = NO;
     self.directionsShownCount = -1;
@@ -155,6 +153,8 @@ typedef enum {
     [self.cargoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
     
     [centerView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
+    
+    self.pathVisible= YES;
     
     [self loadMarkers];
 }
@@ -199,9 +199,8 @@ typedef enum {
     self.mapFade.frame= rect;
     
     // markers visibility
-    self.serviceMarkersVisible = NO;
-    self.stationMarkersVisible = NO;
-    self.metroMarkersVisible = NO;
+    [self removeAllMarkers];
+    [self toggleMarkers];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -213,9 +212,6 @@ typedef enum {
     } else {
         [UIApplication sharedApplication].idleTimerDisabled = NO;
     }
-    
-
-//    [self.mapFade setFrame:self.mpView.frame];
     
 }
 
@@ -347,6 +343,7 @@ typedef enum {
         NSString* alternateTitle = @"alternate title";
         
         SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
+
         annotation.annotationType = @"marker";
         annotation.annotationIcon = [UIImage imageNamed:imageName];
         annotation.anchorPoint = CGPointMake(0.5, 1.0);
@@ -397,37 +394,57 @@ typedef enum {
     
 }
 
+-(void)removeAllMarkers{
+    [self.mpView removeAnnotations:self.metroMarkers];
+    [self.mpView removeAnnotations:self.serviceMarkers];
+    [self.mpView removeAnnotations:self.stationMarkers];
+    [self hideRouteAnnotation];
+    
+}
 
-- (void)toggleMarkers:(NSString*)markerType {
-    if ( [markerType isEqualToString:@"metro"] ) {
-        self.metroMarkersVisible = !self.metroMarkersVisible;
+-(void)toggleMarkers{
         if ( self.metroMarkersVisible ) {
             [self.mpView addAnnotations:self.metroMarkers];
         } else {
             [self.mpView removeAnnotations:self.metroMarkers];
         }
-    } else if ( [markerType isEqualToString:@"service"] ) {
-        self.serviceMarkersVisible = !self.serviceMarkersVisible;
+
         if ( self.serviceMarkersVisible ) {
             [self.mpView addAnnotations:self.serviceMarkers];
         } else {
             [self.mpView removeAnnotations:self.serviceMarkers];
         }
-    } else if ( [markerType isEqualToString:@"station"] ) {
-        self.stationMarkersVisible = !self.stationMarkersVisible;
+
         if ( self.stationMarkersVisible ) {
             [self.mpView addAnnotations:self.stationMarkers];
         } else {
             [self.mpView removeAnnotations:self.stationMarkers];
         }
-    }else if([markerType isEqualToString:@"path"]){
-        self.pathVisible= !self.pathVisible;
+
         if ( self.pathVisible ) {
             [self showRouteAnnotation];
         } else {
             [self hideRouteAnnotation];
         }
+
+}
+
+- (void)toggleMarkers:(NSString*)markerType state:(BOOL)state{
+    if ( [markerType isEqualToString:@"metro"] ) {
+        self.metroMarkersVisible = state;
+       
+    } else if ( [markerType isEqualToString:@"service"] ) {
+        self.serviceMarkersVisible = state;
+       
+    } else if ( [markerType isEqualToString:@"station"] ) {
+        self.stationMarkersVisible = state;
+       
+    }else if([markerType isEqualToString:@"path"]){
+        self.pathVisible= state;
+    
     }
+    
+    [self toggleMarkers];
 }
 
 #pragma mark - custom methods
@@ -729,7 +746,13 @@ typedef enum {
 }
 
 - (IBAction)startRouting:(id)sender {
-    [self startRouting];
+    if ([SMLocationManager instance].hasValidLocation == NO) {
+        UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:translateString(@"error_no_gps_location") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
+        [av show];
+        return;
+    }else{
+        [self startRouting];
+    }
 }
 
 - (void)addMarkers:(NSArray*)markers {
@@ -885,7 +908,7 @@ typedef enum {
 }
 
 - (NSDictionary*) addRouteAnnotation:(SMRoute *)r {
-    self.pathVisible= YES;
+//    self.pathVisible= YES;
     RMAnnotation *calculatedPathAnnotation = [RMAnnotation annotationWithMapView:self.mpView coordinate:[r getStartLocation].coordinate andTitle:nil];
     calculatedPathAnnotation.annotationType = @"path";
     calculatedPathAnnotation.userInfo = @{
@@ -904,14 +927,14 @@ typedef enum {
 }
 
 -(void)showRouteAnnotation{
-    self.pathVisible= YES;
+
     for(SMRoute* rt in self.brokenRoute.brokenRoutes){
         [self addRouteAnnotation:rt];
     }
 }
 
 -(void)hideRouteAnnotation{
-    self.pathVisible= NO;
+
     for(RMAnnotation* annotation in self.mpView.annotations){
         if([annotation.annotationType isEqual:@"path"]){
             [self.mpView removeAnnotation:annotation];
@@ -1115,14 +1138,7 @@ typedef enum {
 }
 
 - (void)mapView:(RMMapView *)mapView didUpdateUserLocation:(RMUserLocation *)userLocation {
-//    static int count= 1;
-//    
-//    count ++;
-//    
-//    if(count==10){
-//        count=1;
-//        NSLog(@"Location %lf %lf",userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude);
-//    }
+
    if (self.currentlyRouting && self.route && userLocation) {
        [self.route visitLocation:userLocation.location];
        
@@ -1641,32 +1657,33 @@ typedef enum {
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     if(tableView==self.cargoTableView){
-        [self tappedOnRow:indexPath.row];
+        [self tappedOnRow:indexPath.row selected:NO];
         //[self slideBackToMap];
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if(tableView==self.cargoTableView){
-        [self tappedOnRow:indexPath.row];
+        [self tappedOnRow:indexPath.row selected:YES];
         //[self slideBackToMap];
     }else{
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
 
--(void) tappedOnRow:(int)row{
+-(void) tappedOnRow:(int)row selected:(BOOL)pSelected{
     if (row == 0){
-        [self toggleMarkers:@"path"];
+        [self toggleMarkers:@"path" state:pSelected];
     } else if ( row == 1 ) {
-        [self toggleMarkers:@"service"];
+        [self toggleMarkers:@"service" state:pSelected];
     } else if ( row == 2 ) {
-        [self toggleMarkers:@"station"];
+        [self toggleMarkers:@"station" state:pSelected];
     } else if ( row == 3 ) {
-        [self toggleMarkers:@"metro"];
+        [self toggleMarkers:@"metro" state:pSelected];
     }
-
 }
+
+
 
 #pragma mark - alert view delegate
 
@@ -2022,14 +2039,13 @@ typedef enum {
         CGFloat maxSize = self.view.frame.size.height - 160.0f;
         if (self.mapFade.frame.size.height > maxSize) {
             [self.mapFade setAlpha:0.0f];
-            breakRouteButton.userInteractionEnabled= YES;
-            [breakRouteButton setImage:[UIImage imageNamed:@"break_route"] forState:UIControlStateNormal];
+            [self toggleBreakRouteButton];
             
         } else {
             [self.mapFade setAlpha: 0.8f - ((self.mapFade.frame.size.height - MAX_TABLE) * 0.8f / (maxSize - MAX_TABLE))];
-            breakRouteButton.userInteractionEnabled= NO;
 
-            [breakRouteButton setImage:[UIImage imageNamed:@"break_route_gray"] forState:UIControlStateNormal];
+            [self toggleBreakRouteButton];
+
         }
         
         if (self.mapFade.alpha > 0.7f) {
@@ -2107,8 +2123,7 @@ typedef enum {
     }
 }
 
-- (void)request:(SMRequestOSRM *)req failedWithError:(NSError *)error {
-}
+- (void)request:(SMRequestOSRM *)req failedWithError:(NSError *)error {}
 
 - (void)serverNotReachable {
     SMNetworkErrorView * v = [SMNetworkErrorView getFromNib];
@@ -2129,5 +2144,16 @@ typedef enum {
     }];
 }
 
+-(void)toggleBreakRouteButton{
+    breakRouteButton.userInteractionEnabled= self.breakRouteButtonEnabled;
+    if(self.breakRouteButtonEnabled){
+        [breakRouteButton setImage:[UIImage imageNamed:@"break_route"] forState:UIControlStateNormal];
+    }else{
+        [breakRouteButton setImage:[UIImage imageNamed:@"break_route_white_press"] forState:UIControlStateNormal];
+    }
+}
 
+-(BOOL)breakRouteButtonEnabled{
+    return !self.currentlyRouting;
+}
 @end

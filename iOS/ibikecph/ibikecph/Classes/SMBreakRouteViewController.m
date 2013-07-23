@@ -20,6 +20,14 @@
     NSArray* destinationStations;
     NSArray* pickerModel;
     SMAddressPickerView* addressPickerView;
+    
+    SMRoute* tempStartRoute;
+    SMRoute* tempFinishRoute;
+    
+    float startDistance ;
+    int startTime;
+    float endDistance;
+    int endTime;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -169,18 +177,15 @@
             SMBikeWaypointCell* wpCell= [tableView dequeueReusableCellWithIdentifier:CellId];
             [wpCell setupWithString:self.sourceName];
             
-            float fDistance = 0;
-            int fTime = 0;
-            SMRoute* route = [self.tripRoute.brokenRoutes objectAtIndex:0];
-            if ( route ) {
-                fDistance = route.estimatedRouteDistance / 1000.0;
-                fTime = route.estimatedTimeForRoute / 60;
+            float fDistance = startDistance / 1000.0;;
+            int fTime = startTime  / 60;
+            NSString* distance= @"";
+            if(fDistance!=0 || fTime!=0){
+                distance= [NSString stringWithFormat:@"%4.1f km  %d min.", fDistance, fTime];
             }
-            NSString* distance = [NSString stringWithFormat:@"%4.1f km  %d min.", fDistance, fTime];
             [wpCell.labelDistance setText:distance];
             
             return wpCell;
-            break;
         }
         case 1:{
             CellId= @"TransportCell";
@@ -210,7 +215,6 @@
             }];
             
             return tCell;
-            break;
         }
         case 2:{
             CellId= @"DestinationCell";
@@ -220,18 +224,16 @@
             
             NSLog(@"DEST CELL: %@", self.destinationName);
             
-            float fDistance = 0;
-            int fTime = 0;
-            SMRoute* route = [self.tripRoute.brokenRoutes objectAtIndex:MIN(1, [self.tripRoute.brokenRoutes count]-1)];
-            if ( route ) {
-                fDistance = route.estimatedRouteDistance / 1000.0;
-                fTime = route.estimatedTimeForRoute / 60;
+            float fDistance = endDistance / 1000.0;;
+            int fTime = endTime  / 60;
+            NSString* distance= @"";
+            if(fDistance!=0 || fTime!=0){
+                distance= [NSString stringWithFormat:@"%4.1f km  %d min.", fDistance, fTime];
             }
-            NSString* distance = [NSString stringWithFormat:@"%4.1f km  %d min.", fDistance, fTime];
             [wpCell.labelDistance setText:distance];
             
             return wpCell;
-            break;
+
         }
         case 3:{
             CellId= @"ButtonCell";
@@ -239,7 +241,6 @@
             [cell.btnBreakRoute setTitle:translateString(@"break_route_title") forState:UIControlStateNormal];
 
             return cell;
-            break;
         }
         default:
             break;
@@ -357,9 +358,7 @@
 
 #pragma mark - break route delegate
 
--(void)didStartBreakingRoute:(SMTripRoute*)route{
-
-}
+-(void)didStartBreakingRoute:(SMTripRoute*)route{}
 
 -(void)didFinishBreakingRoute:(SMTripRoute*)route{
     [self.tableView reloadData];
@@ -419,11 +418,73 @@
 
 -(void)setSourceStation:(SMStationInfo *)pSourceStation{
     _sourceStation= pSourceStation;
+    
+    CLLocationCoordinate2D start= self.tripRoute.start.coordinate;
+    CLLocationCoordinate2D end= pSourceStation.location.coordinate;
 
+    tempStartRoute= [[SMRoute alloc] initWithRouteStart:start andEnd:end andDelegate:self];
+    [tempStartRoute addObserver:self
+              forKeyPath:@"estimatedRouteDistance"
+                 options:NSKeyValueObservingOptionNew
+                 context:(__bridge void *)(tempStartRoute)];
+    [tempStartRoute addObserver:self
+                     forKeyPath:@"estimatedTimeForRoute"
+                        options:NSKeyValueObservingOptionNew
+                        context:(__bridge void *)(tempStartRoute)];
 }
 
 -(void)setDestinationStation:(SMStationInfo *)pDestinationStation{
     _destinationStation= pDestinationStation;
+    
+    CLLocationCoordinate2D start= pDestinationStation.location.coordinate;
+    CLLocationCoordinate2D end= self.tripRoute.end.coordinate;
+    tempFinishRoute= [[SMRoute alloc] initWithRouteStart:start andEnd:end andDelegate:self];
+    [tempFinishRoute addObserver:self
+                     forKeyPath:@"estimatedRouteDistance"
+                        options:NSKeyValueObservingOptionNew
+                        context:(__bridge void *)(tempFinishRoute)];
+    [tempFinishRoute addObserver:self
+                     forKeyPath:@"estimatedTimeForRoute"
+                        options:NSKeyValueObservingOptionNew
+                        context:(__bridge void *)(tempFinishRoute)];
+
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if([keyPath isEqualToString:@"estimatedRouteDistance"]){
+        // distance changed
+        
+        if(context==(__bridge void *)(tempStartRoute)){
+            NSLog(@"Start route distance changed to %d",tempStartRoute.estimatedRouteDistance);
+            startDistance= tempStartRoute.estimatedRouteDistance;
+        }else if(context==(__bridge void *)(tempFinishRoute)){
+            NSLog(@"Finish route distance changed to %d",tempFinishRoute.estimatedRouteDistance);
+            endDistance= tempFinishRoute.estimatedRouteDistance;
+        }
+        
+        [self distanceChanged];
+    }else if([keyPath isEqualToString:@"estimatedTimeForRoute"]){
+        // time changed
+        
+        if(context==(__bridge void *)(tempStartRoute)){
+            NSLog(@"Start route distance changed to %d",tempStartRoute.estimatedRouteDistance);
+            startTime= tempStartRoute.estimatedTimeForRoute;
+        }else if(context==(__bridge void *)(tempFinishRoute)){
+            NSLog(@"Finish route distance changed to %d",tempFinishRoute.estimatedRouteDistance);
+            endTime= tempFinishRoute.estimatedTimeForRoute;
+        }
+        
+    [self timeChanged];
+
+    }
+}
+
+-(void)timeChanged{
+    [self.tableView reloadData];
+}
+
+-(void)distanceChanged{
+    [self.tableView reloadData];
 }
 
 @end
