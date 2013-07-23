@@ -45,11 +45,11 @@
 }
 
 + (CGFloat)getHeight {
-    return 60.0f;
+    return 61.0f;
 }
 
 + (CGFloat)getHeightForDescription:(NSString*) desc andWayname:(NSString*) wayname {
-    return 60.0f;
+    return 61.0f;
     CGFloat height = 9.0f;
     CGSize size = [desc sizeWithFont:[UIFont systemFontOfSize:DIRECTION_FONT_SIZE] constrainedToSize:CGSizeMake(INSTRUCTIONS_LABEL_WIDTH, 40.0f) lineBreakMode:NSLineBreakByWordWrapping];
     height += size.height;

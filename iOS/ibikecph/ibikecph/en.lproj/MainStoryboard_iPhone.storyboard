@@ -2561,7 +2561,7 @@
                                                     <outletCollection property="gestureRecognizers" destination="Yh5-AX-SAA" appends="YES" id="X2v-aS-AvQ"/>
                                                 </connections>
                                             </imageView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dPo-Xj-3qL">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dPo-Xj-3qL">
                                                 <rect key="frame" x="0.0" y="28" width="320" height="75"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -2597,7 +2597,7 @@
                                                                     <rect key="frame" x="0.0" y="8" width="96" height="65"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                     <subviews>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="center" id="Xjo-rW-EiA">
+                                                                        <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="center" id="Xjo-rW-EiA">
                                                                             <rect key="frame" x="28" y="1" width="40" height="40"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         </imageView>
@@ -2626,19 +2626,23 @@
                                                             <outlet property="lblWayname" destination="QVf-eE-axd" id="RjV-pw-Ur4"/>
                                                         </connections>
                                                     </tableViewCell>
-                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="directionCell" rowHeight="60" id="67i-DW-ezf" customClass="SMDirectionCell">
-                                                        <rect key="frame" x="0.0" y="104" width="320" height="60"/>
+                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="directionCell" rowHeight="61" id="67i-DW-ezf" customClass="SMDirectionCell">
+                                                        <rect key="frame" x="0.0" y="104" width="320" height="61"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <view contentMode="scaleToFill" id="bry-ak-i5S">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="direction_cell_small_bgr.png" id="5GE-DJ-oxa">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                </imageView>
+                                                                <view hidden="YES" contentMode="scaleToFill" id="bry-ak-i5S">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </view>
-                                                                <view contentMode="scaleToFill" id="rJS-WW-sSi">
+                                                                <view alpha="0.80000000000000004" contentMode="scaleToFill" id="rJS-WW-sSi">
                                                                     <rect key="frame" x="0.0" y="4" width="96" height="60"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <subviews>
@@ -2655,13 +2659,13 @@
                                                                     </subviews>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 </view>
-                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jkI-kj-dsf">
+                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" text="" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jkI-kj-dsf">
                                                                     <rect key="frame" x="96" y="9" width="230" height="21"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 </label>
-                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dpH-I9-lHk">
+                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dpH-I9-lHk">
                                                                     <rect key="frame" x="96" y="30" width="194" height="21"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
@@ -2670,8 +2674,9 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         </view>
-                                                        <color key="backgroundColor" red="0.85098039219999999" green="0.1333333333" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <connections>
+                                                            <outlet property="imgBackground" destination="5GE-DJ-oxa" id="L6f-wx-Fhb"/>
                                                             <outlet property="imgDirection" destination="tba-BH-rVL" id="OKG-5i-Bew"/>
                                                             <outlet property="lblDescription" destination="jkI-kj-dsf" id="amz-OX-Pa7"/>
                                                             <outlet property="lblDistance" destination="rXx-Cf-vjP" id="Z3B-qg-cui"/>
@@ -4488,6 +4493,7 @@
         <image name="checkbox.png" width="32" height="32"/>
         <image name="css_logo.png" width="130" height="108"/>
         <image name="css_logo_small.png" width="45" height="45"/>
+        <image name="direction_cell_small_bgr.png" width="5" height="61"/>
         <image name="distance_white.png" width="91" height="35"/>
         <image name="divider_side_menu_btn.png" width="1" height="2"/>
         <image name="dotted_line.png" width="16" height="58"/>
@@ -4683,11 +4689,6 @@
         <class className="SMBreakRouteViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SMBreakRouteViewController.h"/>
             <relationships>
-                <relationship kind="action" name="onBack:"/>
-                <relationship kind="action" name="onBreakRoute:"/>
-                <relationship kind="action" name="onDestinationAddressButtonTap:"/>
-                <relationship kind="action" name="onInfoTap:"/>
-                <relationship kind="action" name="onSourceAddressButtonTap:"/>
                 <relationship kind="outlet" name="buttonAddressDestination" candidateClass="SMPatternedButton"/>
                 <relationship kind="outlet" name="buttonAddressSource" candidateClass="SMPatternedButton"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
@@ -4730,6 +4731,7 @@
         <class className="SMDirectionCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SMDirectionCell.h"/>
             <relationships>
+                <relationship kind="outlet" name="imgBackground" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="imgDirection" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="lblDescription" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lblDistance" candidateClass="UILabel"/>
@@ -4857,6 +4859,15 @@
         <class className="SMRouteNavigationController" superclassName="SMTranslatedViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRouteNavigationController.h"/>
             <relationships>
+                <relationship kind="action" name="buttonPressed:"/>
+                <relationship kind="action" name="goBack:"/>
+                <relationship kind="action" name="hideFinishView:"/>
+                <relationship kind="action" name="hideStopView:"/>
+                <relationship kind="action" name="onBreakRoute:"/>
+                <relationship kind="action" name="onPanGestureDirections:" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="action" name="reportError:"/>
+                <relationship kind="action" name="startRouting:"/>
+                <relationship kind="action" name="trackUser:"/>
                 <relationship kind="outlet" name="arrivalBG" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="blockingView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="breakRouteButton" candidateClass="UIButton"/>

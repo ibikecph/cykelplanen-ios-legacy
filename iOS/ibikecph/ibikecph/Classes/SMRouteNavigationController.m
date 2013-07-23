@@ -1615,10 +1615,18 @@ typedef enum {
                 turn.descriptionString = @"";
                 turn.wayName = self.destination;
             }
-            if (i == 0)
+            if (i == 0) {
                 [(SMDirectionTopCell *)cell renderViewFromInstruction:turn];
-            else
+            }
+            else {
                 [(SMDirectionCell *)cell renderViewFromInstruction:turn];
+                SMDirectionCell* dirCell = (SMDirectionCell*)cell;
+                if (indexPath.row == 1) {
+                    [dirCell.imgBackground setImage:[UIImage imageNamed:@"direction_cell_small_top_bgr"]];
+                } else {
+                    [dirCell.imgBackground setImage:[UIImage imageNamed:@"direction_cell_small_bgr"]];
+                }
+            }
             
         }
 
