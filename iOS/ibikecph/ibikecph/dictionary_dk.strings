@@ -152,6 +152,7 @@
 "break_route_text_bottom" = "Når du vælger “Knæk ruten” giver vi dig en ny rute til nærmeste S-togsstation og bringer dig frem til din endelige destination.";
 "break_route_spring" = "Afslut guide og ta’ en tur";
 "break_route_exit" = "Spring over";
+"break_route_header_title" = "Din rute er nu";
 
 "btn_skip" = "Spring over";
 "where_are_we_going" = "Ny rute";

@@ -10,7 +10,7 @@
 #import "SMTripRoute.h"
 #import "SMStationPickerView.h"
 #import "SMAddressPickerView.h"
-@interface SMBreakRouteViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, SMBreakRouteDelegate, AddressSelectDelegate, UIAlertViewDelegate>
+@interface SMBreakRouteViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, SMBreakRouteDelegate, AddressSelectDelegate, UIAlertViewDelegate, SMRouteDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView* tableView;
 

@@ -258,6 +258,8 @@ typedef enum {
 }
 
 - (IBAction)hideLogin:(id)sender {
+    [loginPassword resignFirstResponder];
+    [loginEmail resignFirstResponder];
     [UIView animateWithDuration:0.4f animations:^{
         [loginView setAlpha:0.0f];
     } completion:^(BOOL finished) {
@@ -269,6 +271,9 @@ typedef enum {
 }
 
 - (IBAction)loginToRegister:(id)sender {
+    [loginPassword resignFirstResponder];
+    [loginEmail resignFirstResponder];
+
     [UIView animateWithDuration:0.4f animations:^{
         [loginView setAlpha:0.0f];
     } completion:^(BOOL finished) {
@@ -491,6 +496,8 @@ typedef enum {
         UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:[error description] delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
         [av show];
     }
+    
+    [self.apr hideWaitingView];
 }
 
 - (void)request:(SMAPIRequest *)req completedWithResult:(NSDictionary *)result {
@@ -527,6 +534,8 @@ typedef enum {
         UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:[result objectForKey:@"info"] delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
         [av show];
     }
+    
+    [self.apr hideWaitingView];
 }
 
 - (void)serverNotReachable {
