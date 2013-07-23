@@ -4603,7 +4603,6 @@
         <image name="white_btn.png" width="12" height="12"/>
         <image name="white_btn_pressed.png" width="11" height="11"/>
     </resources>
-
     <classes>
         <class className="AsyncImageView" superclassName="UIImageView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AsyncImageView.h"/>
@@ -4629,11 +4628,6 @@
         <class className="SMAccountController" superclassName="SMTranslatedViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SMAccountController.h"/>
             <relationships>
-                <relationship kind="action" name="changeImage:"/>
-                <relationship kind="action" name="deleteAccount:"/>
-                <relationship kind="action" name="goBack:"/>
-                <relationship kind="action" name="logout:"/>
-                <relationship kind="action" name="saveChanges:"/>
                 <relationship kind="outlet" name="email" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="fbImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="fbName" candidateClass="UILabel"/>
@@ -4689,6 +4683,11 @@
         <class className="SMBreakRouteViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SMBreakRouteViewController.h"/>
             <relationships>
+                <relationship kind="action" name="onBack:"/>
+                <relationship kind="action" name="onBreakRoute:"/>
+                <relationship kind="action" name="onDestinationAddressButtonTap:"/>
+                <relationship kind="action" name="onInfoTap:"/>
+                <relationship kind="action" name="onSourceAddressButtonTap:"/>
                 <relationship kind="outlet" name="buttonAddressDestination" candidateClass="SMPatternedButton"/>
                 <relationship kind="outlet" name="buttonAddressSource" candidateClass="SMPatternedButton"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
@@ -4858,15 +4857,6 @@
         <class className="SMRouteNavigationController" superclassName="SMTranslatedViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRouteNavigationController.h"/>
             <relationships>
-                <relationship kind="action" name="buttonPressed:"/>
-                <relationship kind="action" name="goBack:"/>
-                <relationship kind="action" name="hideFinishView:"/>
-                <relationship kind="action" name="hideStopView:"/>
-                <relationship kind="action" name="onBreakRoute:"/>
-                <relationship kind="action" name="onPanGestureDirections:" candidateClass="UIPanGestureRecognizer"/>
-                <relationship kind="action" name="reportError:"/>
-                <relationship kind="action" name="startRouting:"/>
-                <relationship kind="action" name="trackUser:"/>
                 <relationship kind="outlet" name="arrivalBG" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="blockingView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="breakRouteButton" candidateClass="UIButton"/>
@@ -5025,7 +5015,6 @@
             </relationships>
         </class>
     </classes>
-
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

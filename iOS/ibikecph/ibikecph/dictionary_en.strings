@@ -177,7 +177,7 @@
 "break_route_text_top" = "Vidste du, at du let kan knække din pendlerrute ved at tage toget noget af vejen.";
 "break_route_text_bottom" = "Når du vælger “Knæk ruten” giver vi dig en ny rute til nærmeste S-togsstation og bringer dig frem til din endelige destination.";
 "break_route_exit" = "Afslut guide og ta’ en tur";
-"break_route_header_title" = "Din rute er nu";
+
 
 "where_are_we_going" = "Where should we go?";
 "ibikecph_route_planner" = "I Bike CPH";

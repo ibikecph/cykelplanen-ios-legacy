@@ -70,7 +70,8 @@
     breakRouteFailed= NO;
     displayed= NO;
     
-    [self.titleLabel setText:translateString(@"break_route_title")];
+    NSString* title= translateString(@"break_route_title");
+    [self.titleLabel setText:title];
     
     self.tableView.separatorStyle= UITableViewCellSeparatorStyleNone;
 
