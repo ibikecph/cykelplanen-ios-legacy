@@ -387,12 +387,12 @@
     if(route.transportationRoutes.count > 0){
         SMSingleRouteInfo* routeInfo= [route.transportationRoutes objectAtIndex:0];
         
-        self.sourceStation= routeInfo.sourceStation;
-        
+        [self performSelectorOnMainThread:@selector(setSourceStation:) withObject:routeInfo.sourceStation waitUntilDone:NO];
         destinationStations= [self endStationsForSourceStation:routeInfo.sourceStation];
 
         routeInfo=[destinationStations objectAtIndex:0];
-        self.destinationStation= routeInfo.destStation;
+
+        [self performSelectorOnMainThread:@selector(setDestinationStation:) withObject:routeInfo.destStation waitUntilDone:YES];
         
     }else{
         if(displayed){
