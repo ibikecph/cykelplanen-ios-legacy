@@ -107,10 +107,10 @@
 "route_stop_title" = "Vil du afslutte ruten?";
 "route_stop_text" = "Afbryd ruten ved at trykke på ‘Stop’. Du kan rapportere problemer med ruten ved at trykke på ‘Rapporter et problem’.";
 "report_error" = "Rapporter";
-"report_wrong_address" = "Forkert vejnavn";
-"report_road_closed" = "Vejen er spærret";
+"report_wrong_address" = "Vejnavn er forkert";
+"report_road_closed" = "Vejen er lukket";
 "report_one_way" = "Vejen er ensrettet";
-"report_illegal_turn" = "Ruten er ulovlig";
+"report_illegal_turn" = "Ruten foreslår ulovlige sving";
 "report_wrong_instruction" = "Forkert instruktion";
 "report_other" = "Andet";
 
@@ -164,6 +164,8 @@
 "you_have_arrived_to" = "Du er nu fremme ved";
 "to_homepage" = "Til forsiden";
 "report_a_problem" = "Rapportér problem";
+"report_email_field" = "Skriv din email adresse";
+"report_email_checkbox" = "Giv mig besked når det er løst";
 "From:" = "Fra:";
 "To:" = "Til:";
 "hello_cyclist" = "Hej cyklist";
@@ -174,7 +176,7 @@
 "notify_me_when_fixed" = "Få besked når fejlen er udbedret";
 "report" = "Rapporter";
 "report_text" = "Ved tryk på “Rapportér” sendes teknisk information om ruten til os.\n\nVælger du at få besked når fejlen er udbedret, bliver din email-adresse sendt til os, så vi kan kontakte dig.";
-"choose_a_route_step" = "Vælg et trin";
+"choose_a_route_step" = "Vælg trin i ruten at rapportére";
 "cancel_picker" = "Annullere";
 "done_picker" = "Vælg";
 
