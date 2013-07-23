@@ -174,8 +174,8 @@ typedef enum {
     [centerView addPullView:blockingView];
     
     [self setTitle:translateString(@"reminder_title") forButton:remindersHeaderButton];
-    [self setTitle:translateString(@"account") forButton:aboutHeaderButton];
-    [self setTitle:translateString(@"about_css") forButton:accountHeaderButton];
+    [self setTitle:translateString(@"account") forButton:accountHeaderButton];
+    [self setTitle:translateString(@"about_css") forButton:aboutHeaderButton];
 
     
 }

@@ -563,7 +563,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="j99-Al-KRw">
-                                        <rect key="frame" x="17" y="28" width="286" height="44"/>
+                                        <rect key="frame" x="17" y="18" width="286" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="48" maxY="0.0"/>
@@ -578,6 +578,10 @@
                                             <action selector="showHidePicker:" destination="952-I1-lqI" eventType="touchUpInside" id="JLm-aH-Ouc"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="divider_side_menu_btn.png" id="Tqz-Ec-J3j">
+                                        <rect key="frame" x="0.0" y="76" width="320" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Wkn-0a-Mf7">
                                         <rect key="frame" x="0.0" y="80" width="320" height="195"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -680,11 +684,16 @@
                                     <outlet property="delegate" destination="952-I1-lqI" id="LFP-KQ-ive"/>
                                 </connections>
                             </scrollView>
+                            <view contentMode="scaleToFill" id="aBU-W7-za0">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="reportBottom.png" id="wYq-UD-N39">
                                 <rect key="frame" x="0.0" y="504" width="320" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="reportHeaderBG.png" id="pCq-Vq-1oM">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="reportHeaderBG.png" id="pCq-Vq-1oM">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -695,11 +704,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="report_send" backgroundImage="blue_btn.png">
+                                <state key="normal" title="report_send" backgroundImage="blue_btn_ibike.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <state key="highlighted" backgroundImage="blue_btn_pressed.png">
+                                <state key="highlighted" backgroundImage="blue_btn_ibike_pressed.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -711,7 +720,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <inset key="titleEdgeInsets" minX="-52" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" image="reportClose.png">
+                                <state key="normal" image="back_arrow_btn_black.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -893,7 +902,7 @@
                             </view>
                             <imageView contentMode="scaleToFill" image="home_btn_inactive.png" id="ZKm-V3-c90">
                                 <rect key="frame" x="0.0" y="7" width="80" height="80"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <rect key="contentStretch" x="0.5" y="0.0" width="0.0" height="1"/>
                             </imageView>
@@ -1316,7 +1325,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <inset key="titleEdgeInsets" minX="-66" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" image="back_arrow_btn.png">
+                                <state key="normal" image="search_back_btn.png">
                                     <color key="titleColor" white="0.36784904229999998" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1614,8 +1623,8 @@
                                                             <outlet property="delegate" destination="2" id="bRR-b5-4GX"/>
                                                         </connections>
                                                     </tableView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5pu-VT-mQ8">
-                                                        <rect key="frame" x="217" y="6" width="33" height="33"/>
+                                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5pu-VT-mQ8">
+                                                        <rect key="frame" x="213" y="2" width="41" height="41"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                         <state key="normal" image="favEditBtn.png">
@@ -1631,15 +1640,16 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5rm-1d-jbp">
-                                                        <rect key="frame" x="178" y="6" width="72" height="33"/>
+                                                        <rect key="frame" x="181" y="6" width="72" height="33"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                         <state key="normal" title="done" backgroundImage="favEditDoneBtn.png">
-                                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
-                                                        <state key="highlighted">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <state key="highlighted" backgroundImage="favEditDoneBtnPressed.png">
+                                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="stopEdit:" destination="2" eventType="touchUpInside" id="D4O-qN-dL3"/>
@@ -1987,19 +1997,20 @@
                                                 <rect key="frame" x="23" y="400" width="123" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                                <size key="titleShadowOffset" width="1" height="1"/>
+                                                <size key="titleShadowOffset" width="0.0" height="-0.5"/>
                                                 <state key="normal" title="save_favorite" backgroundImage="blue_btn.png">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="titleShadowColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" red="0.49288504459999999" green="0.22428686940000001" blue="0.053825005029999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <state key="highlighted" backgroundImage="blue_btn_pressed.png">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" red="0.49288504459999999" green="0.22428686940000001" blue="0.053825005029999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="editSaveFavorite:" destination="2" eventType="touchUpInside" id="w9o-mg-lxC"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aBa-l6-O1e" customClass="SMPatternedButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aBa-l6-O1e" customClass="SMCustomButton">
                                                 <rect key="frame" x="154" y="400" width="82" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
@@ -2017,7 +2028,7 @@
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </imageView>
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="favSearch_Name_icon.png" id="gD4-fP-S8n">
-                                                <rect key="frame" x="231" y="130" width="17" height="21"/>
+                                                <rect key="frame" x="231" y="130" width="19" height="21"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </imageView>
                                         </subviews>
@@ -2541,8 +2552,8 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <subviews>
                                             <imageView hidden="YES" opaque="NO" contentMode="scaleToFill" image="normalDirectionsBG.png" id="Wxl-7E-taK">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <rect key="contentStretch" x="0.5" y="0.5" width="0.0" height="0.0"/>
                                                 <gestureRecognizers/>
@@ -3154,7 +3165,7 @@
                                                 <size key="titleShadowOffset" width="0.0" height="-0.5"/>
                                                 <state key="normal" title="save_changes" backgroundImage="blue_btn.png">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="titleShadowColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" red="0.49288504459999999" green="0.22428686940000001" blue="0.053825005029999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <state key="highlighted" backgroundImage="blue_btn_pressed.png">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -4100,7 +4111,7 @@
                                         <size key="titleShadowOffset" width="0.0" height="-0.5"/>
                                         <state key="normal" title="register_save" backgroundImage="blue_btn.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="0.49288504459999999" green="0.22428686940000001" blue="0.053825005029999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <state key="highlighted" backgroundImage="blue_btn_pressed.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -4388,14 +4399,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="break_route" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Moa-hc-297">
-                                <rect key="frame" x="19" y="63" width="280" height="36"/>
+                                <rect key="frame" x="20" y="74" width="280" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
                                 <color key="textColor" red="0.96078431369999995" green="0.50980392159999999" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="lw_break_rote_info_top" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bQu-zQ-09K">
-                                <rect key="frame" x="31" y="97" width="257" height="76"/>
+                                <rect key="frame" x="32" y="108" width="257" height="76"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" red="0.14117647059999999" green="0.14117647059999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -4428,12 +4439,11 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="splash_break_route.png" id="tCe-nZ-Tpb">
-                                <rect key="frame" x="0.0" y="228" width="320" height="263"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <rect key="frame" x="0.0" y="220" width="320" height="263"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="lw_break_rote_info_bottom" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qht-2d-yuS">
-                                <rect key="frame" x="110" y="401" width="191" height="99"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <rect key="frame" x="116" y="397" width="191" height="99"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" red="0.5450980392" green="0.5450980392" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -4461,10 +4471,13 @@
         <image name="about_header.png" width="286" height="77"/>
         <image name="autocompleteHeader.png" width="152" height="4"/>
         <image name="back_arrow_btn.png" width="46" height="34"/>
+        <image name="back_arrow_btn_black.png" width="46" height="34"/>
         <image name="back_arrow_btn_black_press.png" width="46" height="34"/>
         <image name="back_arrow_btn_press.png" width="46" height="34"/>
         <image name="bike_route.png" width="30" height="39"/>
         <image name="blue_btn.png" width="11" height="11"/>
+        <image name="blue_btn_ibike.png" width="11" height="11"/>
+        <image name="blue_btn_ibike_pressed.png" width="11" height="11"/>
         <image name="blue_btn_pressed.png" width="11" height="11"/>
         <image name="bottom_divider_vertical.png" width="2" height="2"/>
         <image name="break_route.png" width="36" height="36"/>
@@ -4488,6 +4501,7 @@
         <image name="favEditBtn.png" width="33" height="33"/>
         <image name="favEditBtnPressed.png" width="33" height="33"/>
         <image name="favEditDoneBtn.png" width="72" height="33"/>
+        <image name="favEditDoneBtnPressed.png" width="72" height="33"/>
         <image name="favListRow.png" width="260" height="45"/>
         <image name="favListRowLight.png" width="130" height="23"/>
         <image name="favListRowSelected.png" width="260" height="45"/>
@@ -4533,8 +4547,8 @@
         <image name="pullHandle.png" width="60" height="30"/>
         <image name="radioChecked.png" width="22" height="22"/>
         <image name="radioUnchecked.png" width="22" height="22"/>
-        <image name="red_btn.png" width="22" height="22"/>
-        <image name="red_btn_pressed.png" width="22" height="22"/>
+        <image name="red_btn.png" width="24" height="24"/>
+        <image name="red_btn_pressed.png" width="24" height="24"/>
         <image name="register.png" width="22" height="22"/>
         <image name="registerBG.png" width="320" height="457"/>
         <image name="registerBlueButton.png" width="16" height="16"/>
@@ -4568,6 +4582,7 @@
         <image name="routeEnterTopRowPressed.png" width="320" height="44"/>
         <image name="routeEnterViewMoreRow.png" width="320" height="47"/>
         <image name="routeStopOverlay.png" width="320" height="212"/>
+        <image name="search_back_btn.png" width="47" height="37"/>
         <image name="search_btn_start.png" width="75" height="37"/>
         <image name="select_station_bgr.png" width="243" height="37"/>
         <image name="separator.png" width="2" height="83"/>
@@ -4588,14 +4603,437 @@
         <image name="white_btn.png" width="12" height="12"/>
         <image name="white_btn_pressed.png" width="11" height="11"/>
     </resources>
+
+    <classes>
+        <class className="AsyncImageView" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AsyncImageView.h"/>
+        </class>
+        <class className="FlickableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FlickableView.h"/>
+        </class>
+        <class className="GAITrackedViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GAITrackedViewController.h"/>
+        </class>
+        <class className="RMMapView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RMMapView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delegate"/>
+            </relationships>
+        </class>
+        <class className="SMAboutController" superclassName="SMTranslatedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMAboutController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="scrlView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="SMAccountController" superclassName="SMTranslatedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMAccountController.h"/>
+            <relationships>
+                <relationship kind="action" name="changeImage:"/>
+                <relationship kind="action" name="deleteAccount:"/>
+                <relationship kind="action" name="goBack:"/>
+                <relationship kind="action" name="logout:"/>
+                <relationship kind="action" name="saveChanges:"/>
+                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="fbImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="fbName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="fbView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="name" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordRepeat" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="regularImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="regularView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="scrlView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="SMAddFavoriteCell" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMAddFavoriteCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="addFavoritesSymbol" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="cellBG" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="image" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="text" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMAutocompleteHeader" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMAutocompleteHeader.h"/>
+            <relationships>
+                <relationship kind="outlet" name="headerTitle" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMBikeWaypointCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMBikeWaypointCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageViewAddress" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="imageViewDistance" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="labelAddressBottom" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelAddressTop" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelDistance" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="viewAddress" candidateClass="UIView"/>
+                <relationship kind="outlet" name="viewDistance" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="SMBreakRouteButtonCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMBreakRouteButtonCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="btnBreakRoute" candidateClass="SMPatternedButton"/>
+            </relationships>
+        </class>
+        <class className="SMBreakRouteHeader" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMBreakRouteHeader.h"/>
+            <relationships>
+                <relationship kind="outlet" name="routeDistance" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="title" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMBreakRouteViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMBreakRouteViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="buttonAddressDestination" candidateClass="SMPatternedButton"/>
+                <relationship kind="outlet" name="buttonAddressSource" candidateClass="SMPatternedButton"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMCustomButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMCustomButton.h"/>
+        </class>
+        <class className="SMCustomCheckbox" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMCustomCheckbox.h"/>
+        </class>
+        <class className="SMCyLwFirstTimeIntro" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMCyLwFirstTimeIntro.h"/>
+            <relationships>
+                <relationship kind="action" name="onExit:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="btnExitGuide" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="exitButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="screenBottomText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="screenTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="screenTopText" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMCyLwReminderVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMCyLwReminderVC.h"/>
+            <relationships>
+                <relationship kind="action" name="saveReminder:" candidateClass="UIButton"/>
+                <relationship kind="action" name="skip:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="btnSave" candidateClass="SMPatternedButton"/>
+                <relationship kind="outlet" name="btnSkip" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="screenText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="screenTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="swFriday" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="swMonday" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="swThursday" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="swTuesday" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="swWednesday" candidateClass="UISwitch"/>
+            </relationships>
+        </class>
+        <class className="SMDirectionCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMDirectionCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imgDirection" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="lblDescription" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblDistance" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblWayname" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMDirectionTopCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMDirectionTopCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imgDirection" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="lblDescription" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblDistance" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblWayname" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMEmptyFavoritesCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMEmptyFavoritesCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="addFavoritesSymbol" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="addFavoritesText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="text" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMEnterRouteCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMEnterRouteCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="iconImage" candidateClass="AsyncImageView"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="TTTAttributedLabel"/>
+            </relationships>
+        </class>
+        <class className="SMEnterRouteController" superclassName="SMTranslatedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMEnterRouteController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="fadeView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="fromLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="locationArrow" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="startButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="swapButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tblView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="toLabel" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SMFavoritesController" superclassName="SMTranslatedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMFavoritesController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="btnSave" candidateClass="SMPatternedButton"/>
+                <relationship kind="outlet" name="btnSkip" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="favoriteHome" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="favoriteWork" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="favoritesView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="screenText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="screenTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrlView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="SMGPSTrackButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMGPSTrackButton.h"/>
+        </class>
+        <class className="SMLoginController" superclassName="SMTranslatedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMLoginController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="loginEmail" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="loginPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="scrlView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="SMMenuCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMMenuCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cellBG" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="editBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="image" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="text" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMPatternedButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMPatternedButton.h"/>
+        </class>
+        <class className="SMRadioCheckedCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRadioCheckedCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="radioTextBox" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="radioTitle" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMRadioUncheckedCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRadioUncheckedCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="radioTitle" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMRegisterController" superclassName="SMTranslatedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRegisterController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="registerEmail" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="registerImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="registerName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="registerPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="registerRepeatPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="scrlView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="SMReminderTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMReminderTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="day" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="reminderSwitch" candidateClass="UISwitch"/>
+            </relationships>
+        </class>
+        <class className="SMReportErrorController" superclassName="SMTranslatedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMReportErrorController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="bottomView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="btnSelectRouteSegment" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="fadeView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="pckrView" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="reportEmail" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="reportSentView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="scrlView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="switchContactMe" candidateClass="SMCustomCheckbox"/>
+                <relationship kind="outlet" name="tblView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SMRouteNavigationController" superclassName="SMTranslatedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRouteNavigationController.h"/>
+            <relationships>
+                <relationship kind="action" name="buttonPressed:"/>
+                <relationship kind="action" name="goBack:"/>
+                <relationship kind="action" name="hideFinishView:"/>
+                <relationship kind="action" name="hideStopView:"/>
+                <relationship kind="action" name="onBreakRoute:"/>
+                <relationship kind="action" name="onPanGestureDirections:" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="action" name="reportError:"/>
+                <relationship kind="action" name="startRouting:"/>
+                <relationship kind="action" name="trackUser:"/>
+                <relationship kind="outlet" name="arrivalBG" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="blockingView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="breakRouteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonTrackUser" candidateClass="SMGPSTrackButton"/>
+                <relationship kind="outlet" name="cargoHandleImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="cargoTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="centerView" candidateClass="FlickableView"/>
+                <relationship kind="outlet" name="closeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="finishDestination" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="finishDistance" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="finishFadeView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="finishStreet" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="finishTime" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="finishView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="imgNextTurnDirection" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="instructionsView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="labelDistanceLeft" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelDistanceToNextTurn" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelTimeLeft" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="mapContainer" candidateClass="UIView"/>
+                <relationship kind="outlet" name="mapFade" candidateClass="UIView"/>
+                <relationship kind="outlet" name="minimizedInstructionsView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="mpView" candidateClass="RMMapView"/>
+                <relationship kind="outlet" name="noConnectionView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="overviewDestination" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="overviewDestinationBottom" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="overviewTimeDistance" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="progressView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="pullHandleImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="recalculatingView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="routeOverview" candidateClass="UIView"/>
+                <relationship kind="outlet" name="routeOverviewBottom" candidateClass="UIView"/>
+                <relationship kind="outlet" name="stopView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="swipableView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="swipeLeftArrow" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="swipeRightArrow" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tblDirections" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SMRouteTypeSelectCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRouteTypeSelectCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cellCheckbox" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="cellImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="cellText" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMSearchCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMSearchCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="iconImage" candidateClass="AsyncImageView"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="TTTAttributedLabel"/>
+            </relationships>
+        </class>
+        <class className="SMSearchController" superclassName="SMTranslatedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMSearchController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="tblFade" candidateClass="UIView"/>
+                <relationship kind="outlet" name="tblView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SMSearchTwoRowCell" superclassName="SMSearchCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMSearchTwoRowCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="addressLabel" candidateClass="TTTAttributedLabel"/>
+            </relationships>
+        </class>
+        <class className="SMSplashController" superclassName="SMTranslatedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMSplashController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="btnRegisterWithMail" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="btnSkip" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="dialogView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="loginDialog" candidateClass="UIView"/>
+                <relationship kind="outlet" name="loginEmail" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="loginPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="loginScroll" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="loginView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="nameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordRepeatField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="registerDialog" candidateClass="UIView"/>
+                <relationship kind="outlet" name="registerImage" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="registerScroll" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="registerView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="SMTranslatedViewController" superclassName="GAITrackedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMTranslatedViewController.h"/>
+        </class>
+        <class className="SMTransportationCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMTransportationCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="buttonAddressDestination" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonAddressInfo" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonAddressSource" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SMViewController" superclassName="SMTranslatedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="aboutHeaderButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="accHeader" candidateClass="UIView"/>
+                <relationship kind="outlet" name="accountHeaderButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="account_label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="addFavAddress" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="addFavFavoriteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="addFavHomeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="addFavName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="addFavSchoolButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="addFavWorkButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="addMenu" candidateClass="UIView"/>
+                <relationship kind="outlet" name="addSaveButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="blockingView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="btnFavorites" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="btnReminders" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonTrackUser" candidateClass="SMGPSTrackButton"/>
+                <relationship kind="outlet" name="centerView" candidateClass="FlickableView"/>
+                <relationship kind="outlet" name="debugLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dropPinView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="editDeleteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="editSaveButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="editTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="fadeView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="favEditDone" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="favEditStart" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="favHeader" candidateClass="UIView"/>
+                <relationship kind="outlet" name="findRouteBig" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="findRouteSmall" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="headerReminders" candidateClass="UIView"/>
+                <relationship kind="outlet" name="imgReminders" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="infHeader" candidateClass="UIView"/>
+                <relationship kind="outlet" name="mainMenu" candidateClass="UIView"/>
+                <relationship kind="outlet" name="menuBtn" candidateClass="UIView"/>
+                <relationship kind="outlet" name="menuView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="pinButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="remindersHeaderButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="routeStreet" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tableFooter" candidateClass="SMAddFavoriteCell"/>
+                <relationship kind="outlet" name="tblFavorites" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="tblMenu" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SMViewMoreCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMViewMoreCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="buttonLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="TTTAttributedLabel" superclassName="UILabel">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TTTAttributedLabel.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delegate"/>
+            </relationships>
+        </class>
+    </classes>
+
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="yP5-9Q-UWd"/>
-        <segue reference="SAG-9b-Vbu"/>
+        <segue reference="pNO-eB-0CQ"/>
+        <segue reference="FqQ-pD-Lrh"/>
         <segue reference="wAx-WK-VM3"/>
     </inferredMetricsTieBreakers>
 </document>
