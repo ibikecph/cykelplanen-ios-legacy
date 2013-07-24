@@ -163,6 +163,7 @@ typedef enum {
     [blockingView addGestureRecognizer:dblTap];
 
     self.tableFooter = [SMAddFavoriteCell getFromNib];
+
     [self.tableFooter setDelegate:self];
     [self.tableFooter.text setText:translateString(@"cell_add_favorite")];
 
@@ -1265,13 +1266,13 @@ typedef enum {
             } else {
                 [cell.addFavoritesText setText:translateString(@"favorites_login")];                
 //                [cell.addFavoritesText setTextColor:[UIColor colorWithRed:96.0f/255.0f green:96.0f/255.0f blue:96.0f/255.0f alpha:1.0f]];
-                [cell.addFavoritesText setTextColor:[UIColor colorWithRed:123.0f/255.0f green:123.0f/255.0f blue:123.0f/255.0f alpha:1.0f]];
-                [cell.text setTextColor:[UIColor colorWithRed:123.0f/255.0f green:123.0f/255.0f blue:123.0f/255.0f alpha:1.0f]];
+                [cell.addFavoritesText setTextColor:[UIColor colorWithRed:77.0f/255.0f green:77.0f/255.0f blue:77.0f/255.0f alpha:1.0f]];
+                [cell.text setTextColor:[UIColor colorWithRed:77.0f/255.0f green:77.0f/255.0f blue:77.0f/255.0f alpha:1.0f]];
 //                [cell.text setTextColor:[UIColor redColor]];
                 [cell.addFavoritesSymbol setImage:[UIImage imageNamed:@"fav_plus_none_grey"]];
-
             }
             
+            [cell.contentView setBackgroundColor:[UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1.0]];
             return cell;
         }
     }

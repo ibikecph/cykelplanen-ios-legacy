@@ -47,11 +47,11 @@
 "first_direction_17" = "Gå mod %@ og fortsæt på cykele";
 "first_direction_100" = "Du nærmer dig destinationen";
 
-"monday" = "Monday";
-"tuesday" = "Tuesday";
-"wednesday" = "Wednesday";
-"thursday" = "Thursday";
-"friday" = "Friday";
+"monday" = "Mandag";
+"tuesday" = "Tirsdag";
+"wednesday" = "Onsdag";
+"thursday" = "Torsdag";
+"friday" = "Fredag";
 
 "direction_N" = "nord";
 "direction_NE" = "nordøst";
