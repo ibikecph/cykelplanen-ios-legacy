@@ -374,13 +374,23 @@ typedef enum {
         case menuReminders: {
             [favEditDone setHidden:YES];
             [favEditStart setHidden:YES];
-            CGRect frame = infHeader.frame;
+                       
+            CGRect frame = self.headerReminders.frame;
+            frame = self.headerReminders.frame;
+            frame.origin.y = favHeader.frame.origin.y + 45.0f;
+            frame.size.height = maxHeight - 3 * 45.0f;
+            [self.headerReminders setFrame:frame];            
+            
             //frame.origin.y = startY + 2 * 45.0f;
+            
+            startY = self.headerReminders.frame.origin.y + self.headerReminders.frame.size.height;
+            
+            frame.origin.y = startY;
             frame.size.height = 45.0f;
             [infHeader setFrame:frame];
             
             frame = favHeader.frame;
-            frame.origin.y = startY;
+            frame.origin.y = 0; //startY;
             frame.size.height = 45.0f;
             [favHeader setFrame:frame];
             
@@ -388,11 +398,8 @@ typedef enum {
             frame.origin.y = startY + 45.0f;
             frame.size.height = 45.0f;
             [accHeader setFrame:frame];
+
             
-            frame = self.headerReminders.frame;
-            frame.origin.y = favHeader.frame.origin.y + 45.0f;
-            frame.size.height = maxHeight - 3 * 45.0f;
-            [self.headerReminders setFrame:frame];
         }
             break;
         case menuInfo: {
@@ -1133,20 +1140,37 @@ typedef enum {
             frame.size.height = 45.0f;
             [favHeader setFrame:frame];
             
-            frame = infHeader.frame;
-            frame.origin.y = maxHeight - 45.0f * 1.0;
-            frame.size.height = 45.0f;
-            [infHeader setFrame:frame];
-            
-            frame = accHeader.frame;
-            frame.origin.y = maxHeight - 2.0*45.0f;
-            frame.size.height = 45.0f;
-            [accHeader setFrame:frame];
+//            frame = infHeader.frame;
+//            frame.origin.y = maxHeight - 45.0f * 1.0;
+//            frame.size.height = 45.0f;
+//            [infHeader setFrame:frame];
+//            
+//            frame = accHeader.frame;
+//            frame.origin.y = maxHeight - 2.0*45.0f;
+//            frame.size.height = 45.0f;
+//            [accHeader setFrame:frame];
             
             frame = self.headerReminders.frame;
             frame.origin.y = favHeader.frame.origin.y + 45.0f;
             frame.size.height = maxHeight - 3 * 45.0f;
             [self.headerReminders setFrame:frame];
+            
+            float startY = self.headerReminders.frame.origin.y + 6*45; //self.headerReminders.frame.size.height;
+            
+            frame = favHeader.frame;
+            //frame.origin.y = 0; //startY;
+            frame.size.height = 45.0f;
+            [favHeader setFrame:frame];
+            
+            frame = accHeader.frame;
+            frame.origin.y = startY;
+            frame.size.height = 45.0f;
+            [accHeader setFrame:frame];
+            
+            frame = infHeader.frame;
+            frame.origin.y = startY + 45.0f;
+            frame.size.height = 45.0f;
+            [infHeader setFrame:frame];
             
         }];
     } else {

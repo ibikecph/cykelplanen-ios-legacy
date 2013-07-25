@@ -78,24 +78,32 @@
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDate* now= [NSDate new];
 
-    const int SECONDS_IN_DAY= 60*60*24;
+    const int SECONDS_IN_DAY = 60*60*24;
     for(int i=0; i<7; i++){
-        NSDate* currentDate= [now dateByAddingTimeInterval:i*SECONDS_IN_DAY-1];
+        NSDate* currentDate = [now dateByAddingTimeInterval:i*SECONDS_IN_DAY-1];
+        NSDate* dayBeforeDate = [now dateByAddingTimeInterval:(i-1)*SECONDS_IN_DAY-1];
+            
+        NSCalendar* cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        NSDateComponents* components = [cal components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:dayBeforeDate];
+        [components setHour:20];    // 8pm
+        NSDate* dayBefore8pm = [cal dateFromComponents:components];
         
         NSDateComponents *weekdayComponents =[gregorian components:NSWeekdayCalendarUnit fromDate:currentDate];
         NSInteger weekday = [weekdayComponents weekday]-2;
-        NSNumber* notifyNum= [days objectForKey:[NSNumber numberWithInt:weekday].stringValue];
+        NSNumber* notifyNum = [days objectForKey:[NSNumber numberWithInt:weekday].stringValue];
         if(notifyNum && [notifyNum boolValue ]){
 
             UILocalNotification* notification= [UILocalNotification new];
 
-            NSDate* fireDate= currentDate;
+            //NSDate* fireDate= currentDate;
             [notification setTimeZone:[NSTimeZone defaultTimeZone]];
-            [notification setFireDate:fireDate];
+            [notification setFireDate:dayBefore8pm];                                // fireDate
             notification.soundName= UILocalNotificationDefaultSoundName;
             notification.repeatInterval= NSWeekCalendarUnit;
             [notification setAlertAction:@"Open App"];
-            [notification setAlertBody:@"Cykelsuperstierne Reminder"];
+            [notification setAlertBody:translateString(@"reminder_alert_text")];
+            
+            NSLog(@"Alarm set %@", [dayBefore8pm descriptionWithLocale:[NSLocale systemLocale]]);
 
             [notification setHasAction:YES];
             [[UIApplication sharedApplication] scheduleLocalNotification:notification];

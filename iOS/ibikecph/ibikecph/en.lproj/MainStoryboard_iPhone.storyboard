@@ -1734,13 +1734,13 @@
                                                         <rect key="frame" x="226" y="11" width="22" height="22"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" id="F20-99-urL">
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" id="F20-99-urL">
                                                         <rect key="frame" x="0.0" y="45" width="260" height="225"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <prototypes>
                                                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="reminderCell" selectionStyle="blue" indentationWidth="10" reuseIdentifier="reminderTableCell" rowHeight="46" id="YG3-sL-y2r" customClass="SMReminderTableViewCell">
-                                                                <rect key="frame" x="0.0" y="0.0" width="260" height="46"/>
+                                                                <rect key="frame" x="0.0" y="1" width="260" height="46"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                     <rect key="frame" x="0.0" y="0.0" width="260" height="45"/>
@@ -1785,7 +1785,7 @@
                                                         </connections>
                                                     </tableView>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                                             </view>
                                             <view contentMode="scaleToFill" id="GQw-x6-ulN" userLabel="Account">
                                                 <rect key="frame" x="0.0" y="370" width="260" height="45"/>
@@ -1874,7 +1874,7 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" id="Ucg-S3-ith" userLabel="add favorite">
                                         <rect key="frame" x="0.0" y="0.0" width="260" height="460"/>
@@ -3522,7 +3522,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="n6p-di-lm1">
                                                     <rect key="frame" x="68" y="48" width="232" height="36"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <state key="normal" title="Info" image="list_find_icon.png" backgroundImage="break_route_info_btn.png">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -4290,23 +4290,23 @@
                                         <rect key="frame" x="16" y="36" width="288" height="225"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="4YF-sX-cTE">
+                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="4YF-sX-cTE">
                                         <rect key="frame" x="210" y="48" width="79" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </switch>
-                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="GlP-n7-ktC">
+                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="GlP-n7-ktC">
                                         <rect key="frame" x="210" y="92" width="79" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </switch>
-                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="vun-Qd-86J">
+                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="vun-Qd-86J">
                                         <rect key="frame" x="210" y="136" width="79" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </switch>
-                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="pQO-ok-cgE">
+                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="pQO-ok-cgE">
                                         <rect key="frame" x="210" y="180" width="79" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </switch>
-                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="1Fz-IU-wHA">
+                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="1Fz-IU-wHA">
                                         <rect key="frame" x="210" y="223" width="79" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </switch>
@@ -4864,7 +4864,6 @@
         <class className="SMMenuCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SMMenuCell.h"/>
             <relationships>
-                <relationship kind="action" name="editCell:"/>
                 <relationship kind="outlet" name="cellBG" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="editBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="image" candidateClass="UIImageView"/>
@@ -5033,32 +5032,6 @@
         <class className="SMViewController" superclassName="SMTranslatedViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SMViewController.h"/>
             <relationships>
-                <relationship kind="action" name="addFavoriteHide:"/>
-                <relationship kind="action" name="addFavoriteShow:"/>
-                <relationship kind="action" name="addSelectFavorite:"/>
-                <relationship kind="action" name="addSelectHome:"/>
-                <relationship kind="action" name="addSelectSchool:"/>
-                <relationship kind="action" name="addSelectWork:"/>
-                <relationship kind="action" name="deleteFavorite:"/>
-                <relationship kind="action" name="doubleTap:" candidateClass="UITapGestureRecognizer"/>
-                <relationship kind="action" name="editFavoriteShow:"/>
-                <relationship kind="action" name="editSaveFavorite:"/>
-                <relationship kind="action" name="enterRoute:"/>
-                <relationship kind="action" name="findAddress:"/>
-                <relationship kind="action" name="goToPin:"/>
-                <relationship kind="action" name="onSelectAccount:" candidateClass="UIButton"/>
-                <relationship kind="action" name="onSelectInfo:" candidateClass="UIButton"/>
-                <relationship kind="action" name="pinAddToFavorites:"/>
-                <relationship kind="action" name="saveFavorite:"/>
-                <relationship kind="action" name="showMenu:"/>
-                <relationship kind="action" name="slideMenuOpen:"/>
-                <relationship kind="action" name="startEdit:"/>
-                <relationship kind="action" name="stopEdit:"/>
-                <relationship kind="action" name="tapAccount:"/>
-                <relationship kind="action" name="tapFavorites:"/>
-                <relationship kind="action" name="tapInfo:"/>
-                <relationship kind="action" name="toggleReminders:" candidateClass="UIButton"/>
-                <relationship kind="action" name="trackUser:"/>
                 <relationship kind="outlet" name="aboutHeaderButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="accHeader" candidateClass="UIView"/>
                 <relationship kind="outlet" name="accountHeaderButton" candidateClass="UIButton"/>
@@ -5121,7 +5094,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="SAG-9b-Vbu"/>
-        <segue reference="yP5-9Q-UWd"/>
+        <segue reference="pNO-eB-0CQ"/>
         <segue reference="wAx-WK-VM3"/>
     </inferredMetricsTieBreakers>
 </document>

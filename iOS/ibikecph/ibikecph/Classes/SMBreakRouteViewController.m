@@ -94,7 +94,6 @@
         double endTime = CACurrentMediaTime();
         NSLog(@"BREAK ROUTE time: %4.1fms", endTime - startTime);
     }
-
 }
 
 -(void)displayBreakRouteError{
@@ -196,6 +195,9 @@
 //            [tCell.buttonAddressSource setTitle:self.sourceStation.name forState:UIControlStateHighlighted];
 //            [tCell.buttonAddressDestination setTitle:self.destinationStation.name forState:UIControlStateNormal];
 //            [tCell.buttonAddressDestination setTitle:self.destinationStation.name forState:UIControlStateHighlighted];
+            
+            // Translatations
+            [tCell.buttonAddressInfo setTitle:translateString(@"route_plan_button") forState:UIControlStateNormal];
             
             CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(self.sourceStation.latitude, self.sourceStation.longitude); 
             [SMGeocoder reverseGeocode:coord completionHandler:^(NSDictionary *response, NSError *error) {
