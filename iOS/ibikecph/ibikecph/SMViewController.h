@@ -33,7 +33,7 @@ typedef enum {
 } CurrentScreenType;
 
 @interface SMViewController : SMTranslatedViewController <RMMapViewDelegate, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, EnterRouteDelegate, UIGestureRecognizerDelegate, SMAnnotationActionDelegate, SMNearbyPlacesDelegate, SMRequestOSRMDelegate, SMMenuCellDelegate, SMSearchDelegate, UITextFieldDelegate, ViewTapDelegate, SMFavoritesDelegate>  {
-    IBOutlet UIView *menuView;
+    __weak IBOutlet FlickableView *menuView;
     __weak IBOutlet FlickableView *centerView;
     __weak IBOutlet UIView *dropPinView;
     
@@ -69,12 +69,15 @@ typedef enum {
     
     __weak IBOutlet UIView *blockingView;
     
+    __weak IBOutlet FlickableView *overlayMenu;
+    
     __weak IBOutlet UIButton *findRouteBig;
     __weak IBOutlet UIButton *findRouteSmall;
     BOOL animationShown;
     __weak IBOutlet UILabel *account_label;
     __weak IBOutlet UILabel *routeStreet;
     __weak IBOutlet UIView *menuBtn;
+    __weak IBOutlet UIImageView *overlayMenuBtn;
     __weak IBOutlet UIButton *pinButton;
 }
 

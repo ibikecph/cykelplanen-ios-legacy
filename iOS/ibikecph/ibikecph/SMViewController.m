@@ -172,7 +172,11 @@ typedef enum {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(invalidToken:) name:@"invalidToken" object:nil];
     
     [centerView setupForHorizontalSwipeWithStart:0.0f andEnd:260.0f andStart:0.0f andPullView:menuBtn];
+//    [menuView setupForHorizontalSwipeWithStart:-260.0f andEnd:0.0f andStart:-260.0f andPullView:centerView];
     [centerView addPullView:blockingView];
+
+//    [overlayMenu setupForHorizontalSwipeWithStart:-260.0f andEnd:0.0f andStart:-260.0f andPullView:centerView];
+    
     
     [self setTitle:translateString(@"reminder_title") forButton:remindersHeaderButton];
     [self setTitle:translateString(@"account") forButton:accountHeaderButton];
@@ -242,6 +246,8 @@ typedef enum {
     remindersHeaderButton = nil;
     accountHeaderButton = nil;
     aboutHeaderButton = nil;
+    overlayMenuBtn = nil;
+    overlayMenu = nil;
     [super viewDidUnload];
 }
 
