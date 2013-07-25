@@ -10,6 +10,11 @@
 #import "SMGeocoder.h"
 @implementation SMStationInfo
 
+-(id)initWithCoordinate:(CLLocationCoordinate2D)coord{
+    if(self= [self initWithLongitude:coord.longitude latitude:coord.latitude]){}
+    return self;
+}
+
 -(id)initWithLongitude:(double)lon latitude:(double)lat{
     if(self= [super init]){
         self.name= [NSString stringWithFormat:@"DFNAME %lf %lf",lon, lat];
@@ -22,9 +27,12 @@
     _location= pLocation;
     _longitude= pLocation.coordinate.longitude;
     _latitude= pLocation.coordinate.latitude;
-//    [self performSelectorOnMainThread:@selector(fetchName) withObject:self waitUntilDone:NO];
-//    [self fetchName];
     
+//    [self performSelectorOnMainThread:@selector(fetchName) withObject:nil waitUntilDone:NO];
+//    [self fetchName];
+    [[NSOperationQueue mainQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
+        [self fetchName];
+    }]];
 }
 
 -(void)fetchName{
@@ -38,6 +46,7 @@
             streetName = [NSString stringWithFormat:@"Station %f, %f", coord.latitude, coord.longitude];
 
         }
+        NSLog(@"Street name %@",streetName);
         selfRef.name= streetName;
     }];
 

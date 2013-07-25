@@ -294,6 +294,9 @@ typedef enum {
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    [SMUser user].tripRoute= nil;
+    [SMUser user].route= nil;
+    
     if ([[NSFileManager defaultManager] fileExistsAtPath: [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"lastRoute.plist"]]) {
         NSDictionary * d = [NSDictionary dictionaryWithContentsOfFile: [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"lastRoute.plist"]];
         

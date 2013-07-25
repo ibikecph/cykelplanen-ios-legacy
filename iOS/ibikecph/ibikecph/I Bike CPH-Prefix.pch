@@ -24,6 +24,7 @@
     #import "SMNetworkErrorView.h"
     #import "SMRouteConsts.h"
     #import "SMRouteUtils.h"
+    #import "SMUser.h"
 #endif
 
 #if DISTRIBUTION_VERSION
@@ -101,6 +102,8 @@
 #define DIRECTION_FONT_SIZE 17.0f
 #define WAYPOINT_FONT_SIZE 20.0f
 #define INSTRUCTIONS_LABEL_WIDTH 194.0f
+
+#define NOTIFICATION_STATIONS_FETCHED @"NotificationStationsFetched"
 
 //#define USE_APPLE_GEOCODER YES
 

@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SMTransportation : NSObject
+@interface SMTransportation : NSObject<NSXMLParserDelegate>
 
 +(SMTransportation*)instance;
 +(NSOperationQueue*) transportationQueue;
 
 @property(nonatomic, strong) NSArray* lines;
-
+@property(nonatomic, assign) BOOL loadingStations;
 
 @end

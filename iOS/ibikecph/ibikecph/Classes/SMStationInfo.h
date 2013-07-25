@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface SMStationInfo : NSObject
-
+-(id)initWithCoordinate:(CLLocationCoordinate2D)coord;
 -(id)initWithLongitude:(double)lon latitude:(double)lat;
 
 @property(nonatomic, strong) CLLocation* location;
@@ -17,5 +17,5 @@
 @property(nonatomic, assign, readonly) double latitude;
 @property(nonatomic, strong) NSString* name;
 
--(void)fetchName;
+
 @end

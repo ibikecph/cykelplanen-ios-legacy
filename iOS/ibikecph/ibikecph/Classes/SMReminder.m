@@ -100,7 +100,7 @@
             [notification setHasAction:YES];
             [[UIApplication sharedApplication] scheduleLocalNotification:notification];
         }
-            NSLog(@"%@ %@",currentDate, (notifyNum.boolValue)?@"yes":@"no");
+        NSLog(@"%@ %@",currentDate, (notifyNum.boolValue)?@"yes":@"no");
     }
 
 }
@@ -134,4 +134,5 @@
     NSNumber* shown= [reminderDict objectForKey:KEY_REMINDER_SHOWN];
     return shown && shown.boolValue==YES;
 }
+
 @end

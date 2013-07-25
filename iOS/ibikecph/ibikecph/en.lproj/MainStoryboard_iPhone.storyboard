@@ -2612,8 +2612,8 @@
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 </view>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="separator.png" id="aoQ-Qd-u37">
-                                                                    <rect key="frame" x="82" y="0.0" width="2" height="82"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <rect key="frame" x="83" y="0.0" width="2" height="82"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                 </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -3284,7 +3284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uVL-Gc-PbT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2249" y="203"/>
+            <point key="canvasLocation" x="-2179" y="193"/>
         </scene>
         <!--Break Route View Controller-->
         <scene sceneID="Ijs-jU-QoZ">
@@ -4209,7 +4209,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Une-hj-UYT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2633" y="221"/>
+            <point key="canvasLocation" x="-2727" y="223"/>
         </scene>
         <!--Cy Lw ReminderVC - ReminderView-->
         <scene sceneID="pLH-Lx-5YZ">
@@ -4683,11 +4683,6 @@
         <class className="SMBreakRouteViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SMBreakRouteViewController.h"/>
             <relationships>
-                <relationship kind="action" name="onBack:"/>
-                <relationship kind="action" name="onBreakRoute:"/>
-                <relationship kind="action" name="onDestinationAddressButtonTap:"/>
-                <relationship kind="action" name="onInfoTap:"/>
-                <relationship kind="action" name="onSourceAddressButtonTap:"/>
                 <relationship kind="outlet" name="buttonAddressDestination" candidateClass="SMPatternedButton"/>
                 <relationship kind="outlet" name="buttonAddressSource" candidateClass="SMPatternedButton"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
