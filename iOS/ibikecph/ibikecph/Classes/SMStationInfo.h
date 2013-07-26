@@ -11,6 +11,7 @@
 @interface SMStationInfo : NSObject
 
 -(id)initWithLongitude:(double)lon latitude:(double)lat;
+-(id)initWithLongitude:(double)lon latitude:(double)lat andName:(NSString*)name;
 
 @property(nonatomic, strong) CLLocation* location;
 @property(nonatomic, assign, readonly) double longitude;
