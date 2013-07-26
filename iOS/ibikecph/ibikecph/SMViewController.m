@@ -834,6 +834,8 @@ typedef enum {
 
 - (IBAction)saveFavorite:(id)sender {
    
+    // TO-DO:
+    // Do not overwrite favorite if no changes have been made
         
     if (self.locDict && [self.locDict objectForKey:@"address"] && [addFavName.text isEqualToString:@""] == NO) {
         if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
@@ -924,6 +926,13 @@ typedef enum {
                 break;
         }
         
+        double currentLat = 0;
+        double currentLong = 0;
+        
+        NSDictionary* item = [self.favoritesList objectAtIndex:self.locIndex];
+        currentLat = [[item objectForKey:@"lat"] floatValue];
+        currentLong = [[item objectForKey:@"long"] floatValue]; 
+        
         NSDictionary * dict = @{
                                 @"id" : [[self.favoritesList objectAtIndex:self.locIndex] objectForKey:@"id"],
                                 @"name" : addFavName.text,
@@ -932,8 +941,8 @@ typedef enum {
                                 @"endDate" : [NSDate date],
                                 @"source" : @"favorites",
                                 @"subsource" : favType,
-                                @"lat" : [NSNumber numberWithDouble:((CLLocation*)[self.locDict objectForKey:@"location"]).coordinate.latitude],
-                                @"long" : [NSNumber numberWithDouble:((CLLocation*)[self.locDict objectForKey:@"location"]).coordinate.longitude],
+                                @"lat" : [NSNumber numberWithDouble:currentLat], //[NSNumber numberWithDouble:((CLLocation*)[self.locDict objectForKey:@"location"]).coordinate.latitude],
+                                @"long" : [NSNumber numberWithDouble:currentLong], //[NSNumber numberWithDouble:((CLLocation*)[self.locDict objectForKey:@"location"]).coordinate.longitude],
                                 @"order" : @0
                                 };
         

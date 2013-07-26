@@ -536,7 +536,7 @@ typedef enum {
     SMAutocompleteHeader * cell = [tableView dequeueReusableCellWithIdentifier:@"autocompleteHeader"];
     switch (section) {
         case 0:
-            [cell.headerTitle setText:translateString(@"favorites")];
+            [cell.headerTitle setText:translateString(@"favorites_search")];
             break;
         case 1:
             [cell.headerTitle setText:translateString(@"recent_results")];
