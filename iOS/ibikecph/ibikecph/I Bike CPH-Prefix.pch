@@ -115,6 +115,8 @@
 
 #define MAX_TURNS 4
 
+//#define TESTING
+
 #define API_ADDRESS @"ibikecph-staging.herokuapp.com"
 #define API_SERVER @"http://ibikecph-staging.herokuapp.com/api"
 #define API_DEFAULT_ACCEPT @{@"key": @"Accept", @"value" : @"application/vnd.ibikecph.v1"}

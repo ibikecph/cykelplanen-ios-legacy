@@ -11,7 +11,7 @@
 @implementation SMRadioUncheckedCell
 
 + (CGFloat)getHeight {
-    return 44.0f;
+    return 38.0f;
 }
 
 @end

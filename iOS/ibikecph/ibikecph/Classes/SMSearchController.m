@@ -353,7 +353,6 @@
         [r addObject:d];
     }
     
-        
     for (int i = 0; i < [self.favorites count]; i++) {
         BOOL found = NO;
         NSDictionary * d = [self.favorites objectAtIndex:i];

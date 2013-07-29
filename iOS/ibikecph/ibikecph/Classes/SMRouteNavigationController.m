@@ -101,6 +101,7 @@ typedef enum {
 #define MAP_LEVEL_STATIONS 80
 #define MAP_LEVEL_METRO 80
 #define MAP_LEVEL_SERVICES 80
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -202,6 +203,8 @@ typedef enum {
         [self.mapFade setAlpha: 0.8f - ((self.mapFade.frame.size.height - MAX_TABLE) * 0.8f / (maxSize - MAX_TABLE))];
     }
     
+    [self.mpView rotateMap:0.0];
+    
     if (self.mapFade.alpha > 0.7f) {
 //        [arrivalBG setImage:[UIImage imageNamed:@"distance_black"]];
 //        [closeButton setImage:[UIImage imageNamed:@"btnCloseDark"] forState:UIControlStateNormal];
@@ -221,6 +224,8 @@ typedef enum {
     // markers visibility
     [self removeAllMarkers];
     [self toggleMarkers];
+    
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -755,6 +760,7 @@ typedef enum {
 }
 
 - (IBAction)onBreakRoute:(id)sender {
+//    [[SMTransportation instance] save];
     if ([SMLocationManager instance].hasValidLocation == NO) {
         UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:translateString(@"error_no_gps_location") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
         [av show];
@@ -764,7 +770,7 @@ typedef enum {
             // get current location
             CLLocation* currentLocation= [[SMLocationManager instance] lastValidLocation];
             // get new route ( currentPosition -> destination )
-            tempRoute= [[SMRoute alloc] initWithRouteStart:currentLocation.coordinate andEnd:[self.route getEndLocation].coordinate andDelegate:self];
+            tempRoute= [[SMRoute alloc] initWithRouteStart:currentLocation.coordinate andEnd:[fullRoute getEndLocation].coordinate andDelegate:self];
             // create a trip route
             tempTripRoute= [[SMTripRoute alloc] initWithRoute:tempRoute];
         }else{
@@ -828,7 +834,7 @@ typedef enum {
     
     [self.mpView setUserTrackingMode:RMUserTrackingModeFollowWithHeading];
     [self.mpView rotateMap:self.route.lastCorrectedHeading];
-    
+
     [self renderMinimizedDirectionsViewFromInstruction];
     
     [recalculatingView setAlpha:1.0f];
@@ -1313,7 +1319,7 @@ typedef enum {
         [self reloadSwipableView];
         
         if (firstElementRemoved) {
-            if ([tblDirections numberOfRowsInSection:0] > 0) {
+            if ([tblDirections numberOfSections]>0 && [tblDirections numberOfRowsInSection:0] > 0) {
                 @try {
                     [tblDirections deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationLeft];
                 }
@@ -1342,9 +1348,9 @@ typedef enum {
         self.route= nil;
         
         return;
+    }else{
+        [self reachedEndOfRoute];
     }
-    
-    [self reachedEndOfRoute];
 
 }
 
@@ -1658,10 +1664,18 @@ typedef enum {
                 turn.descriptionString = @"";
                 turn.wayName = self.destination;
             }
-            if (i == 0)
+            if (i == 0) {
                 [(SMDirectionTopCell *)cell renderViewFromInstruction:turn];
-            else
+            }
+            else {
                 [(SMDirectionCell *)cell renderViewFromInstruction:turn];
+                SMDirectionCell* dirCell = (SMDirectionCell*)cell;
+                if (indexPath.row == 1) {
+                    [dirCell.imgBackground setImage:[UIImage imageNamed:@"direction_cell_small_top_bgr"]];
+                } else {
+                    [dirCell.imgBackground setImage:[UIImage imageNamed:@"direction_cell_small_bgr"]];
+                }
+            }
             
         }
 
@@ -1879,7 +1893,9 @@ typedef enum {
 }
 
 - (IBAction)onPanGestureDirections:(UIPanGestureRecognizer *)sender {
-    [tblDirections scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    if([tblDirections numberOfRowsInSection:0]>=1 && [tblDirections numberOfSections]>0){
+        [tblDirections scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    }
     [instructionsView setHidden:NO];
     [minimizedInstructionsView setHidden:YES];
     if (sender.state == UIGestureRecognizerStateEnded) {

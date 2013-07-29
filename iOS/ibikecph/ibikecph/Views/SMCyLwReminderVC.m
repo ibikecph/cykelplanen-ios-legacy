@@ -16,6 +16,12 @@
 @property (weak, nonatomic) IBOutlet SMPatternedButton *btnSave;
 @property (weak, nonatomic) IBOutlet UIButton *btnSkip;
 
+@property (weak, nonatomic) IBOutlet UILabel *monday;
+@property (weak, nonatomic) IBOutlet UILabel *tuesday;
+@property (weak, nonatomic) IBOutlet UILabel *wednesday;
+@property (weak, nonatomic) IBOutlet UILabel *thursday;
+@property (weak, nonatomic) IBOutlet UILabel *friday;
+
 @end
 
 @implementation SMCyLwReminderVC
@@ -37,6 +43,13 @@
     [self.screenText setText:translateString(@"reminder_text")];
     [self.btnSave setTitle:translateString(@"reminder_save_btn") forState:UIControlStateNormal];
     [self.btnSkip setTitle:translateString(@"btn_skip") forState:UIControlStateNormal];
+    
+    // Translate days of the week
+    [self.monday setText:translateString(@"monday")];
+    [self.tuesday setText:translateString(@"tuesday")];
+    [self.wednesday setText:translateString(@"wednesday")];
+    [self.thursday setText:translateString(@"thursday")];
+    [self.friday setText:translateString(@"friday")];
     
     // Set tint color for switches
     UIColor* orange = [UIColor colorWithRed:232.0f/255.0f green:123.0f/255.0f blue:30.0f/255.0f alpha:1.0f];
@@ -79,6 +92,11 @@
     [self setScreenText:nil];
     [self setBtnSave:nil];
     [self setBtnSkip:nil];
+    [self setMonday:nil];
+    [self setTuesday:nil];
+    [self setWednesday:nil];
+    [self setThursday:nil];
+    [self setFriday:nil];
     [super viewDidUnload];
 }
 @end

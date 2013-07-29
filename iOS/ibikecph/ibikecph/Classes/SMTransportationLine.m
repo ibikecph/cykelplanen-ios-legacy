@@ -10,9 +10,11 @@
 #import "SMStationInfo.h"
 #import "SMNode.h"
 
+#define KEY_STATIONS @"KeyStations"
+#define KEY_NAME @"KeyName"
+
 @interface SMTransportationLine()
-@property(nonatomic, strong, readwrite) NSArray * stations;
-@property(nonatomic, strong, readwrite) NSString * name;
+
 @end
 
 @implementation SMTransportationLine
@@ -32,11 +34,24 @@
             [tempStations addObject:stationInfo];
         }
         
-        SMStationInfo* si= [[SMStationInfo alloc] initWithLongitude:20.453004 latitude:44.815098];
-        SMStationInfo* si2= [[SMStationInfo alloc] initWithLongitude:20.433537 latitude:44.815286];
-        [tempStations addObject:si];
-        [tempStations addObject:si2];
+//        SMStationInfo* si= [[SMStationInfo alloc] initWithLongitude:20.453004 latitude:44.815098];
+//        SMStationInfo* si2= [[SMStationInfo alloc] initWithLongitude:20.433537 latitude:44.815286];
+//        [tempStations addObject:si];
+//        [tempStations addObject:si2];
         self.stations = [NSArray arrayWithArray:tempStations];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:self.stations forKey:KEY_STATIONS];
+    [aCoder encodeObject:self.name forKey:KEY_NAME];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder{
+    if(self= [super init]){
+        _stations= [aDecoder decodeObjectForKey:KEY_STATIONS];
+        _name= [aDecoder decodeObjectForKey:KEY_NAME];
     }
     return self;
 }
@@ -46,7 +61,7 @@
     NSData * data = [NSData dataWithContentsOfFile:filePath];
     NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&err];
     
-    self.name = [dict valueForKey:@"name"];
+    _name = [dict valueForKey:@"name"];
     NSArray * coord = [dict valueForKey:@"coordinates"];
     NSNumber * lon;
     NSNumber * lat;

@@ -12,7 +12,10 @@
 #import "SMNode.h"
 #import "SMWay.h"
 
+#define CACHE_FILE_NAME @"StationsCached.data"
 #define MAX_CONCURENT_ROUTE_THREADS 4
+
+#define KEY_LINES @"KeyLines"
 
 static NSOperationQueue* stationQueue;
 
@@ -33,7 +36,17 @@ static NSOperationQueue* stationQueue;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         stationQueue= [[NSOperationQueue alloc] init];
-        instance= [[SMTransportation alloc] init];
+        
+        NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentDirectory = [documentDirectories objectAtIndex:0];
+        NSString *myFilePath = [documentDirectory stringByAppendingPathComponent:CACHE_FILE_NAME];
+        
+        instance= [NSKeyedUnarchiver unarchiveObjectWithFile:myFilePath];
+        
+        if(!instance){
+            instance= [SMTransportation new];
+        }
+
     });
     
     return instance;
@@ -41,16 +54,43 @@ static NSOperationQueue* stationQueue;
 
 -(id)init{
     if(self= [super init]){
-//        [self loadDummyData];
         allNodes= [NSMutableArray new];
         queue= dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0L);
         
         dispatch_async(queue, ^{
             [self pullData];
-
         });
 
+    }
+    return self;
+}
 
+-(void)save{
+    NSLog(@"SAVING...");
+    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentDirectory = [documentDirectories objectAtIndex:0];
+	NSString *myFilePath = [documentDirectory stringByAppendingPathComponent:CACHE_FILE_NAME];
+    
+    [NSKeyedArchiver archiveRootObject:self toFile:myFilePath];
+}
+
+-(void)validateAndSave{
+    for(SMTransportationLine* line in self.lines){
+        for(SMStationInfo* sInfo in line.stations){
+           if(![sInfo isValid])
+                return;
+        }
+    }
+    
+    [self save];
+}
+- (void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:self.lines forKey:KEY_LINES];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder{
+    if(self=[super init]){
+        self.lines= [aDecoder decodeObjectForKey:KEY_LINES];
     }
     return self;
 }

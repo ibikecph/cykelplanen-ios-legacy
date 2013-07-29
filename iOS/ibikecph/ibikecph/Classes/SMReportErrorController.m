@@ -10,6 +10,7 @@
 #import "SMRadioCheckedCell.h"
 #import "SMRadioUncheckedCell.h"
 #import "DAKeyboardControl.h"
+#import "SMReportMailCell.h"
 
 @interface SMReportErrorController ()
 @property (nonatomic, strong) NSString * reportedSegment;
@@ -53,7 +54,7 @@
     [fadeView setBackgroundColor:[UIColor colorWithWhite:0.0f alpha:0.0f]];
     pickerOpen = NO;
     self.reportedSegment = @"";
-    self.possibleErrors = @[translateString(@"report_wrong_address"), translateString(@"report_road_closed"), translateString(@"report_one_way"), translateString(@"report_illegal_turn"), translateString(@"report_wrong_instruction"), translateString(@"report_other")];
+    self.possibleErrors = @[translateString(@"report_wrong_address"), translateString(@"report_road_closed"), translateString(@"report_one_way"), translateString(@"report_illegal_turn"), translateString(@"report_other")];
     currentSelection = -1;
     
 //    UITableView * tableView = tblView;
@@ -235,6 +236,12 @@
         str = [str stringByAppendingString:[NSString stringWithFormat:@"%@\n", s]];
     }
     
+    SMReportMailCell* emailCell = (SMReportMailCell*)[tblView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+    NSString* userEmail = emailCell.email.text;
+    if ( emailCell.selected ) {
+        str = [str stringByAppendingString:userEmail];
+    }
+    
     [mvc setMessageBody:str isHTML:NO];
     [self presentModalViewController:mvc animated:YES];
 }
@@ -300,14 +307,26 @@
 #pragma mark - tableview delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.possibleErrors count];
+    if ( section == 0 ) {
+        return [self.possibleErrors count];
+    } else {
+        return 1;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 1) {
+        SMReportMailCell* cell = [tableView dequeueReusableCellWithIdentifier:@"reportMailCell"];
+        [cell.email setText:translateString(@"report_email_field")];
+        [cell.checkboxMail setTitle:translateString(@"report_email_checkbox") forState:UIControlStateNormal];
+        return cell;
+    }
+    
     if (indexPath.row == currentSelection) {
         NSString * identifier = @"reportRadioChecked";
         SMRadioCheckedCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -334,6 +353,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (currentSelection != indexPath.row) {
         currentSelection = indexPath.row;
         [tableView reloadData];
@@ -348,6 +368,10 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 1) {
+        return [SMReportMailCell getHeight];
+    }
+    
     if (indexPath.row == currentSelection) {
         return [SMRadioCheckedCell getHeight];
     } else {

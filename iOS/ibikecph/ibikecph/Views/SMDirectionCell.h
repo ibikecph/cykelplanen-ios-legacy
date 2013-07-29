@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgDirection;
 @property (weak, nonatomic) IBOutlet UILabel *lblDistance;
 @property (weak, nonatomic) IBOutlet UILabel *lblWayname;
+@property (weak, nonatomic) IBOutlet UIImageView *imgBackground;
 
 - (void)renderViewFromInstruction:(SMTurnInstruction *)turn;
 
