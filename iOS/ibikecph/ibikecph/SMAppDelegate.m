@@ -22,6 +22,9 @@
     self.currentContacts = @[];
     self.currentEvents = @[];
     self.searchHistory = [SMSearchHistory getSearchHistory];
+    
+    // Map overlays
+    //self.mapOverlays = [[SMMapOverlays alloc] initWithMapView:nil];
             
     /**
      * initialize Google Analytics

@@ -42,6 +42,8 @@
 #import "SMMapManager.h"
 #include "float.h"
 
+#import "SMMapOverlays.h"
+
 typedef enum {
     directionsFullscreen,
     directionsNormal,
@@ -155,12 +157,22 @@ typedef enum {
     self.cargoItems= OSRM_SERVERS;
     [self.cargoTableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     [self.cargoTableView reloadData];
-    [self.cargoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+    
+    //[self.cargoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
     
     [centerView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
     
     self.pathVisible= YES;
     
+
+    if ( self.appDelegate.mapOverlays == nil ) {
+        self.appDelegate.mapOverlays = [[SMMapOverlays alloc] initWithMapView:nil];
+    }
+    [self.appDelegate.mapOverlays useMapView:self.mpView];
+    [self.appDelegate.mapOverlays loadMarkers];
+    
+    //[self loadMarkers];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onStationsFetched:) name:NOTIFICATION_STATIONS_FETCHED object:nil];
     
     [self loadMarkers];
@@ -238,6 +250,18 @@ typedef enum {
         [UIApplication sharedApplication].idleTimerDisabled = NO;
     }
     
+    [self.appDelegate.mapOverlays useMapView:self.mpView];
+    [self.appDelegate.mapOverlays toggleMarkers];
+    
+    if ( self.appDelegate.mapOverlays.pathVisible )
+        [self.cargoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+    if ( self.appDelegate.mapOverlays.serviceMarkersVisible )
+        [self.cargoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+    if ( self.appDelegate.mapOverlays.stationMarkersVisible )
+        [self.cargoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+    if ( self.appDelegate.mapOverlays.metroMarkersVisible )
+        [self.cargoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+
 }
 
 
@@ -323,7 +347,11 @@ typedef enum {
             
             NSString* imageName = @"station_icon";
             NSString* title = @"station";
+
+            //NSString* annotationTitle = @"Station";
+
             NSString* annotationTitle = stationLocation.name;
+
             NSString* alternateTitle = @"alternate title";
             
             SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
@@ -416,8 +444,8 @@ typedef enum {
         
         NSString* imageName = @"service_pin";
         NSString* title = @"service";
-        NSString* annotationTitle = @"title";
-        NSString* alternateTitle = @"alternate title";
+        NSString* annotationTitle = stationName;
+        NSString* alternateTitle = stationName;
       
         CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(lon.floatValue, lat.floatValue);
         SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
@@ -1763,16 +1791,28 @@ typedef enum {
     }];
 }
 
+-(void) overlaysMenuItemSelected:(int)row selected:(BOOL)pSelected{
+    if (row == 0){
+        [self.appDelegate.mapOverlays toggleMarkers:@"path" state:pSelected];
+    } else if ( row == 1 ) {
+        [self.appDelegate.mapOverlays toggleMarkers:@"service" state:pSelected];
+    } else if ( row == 2 ) {
+        [self.appDelegate.mapOverlays toggleMarkers:@"station" state:pSelected];
+    } else if ( row == 3 ) {
+        [self.appDelegate.mapOverlays toggleMarkers:@"metro" state:pSelected];
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     if(tableView==self.cargoTableView){
-        [self tappedOnRow:indexPath.row selected:NO];
+        [self overlaysMenuItemSelected:indexPath.row selected:NO];
         //[self slideBackToMap];
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if(tableView==self.cargoTableView){
-        [self tappedOnRow:indexPath.row selected:YES];
+        [self overlaysMenuItemSelected:indexPath.row selected:YES];
         //[self slideBackToMap];
     }else{
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -1780,15 +1820,15 @@ typedef enum {
 }
 
 -(void) tappedOnRow:(int)row selected:(BOOL)pSelected{
-    if (row == 0){
-        [self toggleMarkers:@"path" state:pSelected];
-    } else if ( row == 1 ) {
-        [self toggleMarkers:@"service" state:pSelected];
-    } else if ( row == 2 ) {
-        [self toggleMarkers:@"station" state:pSelected];
-    } else if ( row == 3 ) {
-        [self toggleMarkers:@"metro" state:pSelected];
-    }
+//    if (row == 0){
+//        [self toggleMarkers:@"path" state:pSelected];
+//    } else if ( row == 1 ) {
+//        [self toggleMarkers:@"service" state:pSelected];
+//    } else if ( row == 2 ) {
+//        [self toggleMarkers:@"station" state:pSelected];
+//    } else if ( row == 3 ) {
+//        [self toggleMarkers:@"metro" state:pSelected];
+//    }
 }
 
 

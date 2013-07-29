@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import "SMSearchHistory.h"
+#import "SMMapOverlays.h"
 
 @interface SMAppDelegate : UIResponder <UIApplicationDelegate, SMSearchHistoryDelegate>
 
@@ -27,5 +28,7 @@
 @property (nonatomic, strong) NSMutableDictionary * appSettings;
 - (BOOL)saveSettings;
 - (void)loadSettings;
+
+@property (nonatomic, strong) SMMapOverlays* mapOverlays;
 
 @end

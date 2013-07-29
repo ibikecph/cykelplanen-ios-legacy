@@ -42,6 +42,7 @@
     }
     return self;
 }
+
 -(id)initWithLongitude:(double)lon latitude:(double)lat andName:(NSString*)name {
     if(self= [super init]){
         self.name = name;
