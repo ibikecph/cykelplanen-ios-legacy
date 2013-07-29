@@ -39,7 +39,9 @@
         double lat= [aDecoder decodeDoubleForKey:KEY_LATITUDE];
         double lng= [aDecoder decodeDoubleForKey:KEY_LONGITUDE];
         self.location= [[CLLocation alloc] initWithLatitude:lat longitude:lng];
-
+    }
+    return self;
+}
 -(id)initWithLongitude:(double)lon latitude:(double)lat andName:(NSString*)name {
     if(self= [super init]){
         self.name = name;
