@@ -27,6 +27,10 @@
     }
 }
 
+- (void)setSelected:(BOOL)selected {
+    [self setSelected:selected animated:YES];
+}
+
 - (void)setupCellWithData:(NSDictionary*)data {
     cellText.text= [data objectForKey:@"name"];
     cellImage.image= [UIImage imageNamed:[data objectForKey:@"image"]];

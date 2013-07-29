@@ -91,7 +91,7 @@ typedef enum {
     frame.origin.x = pos;
     [self setFrame:frame];
     
-    [pullView setGestureRecognizers:@[]];
+    //[pullView setGestureRecognizers:@[]];
     UIPanGestureRecognizer * pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
     [pan setDelegate:self];
     [pullView addGestureRecognizer:pan];

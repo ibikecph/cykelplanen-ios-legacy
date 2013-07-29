@@ -37,6 +37,11 @@
 #import "SMAPIRequest.h"
 
 #import "SMReminderTableViewCell.h"
+#import "SMRouteTypeSelectCell.h"
+
+#import "SMTransportation.h"
+#import "SMTransportationLine.h"
+#import "SMStationInfo.h"
 
 typedef enum {
     menuFavorites = 0,
@@ -84,7 +89,8 @@ typedef enum {
 
 @property (nonatomic, strong) id jsonRoot;
 
-
+@property (weak, nonatomic) IBOutlet UITableView *overlaysMenuTable;
+@property (nonatomic, strong) NSArray* overlaysMenuItems;
 
 @property CLLocationCoordinate2D startLoc;
 @property CLLocationCoordinate2D endLoc;
@@ -98,6 +104,16 @@ typedef enum {
 @property (nonatomic, strong) SMFavoritesUtil * favs;
 
 @property (nonatomic, strong) SMAPIRequest * request;
+
+// Markers
+//@property BOOL metroMarkersVisible;
+//@property BOOL serviceMarkersVisible;
+//@property BOOL stationMarkersVisible;
+//@property BOOL pathVisible;
+//@property (nonatomic, strong) NSMutableArray* metroMarkers;
+//@property (nonatomic, strong) NSMutableArray* serviceMarkers;
+//@property (nonatomic, strong) NSMutableArray* stationMarkers;
+
 @end
 
 @implementation SMViewController
@@ -130,6 +146,14 @@ typedef enum {
     
     [SMLocationManager instance];
     
+//    // Markers
+//    self.metroMarkers = [[NSMutableArray alloc] init];
+//    self.serviceMarkers = [[NSMutableArray alloc] init];
+//    self.stationMarkers = [[NSMutableArray alloc] init];
+//    self.pathVisible = YES;
+//    self.metroMarkersVisible = NO;
+//    self.serviceMarkersVisible = NO;
+//    self.stationMarkersVisible = NO;
     
     /**
      * start with empty favorites array
@@ -175,14 +199,27 @@ typedef enum {
 //    [menuView setupForHorizontalSwipeWithStart:-260.0f andEnd:0.0f andStart:-260.0f andPullView:centerView];
     [centerView addPullView:blockingView];
 
-//    [overlayMenu setupForHorizontalSwipeWithStart:-260.0f andEnd:0.0f andStart:-260.0f andPullView:centerView];
+    [centerView setupForHorizontalSwipeWithStart:0.0f andEnd:260.0f andStart:0.0f andPullView:overlayMenuBtn];
+    
+    //[overlayMenu setupForHorizontalSwipeWithStart:-260.0f andEnd:0.0f andStart:-260.0f andPullView:centerView];
     
     
     [self setTitle:translateString(@"reminder_title") forButton:remindersHeaderButton];
     [self setTitle:translateString(@"account") forButton:accountHeaderButton];
     [self setTitle:translateString(@"about_css") forButton:aboutHeaderButton];
 
+    self.overlaysMenuItems = OSRM_SERVERS;
+    [self.overlaysMenuTable setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    [self.overlaysMenuTable reloadData];
     
+    if ( self.appDelegate.mapOverlays == nil ) {
+        self.appDelegate.mapOverlays = [[SMMapOverlays alloc] initWithMapView:nil];
+    }
+    [self.appDelegate.mapOverlays useMapView:self.mpView];
+    [self.appDelegate.mapOverlays loadMarkers];
+    
+//    [self loadMarkers];
+
 }
 
 -(void)setTitle:(NSString*)pTitle forButton:(UIButton*)pButton{
@@ -248,6 +285,7 @@ typedef enum {
     aboutHeaderButton = nil;
     overlayMenuBtn = nil;
     overlayMenu = nil;
+    [self setOverlaysMenuTable:nil];
     [super viewDidUnload];
 }
 
@@ -354,6 +392,18 @@ typedef enum {
     } else {
         [self favoritesChanged:nil];
     }
+    
+    [self.appDelegate.mapOverlays useMapView:self.mpView];
+    [self.appDelegate.mapOverlays toggleMarkers];
+    
+    if ( self.appDelegate.mapOverlays.pathVisible )
+        [self.overlaysMenuTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+    if ( self.appDelegate.mapOverlays.serviceMarkersVisible )
+        [self.overlaysMenuTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+    if ( self.appDelegate.mapOverlays.stationMarkersVisible )
+        [self.overlaysMenuTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+    if ( self.appDelegate.mapOverlays.metroMarkersVisible )
+        [self.overlaysMenuTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
 }
 
 #pragma mark - custom methods
@@ -372,7 +422,33 @@ typedef enum {
     return 45.0f;
 }
 
+
+- (IBAction)openOverlaysMenu:(UIImageView*)sender {
+    //if (centerView.frame.origin.x < 32) {
+        [menuView setHidden:YES];
+    //}
+}
+
+- (IBAction)panMainMenu:(id)sender {
+    //if (centerView.frame.origin.x < 32) {
+        [menuView setHidden:NO];
+    //}
+}
+
+- (IBAction)touchOpenOverlaysMenu:(id)sender {
+    //if (centerView.frame.origin.x < 10) {
+        [menuView setHidden:YES];
+    //}
+}
+- (IBAction)touchOpenMainMenu:(id)sender {
+    //if (centerView.frame.origin.x < 10) {
+        [menuView setHidden:NO];
+    //}
+}
+
 - (void)openMenu:(NSInteger)menuType {
+    [menuView setHidden:NO];
+    
     CGFloat startY = favHeader.frame.origin.y;
     CGFloat maxHeight = menuView.frame.size.height - startY;
     [tblMenu reloadData];
@@ -1031,9 +1107,6 @@ typedef enum {
     currentFav = typeSchool;
 }
 
-
-
-
 - (IBAction)startEdit:(id)sender {
     [tblMenu setEditing:YES];
     [tblMenu reloadData];
@@ -1133,7 +1206,6 @@ typedef enum {
     }
 }
 
-
 - (IBAction)toggleReminders:(UIButton *)sender {
     self.reminderFolded = !self.reminderFolded;
     
@@ -1215,6 +1287,10 @@ typedef enum {
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
+    if (tableView == self.overlaysMenuTable) {
+        return 1;
+    }
+    
     if (tableView == self.tblFavorites) {
         return 1;
     } else {
@@ -1223,6 +1299,10 @@ typedef enum {
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    if (tableView == self.overlaysMenuTable) {
+        return 4;
+    }
     
     if (tableView == self.tblFavorites) {
         return 5;
@@ -1245,6 +1325,14 @@ typedef enum {
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (tableView == self.overlaysMenuTable) {
+        SMRouteTypeSelectCell* cell= [tableView dequeueReusableCellWithIdentifier:@"overlaysMenuCell"];
+        NSDictionary* overlaysMenuItem = [self.overlaysMenuItems objectAtIndex:indexPath.row];
+        [cell setupCellWithData:overlaysMenuItem];
+        
+        return cell;
+    }
     
     if (tableView == self.tblFavorites) {
         NSArray* weekDays = @[translateString(@"monday"),
@@ -1327,7 +1415,32 @@ typedef enum {
     return cell;
 }
 
+
+-(void) overlaysMenuItemSelected:(int)row selected:(BOOL)pSelected{
+    if (row == 0){
+        [self.appDelegate.mapOverlays toggleMarkers:@"path" state:pSelected];
+    } else if ( row == 1 ) {
+        [self.appDelegate.mapOverlays toggleMarkers:@"service" state:pSelected];
+    } else if ( row == 2 ) {
+        [self.appDelegate.mapOverlays toggleMarkers:@"station" state:pSelected];
+    } else if ( row == 3 ) {
+        [self.appDelegate.mapOverlays toggleMarkers:@"metro" state:pSelected];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if( tableView == self.overlaysMenuTable ){
+        [self overlaysMenuItemSelected:indexPath.row selected:NO];
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if( tableView == self.overlaysMenuTable ){
+        [self overlaysMenuItemSelected:indexPath.row selected:YES];
+        return;
+    }
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (tableView == tblMenu && indexPath.section == 0) {
@@ -1392,6 +1505,10 @@ typedef enum {
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(tableView==self.overlaysMenuTable) {
+        return [SMRouteTypeSelectCell getHeight];
+    }
+    
     if (tableView == tblMenu) {
         if ([self.favoritesList count] == 0) {
             if ( indexPath.section == 0 ) {
