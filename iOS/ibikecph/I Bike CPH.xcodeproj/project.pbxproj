@@ -649,6 +649,9 @@
 		C0C94742173BE40E00FE834D /* SMLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0C94741173BE40E00FE834D /* SMLoginController.m */; };
 		C0C94747173BF47500FE834D /* field_email_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C0C94745173BF47500FE834D /* field_email_icon.png */; };
 		C0C94748173BF47500FE834D /* field_password_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C0C94746173BF47500FE834D /* field_password_icon.png */; };
+		F60E9475179ED82300EC937C /* SMRelation.m in Sources */ = {isa = PBXBuildFile; fileRef = F60E9474179ED82300EC937C /* SMRelation.m */; };
+		F60E9478179ED82B00EC937C /* SMWay.m in Sources */ = {isa = PBXBuildFile; fileRef = F60E9477179ED82A00EC937C /* SMWay.m */; };
+		F60E947B179ED83200EC937C /* SMNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F60E947A179ED83200EC937C /* SMNode.m */; };
 		F64FA44C17995B82008F00AF /* separator.png in Resources */ = {isa = PBXBuildFile; fileRef = F64FA44A17995B82008F00AF /* separator.png */; };
 		F64FA44D17995B82008F00AF /* separator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F64FA44B17995B82008F00AF /* separator@2x.png */; };
 		F64FA45017996617008F00AF /* break_route_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = F64FA44E17996617008F00AF /* break_route_gray.png */; };
@@ -657,6 +660,8 @@
 		F68F9DE71765CDC500578FFE /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F68F9DE61765CDC500578FFE /* FBUserSettingsViewResources.bundle */; };
 		F68F9DEB1765CEF900578FFE /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68F9DEA1765CEF900578FFE /* FacebookSDK.framework */; };
 		F690C47B178C3395006A6FEA /* smroute_settings_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = F690C47A178C3395006A6FEA /* smroute_settings_private.plist */; };
+		F691E7DD17A167C9002E822E /* SMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F691E7DC17A167C9002E822E /* SMUser.m */; };
+		F691E7E017A172C6002E822E /* SMMapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F691E7DF17A172C6002E822E /* SMMapManager.m */; };
 		F69227711786E8ED00C8CD76 /* libHockeySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA06F3816EF8BE4007603B4 /* libHockeySDK.a */; };
 		F69227761786FD0B00C8CD76 /* SMTripRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = F69227751786FD0B00C8CD76 /* SMTripRoute.m */; };
 		F69227801786FF5700C8CD76 /* SMTransportationRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = F692277F1786FF5700C8CD76 /* SMTransportationRoute.m */; };
@@ -672,6 +677,7 @@
 		F69227A51787326800C8CD76 /* SMBrokenRouteInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F69227A41787326800C8CD76 /* SMBrokenRouteInfo.m */; };
 		F6928783178D664300267A09 /* SMStationPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F6928782178D664300267A09 /* SMStationPickerView.m */; };
 		F6928797178D883E00267A09 /* SMReminder.m in Sources */ = {isa = PBXBuildFile; fileRef = F6928796178D883E00267A09 /* SMReminder.m */; };
+		F693590817A25B0B00B2DF11 /* SMStationsCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F693590717A25B0B00B2DF11 /* SMStationsCache.m */; };
 		F695EFCE178AA95000D3E83D /* SMSingleRouteInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F695EFCD178AA95000D3E83D /* SMSingleRouteInfo.m */; };
 		F698D70C178FF58E00DA6B7B /* SMAddressPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F698D70B178FF58E00DA6B7B /* SMAddressPickerView.xib */; };
 		F698D714178FF64D00DA6B7B /* SMAddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F698D713178FF64D00DA6B7B /* SMAddressPickerView.m */; };
@@ -1437,6 +1443,12 @@
 		C0C94741173BE40E00FE834D /* SMLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLoginController.m; sourceTree = "<group>"; };
 		C0C94745173BF47500FE834D /* field_email_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = field_email_icon.png; sourceTree = "<group>"; };
 		C0C94746173BF47500FE834D /* field_password_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = field_password_icon.png; sourceTree = "<group>"; };
+		F60E9473179ED82300EC937C /* SMRelation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRelation.h; sourceTree = "<group>"; };
+		F60E9474179ED82300EC937C /* SMRelation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRelation.m; sourceTree = "<group>"; };
+		F60E9476179ED82A00EC937C /* SMWay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMWay.h; sourceTree = "<group>"; };
+		F60E9477179ED82A00EC937C /* SMWay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMWay.m; sourceTree = "<group>"; };
+		F60E9479179ED83200EC937C /* SMNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMNode.h; sourceTree = "<group>"; };
+		F60E947A179ED83200EC937C /* SMNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMNode.m; sourceTree = "<group>"; };
 		F64FA44A17995B82008F00AF /* separator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = separator.png; sourceTree = "<group>"; };
 		F64FA44B17995B82008F00AF /* separator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "separator@2x.png"; sourceTree = "<group>"; };
 		F64FA44E17996617008F00AF /* break_route_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = break_route_gray.png; sourceTree = "<group>"; };
@@ -1445,6 +1457,10 @@
 		F68F9DE61765CDC500578FFE /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
 		F68F9DEA1765CEF900578FFE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		F690C47A178C3395006A6FEA /* smroute_settings_private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings_private.plist; sourceTree = "<group>"; };
+		F691E7DB17A167C9002E822E /* SMUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUser.h; sourceTree = "<group>"; };
+		F691E7DC17A167C9002E822E /* SMUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUser.m; sourceTree = "<group>"; };
+		F691E7DE17A172C6002E822E /* SMMapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMapManager.h; sourceTree = "<group>"; };
+		F691E7DF17A172C6002E822E /* SMMapManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMapManager.m; sourceTree = "<group>"; };
 		F69227741786FD0B00C8CD76 /* SMTripRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTripRoute.h; sourceTree = "<group>"; };
 		F69227751786FD0B00C8CD76 /* SMTripRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTripRoute.m; sourceTree = "<group>"; };
 		F692277E1786FF5700C8CD76 /* SMTransportationRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTransportationRoute.h; sourceTree = "<group>"; };
@@ -1471,6 +1487,8 @@
 		F6928782178D664300267A09 /* SMStationPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMStationPickerView.m; sourceTree = "<group>"; };
 		F6928795178D883E00267A09 /* SMReminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMReminder.h; sourceTree = "<group>"; };
 		F6928796178D883E00267A09 /* SMReminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMReminder.m; sourceTree = "<group>"; };
+		F693590617A25B0B00B2DF11 /* SMStationsCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMStationsCache.h; sourceTree = "<group>"; };
+		F693590717A25B0B00B2DF11 /* SMStationsCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMStationsCache.m; sourceTree = "<group>"; };
 		F695EFCC178AA95000D3E83D /* SMSingleRouteInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSingleRouteInfo.h; sourceTree = "<group>"; };
 		F695EFCD178AA95000D3E83D /* SMSingleRouteInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSingleRouteInfo.m; sourceTree = "<group>"; };
 		F698D70B178FF58E00DA6B7B /* SMAddressPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMAddressPickerView.xib; sourceTree = "<group>"; };
@@ -1539,6 +1557,8 @@
 			children = (
 				4BA5294E16D522ED000CA4A2 /* SMAnnotation.h */,
 				4BA5294F16D522ED000CA4A2 /* SMAnnotation.m */,
+				F691E7DE17A172C6002E822E /* SMMapManager.h */,
+				F691E7DF17A172C6002E822E /* SMMapManager.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -2263,6 +2283,7 @@
 		4C73D23A16AEDD3F00AED42A /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				F691E7D517A167B7002E822E /* User */,
 				F692878F178D882600267A09 /* reminder */,
 				F69227811786FF7900C8CD76 /* transportation */,
 				F692277C1786FD0F00C8CD76 /* route */,
@@ -2549,6 +2570,28 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		F60E946D179ED80E00EC937C /* stations */ = {
+			isa = PBXGroup;
+			children = (
+				F60E9473179ED82300EC937C /* SMRelation.h */,
+				F60E9474179ED82300EC937C /* SMRelation.m */,
+				F60E9476179ED82A00EC937C /* SMWay.h */,
+				F60E9477179ED82A00EC937C /* SMWay.m */,
+				F60E9479179ED83200EC937C /* SMNode.h */,
+				F60E947A179ED83200EC937C /* SMNode.m */,
+			);
+			name = stations;
+			sourceTree = "<group>";
+		};
+		F691E7D517A167B7002E822E /* User */ = {
+			isa = PBXGroup;
+			children = (
+				F691E7DB17A167C9002E822E /* SMUser.h */,
+				F691E7DC17A167C9002E822E /* SMUser.m */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
 		F692277C1786FD0F00C8CD76 /* route */ = {
 			isa = PBXGroup;
 			children = (
@@ -2571,12 +2614,18 @@
 		F69227811786FF7900C8CD76 /* transportation */ = {
 			isa = PBXGroup;
 			children = (
+				F60E946D179ED80E00EC937C /* stations */,
 				F69227821787003A00C8CD76 /* SMTransportationLine.h */,
 				F69227831787003A00C8CD76 /* SMTransportationLine.m */,
 				F6922785178700BC00C8CD76 /* SMTransportation.h */,
 				F6922786178700BC00C8CD76 /* SMTransportation.m */,
+
 				78929E2C17A6662C00576458 /* SMMapOverlays.h */,
 				78929E2D17A6662C00576458 /* SMMapOverlays.m */,
+
+				F693590617A25B0B00B2DF11 /* SMStationsCache.h */,
+				F693590717A25B0B00B2DF11 /* SMStationsCache.m */,
+
 			);
 			name = transportation;
 			sourceTree = "<group>";
@@ -3357,8 +3406,17 @@
 				F698D714178FF64D00DA6B7B /* SMAddressPickerView.m in Sources */,
 				7819214A179551300082BFE2 /* SMBreakRouteHeader.m in Sources */,
 				78192152179566540082BFE2 /* SMBreakRouteButtonCell.m in Sources */,
+				F60E9475179ED82300EC937C /* SMRelation.m in Sources */,
+				F60E9478179ED82B00EC937C /* SMWay.m in Sources */,
+				F60E947B179ED83200EC937C /* SMNode.m in Sources */,
+				F691E7DD17A167C9002E822E /* SMUser.m in Sources */,
+				F691E7E017A172C6002E822E /* SMMapManager.m in Sources */,
 				7880A536179EBF5A00969B9E /* SMReportMailCell.m in Sources */,
+
 				78929E2E17A6662C00576458 /* SMMapOverlays.m in Sources */,
+
+				F693590817A25B0B00B2DF11 /* SMStationsCache.m in Sources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

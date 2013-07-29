@@ -55,17 +55,17 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    NSArray* lines= [SMTransportation instance].lines;
+//    NSArray* lines= [SMTransportation instance].lines;
     
     
-    NSLog(@"============");
-    for( SMTransportationLine* transportationLine in lines){
-        for(int i=0; i<transportationLine.stations.count; i++){
-            SMStationInfo* stationLocation= [transportationLine.stations objectAtIndex:i];
-            NSLog(@"Station %@",stationLocation.name);
-        }
-    }
-    NSLog(@"============");
+//    NSLog(@"============");
+//    for( SMTransportationLine* transportationLine in lines){
+//        for(int i=0; i<transportationLine.stations.count; i++){
+//            SMStationInfo* stationLocation= [transportationLine.stations objectAtIndex:i];
+//            NSLog(@"Station %@",stationLocation.name);
+//        }
+//    }
+//    NSLog(@"============");
     
     breakRouteFailed= NO;
     displayed= NO;
@@ -88,11 +88,8 @@
     
     if(self.tripRoute){
         self.tripRoute.delegate= self;
-        
-        double startTime = CACurrentMediaTime();
+    
         [self.tripRoute breakRoute];
-        double endTime = CACurrentMediaTime();
-        NSLog(@"BREAK ROUTE time: %4.1fms", endTime - startTime);
     }
 }
 
@@ -365,13 +362,14 @@
 
 -(void)didFinishBreakingRoute:(SMTripRoute*)route{
     [self.tableView reloadData];
-     
+    [SMUser user].tripRoute= self.tripRoute;
+    [SMUser user].route= self.fullRoute;
     [self dismiss];
 
 }
 
 -(void)didFailBreakingRoute:(SMTripRoute*)route{
-    
+    NSLog(@"DidBreakBreakingRoute ");
 }
 
 -(void)didCalculateRouteDistances:(SMTripRoute*)route{

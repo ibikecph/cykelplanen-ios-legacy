@@ -170,7 +170,7 @@
 - (void) updateRoute{
     
 }
-- (void) startRoute{
+- (void) startRoute:(SMRoute*)route{
 
     for(SMRoute* route in self.brokenRoutes){
         if(!route.waypoints){

@@ -19,7 +19,7 @@
 #import "Base64.h"
 #import "SMFavoritesUtil.h"
 #import "SMReminder.h"
-                        
+#import "SMTransportation.h"
 typedef enum {
     dialogLogin,
     dialogRegister,
@@ -61,11 +61,13 @@ typedef enum {
         [sh fetchSearchHistoryFromServer];
         [[SMFavoritesUtil instance] fetchFavoritesFromServer];
     }
-    
+    [SMTransportation instance];
     // Translation
     self.btnRegisterWithMail.titleLabel.adjustsFontSizeToFitWidth= YES;
     [self.btnRegisterWithMail setTitle:translateString(@"register_with_mail") forState:UIControlStateNormal];
     [self.btnSkip setTitle:translateString(@"btn_skip") forState:UIControlStateNormal];
+    
+
 }
 
 - (void)viewDidUnload {

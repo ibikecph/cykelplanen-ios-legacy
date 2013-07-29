@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SMStationInfo : NSObject
-
+@interface SMStationInfo : NSObject<NSCoding>
+-(id)initWithCoordinate:(CLLocationCoordinate2D)coord;
 -(id)initWithLongitude:(double)lon latitude:(double)lat;
 -(id)initWithLongitude:(double)lon latitude:(double)lat andName:(NSString*)name;
 
@@ -18,5 +18,5 @@
 @property(nonatomic, assign, readonly) double latitude;
 @property(nonatomic, strong) NSString* name;
 
--(void)fetchName;
+-(BOOL)isValid;
 @end

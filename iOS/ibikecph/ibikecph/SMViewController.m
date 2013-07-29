@@ -37,6 +37,7 @@
 #import "SMAPIRequest.h"
 
 #import "SMReminderTableViewCell.h"
+
 #import "SMRouteTypeSelectCell.h"
 
 #import "SMTransportation.h"
@@ -62,6 +63,8 @@ typedef enum {
     MenuType menuOpen;
     
     FavoriteType currentFav;
+    
+    CLLocation* lastLocation;
 }
 
 @property (nonatomic, strong) SMContacts *contacts;
@@ -161,6 +164,10 @@ typedef enum {
     self.favorites = [@[] mutableCopy];
     [self setFavoritesList:[SMFavoritesUtil getFavorites]];
 
+
+#ifndef TESTING     
+    [buttonAddFakeStation setHidden:YES];
+#endif
     /**
      * removed for alpha
      */
@@ -174,7 +181,6 @@ typedef enum {
     [self.mpView setDelegate:self];
     [self.mpView setMaxZoom:MAX_MAP_ZOOM];
 
-    
     [self.mpView setCenterCoordinate:CLLocationCoordinate2DMake(55.675455,12.566643) animated:NO];
     [self.mpView setZoom:16];
 //    [self.mpView zoomByFactor:1 near:CGPointMake(self.mpView.frame.size.width/2.0f, self.mpView.frame.size.height/2.0f) animated:NO];
@@ -196,14 +202,14 @@ typedef enum {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(invalidToken:) name:@"invalidToken" object:nil];
     
     [centerView setupForHorizontalSwipeWithStart:0.0f andEnd:260.0f andStart:0.0f andPullView:menuBtn];
-//    [menuView setupForHorizontalSwipeWithStart:-260.0f andEnd:0.0f andStart:-260.0f andPullView:centerView];
+
     [centerView addPullView:blockingView];
 
     [centerView setupForHorizontalSwipeWithStart:0.0f andEnd:260.0f andStart:0.0f andPullView:overlayMenuBtn];
     
     //[overlayMenu setupForHorizontalSwipeWithStart:-260.0f andEnd:0.0f andStart:-260.0f andPullView:centerView];
     
-    
+   
     [self setTitle:translateString(@"reminder_title") forButton:remindersHeaderButton];
     [self setTitle:translateString(@"account") forButton:accountHeaderButton];
     [self setTitle:translateString(@"about_css") forButton:aboutHeaderButton];
@@ -219,6 +225,7 @@ typedef enum {
     [self.appDelegate.mapOverlays loadMarkers];
     
 //    [self loadMarkers];
+
 
 }
 
@@ -285,7 +292,11 @@ typedef enum {
     aboutHeaderButton = nil;
     overlayMenuBtn = nil;
     overlayMenu = nil;
+
     [self setOverlaysMenuTable:nil];
+
+    buttonAddFakeStation = nil;
+
     [super viewDidUnload];
 }
 
@@ -338,6 +349,9 @@ typedef enum {
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    [SMUser user].tripRoute= nil;
+    [SMUser user].route= nil;
     
     if ([[NSFileManager defaultManager] fileExistsAtPath: [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"lastRoute.plist"]]) {
         NSDictionary * d = [NSDictionary dictionaryWithContentsOfFile: [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"lastRoute.plist"]];
@@ -605,6 +619,15 @@ typedef enum {
     [self performSegueWithIdentifier:@"openAbout" sender:nil];
 }
 
+-(void)addFakeStationWithLocation:(CLLocation*)loc{
+
+    SMTransportationLine* line= [[SMTransportation instance].lines objectAtIndex:0];
+    NSMutableArray* arr= [[NSMutableArray alloc] initWithArray:line.stations];
+    SMStationInfo* station= [[SMStationInfo alloc] initWithCoordinate:loc.coordinate];
+    [arr addObject:station];
+    line.stations= [NSArray arrayWithArray:arr];
+}
+
 - (void)longSingleTapOnMap:(RMMapView *)map at:(CGPoint)point {
     if (blockingView.alpha > 0) {
         return;
@@ -622,6 +645,11 @@ typedef enum {
     CLLocation * loc = [[CLLocation alloc] initWithLatitude:coord.latitude longitude:coord.longitude];
     debugLog(@"pin drop LOC: %@", loc);
     debugLog(@"pin drop POINT: %@", NSStringFromCGPoint(point));
+    
+#ifdef TESTING
+        lastLocation= loc;
+//    [self addFakeStationWithLocation:loc];
+#endif
     
     
     UIImageView * im = [[UIImageView alloc] initWithFrame:CGRectMake(point.x - 17.0f, 0.0f, 34.0f, 34.0f)];
@@ -1205,6 +1233,19 @@ typedef enum {
         [destViewController setSearchText:self.favName];
     }
 }
+
+
+
+- (IBAction)addFakeStation:(id)sender {
+
+    
+    if(lastLocation){
+        [self addFakeStationWithLocation:lastLocation];
+        lastLocation= nil;
+    }
+    [[SMTransportation instance] save];
+}
+
 
 - (IBAction)toggleReminders:(UIButton *)sender {
     self.reminderFolded = !self.reminderFolded;
@@ -1828,6 +1869,7 @@ typedef enum {
 }
 
 - (void)request:(SMRequestOSRM *)req failedWithError:(NSError *)error {
+    [fadeView setAlpha:1.0];
     [UIView animateWithDuration:0.4f animations:^{
         [fadeView setAlpha:0.0f];
     }];

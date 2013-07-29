@@ -39,6 +39,7 @@
 #import "SMBreakRouteViewController.h"
 #import "SMTransportation.h"
 #import "SMGeocoder.h"
+#import "SMMapManager.h"
 #include "float.h"
 
 #import "SMMapOverlays.h"
@@ -62,6 +63,9 @@ typedef enum {
 
     SMRoute* fullRoute;
     SMRoute* nextRoute;
+    
+    SMTripRoute* tempTripRoute;
+    SMRoute* tempRoute;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *cargoHandleImageView;
 @property (weak, nonatomic) IBOutlet UITableView *cargoTableView;
@@ -99,6 +103,7 @@ typedef enum {
 #define MAP_LEVEL_STATIONS 80
 #define MAP_LEVEL_METRO 80
 #define MAP_LEVEL_SERVICES 80
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -159,6 +164,7 @@ typedef enum {
     
     self.pathVisible= YES;
     
+
     if ( self.appDelegate.mapOverlays == nil ) {
         self.appDelegate.mapOverlays = [[SMMapOverlays alloc] initWithMapView:nil];
     }
@@ -166,12 +172,30 @@ typedef enum {
     [self.appDelegate.mapOverlays loadMarkers];
     
     //[self loadMarkers];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onStationsFetched:) name:NOTIFICATION_STATIONS_FETCHED object:nil];
+    
+    [self loadMarkers];
+}
+
+-(void)onStationsFetched:(NSNotification*)notification{
+    [self loadMarkers];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackTranslucent];
+    
+    if([[SMUser user] route]){
+        self.route= [[SMUser user] route];
+        self.startLocation= [self.route getStartLocation];
+        self.endLocation= [self.route getEndLocation];
+    }
+    
+    if([[SMUser user] tripRoute]){
+        self.brokenRoute= [[SMUser user] tripRoute];
+    }
     
     if (self.startLocation && self.endLocation) {
         [self start:self.startLocation.coordinate end:self.endLocation.coordinate withJSON:self.jsonRoot];
@@ -190,6 +214,8 @@ typedef enum {
     } else {
         [self.mapFade setAlpha: 0.8f - ((self.mapFade.frame.size.height - MAX_TABLE) * 0.8f / (maxSize - MAX_TABLE))];
     }
+    
+    [self.mpView rotateMap:0.0];
     
     if (self.mapFade.alpha > 0.7f) {
 //        [arrivalBG setImage:[UIImage imageNamed:@"distance_black"]];
@@ -210,6 +236,8 @@ typedef enum {
     // markers visibility
     [self removeAllMarkers];
     [self toggleMarkers];
+    
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -312,14 +340,18 @@ typedef enum {
         
         for(int i=0; i<transportationLine.stations.count; i++){
             SMStationInfo* stationLocation= [transportationLine.stations objectAtIndex:i];
-            [stationLocation fetchName];
-            NSLog(@"Station %@",stationLocation.name);
+//            [stationLocation fetchName];
+//            NSLog(@"Station %@",stationLocation.name);
             CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(stationLocation.latitude, stationLocation.longitude);
             //[self addMarkerToMapView:self.mpView withCoordinate:coord title:@"Marker" imageName:@"station_icon" annotationTitle:@"Marker text" alternateTitle:@"Marker alternate title"];
             
             NSString* imageName = @"station_icon";
             NSString* title = @"station";
-            NSString* annotationTitle = @"Station";
+
+            //NSString* annotationTitle = @"Station";
+
+            NSString* annotationTitle = stationLocation.name;
+
             NSString* alternateTitle = @"alternate title";
             
             SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
@@ -807,12 +839,23 @@ typedef enum {
 }
 
 - (IBAction)onBreakRoute:(id)sender {
+//    [[SMTransportation instance] save];
     if ([SMLocationManager instance].hasValidLocation == NO) {
         UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:translateString(@"error_no_gps_location") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
         [av show];
         return;
     }else{
-        [self performSegueWithIdentifier:@"breakRoute" sender:self];
+        if(self.currentlyRouting){
+            // get current location
+            CLLocation* currentLocation= [[SMLocationManager instance] lastValidLocation];
+            // get new route ( currentPosition -> destination )
+            tempRoute= [[SMRoute alloc] initWithRouteStart:currentLocation.coordinate andEnd:[fullRoute getEndLocation].coordinate andDelegate:self];
+            // create a trip route
+            tempTripRoute= [[SMTripRoute alloc] initWithRoute:tempRoute];
+        }else{
+            [self performSegueWithIdentifier:@"breakRoute" sender:self];            
+        }
+
     }
 
 }
@@ -870,7 +913,7 @@ typedef enum {
     
     [self.mpView setUserTrackingMode:RMUserTrackingModeFollowWithHeading];
     [self.mpView rotateMap:self.route.lastCorrectedHeading];
-    
+
     [self renderMinimizedDirectionsViewFromInstruction];
     
     [recalculatingView setAlpha:1.0f];
@@ -905,8 +948,12 @@ typedef enum {
         [self.mpView removeAnnotation:annotation];
     }
     if(!self.route){
-        self.route = [[SMRoute alloc] initWithRouteStart:from andEnd:to andDelegate:self andJSON:jsonRoot];
-        self.route.osrmServer = self.osrmServer;
+        if([SMUser user].route){
+            self.route= [[SMUser user] route];
+        }else{
+            self.route = [[SMRoute alloc] initWithRouteStart:from andEnd:to andDelegate:self andJSON:jsonRoot];
+            self.route.osrmServer = self.osrmServer;
+        }
     }
     if(!self.brokenRoute)
         self.brokenRoute= [[SMTripRoute alloc] initWithRoute:self.route];
@@ -1305,7 +1352,11 @@ typedef enum {
     [av show];
 }
 
-- (void)startRoute {
+- (void)startRoute:(SMRoute*)pRoute {
+    if(pRoute==tempRoute){
+        [self performSegueWithIdentifier:@"breakRoute" sender:self];
+        return;
+    }
     if (overviewShown) {
         return;
     }
@@ -1347,7 +1398,7 @@ typedef enum {
         [self reloadSwipableView];
         
         if (firstElementRemoved) {
-            if ([tblDirections numberOfRowsInSection:0] > 0) {
+            if ([tblDirections numberOfSections]>0 && [tblDirections numberOfRowsInSection:0] > 0) {
                 @try {
                     [tblDirections deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationLeft];
                 }
@@ -1376,9 +1427,9 @@ typedef enum {
         self.route= nil;
         
         return;
+    }else{
+        [self reachedEndOfRoute];
     }
-    
-    [self reachedEndOfRoute];
 
 }
 
@@ -1649,7 +1700,12 @@ typedef enum {
         SMBreakRouteViewController* brVC= segue.destinationViewController;
         brVC.sourceName= self.source;
         brVC.destinationName= self.destination;
-        brVC.tripRoute= self.brokenRoute;
+        if(self.currentlyRouting){
+            brVC.tripRoute= tempTripRoute;
+            brVC.fullRoute= [brVC.tripRoute.brokenRoutes objectAtIndex:0];
+        }else{
+            brVC.tripRoute= self.brokenRoute;
+        }
     }
 }
 
@@ -1826,8 +1882,8 @@ typedef enum {
                 }
             }
             newY = maxY - tblHeight;
-            [self repositionInstructionsView:newY + 1];
-            lastDirectionsPos = newY + 1;
+            [self repositionInstructionsView:newY + 4];
+            lastDirectionsPos = newY + 4;
             [swipableView setHidden:NO];
             [swipableView setFrame:tblDirections.frame];
             [tblDirections setScrollEnabled:NO];
@@ -1928,7 +1984,9 @@ typedef enum {
 }
 
 - (IBAction)onPanGestureDirections:(UIPanGestureRecognizer *)sender {
-    [tblDirections scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    if([tblDirections numberOfRowsInSection:0]>=1 && [tblDirections numberOfSections]>0){
+        [tblDirections scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    }
     [instructionsView setHidden:NO];
     [minimizedInstructionsView setHidden:YES];
     if (sender.state == UIGestureRecognizerStateEnded) {
@@ -2237,12 +2295,12 @@ typedef enum {
 }
 
 -(void)toggleBreakRouteButton{
-    breakRouteButton.userInteractionEnabled= self.breakRouteButtonEnabled;
-    if(self.breakRouteButtonEnabled){
+    breakRouteButton.userInteractionEnabled= YES;//self.breakRouteButtonEnabled;
+//    if(self.breakRouteButtonEnabled){
         [breakRouteButton setImage:[UIImage imageNamed:@"break_route"] forState:UIControlStateNormal];
-    }else{
-        [breakRouteButton setImage:[UIImage imageNamed:@"break_route_white_press"] forState:UIControlStateNormal];
-    }
+//    }else{
+//        [breakRouteButton setImage:[UIImage imageNamed:@"break_route_white_press"] forState:UIControlStateNormal];
+//    }
 }
 
 -(BOOL)breakRouteButtonEnabled{
