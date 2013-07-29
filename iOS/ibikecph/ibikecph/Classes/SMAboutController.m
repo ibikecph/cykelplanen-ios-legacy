@@ -9,6 +9,7 @@
 #import "SMAboutController.h"
 
 @interface SMAboutController ()
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @end
 
@@ -18,6 +19,8 @@
     [super viewDidLoad];
 //	[[UIApplication sharedApplication] setStatusBarHidden:YES];
     [scrlView setContentSize:CGSizeMake(265.0f, 520.0f)];
+    
+    [self.textView setText:translateString(@"about_text")];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,6 +36,7 @@
 
 - (void)viewDidUnload {
     scrlView = nil;
+    [self setTextView:nil];
     [super viewDidUnload];
 }
 @end
