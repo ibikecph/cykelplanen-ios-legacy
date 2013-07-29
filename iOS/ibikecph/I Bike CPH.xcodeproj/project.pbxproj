@@ -527,6 +527,7 @@
 		7895DF80179E87790086A4BD /* direction_cell_small_top_bgr.png in Resources */ = {isa = PBXBuildFile; fileRef = 7895DF7F179E87790086A4BD /* direction_cell_small_top_bgr.png */; };
 		789E798417980EC500218C73 /* field_password_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 789E798317980EC500218C73 /* field_password_icon@2x.png */; };
 		789E79861798101200218C73 /* field_email_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 789E79851798101200218C73 /* field_email_icon@2x.png */; };
+		78A61EAA17A2A5F900D603AD /* service_stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 78A61EA917A2A5F900D603AD /* service_stations.json */; };
 		78C53774178D4CF600F6BAD3 /* break_route_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C5375F178D4CF600F6BAD3 /* break_route_active.png */; };
 		78C53775178D4CF600F6BAD3 /* break_route_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C53760178D4CF600F6BAD3 /* break_route_active@2x.png */; };
 		78C53776178D4CF600F6BAD3 /* break_route_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C53761178D4CF600F6BAD3 /* break_route_press.png */; };
@@ -1303,6 +1304,7 @@
 		789E797A17980DE600218C73 /* field_user_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "field_user_icon@2x.png"; path = "../../../../../../Documents/CSS/iOS/Cykelsuperstierne/Cykelsuperstierne/Assets/icons/field_user_icon@2x.png"; sourceTree = "<group>"; };
 		789E798317980EC500218C73 /* field_password_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "field_password_icon@2x.png"; sourceTree = "<group>"; };
 		789E79851798101200218C73 /* field_email_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "field_email_icon@2x.png"; sourceTree = "<group>"; };
+		78A61EA917A2A5F900D603AD /* service_stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = service_stations.json; sourceTree = "<group>"; };
 		78C5375F178D4CF600F6BAD3 /* break_route_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = break_route_active.png; path = ../break_route_active.png; sourceTree = "<group>"; };
 		78C53760178D4CF600F6BAD3 /* break_route_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "break_route_active@2x.png"; path = "../break_route_active@2x.png"; sourceTree = "<group>"; };
 		78C53761178D4CF600F6BAD3 /* break_route_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = break_route_press.png; path = ../break_route_press.png; sourceTree = "<group>"; };
@@ -2211,6 +2213,7 @@
 				F6922789178702F900C8CD76 /* Farumruten.line */,
 				4C48641616F099BE00F01A7C /* MainStoryboard_iPhone.storyboard */,
 				C09AB42917688AC40098AA9C /* smroute_settings.plist */,
+				78A61EA917A2A5F900D603AD /* service_stations.json */,
 				4C3B3EB5170493CC00F098AD /* routeme.plist */,
 				4C6C48F616CD3FE600E57F59 /* Languages */,
 				4C73D21616AEDCDA00AED42A /* I Bike CPH-Info.plist */,
@@ -3293,6 +3296,7 @@
 				7880A52E179EA1EC00969B9E /* warning_icon@2x.png in Resources */,
 				7872719617A15C6200478795 /* station_icon.png in Resources */,
 				7872719717A15C6200478795 /* station_icon@2x.png in Resources */,
+				78A61EAA17A2A5F900D603AD /* service_stations.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
