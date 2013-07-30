@@ -74,7 +74,7 @@ typedef enum {
     } else {
         [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) {
         }];
-    }   
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

@@ -58,6 +58,8 @@
     [self.swWednesday setOnTintColor:orange];
     [self.swThursday setOnTintColor:orange];
     [self.swFriday setOnTintColor:orange];
+    
+    [[SMReminder sharedInstance] save];
 }
 
 - (void)didReceiveMemoryWarning

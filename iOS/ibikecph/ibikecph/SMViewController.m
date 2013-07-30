@@ -951,10 +951,10 @@ typedef enum {
 }
 
 - (IBAction)saveFavorite:(id)sender {
-    
+    NSString* name = [addFavName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     for (NSDictionary* fav in self.favoritesList) {
         NSString* favName = [fav objectForKey:@"name"];
-        NSString* name = addFavName.text;
+        
         
         if ( [favName isEqualToString:name] ) {
             UIAlertView * av = [[UIAlertView alloc] initWithTitle:translateString(@"Error") message:translateString(@"error_favorites_name_exists") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
@@ -963,7 +963,7 @@ typedef enum {
         }
     }
         
-    if (self.locDict && [self.locDict objectForKey:@"address"] && [addFavName.text isEqualToString:@""] == NO) {
+    if (self.locDict && [self.locDict objectForKey:@"address"] && name.length> 0) {
         if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
             NSString * favType;
             switch (currentFav) {

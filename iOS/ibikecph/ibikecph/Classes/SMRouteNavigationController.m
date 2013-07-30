@@ -1258,6 +1258,13 @@ typedef enum {
 
 - (void)mapView:(RMMapView *)mapView didUpdateUserLocation:(RMUserLocation *)userLocation {
 
+    if([fullRoute getEndLocation] && [self location:userLocation.location matchesLocation:[fullRoute getEndLocation] distance:LOCATION_END_DISTANCE]){ // check if we reached the end of the route
+        // we reached end
+        NSLog(@"END");
+        [self reachedEndOfRoute];
+        return;
+    }
+    
    if (self.currentlyRouting && self.route && userLocation) {
        [self.route visitLocation:userLocation.location];
        
@@ -1287,21 +1294,22 @@ typedef enum {
        [tblDirections reloadData];
        [self renderMinimizedDirectionsViewFromInstruction];
    }else if(nextRoute && userLocation){ // next route exists and userlocation is valid
-       if([self location:[nextRoute getStartLocation] matchesLocation:userLocation.location]){ // check if we reached the beginning of the next route
+       if([self location:[nextRoute getStartLocation] matchesLocation:userLocation.location distance:LOCATION_STATION_DISTANCE] ){ // check if we reached the beginning of the next route
+           NSLog(@"Next route");
            self.route= nextRoute;
            self.route.delegate= self;
            
 //           [self startRouting];
-       }else if([fullRoute getEndLocation] && [self location:userLocation.location matchesLocation:[fullRoute getEndLocation]]){ // check if we reached the end of the route
-           // we reached end
-           [self reachedEndOfRoute];
        }
    }
 }
 
+-(BOOL)location:(CLLocation*)loc1 matchesLocation:(CLLocation*)loc2 distance:(double)pDistance{
+    return [loc1 distanceFromLocation:loc2] < pDistance;
+}
+
 -(BOOL)location:(CLLocation*)loc1 matchesLocation:(CLLocation*)loc2{
-    
-    return [loc1 distanceFromLocation:loc2] < LOCATION_MIN_DISTANCE;
+    return [self location:loc1 matchesLocation:loc2 distance:LOCATION_DEFAULT_DISTANCE];
 }
 
 - (void)beforeMapMove:(RMMapView *)map byUser:(BOOL)wasUserAction {
@@ -1984,7 +1992,7 @@ typedef enum {
 }
 
 - (IBAction)onPanGestureDirections:(UIPanGestureRecognizer *)sender {
-    if([tblDirections numberOfRowsInSection:0]>=1 && [tblDirections numberOfSections]>0){
+    if([tblDirections numberOfSections]>0 && [tblDirections numberOfRowsInSection:0]>=1 ){
         [tblDirections scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
     }
     [instructionsView setHidden:NO];

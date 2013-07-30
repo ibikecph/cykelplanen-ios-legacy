@@ -465,7 +465,6 @@
 		4CDD1E3317553AF500E45101 /* drop_pin_add_fav_btn_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CDD1E2D17553AF500E45101 /* drop_pin_add_fav_btn_active@2x.png */; };
 		4CE84E8316C404A3006931CC /* SMRadioCheckedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE84E8216C404A3006931CC /* SMRadioCheckedCell.m */; };
 		4CE84E8616C404B9006931CC /* SMRadioUncheckedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE84E8516C404B9006931CC /* SMRadioUncheckedCell.m */; };
-		4CE8D7BB16F3986300D0213D /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAF95C316D50B3A002C047B /* libMapView.a */; };
 		4CE8D7BD16F3987B00D0213D /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4CA06F3A16EF8BE4007603B4 /* HockeySDKResources.bundle */; };
 		4CF7E28B16B68D170082078E /* SMEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF7E28A16B68D170082078E /* SMEvents.m */; };
 		4CF7E29316B68D830082078E /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF7E29116B68D830082078E /* EventKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -662,7 +661,6 @@
 		F690C47B178C3395006A6FEA /* smroute_settings_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = F690C47A178C3395006A6FEA /* smroute_settings_private.plist */; };
 		F691E7DD17A167C9002E822E /* SMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F691E7DC17A167C9002E822E /* SMUser.m */; };
 		F691E7E017A172C6002E822E /* SMMapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F691E7DF17A172C6002E822E /* SMMapManager.m */; };
-		F69227711786E8ED00C8CD76 /* libHockeySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA06F3816EF8BE4007603B4 /* libHockeySDK.a */; };
 		F69227761786FD0B00C8CD76 /* SMTripRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = F69227751786FD0B00C8CD76 /* SMTripRoute.m */; };
 		F69227801786FF5700C8CD76 /* SMTransportationRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = F692277F1786FF5700C8CD76 /* SMTransportationRoute.m */; };
 		F69227841787003A00C8CD76 /* SMTransportationLine.m in Sources */ = {isa = PBXBuildFile; fileRef = F69227831787003A00C8CD76 /* SMTransportationLine.m */; };
@@ -679,6 +677,8 @@
 		F6928797178D883E00267A09 /* SMReminder.m in Sources */ = {isa = PBXBuildFile; fileRef = F6928796178D883E00267A09 /* SMReminder.m */; };
 		F693590817A25B0B00B2DF11 /* SMStationsCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F693590717A25B0B00B2DF11 /* SMStationsCache.m */; };
 		F695EFCE178AA95000D3E83D /* SMSingleRouteInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F695EFCD178AA95000D3E83D /* SMSingleRouteInfo.m */; };
+		F6977CBB17A6C7EB00548B31 /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAF95C316D50B3A002C047B /* libMapView.a */; };
+		F6977CC017A6C7F000548B31 /* libHockeySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA06F3816EF8BE4007603B4 /* libHockeySDK.a */; };
 		F698D70C178FF58E00DA6B7B /* SMAddressPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F698D70B178FF58E00DA6B7B /* SMAddressPickerView.xib */; };
 		F698D714178FF64D00DA6B7B /* SMAddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F698D713178FF64D00DA6B7B /* SMAddressPickerView.m */; };
 /* End PBXBuildFile section */
@@ -1501,10 +1501,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F69227711786E8ED00C8CD76 /* libHockeySDK.a in Frameworks */,
+				F6977CC017A6C7F000548B31 /* libHockeySDK.a in Frameworks */,
+				F6977CBB17A6C7EB00548B31 /* libMapView.a in Frameworks */,
 				4C1D27B21761BE9C00018196 /* Security.framework in Frameworks */,
 				4C693ABC16F74E8B00B63475 /* MobileCoreServices.framework in Frameworks */,
-				4CE8D7BB16F3986300D0213D /* libMapView.a in Frameworks */,
 				4C365DD616F323BB00A836B3 /* CoreText.framework in Frameworks */,
 				4C77EF8316CB8E7B0062360C /* CoreData.framework in Frameworks */,
 				4C77EF8416CB8E7B0062360C /* SystemConfiguration.framework in Frameworks */,
@@ -2619,13 +2619,10 @@
 				F69227831787003A00C8CD76 /* SMTransportationLine.m */,
 				F6922785178700BC00C8CD76 /* SMTransportation.h */,
 				F6922786178700BC00C8CD76 /* SMTransportation.m */,
-
 				78929E2C17A6662C00576458 /* SMMapOverlays.h */,
 				78929E2D17A6662C00576458 /* SMMapOverlays.m */,
-
 				F693590617A25B0B00B2DF11 /* SMStationsCache.h */,
 				F693590717A25B0B00B2DF11 /* SMStationsCache.m */,
-
 			);
 			name = transportation;
 			sourceTree = "<group>";
@@ -3412,11 +3409,8 @@
 				F691E7DD17A167C9002E822E /* SMUser.m in Sources */,
 				F691E7E017A172C6002E822E /* SMMapManager.m in Sources */,
 				7880A536179EBF5A00969B9E /* SMReportMailCell.m in Sources */,
-
 				78929E2E17A6662C00576458 /* SMMapOverlays.m in Sources */,
-
 				F693590817A25B0B00B2DF11 /* SMStationsCache.m in Sources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

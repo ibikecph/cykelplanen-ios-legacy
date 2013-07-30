@@ -12,6 +12,7 @@
 #define KEY_LONGITUDE @"KeyLongitude"
 #define KEY_LATITUDE @"KeyLatitude"
 #define KEY_STATION_NAME @"KeyStationName"
+
 @implementation SMStationInfo
 
 -(id)initWithCoordinate:(CLLocationCoordinate2D)coord{
@@ -21,7 +22,6 @@
 
 -(id)initWithLongitude:(double)lon latitude:(double)lat{
     if(self= [super init]){
-        self.name= [NSString stringWithFormat:@"DFNAME %lf %lf",lon, lat];
         self.location= [[CLLocation alloc] initWithLatitude:lat longitude:lon];
     }
     return self;
@@ -33,6 +33,7 @@
     [aCoder encodeDouble:self.latitude forKey:KEY_LATITUDE];
     [aCoder encodeObject:self.name forKey:KEY_STATION_NAME];
 }
+
 - (id)initWithCoder:(NSCoder *)aDecoder{
     if(self= [super init]){
         self.name= [aDecoder decodeObjectForKey:KEY_STATION_NAME];
@@ -56,14 +57,11 @@
     _location= pLocation;
     _longitude= pLocation.coordinate.longitude;
     _latitude= pLocation.coordinate.latitude;
-    
-//    [self performSelectorOnMainThread:@selector(fetchName) withObject:nil waitUntilDone:NO];
-//    [self fetchName];
-    if(!self.name){
-        [[NSOperationQueue mainQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
-            [self fetchName];
-        }]];
-    }
+
+    [[NSOperationQueue mainQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
+        [self fetchName];
+    }]];
+
 }
 
 -(void)fetchName{
@@ -80,7 +78,6 @@
         NSLog(@"Street name %@",streetName);
         selfRef.name= streetName;
         
-//        [[SMTransportation instance] performSelectorOnMainThread:@selector(validateAndSave) withObject:nil waitUntilDone:NO];
     }];
 
 }

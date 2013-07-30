@@ -38,7 +38,6 @@
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *path = [documentsDirectory stringByAppendingPathComponent:REMINDERS_FILE_NAME];
 
-    
     reminderDict= [NSDictionary dictionaryWithContentsOfFile:path];
     
     if(!reminderDict){ // no reminders set, yet
@@ -51,6 +50,7 @@
         days= [NSMutableDictionary new];
         [reminderDict setObject:days forKey:KEY_DAYS];
     }
+    
 }
 
 -(void)save{

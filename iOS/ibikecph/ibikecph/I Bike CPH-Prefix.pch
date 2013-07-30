@@ -85,7 +85,9 @@
 #define MAX_MAP_ZOOM 20
 #define PATH_COLOR [UIColor colorWithRed:6.0f/255.0f green:63.0f/255.0f blue:114.0f/255.0f alpha:0.85f]
 #define PATH_OPACITY 0.8f
-#define LOCATION_MIN_DISTANCE 30.0
+#define LOCATION_STATION_DISTANCE 15.0
+#define LOCATION_END_DISTANCE 15.0
+#define LOCATION_DEFAULT_DISTANCE LOCATION_END_DISTANCE
 //#define GEOCODING_SEARCH_RADIUS 50000.0f
 //
 //#define PLACES_SEARCH_RADIUS @"20000"
@@ -115,7 +117,7 @@
 
 #define MAX_TURNS 4
 
-//#define TESTING
+#define TESTING
 
 #define API_ADDRESS @"ibikecph-staging.herokuapp.com"
 #define API_SERVER @"http://ibikecph-staging.herokuapp.com/api"

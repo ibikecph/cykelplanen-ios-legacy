@@ -197,18 +197,15 @@ typedef enum {
 
 
 - (IBAction)skipLogin:(id)sender {
-//    [self performSegueWithIdentifier:@"splashToMain" sender:nil];
-    [self goToFavorites:sender];
+    if(! [[SMReminder sharedInstance] isReminderScreenShown]){
+        [self performSegueWithIdentifier:@"loginToReminder" sender:nil];
+    }else{
+        [self performSegueWithIdentifier:@"splashToMain" sender:nil];
+    }
 }
 
 - (IBAction)goToFavorites:(id)sender {
-//    [self.apr hideWaitingView];
-//    if ([[SMFavoritesUtil getFavorites] count] > 0) {
-//        [self performSegueWithIdentifier:@"splashToMain" sender:nil];
-//    } else {
-//        [self performSegueWithIdentifier:@"splashToFavorites" sender:nil];
-//    }
-    
+
     if(! [[SMReminder sharedInstance] isReminderScreenShown]){
         [self performSegueWithIdentifier:@"loginToReminder" sender:nil];
     }else{
