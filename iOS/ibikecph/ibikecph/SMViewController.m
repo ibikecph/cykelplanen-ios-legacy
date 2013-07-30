@@ -297,6 +297,7 @@ typedef enum {
 
     buttonAddFakeStation = nil;
 
+    [self setMainMenuBtn:nil];
     [super viewDidUnload];
 }
 
@@ -438,30 +439,43 @@ typedef enum {
 
 
 - (IBAction)openOverlaysMenu:(UIImageView*)sender {
-    //if (centerView.frame.origin.x < 32) {
-        [menuView setHidden:YES];
-    //}
+    if (centerView.frame.origin.x == 0) {
+        
+        [UIView animateWithDuration:0.2f animations:^{
+            [menuView setAlpha:0.0];
+        }];
+        
+        //[menuView setHidden:YES];
+    }
 }
 
 - (IBAction)panMainMenu:(id)sender {
-    //if (centerView.frame.origin.x < 32) {
+    if (centerView.frame.origin.x == 0) {
         [menuView setHidden:NO];
-    //}
+    }
 }
 
 - (IBAction)touchOpenOverlaysMenu:(id)sender {
-    //if (centerView.frame.origin.x < 10) {
-        [menuView setHidden:YES];
-    //}
+    if (centerView.frame.origin.x == 0) {
+        //[menuView setHidden:YES];
+        [UIView animateWithDuration:0.2f animations:^{
+            [menuView setAlpha:0.0];
+        }];
+    }
 }
 - (IBAction)touchOpenMainMenu:(id)sender {
-    //if (centerView.frame.origin.x < 10) {
-        [menuView setHidden:NO];
-    //}
+    if (centerView.frame.origin.x == 0) {
+       // [menuView setHidden:NO];
+    }
 }
 
 - (void)openMenu:(NSInteger)menuType {
-    [menuView setHidden:NO];
+    
+    [UIView animateWithDuration:0.2f animations:^{
+        [menuView setAlpha:1.0];
+    }];
+    
+    //[menuView setHidden:NO];
     
     CGFloat startY = favHeader.frame.origin.y;
     CGFloat maxHeight = menuView.frame.size.height - startY;
