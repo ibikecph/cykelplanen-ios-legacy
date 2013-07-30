@@ -28,8 +28,13 @@
         
         self.pathVisible = YES;
         self.serviceMarkersVisible = NO;
-        self.stationMarkersVisible = NO;
+        self.stationMarkersVisible = YES;
         self.metroMarkersVisible = NO;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(loadMarkers)
+                                                     name:NOTIFICATION_STATIONS_FETCHED
+                                                   object:nil];
     }
     return self;
 }
@@ -162,6 +167,8 @@
         //[self.mpView addAnnotation:annotation];
         [self.serviceMarkers addObject:annotation];
     }
+    
+    [self toggleMarkers];
 }
 
 -(void)toggleMarkers{

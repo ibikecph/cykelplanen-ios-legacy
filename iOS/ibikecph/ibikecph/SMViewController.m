@@ -222,7 +222,7 @@ typedef enum {
         self.appDelegate.mapOverlays = [[SMMapOverlays alloc] initWithMapView:nil];
     }
     [self.appDelegate.mapOverlays useMapView:self.mpView];
-    [self.appDelegate.mapOverlays loadMarkers];
+    //[self.appDelegate.mapOverlays loadMarkers];
     
 //    [self loadMarkers];
 
@@ -342,6 +342,10 @@ typedef enum {
     frame = buttonTrackUser.frame;
     frame.origin.y = dropPinView.frame.origin.y - 65.0f;
     [buttonTrackUser setFrame:frame];
+    
+    frame = overlayMenuBtn.frame;
+    frame.origin.y = dropPinView.frame.origin.y - 65.0f;
+    [overlayMenuBtn setFrame:frame];
 
     [self.view removeKeyboardControl];
     [super viewWillDisappear:animated];
@@ -807,6 +811,10 @@ typedef enum {
         frame.origin.y = dropPinView.frame.origin.y - 65.0f;
         [buttonTrackUser setFrame:frame];
         
+        frame = overlayMenuBtn.frame;
+        frame.origin.y = dropPinView.frame.origin.y - 65.0f;
+        [overlayMenuBtn setFrame:frame];
+        
     } completion:^(BOOL finished) {
     }];
 }
@@ -819,6 +827,11 @@ typedef enum {
         frame = buttonTrackUser.frame;
         frame.origin.y = dropPinView.frame.origin.y - 65.0f;
         [buttonTrackUser setFrame:frame];
+        
+        frame = overlayMenuBtn.frame;
+        frame.origin.y = dropPinView.frame.origin.y - 65.0f;
+        [overlayMenuBtn setFrame:frame];
+        
     } completion:^(BOOL finished) {
         
     }];
