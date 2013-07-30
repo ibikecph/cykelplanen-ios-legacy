@@ -4552,9 +4552,6 @@ Cykelsuperstierne har overordnet fire kvalitetsmål. Kvalitetsmålene er udvikle
         </class>
         <class className="FlickableView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FlickableView.h"/>
-            <relationships>
-                <relationship kind="action" name="onTap:" candidateClass="UITapGestureRecognizer"/>
-            </relationships>
         </class>
         <class className="GAITrackedViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GAITrackedViewController.h"/>
@@ -4630,11 +4627,6 @@ Cykelsuperstierne har overordnet fire kvalitetsmål. Kvalitetsmålene er udvikle
         <class className="SMBreakRouteViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SMBreakRouteViewController.h"/>
             <relationships>
-                <relationship kind="action" name="onBack:"/>
-                <relationship kind="action" name="onBreakRoute:"/>
-                <relationship kind="action" name="onDestinationAddressButtonTap:"/>
-                <relationship kind="action" name="onInfoTap:"/>
-                <relationship kind="action" name="onSourceAddressButtonTap:"/>
                 <relationship kind="outlet" name="buttonAddressDestination" candidateClass="SMPatternedButton"/>
                 <relationship kind="outlet" name="buttonAddressSource" candidateClass="SMPatternedButton"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
@@ -4729,10 +4721,6 @@ Cykelsuperstierne har overordnet fire kvalitetsmål. Kvalitetsmålene er udvikle
         <class className="SMFavoritesController" superclassName="SMTranslatedViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SMFavoritesController.h"/>
             <relationships>
-                <relationship kind="action" name="saveFavorites:"/>
-                <relationship kind="action" name="searchHome:"/>
-                <relationship kind="action" name="searchWork:"/>
-                <relationship kind="action" name="skipOver:"/>
                 <relationship kind="outlet" name="btnSave" candidateClass="SMPatternedButton"/>
                 <relationship kind="outlet" name="btnSkip" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="favoriteHome" candidateClass="UITextField"/>
@@ -4925,13 +4913,6 @@ Cykelsuperstierne har overordnet fire kvalitetsmål. Kvalitetsmålene er udvikle
         <class className="SMViewController" superclassName="SMTranslatedViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SMViewController.h"/>
             <relationships>
-                <relationship kind="action" name="deleteFavorite:"/>
-                <relationship kind="action" name="findAddress:"/>
-                <relationship kind="action" name="goToPin:"/>
-                <relationship kind="action" name="onSelectAccount:" candidateClass="UIButton"/>
-                <relationship kind="action" name="panMainMenu:"/>
-                <relationship kind="action" name="saveFavorite:"/>
-                <relationship kind="action" name="touchOpenMainMenu:"/>
                 <relationship kind="outlet" name="aboutHeaderButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="accHeader" candidateClass="UIView"/>
                 <relationship kind="outlet" name="accountHeaderButton" candidateClass="UIButton"/>

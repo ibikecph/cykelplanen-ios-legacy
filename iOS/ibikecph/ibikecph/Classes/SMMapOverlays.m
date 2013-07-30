@@ -28,7 +28,7 @@
         
         self.pathVisible = YES;
         self.serviceMarkersVisible = NO;
-        self.stationMarkersVisible = YES;
+        self.stationMarkersVisible = NO;
         self.metroMarkersVisible = NO;
         
         [[NSNotificationCenter defaultCenter] addObserver:self
