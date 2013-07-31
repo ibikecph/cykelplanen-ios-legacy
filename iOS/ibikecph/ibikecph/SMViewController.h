@@ -88,4 +88,6 @@ typedef enum {
 @property (nonatomic, strong) IBOutlet SMAddFavoriteCell *tableFooter;
 @property (weak, nonatomic) IBOutlet UIImageView *mainMenuBtn;
 
+@property (nonatomic, strong) SMAnnotation* endMarkerAnnotation;
+
 @end

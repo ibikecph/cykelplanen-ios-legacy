@@ -145,6 +145,10 @@ typedef enum {
     animationShown = NO;
     self.reminderFolded = NO;
     
+    self.endMarkerAnnotation = nil;
+    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(0, 0);
+    self.endMarkerAnnotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:@""];
+    
     menuOpen = menuFavorites;
     
     [SMLocationManager instance];
@@ -677,13 +681,20 @@ typedef enum {
         [im setFrame:CGRectMake(point.x - 17.0f, point.y - 34.0f, 34.0f, 34.0f)];
     } completion:^(BOOL finished) {
         debugLog(@"dropped pin");
-        [self.mpView removeAllAnnotations];
-        SMAnnotation *endMarkerAnnotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:@""];
-        endMarkerAnnotation.annotationType = @"marker";
-        endMarkerAnnotation.annotationIcon = [UIImage imageNamed:@"markerFinish"];
-        endMarkerAnnotation.anchorPoint = CGPointMake(0.5, 1.0);
-        [self.mpView addAnnotation:endMarkerAnnotation];
-        [self setDestinationPin:endMarkerAnnotation];
+//        [self.mpView removeAllAnnotations];
+        //SMAnnotation *endMarkerAnnotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:@""];
+
+        if ( self.endMarkerAnnotation != nil ) {
+            [self.mpView removeAnnotation:self.endMarkerAnnotation];
+            self.endMarkerAnnotation = nil;
+            self.endMarkerAnnotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:@""];
+        }
+
+        self.endMarkerAnnotation.annotationType = @"marker";
+        self.endMarkerAnnotation.annotationIcon = [UIImage imageNamed:@"markerFinish"];
+        self.endMarkerAnnotation.anchorPoint = CGPointMake(0.5, 1.0);
+        [self.mpView addAnnotation:self.endMarkerAnnotation];
+        [self setDestinationPin:self.endMarkerAnnotation];
         
         [self.destinationPin setSubtitle:@""];
         [self.destinationPin setDelegate:self];
@@ -1746,7 +1757,7 @@ typedef enum {
 }
 
 - (RMMapLayer *)mapView:(RMMapView *)aMapView layerForAnnotation:(SMAnnotation *)annotation {
-    if ([annotation.annotationType isEqualToString:@"marker"]) {
+    if ([annotation.annotationType isEqualToString:@"marker"] || [annotation.annotationType isEqualToString:@"station"]) {
         RMMarker * m = [[RMMarker alloc] initWithUIImage:annotation.annotationIcon anchorPoint:annotation.anchorPoint];
         return m;
     }
@@ -1768,7 +1779,8 @@ typedef enum {
                 [v removeFromSuperview];
             }
         }
-        [self.mpView removeAllAnnotations];
+        //[self.mpView removeAllAnnotations];
+        [self.mpView removeAnnotation:self.endMarkerAnnotation];
         [self hidePinDrop];
     }
 }

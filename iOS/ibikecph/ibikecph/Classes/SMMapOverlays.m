@@ -43,6 +43,60 @@
     self.mpView = mapView;
 }
 
+- (void)loadMetroMarkers {
+    
+    self.metroMarkers = [[NSMutableArray alloc] init];
+    NSString* filePath = [[NSBundle mainBundle] pathForResource:@"metro-stations" ofType:@"json"];
+    NSError* err;
+    NSData* data = [NSData dataWithContentsOfFile:filePath];
+    NSDictionary* dict = nil;
+    if ( data ) {
+        dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&err];
+        NSLog(@"Error %@", err);
+    }
+    NSArray* stations = [dict valueForKey:@"stations"];
+    NSNumber* lon;
+    NSNumber* lat;
+    
+    for(NSDictionary* station in stations) {
+        
+        NSString* s = [station objectForKey:@"coords"];
+        
+        NSRange range = [s rangeOfString:@" "];
+        //range.location = 0;
+        NSString* sLongitude = [s substringToIndex:range.location];
+        range.length = [s length] - range.location;
+        NSString* sLatitude = [s substringWithRange:range];
+        
+        NSLog(@"METRO STATION: %f %f", [sLongitude floatValue], [sLatitude floatValue]);
+        
+        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake([sLongitude floatValue], [sLatitude floatValue]); //lon, lat);
+            //[self addMarkerToMapView:self.mpView withCoordinate:coord title:@"Marker" imageName:@"station_icon" annotationTitle:@"Marker text" alternateTitle:@"Marker alternate title"];
+            
+            NSString* imageName = @"metro_logo_pin";
+            NSString* title = @"metro";
+            NSString* annotationTitle = @"title";
+            NSString* alternateTitle = @"alternate title";
+            
+            SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
+            
+            annotation.annotationType = @"station";
+            annotation.annotationIcon = [UIImage imageNamed:imageName];
+            annotation.anchorPoint = CGPointMake(0.5, 1.0);
+//            NSMutableArray * arr = [[self.source componentsSeparatedByString:@","] mutableCopy];
+//            annotation.title = annotationTitle;
+//            
+//            if ([annotation.title isEqualToString:@""] && alternateTitle) {
+//                annotation.title = alternateTitle;
+//            }
+//            
+//            annotation.subtitle = [[arr componentsJoinedByString:@","] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            //[self.mpView addAnnotation:annotation];
+            
+            [self.metroMarkers addObject:annotation];
+        }
+    }
+
 - (void)loadMarkers {
     
 //    if ( !self.mpView ) {
@@ -67,7 +121,7 @@
             NSString* alternateTitle = @"alternate title";
             
             SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
-            annotation.annotationType = @"marker";
+            annotation.annotationType = @"station";
             annotation.annotationIcon = [UIImage imageNamed:imageName];
             annotation.anchorPoint = CGPointMake(0.5, 1.0);
             NSMutableArray* arr = [[self.source componentsSeparatedByString:@","] mutableCopy];
@@ -89,38 +143,7 @@
       
     // Add metro markers
     self.metroMarkers = [[NSMutableArray alloc] init];
-    for (int i=0; i<150*3; i++) {
-        float jitterx = (rand() % 1000 / 1000.0 * 0.5) - 0.25;
-        float jittery = (rand() % 1000 / 1000.0 * 0.5) - 0.25;
-        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(55.678974+jitterx, 12.540156+jittery);
-        //[self addMarkerToMapView:self.mpView withCoordinate:coord title:@"Marker" imageName:@"station_icon" annotationTitle:@"Marker text" alternateTitle:@"Marker alternate title"];
-        
-        NSString* imageName = @"metro_logo_pin";
-        NSString* title = @"metro";
-        NSString* annotationTitle = @"title";
-        NSString* alternateTitle = @"alternate title";
-        
-        SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
-        
-        annotation.annotationType = @"marker";
-        annotation.annotationIcon = [UIImage imageNamed:imageName];
-        annotation.anchorPoint = CGPointMake(0.5, 1.0);
-        NSMutableArray * arr = [[self.source componentsSeparatedByString:@","] mutableCopy];
-        annotation.title = annotationTitle;
-        
-        if ([annotation.title isEqualToString:@""] && alternateTitle) {
-            annotation.title = alternateTitle;
-        }
-        
-        annotation.subtitle = [[arr componentsJoinedByString:@","] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        //[self.mpView addAnnotation:annotation];
-        
-        [self.metroMarkers addObject:annotation];
-    }
-    
-    // Add service markers
-    self.serviceMarkers = [[NSMutableArray alloc] init];
-    NSString* filePath = [[NSBundle mainBundle] pathForResource:@"service_stations" ofType:@"json"];
+    NSString* filePath = [[NSBundle mainBundle] pathForResource:@"metro-stations" ofType:@"json"];
     NSError* err;
     NSData* data = [NSData dataWithContentsOfFile:filePath];
     NSDictionary* dict = nil;
@@ -131,6 +154,56 @@
     NSArray* stations = [dict valueForKey:@"stations"];
     NSNumber* lon;
     NSNumber* lat;
+    
+    for(NSDictionary* station in stations) {
+        
+        NSString* s = [station objectForKey:@"coords"];
+        
+        NSRange range = [s rangeOfString:@" "];
+        //range.location = 0;
+        NSString* sLatitude = [s substringToIndex:range.location];
+        range.length = [s length] - range.location;
+        NSString* sLongitude = [s substringWithRange:range];
+        
+        NSLog(@"METRO STATION: %f %f", [sLongitude floatValue], [sLatitude floatValue]);
+        
+        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake([sLongitude floatValue], [sLatitude floatValue]); //lon, lat);
+        //[self addMarkerToMapView:self.mpView withCoordinate:coord title:@"Marker" imageName:@"station_icon" annotationTitle:@"Marker text" alternateTitle:@"Marker alternate title"];
+        
+        NSString* imageName = @"metro_logo_pin";
+        NSString* title = @"metro";
+        NSString* annotationTitle = @"title";
+        NSString* alternateTitle = @"alternate title";
+        
+        SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
+        
+        annotation.annotationType = @"station";
+        annotation.annotationIcon = [UIImage imageNamed:imageName];
+        annotation.anchorPoint = CGPointMake(0.5, 1.0);
+        NSMutableArray * arr = [[self.source componentsSeparatedByString:@","] mutableCopy];
+        annotation.title = annotationTitle;
+        
+        if ([annotation.title isEqualToString:@""] && alternateTitle) {
+            annotation.title = alternateTitle;
+        }
+        annotation.subtitle = [[arr componentsJoinedByString:@","] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        //[self.mpView addAnnotation:annotation];
+        
+        [self.metroMarkers addObject:annotation];
+    }
+
+
+    // Add service markers
+    self.serviceMarkers = [[NSMutableArray alloc] init];
+    filePath = [[NSBundle mainBundle] pathForResource:@"service_stations" ofType:@"json"];
+
+    data = [NSData dataWithContentsOfFile:filePath];
+    dict = nil;
+    if ( data ) {
+        dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&err];
+        NSLog(@"Error %@", err);
+    }
+    stations = [dict valueForKey:@"stations"];
     
     for(NSDictionary* station in stations){
         
@@ -152,7 +225,7 @@
         
         CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(lon.floatValue, lat.floatValue);
         SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
-        annotation.annotationType = @"marker";
+        annotation.annotationType = @"station";
         annotation.annotationIcon = [UIImage imageNamed:imageName];
         annotation.anchorPoint = CGPointMake(0.5, 1.0);
         
