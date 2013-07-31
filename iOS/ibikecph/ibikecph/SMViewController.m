@@ -666,7 +666,6 @@ typedef enum {
     
 #ifdef TESTING
         lastLocation= loc;
-//    [self addFakeStationWithLocation:loc];
 #endif
     
     
@@ -707,8 +706,10 @@ typedef enum {
             } else {
                 [pinButton setSelected:NO];
             }
-            NSString* authTokenStr= [self.appDelegate.appSettings objectForKey:@"auth_token"];
-            if ( authTokenStr && ![authTokenStr isEqual:[NSNull null]] && [[self.appDelegate.appSettings objectForKey:@"auth_token"] isEqualToString:@""] == NO) {
+//            NSString* authTokenStr= [self.appDelegate.appSettings objectForKey:@"auth_token"];
+//            if ( authTokenStr && ![authTokenStr isEqual:[NSNull null]] && [[self.appDelegate.appSettings objectForKey:@"auth_token"] isEqualToString:@""] == NO) {
+            NSNumber* loginID= [self.appDelegate.appSettings objectForKey:@"id"];
+            if(loginID && loginID.intValue!=0){
                 pinButton.enabled = YES;
             }
             

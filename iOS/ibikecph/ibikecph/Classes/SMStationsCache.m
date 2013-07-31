@@ -26,6 +26,7 @@
 
 -(void)load:(SMTransportation*)transportation{
 
+    
 }
 
 -(void)save:(SMTransportation*)transportation{

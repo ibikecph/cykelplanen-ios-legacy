@@ -44,7 +44,7 @@
         reminderDict= [NSMutableDictionary new];
     }
     
-    days= [reminderDict objectForKey:KEY_DAYS];
+    days= [[NSMutableDictionary alloc] initWithDictionary:[reminderDict objectForKey:KEY_DAYS]];
     
     if(!days){
         days= [NSMutableDictionary new];
@@ -118,7 +118,12 @@
         days= [NSMutableDictionary new];
         [reminderDict setObject:days forKey:KEY_DAYS];
     }
-    [days setObject:[NSNumber numberWithBool:shouldRemind] forKey:[NSNumber numberWithInt:day].stringValue];
+    @try {
+        [days setObject:[NSNumber numberWithBool:shouldRemind] forKey:[NSNumber numberWithInt:day].stringValue];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@",exception.description);
+    }
     
     if(shouldSave){
         [self save];

@@ -744,9 +744,6 @@ typedef enum {
     if([self isStringSplittable:newWord atIndex:index]){
         [words replaceObjectAtIndex:splitWordIndex withObject:[self splitString:newWord lastCharacterIndex:index]];
     }else{
-//        NSString* lastWord= [words objectAtIndex:splitWordIndex-1];
-//        [words replaceObjectAtIndex:splitWordIndex-1 withObject:[lastWord stringByAppendingString:@"\r\n"]];
-//        splitWordIndex= -1;
         noSplit= YES;
     }
 
@@ -778,7 +775,20 @@ typedef enum {
 }
 
 -(BOOL)isStringSplittable:(NSString*)str atIndex:(int)index{
-    return str.length>=4 && index>0 && index<str.length-2;
+    BOOL breakable= NO;
+    while (index>0) {
+        NSString* subStr= [str substringWithRange:NSMakeRange(index, 1)];
+        // don't check for vowels if the substring is nil
+        if(!subStr)
+            continue;
+        // check if the substring ends with a vowel
+        if( ![self isVowel:subStr]){
+            breakable= YES;
+            break;
+        }
+    index--;
+    }
+    return breakable && str.length>=4 && index>0 && index<str.length-2;
 }
 -(BOOL)string:(NSString*)str fitsLabelWidth:(UILabel*)lbl{
     return [str sizeWithFont:lbl.font].width <= lbl.frame.size.width;
@@ -803,6 +813,8 @@ typedef enum {
             return newStr;
         }
     }
+    
+    [newStr insertString:@"-" atIndex:index+1];
     return newStr;
 }
 

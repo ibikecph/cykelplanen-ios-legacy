@@ -66,7 +66,6 @@ static NSOperationQueue* stationQueue;
 }
 
 -(void)save{
-    NSLog(@"SAVING...");
     NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentDirectory = [documentDirectories objectAtIndex:0];
 	NSString *myFilePath = [documentDirectory stringByAppendingPathComponent:CACHE_FILE_NAME];
@@ -121,8 +120,14 @@ static NSOperationQueue* stationQueue;
 
 -(void)initializeLines{
     NSMutableArray* tempLines= [NSMutableArray new];
+    
+    self.stationCount= 0;
+    
     for(SMRelation* rel in relations){
-
+        self.stationCount+= rel.nodes.count;
+    }
+    
+    for(SMRelation* rel in relations){
         [tempLines addObject:[[SMTransportationLine alloc] initWithRelation:rel]];
     }
 

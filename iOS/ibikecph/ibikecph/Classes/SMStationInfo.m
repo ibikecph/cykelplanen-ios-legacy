@@ -75,7 +75,6 @@
             streetName = [NSString stringWithFormat:@"Station %f, %f", coord.latitude, coord.longitude];
 
         }
-        NSLog(@"Street name %@",streetName);
         selfRef.name= streetName;
         
     }];
