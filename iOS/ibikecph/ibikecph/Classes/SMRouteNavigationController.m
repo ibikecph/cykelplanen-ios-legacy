@@ -1254,7 +1254,7 @@ typedef enum {
         return line;
     }
 
-    if ([annotation.annotationType isEqualToString:@"marker"]) {
+    if ([annotation.annotationType isEqualToString:@"marker"] || [annotation.annotationType isEqualToString:@"station"]) {
         NSNumber* zIndex= [annotation.userInfo objectForKey:keyZIndex];
         int z= 100;
         if(zIndex && ![zIndex isEqual:[NSNull null]]){

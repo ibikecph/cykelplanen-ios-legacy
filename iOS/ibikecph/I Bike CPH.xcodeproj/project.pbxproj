@@ -472,6 +472,11 @@
 		4CF7E29C16B6B57F0082078E /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF7E29916B6B57F0082078E /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4CF7E29D16B6B57F0082078E /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF7E29A16B6B57F0082078E /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4CF7E29E16B6B57F0082078E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF7E29B16B6B57F0082078E /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		780291F817A80D1A00C2F829 /* service_station_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 780291F617A80D1A00C2F829 /* service_station_gray.png */; };
+		780291F917A80D1A00C2F829 /* service_station_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 780291F717A80D1A00C2F829 /* service_station_gray@2x.png */; };
+		780291FC17A80E4900C2F829 /* service_station_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 780291FA17A80E4900C2F829 /* service_station_white.png */; };
+		780291FD17A80E4900C2F829 /* service_station_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 780291FB17A80E4900C2F829 /* service_station_white@2x.png */; };
+		780F969F17A94938006B6694 /* metro-stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 780F969E17A94938006B6694 /* metro-stations.json */; };
 		7819214A179551300082BFE2 /* SMBreakRouteHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 78192149179551300082BFE2 /* SMBreakRouteHeader.m */; };
 		78192152179566540082BFE2 /* SMBreakRouteButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78192151179566540082BFE2 /* SMBreakRouteButtonCell.m */; };
 		7819216A1795AC530082BFE2 /* metro_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 781921691795AC530082BFE2 /* metro_icon@2x.png */; };
@@ -591,10 +596,6 @@
 		78EBFE371793F8D600B67183 /* s_station_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBFE2B1793F8D600B67183 /* s_station_gray@2x.png */; };
 		78EBFE381793F8D600B67183 /* s_station_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBFE2C1793F8D600B67183 /* s_station_white.png */; };
 		78EBFE391793F8D600B67183 /* s_station_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBFE2D1793F8D600B67183 /* s_station_white@2x.png */; };
-		78EBFE3A1793F8D600B67183 /* service_station_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBFE2E1793F8D600B67183 /* service_station_gray.png */; };
-		78EBFE3B1793F8D600B67183 /* service_station_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBFE2F1793F8D600B67183 /* service_station_gray@2x.png */; };
-		78EBFE3C1793F8D600B67183 /* service_station_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBFE301793F8D600B67183 /* service_station_white.png */; };
-		78EBFE3D1793F8D600B67183 /* service_station_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBFE311793F8D600B67183 /* service_station_white@2x.png */; };
 		78EBFE421793F9F900B67183 /* bike_route_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBFE3E1793F9F900B67183 /* bike_route_gray.png */; };
 		78EBFE431793F9F900B67183 /* bike_route_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBFE3F1793F9F900B67183 /* bike_route_gray@2x.png */; };
 		78EBFE441793F9F900B67183 /* bike_route_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBFE401793F9F900B67183 /* bike_route_white.png */; };
@@ -1246,6 +1247,11 @@
 		4CF7E29916B6B57F0082078E /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		4CF7E29A16B6B57F0082078E /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		4CF7E29B16B6B57F0082078E /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		780291F617A80D1A00C2F829 /* service_station_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = service_station_gray.png; sourceTree = "<group>"; };
+		780291F717A80D1A00C2F829 /* service_station_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "service_station_gray@2x.png"; sourceTree = "<group>"; };
+		780291FA17A80E4900C2F829 /* service_station_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = service_station_white.png; sourceTree = "<group>"; };
+		780291FB17A80E4900C2F829 /* service_station_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "service_station_white@2x.png"; sourceTree = "<group>"; };
+		780F969E17A94938006B6694 /* metro-stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "metro-stations.json"; sourceTree = "<group>"; };
 		78192148179551300082BFE2 /* SMBreakRouteHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMBreakRouteHeader.h; sourceTree = "<group>"; };
 		78192149179551300082BFE2 /* SMBreakRouteHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBreakRouteHeader.m; sourceTree = "<group>"; };
 		78192150179566540082BFE2 /* SMBreakRouteButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMBreakRouteButtonCell.h; sourceTree = "<group>"; };
@@ -1373,10 +1379,6 @@
 		78EBFE2B1793F8D600B67183 /* s_station_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "s_station_gray@2x.png"; sourceTree = "<group>"; };
 		78EBFE2C1793F8D600B67183 /* s_station_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = s_station_white.png; sourceTree = "<group>"; };
 		78EBFE2D1793F8D600B67183 /* s_station_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "s_station_white@2x.png"; sourceTree = "<group>"; };
-		78EBFE2E1793F8D600B67183 /* service_station_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = service_station_gray.png; sourceTree = "<group>"; };
-		78EBFE2F1793F8D600B67183 /* service_station_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "service_station_gray@2x.png"; sourceTree = "<group>"; };
-		78EBFE301793F8D600B67183 /* service_station_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = service_station_white.png; sourceTree = "<group>"; };
-		78EBFE311793F8D600B67183 /* service_station_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "service_station_white@2x.png"; sourceTree = "<group>"; };
 		78EBFE3E1793F9F900B67183 /* bike_route_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bike_route_gray.png; sourceTree = "<group>"; };
 		78EBFE3F1793F9F900B67183 /* bike_route_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bike_route_gray@2x.png"; sourceTree = "<group>"; };
 		78EBFE401793F9F900B67183 /* bike_route_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bike_route_white.png; sourceTree = "<group>"; };
@@ -1675,14 +1677,14 @@
 				78EBFE271793F8D600B67183 /* metro_station_gray@2x.png */,
 				78EBFE281793F8D600B67183 /* metro_station_white.png */,
 				78EBFE291793F8D600B67183 /* metro_station_white@2x.png */,
+				780291F617A80D1A00C2F829 /* service_station_gray.png */,
+				780291F717A80D1A00C2F829 /* service_station_gray@2x.png */,
 				78EBFE2A1793F8D600B67183 /* s_station_gray.png */,
 				78EBFE2B1793F8D600B67183 /* s_station_gray@2x.png */,
 				78EBFE2C1793F8D600B67183 /* s_station_white.png */,
 				78EBFE2D1793F8D600B67183 /* s_station_white@2x.png */,
-				78EBFE2E1793F8D600B67183 /* service_station_gray.png */,
-				78EBFE2F1793F8D600B67183 /* service_station_gray@2x.png */,
-				78EBFE301793F8D600B67183 /* service_station_white.png */,
-				78EBFE311793F8D600B67183 /* service_station_white@2x.png */,
+				780291FA17A80E4900C2F829 /* service_station_white.png */,
+				780291FB17A80E4900C2F829 /* service_station_white@2x.png */,
 				78EBFE221793EBF100B67183 /* locate_icon.png */,
 				78EBFE231793EBF100B67183 /* locate_icon@2x.png */,
 				78EBFE191793E89900B67183 /* routeEnterStartOrange_active.png */,
@@ -2216,6 +2218,7 @@
 				F6922789178702F900C8CD76 /* Farumruten.line */,
 				4C48641616F099BE00F01A7C /* MainStoryboard_iPhone.storyboard */,
 				C09AB42917688AC40098AA9C /* smroute_settings.plist */,
+				780F969E17A94938006B6694 /* metro-stations.json */,
 				78A61EA917A2A5F900D603AD /* service_stations.json */,
 				4C3B3EB5170493CC00F098AD /* routeme.plist */,
 				4C6C48F616CD3FE600E57F59 /* Languages */,
@@ -3254,10 +3257,6 @@
 				78EBFE371793F8D600B67183 /* s_station_gray@2x.png in Resources */,
 				78EBFE381793F8D600B67183 /* s_station_white.png in Resources */,
 				78EBFE391793F8D600B67183 /* s_station_white@2x.png in Resources */,
-				78EBFE3A1793F8D600B67183 /* service_station_gray.png in Resources */,
-				78EBFE3B1793F8D600B67183 /* service_station_gray@2x.png in Resources */,
-				78EBFE3C1793F8D600B67183 /* service_station_white.png in Resources */,
-				78EBFE3D1793F8D600B67183 /* service_station_white@2x.png in Resources */,
 				78EBFE421793F9F900B67183 /* bike_route_gray.png in Resources */,
 				78EBFE431793F9F900B67183 /* bike_route_gray@2x.png in Resources */,
 				78EBFE441793F9F900B67183 /* bike_route_white.png in Resources */,
@@ -3302,6 +3301,11 @@
 				7872719617A15C6200478795 /* station_icon.png in Resources */,
 				7872719717A15C6200478795 /* station_icon@2x.png in Resources */,
 				78A61EAA17A2A5F900D603AD /* service_stations.json in Resources */,
+				780291F817A80D1A00C2F829 /* service_station_gray.png in Resources */,
+				780291F917A80D1A00C2F829 /* service_station_gray@2x.png in Resources */,
+				780291FC17A80E4900C2F829 /* service_station_white.png in Resources */,
+				780291FD17A80E4900C2F829 /* service_station_white@2x.png in Resources */,
+				780F969F17A94938006B6694 /* metro-stations.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
