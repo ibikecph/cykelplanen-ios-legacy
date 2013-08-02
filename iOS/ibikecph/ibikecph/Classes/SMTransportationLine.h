@@ -12,6 +12,7 @@
 
 @property(nonatomic, strong) NSArray * stations;
 @property(nonatomic, strong, readonly) NSString * name;
+@property(nonatomic, strong, readonly) NSString* lineType;
 
 -(id) initWithFile:(NSString*)filePath;
 -(id)initWithRelation:(SMRelation*)pRelation;

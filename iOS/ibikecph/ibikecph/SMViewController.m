@@ -229,9 +229,60 @@ typedef enum {
     //[self.appDelegate.mapOverlays loadMarkers];
     
 //    [self loadMarkers];
-
-
+    
+    UITapGestureRecognizer* singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapMenuBtn:)];
+    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPanMenuBtn:)];
+    [menuBtn addGestureRecognizer:singleTap];
+    [menuBtn addGestureRecognizer:panGesture];
+    
+    UITapGestureRecognizer* singleTapOverlayMenu = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapOverlayMenuBtn:)];
+    UIPanGestureRecognizer* panGestureOverlayMenu = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPanOverlayMenuBtn:)];
+    [overlayMenuBtn addGestureRecognizer:singleTapOverlayMenu];
+    [overlayMenuBtn addGestureRecognizer:panGestureOverlayMenu];
 }
+
+-(void)onTapMenuBtn:(UITapGestureRecognizer*)tapGR {
+    if (centerView.frame.origin.x == 0) {
+        
+        [UIView animateWithDuration:0.2f animations:^{
+            [menuView setAlpha:1.0];
+        }];
+        
+        //[menuView setHidden:YES];
+    }
+    NSLog(@"onTap");
+}
+
+-(void)onPanMenuBtn:(UIPanGestureRecognizer*)panGR {
+    if (centerView.frame.origin.x == 0) {
+        [UIView animateWithDuration:0.2f animations:^{
+            [menuView setAlpha:1.0];
+        }];
+        NSLog(@"onPan");
+    }
+}
+
+-(void)onTapOverlayMenuBtn:(UITapGestureRecognizer*)tapGR {
+    if (centerView.frame.origin.x == 0) {
+        
+        [UIView animateWithDuration:0.2f animations:^{
+            [menuView setAlpha:0.0];
+        }];
+        
+        //[menuView setHidden:YES];
+    }
+    NSLog(@"onTapOverlay");
+}
+
+-(void)onPanOverlayMenuBtn:(UIPanGestureRecognizer*)panGR {
+    if (centerView.frame.origin.x == 0) {
+        [UIView animateWithDuration:0.2f animations:^{
+            [menuView setAlpha:0.0];
+        }];
+        NSLog(@"onPanOverlay");
+    }
+}
+
 
 -(void)setTitle:(NSString*)pTitle forButton:(UIButton*)pButton{
     [pButton setTitle:pTitle forState:UIControlStateNormal];
@@ -464,12 +515,12 @@ typedef enum {
 }
 
 - (IBAction)touchOpenOverlaysMenu:(id)sender {
-    if (centerView.frame.origin.x == 0) {
+    //if (centerView.frame.origin.x == 0) {
         //[menuView setHidden:YES];
         [UIView animateWithDuration:0.2f animations:^{
             [menuView setAlpha:0.0];
         }];
-    }
+    //}
 }
 - (IBAction)touchOpenMainMenu:(id)sender {
     if (centerView.frame.origin.x == 0) {

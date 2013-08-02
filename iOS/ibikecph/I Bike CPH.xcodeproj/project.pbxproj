@@ -486,6 +486,10 @@
 		783BBD69179D39B500A79D35 /* blue_btn_ibike@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 783BBD65179D39B500A79D35 /* blue_btn_ibike@2x.png */; };
 		783BBD71179D5F8B00A79D35 /* favEditDoneBtnPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 783BBD6F179D5F8B00A79D35 /* favEditDoneBtnPressed.png */; };
 		783BBD72179D5F8B00A79D35 /* favEditDoneBtnPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 783BBD70179D5F8B00A79D35 /* favEditDoneBtnPressed@2x.png */; };
+		785ADC4B17AA632F00BAADFA /* s-train-stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 785ADC4A17AA632F00BAADFA /* s-train-stations.json */; };
+		785ADC5217AA6CFB00BAADFA /* s-train-lines.json in Resources */ = {isa = PBXBuildFile; fileRef = 785ADC5117AA6CFB00BAADFA /* s-train-lines.json */; };
+		785ADC5817AA988F00BAADFA /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 785ADC5717AA988F00BAADFA /* stations.json */; };
+		785ADC5A17AAA3B300BAADFA /* transportation-lines.json in Resources */ = {isa = PBXBuildFile; fileRef = 785ADC5917AAA3B300BAADFA /* transportation-lines.json */; };
 		78673512178C049200DF978F /* css_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7867350E178C049200DF978F /* css_logo.png */; };
 		78673513178C049200DF978F /* css_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7867350F178C049200DF978F /* css_logo@2x.png */; };
 		78673514178C049200DF978F /* reminder_table_bgr.png in Resources */ = {isa = PBXBuildFile; fileRef = 78673510178C049200DF978F /* reminder_table_bgr.png */; };
@@ -1264,6 +1268,10 @@
 		783BBD65179D39B500A79D35 /* blue_btn_ibike@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue_btn_ibike@2x.png"; sourceTree = "<group>"; };
 		783BBD6F179D5F8B00A79D35 /* favEditDoneBtnPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favEditDoneBtnPressed.png; sourceTree = "<group>"; };
 		783BBD70179D5F8B00A79D35 /* favEditDoneBtnPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favEditDoneBtnPressed@2x.png"; sourceTree = "<group>"; };
+		785ADC4A17AA632F00BAADFA /* s-train-stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "s-train-stations.json"; sourceTree = "<group>"; };
+		785ADC5117AA6CFB00BAADFA /* s-train-lines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "s-train-lines.json"; sourceTree = "<group>"; };
+		785ADC5717AA988F00BAADFA /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
+		785ADC5917AAA3B300BAADFA /* transportation-lines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "transportation-lines.json"; sourceTree = "<group>"; };
 		7867350E178C049200DF978F /* css_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = css_logo.png; sourceTree = "<group>"; };
 		7867350F178C049200DF978F /* css_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "css_logo@2x.png"; sourceTree = "<group>"; };
 		78673510178C049200DF978F /* reminder_table_bgr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reminder_table_bgr.png; sourceTree = "<group>"; };
@@ -2221,6 +2229,10 @@
 				780F969E17A94938006B6694 /* metro-stations.json */,
 				78A61EA917A2A5F900D603AD /* service_stations.json */,
 				4C3B3EB5170493CC00F098AD /* routeme.plist */,
+				785ADC5917AAA3B300BAADFA /* transportation-lines.json */,
+				785ADC5717AA988F00BAADFA /* stations.json */,
+				785ADC4A17AA632F00BAADFA /* s-train-stations.json */,
+				785ADC5117AA6CFB00BAADFA /* s-train-lines.json */,
 				4C6C48F616CD3FE600E57F59 /* Languages */,
 				4C73D21616AEDCDA00AED42A /* I Bike CPH-Info.plist */,
 				4C73D21716AEDCDA00AED42A /* InfoPlist.strings */,
@@ -3306,6 +3318,10 @@
 				780291FC17A80E4900C2F829 /* service_station_white.png in Resources */,
 				780291FD17A80E4900C2F829 /* service_station_white@2x.png in Resources */,
 				780F969F17A94938006B6694 /* metro-stations.json in Resources */,
+				785ADC4B17AA632F00BAADFA /* s-train-stations.json in Resources */,
+				785ADC5217AA6CFB00BAADFA /* s-train-lines.json in Resources */,
+				785ADC5817AA988F00BAADFA /* stations.json in Resources */,
+				785ADC5A17AAA3B300BAADFA /* transportation-lines.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
