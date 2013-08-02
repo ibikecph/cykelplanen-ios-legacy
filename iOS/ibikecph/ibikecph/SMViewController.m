@@ -119,10 +119,9 @@ typedef enum {
 
 @end
 
-@implementation SMViewController
-
-
-
+@implementation SMViewController{
+    BOOL observersAdded;
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -333,13 +332,12 @@ typedef enum {
 
 - (void)viewWillDisappear:(BOOL)animated {
     [self.mpView setUserTrackingMode:RMUserTrackingModeNone];
-    @try{
-        [self.mpView removeObserver:self forKeyPath:@"userTrackingMode" context:nil];
+
+    if(observersAdded){
+        [self.mpView removeObserver:self forKeyPath:@"userTrackingMode"];
         [centerView removeObserver:self forKeyPath:@"frame"];
         [tblMenu removeObserver:self forKeyPath:@"editing"];
-    }@catch(id anException){
     }
-    
     CGRect frame = dropPinView.frame;
     frame.origin.y = self.mpView.frame.origin.y + self.mpView.frame.size.height;
     [dropPinView setFrame:frame];
@@ -377,8 +375,6 @@ typedef enum {
         CLLocation * cEnd = [[CLLocation alloc] initWithLatitude:[[d objectForKey:@"endLat"] floatValue] longitude:[[d objectForKey:@"endLong"] floatValue]];
         CLLocation * cStart = [[CLLocation alloc] initWithLatitude:[[d objectForKey:@"startLat"] floatValue] longitude:[[d objectForKey:@"startLong"] floatValue]];
         
-        
-        
         SMRequestOSRM * r = [[SMRequestOSRM alloc] initWithDelegate:self];
         [r setRequestIdentifier:@"rowSelectRoute"];
         [r setAuxParam:[d objectForKey:@"destination"]];
@@ -401,6 +397,7 @@ typedef enum {
 //        [self.mpView addAnnotation:endMarkerAnnotation];
 //        [self setDestinationPin:endMarkerAnnotation];
     } else {
+        observersAdded= YES;
         [self.mpView addObserver:self forKeyPath:@"userTrackingMode" options:0 context:nil];
         [tblMenu addObserver:self forKeyPath:@"editing" options:0 context:nil];
         [centerView addObserver:self forKeyPath:@"frame" options:0 context:nil];
@@ -669,9 +666,8 @@ typedef enum {
     debugLog(@"pin drop POINT: %@", NSStringFromCGPoint(point));
     
 #ifdef TESTING
-        lastLocation= loc;
+    lastLocation= loc;
 #endif
-    
     
     UIImageView * im = [[UIImageView alloc] initWithFrame:CGRectMake(point.x - 17.0f, 0.0f, 34.0f, 34.0f)];
     [im setImage:[UIImage imageNamed:@"markerFinish"]];
@@ -1421,8 +1417,9 @@ typedef enum {
                               translateString(@"thursday"),
                               translateString(@"friday")];
         SMReminderTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"reminderTableCell"];
-        [cell setupWithTitle:[weekDays objectAtIndex:indexPath.row]];
         cell.currentDay= indexPath.row;
+        [cell setupWithTitle:[weekDays objectAtIndex:indexPath.row]];
+
         return cell;
     }
     

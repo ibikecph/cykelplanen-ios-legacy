@@ -657,6 +657,8 @@
 		F64FA45017996617008F00AF /* break_route_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = F64FA44E17996617008F00AF /* break_route_gray.png */; };
 		F64FA45117996617008F00AF /* break_route_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F64FA44F17996617008F00AF /* break_route_gray@2x.png */; };
 		F68C64231768B453009B4A21 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C48641616F099BE00F01A7C /* MainStoryboard_iPhone.storyboard */; };
+		F68DBCC817AA9BE900A0E228 /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = F68DBCC717AA9BE900A0E228 /* stations.json */; };
+		F68DBCCF17AAAABC00A0E228 /* transportation-lines.json in Resources */ = {isa = PBXBuildFile; fileRef = F68DBCCE17AAAABC00A0E228 /* transportation-lines.json */; };
 		F68F9DE71765CDC500578FFE /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F68F9DE61765CDC500578FFE /* FBUserSettingsViewResources.bundle */; };
 		F68F9DEB1765CEF900578FFE /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68F9DEA1765CEF900578FFE /* FacebookSDK.framework */; };
 		F690C47B178C3395006A6FEA /* smroute_settings_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = F690C47A178C3395006A6FEA /* smroute_settings_private.plist */; };
@@ -1456,6 +1458,8 @@
 		F64FA44E17996617008F00AF /* break_route_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = break_route_gray.png; sourceTree = "<group>"; };
 		F64FA44F17996617008F00AF /* break_route_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "break_route_gray@2x.png"; sourceTree = "<group>"; };
 		F68C64251768B5B3009B4A21 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		F68DBCC717AA9BE900A0E228 /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
+		F68DBCCE17AAAABC00A0E228 /* transportation-lines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "transportation-lines.json"; sourceTree = "<group>"; };
 		F68F9DE61765CDC500578FFE /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
 		F68F9DEA1765CEF900578FFE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		F690C47A178C3395006A6FEA /* smroute_settings_private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings_private.plist; sourceTree = "<group>"; };
@@ -2213,6 +2217,8 @@
 		4C73D21516AEDCDA00AED42A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F68DBCCE17AAAABC00A0E228 /* transportation-lines.json */,
+				F68DBCC717AA9BE900A0E228 /* stations.json */,
 				F690C47A178C3395006A6FEA /* smroute_settings_private.plist */,
 				F6922788178702F900C8CD76 /* Albertslundruten.line */,
 				F6922789178702F900C8CD76 /* Farumruten.line */,
@@ -3306,6 +3312,8 @@
 				780291FC17A80E4900C2F829 /* service_station_white.png in Resources */,
 				780291FD17A80E4900C2F829 /* service_station_white@2x.png in Resources */,
 				780F969F17A94938006B6694 /* metro-stations.json in Resources */,
+				F68DBCC817AA9BE900A0E228 /* stations.json in Resources */,
+				F68DBCCF17AAAABC00A0E228 /* transportation-lines.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

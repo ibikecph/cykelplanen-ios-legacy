@@ -212,7 +212,7 @@
         
         lon = [coords objectForKey:@"long"];
         lat = [coords objectForKey:@"lat"];
-        SMStationInfo* stationInfo= [[SMStationInfo alloc] initWithLongitude:lon.doubleValue latitude:lat.doubleValue andName:stationName];
+        SMStationInfo* stationInfo= [[SMStationInfo alloc] initWithLongitude:lon.doubleValue latitude:lat.doubleValue name:stationName];
         
         //[self.serviceMarkers addObject:stationInfo];
         

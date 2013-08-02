@@ -27,6 +27,13 @@
     return self;
 }
 
+-(id)initWIthLongitude:(double)lon latitude:(double)lat name:(NSString*)name type:(SMStationInfoType)type{
+    if(self= [self initWithLongitude:lon latitude:lat name:name]){
+        self.type= type;
+    }
+    
+    return self;
+}
 
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeDouble:self.longitude forKey:KEY_LONGITUDE];
@@ -44,7 +51,7 @@
     return self;
 }
 
--(id)initWithLongitude:(double)lon latitude:(double)lat andName:(NSString*)name {
+-(id)initWithLongitude:(double)lon latitude:(double)lat name:(NSString*)name {
     if(self= [super init]){
         self.name = name;
         self.location = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
@@ -89,5 +96,16 @@
 
 -(BOOL)isValid{
     return self.name;
+}
+
++(NSString*)imageNameForType:(SMStationInfoType)type{
+    if(type==SMStationInfoTypeMetro){
+        return @"metro_logo_pin";
+    }else if(type==SMStationInfoTypeService){
+        return @"service_pin";
+    }else if(type==SMStationInfoTypeTrain){
+        return @"station_icon";
+    }else
+        return nil;
 }
 @end
