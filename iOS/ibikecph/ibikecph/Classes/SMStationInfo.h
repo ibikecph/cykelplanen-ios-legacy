@@ -8,15 +8,26 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum  {
+    SMStationInfoTypeUndefined = 0,
+    SMStationInfoTypeTrain = 1,
+    SMStationInfoTypeMetro = 2,
+    SMStationInfoTypeService = 3
+} SMStationInfoType;
+
 @interface SMStationInfo : NSObject<NSCoding>
+
++(NSString*)imageNameForType:(SMStationInfoType)type;
 -(id)initWithCoordinate:(CLLocationCoordinate2D)coord;
 -(id)initWithLongitude:(double)lon latitude:(double)lat;
--(id)initWithLongitude:(double)lon latitude:(double)lat andName:(NSString*)name;
+-(id)initWithLongitude:(double)lon latitude:(double)lat name:(NSString*)name;
+-(id)initWIthLongitude:(double)lon latitude:(double)lat name:(NSString*)name type:(SMStationInfoType)type;
 
 @property(nonatomic, strong) CLLocation* location;
 @property(nonatomic, assign, readonly) double longitude;
 @property(nonatomic, assign, readonly) double latitude;
 @property(nonatomic, strong) NSString* name;
+@property (nonatomic, assign) SMStationInfoType type;
 
 -(BOOL)isValid;
 @end

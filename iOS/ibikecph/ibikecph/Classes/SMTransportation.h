@@ -13,9 +13,9 @@
 +(SMTransportation*)instance;
 +(NSOperationQueue*) transportationQueue;
 
+@property(nonatomic, strong) NSArray* allStations;
 @property(nonatomic, strong) NSArray* lines;
 @property(nonatomic, assign) BOOL loadingStations;
-@property(nonatomic, assign) int stationCount;
 -(void)save;
 -(void)validateAndSave;
 @end

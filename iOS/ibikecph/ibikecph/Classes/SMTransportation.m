@@ -58,7 +58,8 @@ static NSOperationQueue* stationQueue;
         queue= dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0L);
         
         dispatch_async(queue, ^{
-            [self pullData];
+            [self loadStations];
+//            [self pullData];
         });
 
     }
@@ -120,12 +121,6 @@ static NSOperationQueue* stationQueue;
 
 -(void)initializeLines{
     NSMutableArray* tempLines= [NSMutableArray new];
-    
-    self.stationCount= 0;
-    
-    for(SMRelation* rel in relations){
-        self.stationCount+= rel.nodes.count;
-    }
     
     for(SMRelation* rel in relations){
         [tempLines addObject:[[SMTransportationLine alloc] initWithRelation:rel]];
@@ -225,6 +220,70 @@ static NSOperationQueue* stationQueue;
         [detailsParser parse];
 
     }];
+}
+
+-(void)loadStations{
+    NSString* KEY_STATIONS_TYPE= @"type";
+    NSString* KEY_STATIONS_LINES= @"lines";
+    NSString* KEY_STATIONS_COORDS= @"coords";
+    NSString* KEY_STATIONS_NAME= @"name";
+    
+    NSString* TYPE_METRO= @"metro";
+    NSString* TYPE_TRAIN= @"s-train";
+    NSString* TYPE_SERVICE= @"service";
+    
+    //parse stations
+    
+    NSString* filePath= [[NSBundle mainBundle] pathForResource:@"stations" ofType:@"json"];
+    NSError* error;
+    NSDictionary* dict= [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:filePath] options:NSJSONReadingAllowFragments error:&error];
+    NSArray* stationsArr= [dict objectForKey:@"stations"];
+    NSMutableArray* tempStations= [NSMutableArray new];
+    for(NSDictionary* stationDict in stationsArr){
+        NSString* type= [stationDict objectForKey:KEY_STATIONS_TYPE];
+        NSString* line= [stationDict objectForKey:KEY_STATIONS_LINES];
+        NSString* coords= [stationDict objectForKey:KEY_STATIONS_COORDS];
+        NSString* name= [stationDict objectForKey:KEY_STATIONS_NAME];
+        
+        // parse coordinates
+        NSRange range= [coords rangeOfCharacterFromSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        CLLocationDegrees lon= [coords substringToIndex:range.location].doubleValue;
+        CLLocationDegrees lat= [coords substringFromIndex:range.location].doubleValue;
+
+        // determine station type
+        SMStationInfoType stationType= SMStationInfoTypeUndefined;
+        if([type.lowercaseString isEqualToString:TYPE_METRO]){
+            stationType= SMStationInfoTypeMetro;
+        }else if([type.lowercaseString isEqualToString:TYPE_TRAIN]){
+            stationType= SMStationInfoTypeTrain;
+        }else if([type.lowercaseString isEqualToString:TYPE_SERVICE]){
+            stationType= SMStationInfoTypeService;
+        }
+        
+        SMStationInfo* stationInfo= [[SMStationInfo alloc] initWIthLongitude:lon latitude:lat name:name type:stationType];
+        [tempStations addObject:stationInfo];
+    }
+    
+    // parse lines
+    filePath= [[NSBundle mainBundle] pathForResource:@"transportation-lines" ofType:@"json"];
+    
+    dict= [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:filePath] options:NSJSONReadingAllowFragments error:&error];
+    NSMutableArray* tempLines= [NSMutableArray new];
+    NSArray* lines= [dict objectForKey:@"lines"];
+    for(NSDictionary* lineDict in lines){
+        NSString* lineName= [lineDict objectForKey:@"name"];
+        NSArray* stations= [lineDict objectForKey:@"stations"];
+        NSMutableArray* lineStations= [NSMutableArray new];
+        SMTransportationLine* line= [[SMTransportationLine alloc] init];
+        for (NSNumber* stationIndex in stations) {
+            [lineStations addObject:[tempStations objectAtIndex:stationIndex.intValue]];
+        }
+        [line setStations:[NSArray arrayWithArray:lineStations]];
+        [tempLines addObject:line];
+    }
+    
+    self.allStations= [NSArray arrayWithArray:tempStations];
+    self.lines= [NSArray arrayWithArray:tempLines];
 }
 
 @end
