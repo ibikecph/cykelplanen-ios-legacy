@@ -23,4 +23,8 @@
 
 @property(nonatomic, strong) NSString* sourceName;
 @property(nonatomic, strong) NSString* destinationName;
+
+@property(nonatomic, strong) NSString* sourceAddress;
+@property(nonatomic, strong) NSString* destinationAddress;
+
 @end

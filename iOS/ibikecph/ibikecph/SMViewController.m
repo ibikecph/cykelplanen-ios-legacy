@@ -1522,8 +1522,8 @@ typedef enum {
             [cell.text setText:translateString(@"cell_add_favorite")];
             if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
                 [cell.addFavoritesText setText:translateString(@"cell_empty_favorite_text")];
-                [cell.addFavoritesText setTextColor:[UIColor whiteColor]];
-                [cell.text setTextColor:[UIColor colorWithRed:0.0f/255.0f green:174.0f/255.0f blue:239.0f/255.0f alpha:1.0f]];
+                //[cell.addFavoritesText setTextColor:[UIColor whiteColor]];
+                [cell.text setTextColor:[UIColor colorWithRed:245.0f/255.0f green:130.0f/255.0f blue:32.0f/255.0f alpha:1.0f]];
                 [cell.addFavoritesSymbol setImage:[UIImage imageNamed:@"favAdd"]];
 //                [cell.text setTextColor:[UIColor greenColor]];
             } else {

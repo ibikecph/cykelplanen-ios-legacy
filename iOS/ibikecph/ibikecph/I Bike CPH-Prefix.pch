@@ -118,7 +118,7 @@
 
 #define MAX_TURNS 4
 
-#define TESTING
+//#define TESTING
 
 #define API_ADDRESS @"ibikecph-staging.herokuapp.com"
 #define API_SERVER @"http://ibikecph-staging.herokuapp.com/api"

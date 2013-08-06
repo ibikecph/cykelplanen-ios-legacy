@@ -173,6 +173,7 @@
             CellId= @"SourceCell";
             SMBikeWaypointCell* wpCell= [tableView dequeueReusableCellWithIdentifier:CellId];
             [wpCell setupWithString:self.sourceName];
+            [wpCell.labelAddressBottom setText:self.sourceAddress];
             
             float fDistance = startDistance / 1000.0;;
             int fTime = startTime  / 60;
@@ -199,6 +200,9 @@
             CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(self.sourceStation.latitude, self.sourceStation.longitude); 
             [SMGeocoder reverseGeocode:coord completionHandler:^(NSDictionary *response, NSError *error) {
                 NSString* streetName = [response objectForKey:@"title"];
+                
+                //NSLog(@"Response: %@", response);
+                
                 if ([streetName isEqualToString:@""]) {
                     streetName = [NSString stringWithFormat:@"%f, %f", coord.latitude, coord.longitude];
                 }
@@ -220,7 +224,7 @@
             CellId= @"DestinationCell";
             SMBikeWaypointCell* wpCell= [tableView dequeueReusableCellWithIdentifier:CellId];
             [wpCell setupWithString:self.destinationName];
-            [wpCell.labelAddressBottom setText:self.destinationName];
+            [wpCell.labelAddressBottom setText:self.destinationAddress];
             
             NSLog(@"DEST CELL: %@", self.destinationName);
             
