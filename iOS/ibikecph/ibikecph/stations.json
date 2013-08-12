@@ -999,7 +999,7 @@
     },
     {
       "name":"Pårup st",
-      "coords":"56.100996,12.301465",
+      "coords":"56.100996 12.301465",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
@@ -1077,7 +1077,7 @@
     },
     {
       "name":"Skibstrup st",
-      "coords":"56.078239,12.512781",
+      "coords":"56.078239 12.512781",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },

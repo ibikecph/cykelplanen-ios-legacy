@@ -142,9 +142,13 @@
         [header.title sizeToFit];
         CGRect frame = header.title.frame;
         CGRect newFrame = header.routeDistance.frame;
-        newFrame.origin.x = frame.origin.x + frame.size.width + 0;
+        newFrame.origin.x = frame.origin.x + frame.size.width;
         
-        NSString* routeDistance = [NSString stringWithFormat:@"%4.1f km", self.tripRoute.fullRoute.estimatedRouteDistance / 1000.0];
+        NSString* routeDistanceFormat = @" %4.1f km";
+        if (self.tripRoute.fullRoute.estimatedRouteDistance / 1000 < 10) {
+            routeDistanceFormat = @"%4.1f km";
+        }
+        NSString* routeDistance = [NSString stringWithFormat:routeDistanceFormat, self.tripRoute.fullRoute.estimatedRouteDistance / 1000.0];
         
         [header.routeDistance setText:routeDistance];
         [header.routeDistance setFrame:newFrame];
