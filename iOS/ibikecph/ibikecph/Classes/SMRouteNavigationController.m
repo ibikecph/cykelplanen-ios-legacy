@@ -262,6 +262,7 @@ typedef enum {
     if ( self.appDelegate.mapOverlays.metroMarkersVisible )
         [self.cargoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
 
+
 }
 
 
@@ -645,18 +646,19 @@ typedef enum {
 
 -(BOOL)isStringSplittable:(NSString*)str atIndex:(int)index{
     BOOL breakable= NO;
-    while (index>0) {
-        NSString* subStr= [str substringWithRange:NSMakeRange(index, 1)];
-        // don't check for vowels if the substring is nil
-        if(!subStr)
-            continue;
-        // check if the substring ends with a vowel
-        if( ![self isVowel:subStr]){
-            breakable= YES;
-            break;
+    if(str.length>1 && index<str.length)
+        while (index>0) {
+            NSString* subStr= [str substringWithRange:NSMakeRange(index, 1)];
+            // don't check for vowels if the substring is nil
+            if(!subStr)
+                continue;
+            // check if the substring ends with a vowel
+            if( ![self isVowel:subStr]){
+                breakable= YES;
+                break;
+            }
+        index--;
         }
-    index--;
-    }
     return breakable && str.length>=4 && index>0 && index<str.length-2;
 }
 -(BOOL)string:(NSString*)str fitsLabelWidth:(UILabel*)lbl{
@@ -720,7 +722,6 @@ typedef enum {
 }
 
 - (IBAction)onBreakRoute:(id)sender {
-//    [[SMTransportation instance] save];
     if ([SMLocationManager instance].hasValidLocation == NO) {
         UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:translateString(@"error_no_gps_location") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
         [av show];
@@ -804,7 +805,7 @@ typedef enum {
     if (![[GAI sharedInstance].defaultTracker trackEventWithCategory:@"Route" withAction:@"Start" withLabel:self.destination withValue:0]) {
         debugLog(@"error in trackEvent");
     }
- 
+    self.mapFade.alpha= 0;
 }
 
 - (void)newRouteType {
@@ -1163,10 +1164,6 @@ typedef enum {
        @catch (NSException *exception) {
            percent = 0;
        }
-       @finally {
-           
-       }
-       
             
        CGFloat time = self.route.distanceLeft * self.route.estimatedTimeForRoute / self.route.estimatedRouteDistance;
        [labelTimeLeft setText:expectedArrivalTime(time)];

@@ -115,13 +115,15 @@
 
 -(void)setReminder:(BOOL)shouldRemind forDay:(Day)day save:(BOOL)shouldSave{
     if(!days){
-        days= [NSMutableDictionary new];
-    }
-    if(![reminderDict objectForKey:KEY_DAYS]){
-        [reminderDict setObject:days forKey:KEY_DAYS];
+        if(![reminderDict objectForKey:KEY_DAYS]){
+            days= [NSMutableDictionary new];
+        }else{
+            days= [reminderDict objectForKey:KEY_DAYS];
+        }
+
     }
     [days setObject:[NSNumber numberWithBool:shouldRemind] forKey:[NSNumber numberWithInt:day].stringValue];
-    
+    [reminderDict setObject:days forKey:KEY_DAYS];
     
     if(shouldSave){
         [self save];

@@ -9,7 +9,8 @@
 #import "SMTransportationLine.h"
 #import "SMStationInfo.h"
 #import "SMNode.h"
-
+#import "SMSingleRouteInfo.h"
+#import "SMRouteTimeInfo.h"
 #define KEY_STATIONS @"KeyStations"
 #define KEY_NAME @"KeyName"
 
@@ -34,10 +35,6 @@
             [tempStations addObject:stationInfo];
         }
         
-//        SMStationInfo* si= [[SMStationInfo alloc] initWithLongitude:20.453004 latitude:44.815098];
-//        SMStationInfo* si2= [[SMStationInfo alloc] initWithLongitude:20.433537 latitude:44.815286];
-//        [tempStations addObject:si];
-//        [tempStations addObject:si2];
         self.stations = [NSArray arrayWithArray:tempStations];
     }
     return self;
@@ -76,4 +73,162 @@
     self.stations = stations;
 }
 
+-(SMTransportationLine*)clone{
+    static int cloneCount= 1;
+    SMTransportationLine* line= [[SMTransportationLine alloc] init];
+    line.stations= self.stations;
+    line.name= [NSString stringWithFormat:@"%@ clone %d",self.name, cloneCount++];
+    return line;
+}
+
+-(SMLineData*)weekLineData{
+    if(!_weekLineData){
+        _weekLineData= [SMLineData new];
+    }
+    return _weekLineData;
+}
+
+-(SMLineData*)weekendLineData{
+    if(!_weekendLineData){
+        _weekendLineData= [SMLineData new];
+    }
+    return _weekendLineData;
+}
+
+-(SMLineData*)weekendNightLineData{
+    if(!_weekendNightLineData){
+        _weekendNightLineData= [SMLineData new];
+    }
+    return _weekendNightLineData;
+}
+
+-(BOOL)containsRouteFrom:(SMStationInfo*)sourceStation to:(SMStationInfo*)destStation forTime:(TravelTime)time{
+    BOOL hasSource= NO;
+    BOOL hasDestination= NO;
+    
+    SMLineData* lineData;
+    if(time==TravelTimeWeekDay){
+        lineData= self.weekLineData;
+    }else if(time==TravelTimeWeekend){
+        lineData= self.weekendLineData;
+    }else if(time==TravelTimeWeekendNight){
+        lineData= self.weekendNightLineData;
+    }
+    
+    NSNumber* invalid= @-1;
+    for (SMArrivalInfo* arrivalInfo in lineData.arrivalInfos) {
+        if(arrivalInfo.station==sourceStation){
+
+            if(![arrivalInfo.arrivals containsObject:invalid]){
+                hasSource= YES;
+            }
+        }else if(arrivalInfo.station==destStation){
+            if(![arrivalInfo.arrivals containsObject:invalid]){
+                hasDestination= YES;
+            }
+        }
+    }
+    
+    return hasSource && hasDestination;
+}
+
+-(void)addTimestampsForRouteInfo:(SMSingleRouteInfo*)singleRouteInfo array:(NSMutableArray*)arr currentTime:(NSDate*)date time:(TravelTime)time{
+    NSCalendar* cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *weekdayComponents =[cal components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:date];
+    int hour= [weekdayComponents hour];
+    int mins= [weekdayComponents minute];
+    
+
+    SMLineData* lineData;
+    if(time==TravelTimeWeekDay){
+        lineData= self.weekLineData;
+    }else if(time==TravelTimeWeekend){
+        lineData= self.weekendLineData;
+    }else if(time==TravelTimeWeekendNight){
+        lineData= self.weekendNightLineData;
+    }
+    
+    BOOL departure= NO;
+    if([self.stations indexOfObject:singleRouteInfo.sourceStation]<[self.stations indexOfObject:singleRouteInfo.destStation]){
+        departure= YES;
+    }
+    for (SMArrivalInfo* arrivalInfo in lineData.arrivalInfos) {
+        if(arrivalInfo.station==singleRouteInfo.sourceStation){
+
+            int index= -1;
+            int i=0;
+            int num= 0;
+            
+            int minimumMinute= 61;
+            int indexOfSmallestNumberInArray= 0;
+            
+            NSArray* srcArr= (departure)?arrivalInfo.departures:arrivalInfo.arrivals;
+            
+            do{
+                num= ((NSNumber*)[srcArr objectAtIndex:i]).intValue;
+                if(num<((NSNumber*)srcArr[indexOfSmallestNumberInArray]).intValue){
+                    // Find the smallest minute in an hour. Used if we don't find a single index. For example it's 11:59 atm. and minutes are [2, 12, ..., 52].
+                    // We wont find a minute that is > 59. Therefore we take the smallest value - and it is 2.
+                    indexOfSmallestNumberInArray= i;
+                }
+                
+
+                if(num > mins && num < minimumMinute){
+                    minimumMinute= num;
+                    index= i;
+                }
+
+            }while( ++i<srcArr.count);
+            
+            if(minimumMinute>60){
+                index= indexOfSmallestNumberInArray;
+            }
+            int last= -1;
+            
+            int hr= hour;
+            int cHour= hr;
+            for (int j=0; j<3; j++) {
+                SMRouteTimeInfo* timeInfo= [SMRouteTimeInfo new];
+                timeInfo.routeInfo= singleRouteInfo;
+
+                
+                num= ((NSNumber*)[srcArr objectAtIndex:(j+index)%srcArr.count]).intValue;
+                
+                if(last>=0){
+                    if(num<last){
+                        cHour++;
+                    }
+                }else if(num < mins){
+                    cHour++;
+                }
+
+                SMTime* srcTime= [SMTime new];
+                srcTime.hour= cHour;
+                srcTime.minutes= num;
+                timeInfo.sourceTime= srcTime;
+                
+                last= num;
+                SMTime* destTime= [SMTime new];
+                for (SMArrivalInfo* ai in lineData.arrivalInfos){
+                    if(ai.station==singleRouteInfo.destStation){
+                        NSArray* destArr= (departure)?ai.departures:ai.arrivals;
+                        num= ((NSNumber*)[destArr objectAtIndex:(j+index)%destArr.count]).intValue;
+                        int destHour= srcTime.hour;
+                        if(num < srcTime.minutes){
+                            destHour++;
+                        }
+                        destTime.hour= destHour;
+                        destTime.minutes= num;
+                        timeInfo.destTime= destTime;
+                        break;
+                    }
+                }
+
+                [arr addObject:timeInfo];
+                
+            }
+
+        }
+    }
+   }
 @end

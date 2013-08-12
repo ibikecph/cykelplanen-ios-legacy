@@ -27,6 +27,9 @@ typedef enum  {
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 @property (assign, nonatomic) AddressType addressType;
 @property (weak, nonatomic) id<AddressSelectDelegate> delegate;
+@property (assign, nonatomic) int sourceCurrentIndex;
+@property (assign, nonatomic) int destinationCurrentIndex;
+
 - (IBAction)didTapOnCancel:(id)sender;
 - (IBAction)didTapOnDone:(id)sender;
 

@@ -15,8 +15,10 @@
 #import "SMBreakRouteButtonCell.h"
 #import "SMGeocoder.h"
 #import "SMTransportation.h"
+#import "SMRouteInfoViewController.h"
 @interface SMBreakRouteViewController (){
     NSArray* sourceStations;
+    NSArray* sourceStationsFiltered;
     NSArray* destinationStations;
     NSArray* pickerModel;
     SMAddressPickerView* addressPickerView;
@@ -54,19 +56,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
-//    NSArray* lines= [SMTransportation instance].lines;
-    
-    
-//    NSLog(@"============");
-//    for( SMTransportationLine* transportationLine in lines){
-//        for(int i=0; i<transportationLine.stations.count; i++){
-//            SMStationInfo* stationLocation= [transportationLine.stations objectAtIndex:i];
-//            NSLog(@"Station %@",stationLocation.name);
-//        }
-//    }
-//    NSLog(@"============");
-    
+
     breakRouteFailed= NO;
     displayed= NO;
     
@@ -90,6 +80,19 @@
         self.tripRoute.delegate= self;
     
         [self.tripRoute breakRoute];
+    }
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"breakRouteToRouteInfo"]){
+        SMRouteInfoViewController* destVC= segue.destinationViewController;
+        
+        NSArray* st= [sourceStations filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.sourceStation == %@ AND SELF.destStation == %@", self.sourceStation, self.destinationStation]];
+        NSAssert(st.count==1, @"Invalid route");
+        SMSingleRouteInfo* singleRouteInfo= st[0];
+        
+        destVC.singleRouteInfo= singleRouteInfo;
+        
     }
 }
 
@@ -193,13 +196,13 @@
             CellId= @"TransportCell";
             SMTransportationCell* tCell= [tableView dequeueReusableCellWithIdentifier:CellId];
             tCell.selectionStyle= UITableViewCellSelectionStyleNone;
-//            [tCell.buttonAddressSource setTitle:self.sourceStation.name forState:UIControlStateNormal];
-//            [tCell.buttonAddressSource setTitle:self.sourceStation.name forState:UIControlStateHighlighted];
-//            [tCell.buttonAddressDestination setTitle:self.destinationStation.name forState:UIControlStateNormal];
-//            [tCell.buttonAddressDestination setTitle:self.destinationStation.name forState:UIControlStateHighlighted];
-            
+
             // Translatations
             [tCell.buttonAddressInfo setTitle:translateString(@"route_plan_button") forState:UIControlStateNormal];
+
+            [tCell.buttonAddressSource setTitle:self.sourceStation.name forState:UIControlStateNormal];
+            [tCell.buttonAddressDestination setTitle:self.destinationStation.name forState:UIControlStateNormal];
+
             
             CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(self.sourceStation.latitude, self.sourceStation.longitude); 
             [SMGeocoder reverseGeocode:coord completionHandler:^(NSDictionary *response, NSError *error) {
@@ -222,21 +225,28 @@
                 [tCell.buttonAddressDestination setTitle:streetName forState:UIControlStateNormal];
             }];
             
+
             return tCell;
         }
         case 2:{
             CellId= @"DestinationCell";
             SMBikeWaypointCell* wpCell= [tableView dequeueReusableCellWithIdentifier:CellId];
             [wpCell setupWithString:self.destinationName];
+
+//            [wpCell.labelAddressBottom setText:self.destinationName];
+
             [wpCell.labelAddressBottom setText:self.destinationAddress];
             
             NSLog(@"DEST CELL: %@", self.destinationName);
+
             
             float fDistance = endDistance / 1000.0;;
             int fTime = endTime  / 60;
             NSString* distance= @"";
             if(fDistance!=0 || fTime!=0){
                 distance= [NSString stringWithFormat:@"%4.1f km  %d min.", fDistance, fTime];
+            }else{
+                distance= @"";
             }
             [wpCell.labelDistance setText:distance];
             
@@ -287,25 +297,22 @@
 }
 
 -(IBAction)onSourceAddressButtonTap:(id)sender {
-    [self displayAddressViewWithAddressType:AddressTypeSource model:sourceStations];
+    [self displayAddressViewWithAddressType:AddressTypeSource model:sourceStationsFiltered];
 }
 
 -(void)displayAddressViewWithAddressType:(AddressType)pAddressType model:(NSArray*)pModel{
     addressPickerView.addressType= pAddressType;
     pickerModel= pModel;
-     [addressPickerView displayAnimated];
+    [addressPickerView displayAnimated];
 
 }
 
 -(IBAction)onDestinationAddressButtonTap:(id)sender {
-    
-    [self displayAddressViewWithAddressType:AddressTypeDestination model:[self endStationsForSourceStation:self.sourceStation]];
+
+    [self displayAddressViewWithAddressType:AddressTypeDestination model:destinationStations];
 }
 
-
--(IBAction)onInfoTap:(id)sender{
-    
-}
+-(IBAction)onInfoTap:(id)sender{}
 
 #pragma mark - picker view
 
@@ -325,40 +332,22 @@
 }
 
 -(NSString*)addressView:(SMAddressPickerView *)pAddressPickerView titleForRow:(int)row{
-    SMSingleRouteInfo* routeInfo= [pickerModel objectAtIndex:row];
-    
-    if (addressPickerView.addressType==AddressTypeSource) {
-        return routeInfo.sourceStation.name;
-    }else if(addressPickerView.addressType==AddressTypeDestination){
-        return routeInfo.destStation.name;
-    }
-    
-    return @"Invalid value";
+    SMStationInfo* info= [pickerModel objectAtIndex:row];
+    return info.name;
 }
 
 -(void)addressView:(SMAddressPickerView*)pAddressPickerView didSelectItemAtIndex:(int)index forAddressType:(AddressType)pAddressType{
     NSAssert(pAddressType!=AddressTypeUndefined, @"Address type is undefined");
     if(pAddressType==AddressTypeDestination){
-        SMSingleRouteInfo* routeInfo= [destinationStations objectAtIndex:index];
-        self.destinationStation= routeInfo.destStation;
+        self.destinationStation= pickerModel[index];
         
     }else if(pAddressType==AddressTypeSource){
-        SMSingleRouteInfo* routeInfo= [sourceStations objectAtIndex:index];
-        self.sourceStation= routeInfo.sourceStation;
-        
-        // TODO: test
-        BOOL found= NO;
-        NSArray* arr= [sourceStations filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.sourceStation == %@",self.sourceStation]];
-        for(SMSingleRouteInfo* ri in arr){
-            if(ri.destStation==self.destinationStation){
-                found= YES;
-                break;
-            }
-        }
-        if(!found){
-            destinationStations= [self endStationsForSourceStation:routeInfo.sourceStation];
-            self.destinationStation= routeInfo.destStation;
-        }
+        self.sourceStation=  pickerModel[index];
+
+        addressPickerView.destinationCurrentIndex= 0;
+        destinationStations= [self endStationsForSourceStation:self.sourceStation];
+        self.destinationStation= destinationStations[0];
+
     }
     [self.tableView reloadData];
 }
@@ -376,40 +365,40 @@
 
 }
 
--(void)didFailBreakingRoute:(SMTripRoute*)route{
-    NSLog(@"DidBreakBreakingRoute ");
-}
+-(void)didFailBreakingRoute:(SMTripRoute*)route{}
 
 -(void)didCalculateRouteDistances:(SMTripRoute*)route{
-
-
-    NSMutableArray* stations= [NSMutableArray new];
-    
-    for(SMSingleRouteInfo* routeInfo in route.transportationRoutes){
-        if(![stations containsObject:routeInfo]){
-            [stations addObject:routeInfo];
+//    sourceStationsFiltered= [[NSSet setWithArray:arr] allObjects];
+    NSArray* arr=[route.transportationRoutes valueForKey:@"sourceStation"];
+    NSMutableArray* temp= [NSMutableArray new];
+    for(int i=0; i<arr.count; i++){
+        SMStationInfo* station= [arr objectAtIndex:i];
+        if(![temp containsObject:station]){
+            [temp addObject:station];
         }
     }
+    sourceStationsFiltered= [NSArray arrayWithArray:temp];
+    sourceStations= [NSArray arrayWithArray:route.transportationRoutes];
     
-    sourceStations= [NSArray arrayWithArray:stations];
-
+    for(SMSingleRouteInfo* routeInfo in route.transportationRoutes){
+        NSLog(@"%@ - %@ - %lf",routeInfo.sourceStation.name, routeInfo.destStation.name, routeInfo.bikeDistance);
+    }
+    
     if(route.transportationRoutes.count > 0){
         SMSingleRouteInfo* routeInfo= [route.transportationRoutes objectAtIndex:0];
         
-        [self performSelectorOnMainThread:@selector(setSourceStation:) withObject:routeInfo.sourceStation waitUntilDone:NO];
         destinationStations= [self endStationsForSourceStation:routeInfo.sourceStation];
-
-        routeInfo=[destinationStations objectAtIndex:0];
+        [self performSelectorOnMainThread:@selector(setSourceStation:) withObject:routeInfo.sourceStation waitUntilDone:YES];
+    
+//        routeInfo=[destinationStations objectAtIndex:0];
 
         [self performSelectorOnMainThread:@selector(setDestinationStation:) withObject:routeInfo.destStation waitUntilDone:YES];
-        
     }else{
         if(displayed){
             [self displayBreakRouteError];
         }else{
             breakRouteFailed= YES;
         }
-        
     }
 
     [self.tableView reloadData];
@@ -420,7 +409,8 @@
 }
 
 -(NSArray*)endStationsForSourceStation:(SMStationInfo*)pSourceStation{
-    return [self.tripRoute.transportationRoutes filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.sourceStation.longitude == %lf AND SELF.sourceStation.latitude == %lf",pSourceStation.longitude, pSourceStation.latitude]];
+
+    return [[self.tripRoute.transportationRoutes filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.sourceStation == %@",pSourceStation]] valueForKey:@"destStation"] ;
 }
 
 #pragma mark - getters and setters
@@ -431,7 +421,12 @@
     CLLocationCoordinate2D start= self.tripRoute.start.coordinate;
     CLLocationCoordinate2D end= pSourceStation.location.coordinate;
 
-    tempStartRoute= [[SMRoute alloc] initWithRouteStart:start andEnd:end andDelegate:self];
+    if(tempStartRoute){
+        [tempStartRoute removeObserver:self forKeyPath:@"estimatedRouteDistance"];
+        [tempStartRoute removeObserver:self forKeyPath:@"estimatedTimeForRoute"];
+    }
+
+    tempStartRoute= [[SMRoute alloc] initWithRouteStart:start andEnd:end andDelegate:nil];
     [tempStartRoute addObserver:self
               forKeyPath:@"estimatedRouteDistance"
                  options:NSKeyValueObservingOptionNew
@@ -440,14 +435,21 @@
                      forKeyPath:@"estimatedTimeForRoute"
                         options:NSKeyValueObservingOptionNew
                         context:(__bridge void *)(tempStartRoute)];
+    
+    addressPickerView.sourceCurrentIndex= [sourceStationsFiltered indexOfObject:pSourceStation];
 }
 
 -(void)setDestinationStation:(SMStationInfo *)pDestinationStation{
     _destinationStation= pDestinationStation;
-    
+            NSLog(@"Destination station set to %@",self.destinationStation.name);
     CLLocationCoordinate2D start= pDestinationStation.location.coordinate;
     CLLocationCoordinate2D end= self.tripRoute.end.coordinate;
-    tempFinishRoute= [[SMRoute alloc] initWithRouteStart:start andEnd:end andDelegate:self];
+    if(tempFinishRoute){
+        [tempFinishRoute removeObserver:self forKeyPath:@"estimatedRouteDistance"];
+        [tempFinishRoute removeObserver:self forKeyPath:@"estimatedTimeForRoute"];
+    }
+    
+     tempFinishRoute= [[SMRoute alloc] initWithRouteStart:start andEnd:end andDelegate:nil];
     [tempFinishRoute addObserver:self
                      forKeyPath:@"estimatedRouteDistance"
                         options:NSKeyValueObservingOptionNew
@@ -457,6 +459,7 @@
                         options:NSKeyValueObservingOptionNew
                         context:(__bridge void *)(tempFinishRoute)];
 
+    addressPickerView.destinationCurrentIndex= [destinationStations indexOfObject:pDestinationStation];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -483,7 +486,7 @@
             endTime= tempFinishRoute.estimatedTimeForRoute;
         }
         
-    [self timeChanged];
+        [self timeChanged];
 
     }
 }
@@ -494,6 +497,16 @@
 
 -(void)distanceChanged{
     [self.tableView reloadData];
+}
+
+-(void)dealloc{
+    [tempFinishRoute removeObserver:self forKeyPath:@"estimatedRouteDistance"];
+    [tempFinishRoute removeObserver:self forKeyPath:@"estimatedTimeForRoute"];
+    [tempStartRoute removeObserver:self forKeyPath:@"estimatedRouteDistance"];
+    [tempStartRoute removeObserver:self forKeyPath:@"estimatedTimeForRoute"];
+    
+    tempStartRoute= nil;
+    tempFinishRoute= nil;
 }
 
 @end

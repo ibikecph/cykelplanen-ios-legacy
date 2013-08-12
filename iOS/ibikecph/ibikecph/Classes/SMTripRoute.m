@@ -70,17 +70,18 @@
     double routeDistance= [start distanceFromLocation:end];
     
     NSArray* lines= [SMTransportation instance].lines;
-    
+
     for( SMTransportationLine* transportationLine in lines){
 
         for(int i=0; i<transportationLine.stations.count; i++){
             SMStationInfo* stationLocation= [transportationLine.stations objectAtIndex:i];
-            
+           
             for(int j=0; j<transportationLine.stations.count; j++){
                 if(i==j)
                     continue;
                 
                 SMStationInfo* stationLocationDest= [transportationLine.stations objectAtIndex:j];
+                
                 float bikeDistanceToSourceStation= [start distanceFromLocation:stationLocation.location];
                 float bikeDistanceFromDestinationStation= [end distanceFromLocation:stationLocationDest.location];
                 float bikeDistance= bikeDistanceToSourceStation + bikeDistanceFromDestinationStation;
@@ -96,8 +97,12 @@
                 singleRouteInfo.bikeDistance= bikeDistance;
                 singleRouteInfo.distance1= bikeDistanceToSourceStation;
                 singleRouteInfo.distance2= bikeDistanceFromDestinationStation;
-                [transportationRoutesTemp addObject:singleRouteInfo];
+                
+                if(![transportationRoutesTemp containsObject:singleRouteInfo]){
+                    [transportationRoutesTemp addObject:singleRouteInfo];
                 }
+                
+            }
         }
         
     }

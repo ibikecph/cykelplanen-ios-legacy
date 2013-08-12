@@ -693,7 +693,7 @@ typedef enum {
 
     SMTransportationLine* line= [[SMTransportation instance].lines objectAtIndex:0];
     NSMutableArray* arr= [[NSMutableArray alloc] initWithArray:line.stations];
-    SMStationInfo* station= [[SMStationInfo alloc] initWithCoordinate:loc.coordinate];
+    SMStationInfo* station= [[SMStationInfo alloc] initWithLongitude:lastLocation.coordinate.longitude latitude:lastLocation.coordinate.latitude name:@"Station" type:SMStationInfoTypeTrain];
     [arr addObject:station];
     line.stations= [NSArray arrayWithArray:arr];
 }
@@ -1510,12 +1510,7 @@ typedef enum {
                     [cell.editBtn setHidden:YES];
                     [cell.text setText:[currentRow objectForKey:@"name"]];
                     return cell;
-//                } else {
-//                    SMAddFavoriteCell * cell = [tableView dequeueReusableCellWithIdentifier:@"favoritesAddCell"];
-//                    [cell.image setContentMode:UIViewContentModeCenter];
-//                    [cell.text setText:translateString(@"cell_add_favorite")];
-//                    return cell;
-//                }
+
             }
         } else {
             SMEmptyFavoritesCell * cell = [tableView dequeueReusableCellWithIdentifier:@"favoritesEmptyCell"];
@@ -1620,15 +1615,6 @@ typedef enum {
         }
     }
     
-//    if (tableView == tblMenu && indexPath.section == 1) {
-//        NSArray* rows = @[[NSIndexPath indexPathForItem:0 inSection:1], [NSIndexPath indexPathForItem:1 inSection:1]];
-//        //[tableView reloadRowsAtIndexPaths:rows withRowAnimation:UITableViewRowAnimationTop];
-//        
-//        NSIndexSet* sections = [NSIndexSet indexSetWithIndex:1];
-//        self.reminderFolded = YES;
-//        [tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationFade];
-//        
-//    }
 }
 
 
@@ -1676,7 +1662,6 @@ typedef enum {
 - (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     return NO;
 }
-
 
 - (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
 	//	Grip customization code goes in here...
@@ -1849,12 +1834,6 @@ typedef enum {
     
     CLLocation * cEnd = [[CLLocation alloc] initWithLatitude:annotation.routingCoordinate.coordinate.latitude longitude:annotation.routingCoordinate.coordinate.longitude];
     CLLocation * cStart = [[CLLocation alloc] initWithLatitude:[SMLocationManager instance].lastValidLocation.coordinate.latitude longitude:[SMLocationManager instance].lastValidLocation.coordinate.longitude];
-//    SMRequestOSRM * r = [[SMRequestOSRM alloc] initWithDelegate:self];
-//    [r setRequestIdentifier:@"rowSelectRoute"];
-//    [r setAuxParam:annotation.title];
-//    [r findNearestPointForStart:cStart andEnd:cEnd];
-    
-    
     /**
      * remove this if we need to find the closest point
      */
@@ -1879,7 +1858,6 @@ typedef enum {
 #pragma mark - nearby places delegate
 
 - (void) nearbyPlaces:(SMNearbyPlaces *)owner foundLocations:(NSArray *)locations {
-//    [self.destinationPin setNearbyObjects:locations];
     [routeStreet setText:owner.title];
     if ([routeStreet.text isEqualToString:@""]) {
         [routeStreet setText:[NSString stringWithFormat:@"%f, %f", owner.coord.coordinate.latitude, owner.coord.coordinate.longitude]];
@@ -1895,15 +1873,6 @@ typedef enum {
     if ([self.appDelegate.appSettings objectForKey:@"auth_token"] && [[self.appDelegate.appSettings objectForKey:@"auth_token"] isEqualToString:@""] == NO) {
         pinButton.enabled = YES;
     }
-    
-    
-//    [self.destinationPin setSubtitle:owner.subtitle];
-//    [self.destinationPin setTitle:owner.title];
-//    [self.destinationPin setDelegate:self];
-//    [self.destinationPin setRoutingCoordinate:owner.coord];
-//    [self.destinationPin showCallout];
-    
-    
     
     [self showPinDrop];
 }

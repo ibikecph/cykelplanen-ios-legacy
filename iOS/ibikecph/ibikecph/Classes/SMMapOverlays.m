@@ -192,7 +192,7 @@
         for(int i=0; i<transportationLine.stations.count; i++){
             SMStationInfo* stationLocation= [transportationLine.stations objectAtIndex:i];
             //[stationLocation fetchName];
-            NSLog(@"Station %@",stationLocation.name);
+
             CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(stationLocation.latitude, stationLocation.longitude);
             //[self addMarkerToMapView:self.mpView withCoordinate:coord title:@"Marker" imageName:@"station_icon" annotationTitle:@"Marker text" alternateTitle:@"Marker alternate title"];
             
