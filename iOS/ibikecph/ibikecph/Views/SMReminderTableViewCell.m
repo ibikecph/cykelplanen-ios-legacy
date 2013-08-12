@@ -30,6 +30,12 @@
     
 }
 
+- (IBAction)onSwitchSet:(UISwitch *)sender {
+    // Save reminders
+    [self stateChanged:sender];
+    NSLog(@"Reminder set %d for %d", (int)self.reminderSwitch.isOn, self.currentDay);
+}
+
 -(void)stateChanged:(id)sender{
     [[SMReminder sharedInstance] setReminder:self.reminderSwitch.isOn forDay:self.currentDay];
 }

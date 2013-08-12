@@ -176,6 +176,7 @@
             CellId= @"SourceCell";
             SMBikeWaypointCell* wpCell= [tableView dequeueReusableCellWithIdentifier:CellId];
             [wpCell setupWithString:self.sourceName];
+            [wpCell.labelAddressBottom setText:self.sourceAddress];
             
             float fDistance = startDistance / 1000.0;;
             int fTime = startTime  / 60;
@@ -194,15 +195,46 @@
 
             // Translatations
             [tCell.buttonAddressInfo setTitle:translateString(@"route_plan_button") forState:UIControlStateNormal];
+
             [tCell.buttonAddressSource setTitle:self.sourceStation.name forState:UIControlStateNormal];
             [tCell.buttonAddressDestination setTitle:self.destinationStation.name forState:UIControlStateNormal];
+
+            
+            CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(self.sourceStation.latitude, self.sourceStation.longitude); 
+            [SMGeocoder reverseGeocode:coord completionHandler:^(NSDictionary *response, NSError *error) {
+                NSString* streetName = [response objectForKey:@"title"];
+                
+                //NSLog(@"Response: %@", response);
+                
+                if ([streetName isEqualToString:@""]) {
+                    streetName = [NSString stringWithFormat:@"%f, %f", coord.latitude, coord.longitude];
+                }
+                [tCell.buttonAddressSource setTitle:streetName forState:UIControlStateNormal];
+            }];
+            
+            coord = CLLocationCoordinate2DMake(self.destinationStation.latitude, self.destinationStation.longitude);
+            [SMGeocoder reverseGeocode:coord completionHandler:^(NSDictionary *response, NSError *error) {
+                NSString* streetName = [response objectForKey:@"title"];
+                if ([streetName isEqualToString:@""]) {
+                    streetName = [NSString stringWithFormat:@"%f, %f", coord.latitude, coord.longitude];
+                }
+                [tCell.buttonAddressDestination setTitle:streetName forState:UIControlStateNormal];
+            }];
+            
+
             return tCell;
         }
         case 2:{
             CellId= @"DestinationCell";
             SMBikeWaypointCell* wpCell= [tableView dequeueReusableCellWithIdentifier:CellId];
             [wpCell setupWithString:self.destinationName];
+
 //            [wpCell.labelAddressBottom setText:self.destinationName];
+
+            [wpCell.labelAddressBottom setText:self.destinationAddress];
+            
+            NSLog(@"DEST CELL: %@", self.destinationName);
+
             
             float fDistance = endDistance / 1000.0;;
             int fTime = endTime  / 60;

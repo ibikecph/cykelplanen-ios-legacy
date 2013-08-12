@@ -15,6 +15,7 @@
 @interface SMTransportationLine : NSObject<NSCoding>
 
 @property(nonatomic, strong) NSArray * stations;
+
 @property(nonatomic, strong) NSString * name;
 
 @property(nonatomic, strong) SMStationInfo* startStation;
@@ -23,6 +24,10 @@
 @property(nonatomic, strong) SMLineData* weekLineData;
 @property(nonatomic, strong) SMLineData* weekendLineData;
 @property(nonatomic, strong) SMLineData* weekendNightLineData;
+
+@property(nonatomic, strong, readonly) NSString * name;
+@property(nonatomic, strong, readonly) NSString* lineType;
+
 
 -(id) initWithFile:(NSString*)filePath;
 -(id)initWithRelation:(SMRelation*)pRelation;

@@ -12,6 +12,8 @@
 #import "SMTransportation.h"
 #import "SMTransportationLine.h"
 
+//#define GEN_STATION_INDICES
+
 @interface SMMapOverlays()
 @property (nonatomic, weak) RMMapView* mpView;
 @property (nonatomic, strong) NSString* source;
@@ -41,6 +43,85 @@
 
 - (void)useMapView:(RMMapView*)mapView {
     self.mpView = mapView;
+
+#ifdef GEN_STATION_INDICES
+    NSArray* stations = [self parseStationData];
+    NSArray* lines = [self parseLinesData];
+    
+    NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
+    int index = 0;
+    for (NSDictionary* station in stations) {
+        NSString* name = [station objectForKey:@"name"];
+        NSString* stationType = [station objectForKey:@"type"];
+        [dict setObject:[NSNumber numberWithInt:index] forKey:[NSString stringWithFormat:@"%@ %@", name, stationType]];
+        index++;
+    }
+    
+    for (NSDictionary* line in lines) {
+        
+        NSMutableArray* indices = [[NSMutableArray alloc] init];
+        NSMutableString* strIndices = [[NSMutableString alloc] init];
+        NSArray* stations = [line objectForKey:@"stations"];
+        
+        for (NSString* statName in [line objectForKey:@"stations"]) {
+            // Find index of stationName in stations array
+            //NSInteger index = [[dict objectForKey:stationName] integerValue];
+            NSString* stationName = [NSString stringWithFormat:@"%@ %@", statName, [line objectForKey:@"type"]];
+            if ( [dict objectForKey:stationName] ) {
+                [indices addObject:[dict objectForKey:stationName]];
+                [strIndices appendFormat:@"%@%@", [dict objectForKey:stationName], [statName isEqual:stations.lastObject] ? @"" : @"," ];
+                //NSLog(@"Index of station: %@", [dict objectForKey:stationName]);
+            } else {
+                //NSLog(@"No match for %@", stationName);
+            }
+        }
+        
+        NSLog(@"{ \"name\" : \"%@\", \"stations\" : [ %@ ] }%@", [line objectForKey:@"name"], strIndices, [line isEqual:lines.lastObject] ? @"" : @",");
+    }
+#endif
+}
+
+- (NSArray*)parseStationData {
+    
+    NSString* filePath = [[NSBundle mainBundle] pathForResource:@"stations" ofType:@"json"];
+    NSError* error;
+    NSData* data = [NSData dataWithContentsOfFile:filePath];
+    NSDictionary* dict = nil;
+    if ( data ) {
+        dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+        if ( error ) {
+            NSLog(@"ERROR parsing %@: %@", filePath, error);
+        }
+    }
+    NSArray* stations = [dict valueForKey:@"stations"];
+    for (NSDictionary* station in stations) {
+    
+        NSString* name = [station objectForKey:@"name"];
+        NSLog(@"STATION: %@", name);
+    }
+    
+    return stations;
+}
+
+- (NSArray*)parseLinesData {
+    NSString* filePath = [[NSBundle mainBundle] pathForResource:@"s-train-lines" ofType:@"json"];
+    NSError* error;
+    NSData* data = [NSData dataWithContentsOfFile:filePath];
+    NSDictionary* dict = nil;
+    if ( data ) {
+        dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+        if ( error ) {
+            NSLog(@"ERROR parsing %@: %@", filePath, error);
+        }
+    }
+    NSArray* lines = [dict valueForKey:@"lines"];
+    for (NSDictionary* line in lines) {
+        
+        NSString* name = [line objectForKey:@"name"];
+        NSLog(@"LINE: %@", name);
+    }
+    
+    return lines;
 }
 
 - (void)loadMetroMarkers {

@@ -482,6 +482,7 @@
       "type":"s-train"
     },
     {
+
       "name":"Ålholm",
       "coords":"12.4932 55.6721",
       "line":"F",
@@ -675,6 +676,7 @@
       "coords:":"12.5228 55.6806",
       "line":"0", 
       "type":"service"
+
     },
 
     {

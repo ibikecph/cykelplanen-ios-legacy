@@ -486,6 +486,7 @@ typedef enum {
     
     NSArray * a = [self.destination componentsSeparatedByString:@","];
     NSString* streetName= [a objectAtIndex:0];
+    
 //    [overviewDestination setText:[a objectAtIndex:0]];
 //    [overviewDestination setText:testStreet];
     overviewDestination.lineBreakMode= UILineBreakModeCharacterWrap;
@@ -1584,6 +1585,27 @@ typedef enum {
         SMBreakRouteViewController* brVC= segue.destinationViewController;
         brVC.sourceName= self.source;
         brVC.destinationName= self.destination;
+        
+        [SMGeocoder reverseGeocode:self.startLocation.coordinate completionHandler:^(NSDictionary *response, NSError *error) {
+            NSString* address = [response objectForKey:@"title"];
+            if ( [address isEqualToString:self.source] ) {
+                brVC.sourceAddress = [response objectForKey:@"subtitle"];
+            } else {
+                brVC.sourceAddress = address;
+            }
+            
+            NSLog(@"RESPONSE: %@",response);
+        }];
+        
+        [SMGeocoder reverseGeocode:self.endLocation.coordinate completionHandler:^(NSDictionary *response, NSError *error) {
+            NSString* address = [response objectForKey:@"title"];
+            if ( [address isEqualToString:self.destination] ) {
+                brVC.destinationAddress = [response objectForKey:@"subtitle"];
+            } else {
+                brVC.destinationAddress = address;
+            }
+        }];
+        
         if(self.currentlyRouting){
             brVC.tripRoute= tempTripRoute;
             brVC.fullRoute= [brVC.tripRoute.brokenRoutes objectAtIndex:0];
