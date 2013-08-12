@@ -20,7 +20,7 @@
 
 -(BOOL)isEqual:(id)object{
     SMSingleRouteInfo* other= object;
-    
-    return [other.sourceStation isEqual:self.sourceStation];
+    BOOL equal=[other.sourceStation isEqual:self.sourceStation] && [other.destStation isEqual:self.destStation];
+    return equal;
 }
 @end

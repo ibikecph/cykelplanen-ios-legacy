@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SMTransportationLine.h"
 #import "SMStationInfo.h"
+
+@class SMTransportationLine;
 @interface SMSingleRouteInfo : NSObject
 
 @property(nonatomic, strong) SMStationInfo* sourceStation;
@@ -21,4 +22,6 @@
 
 -(CLLocation*) startLocation;
 -(CLLocation*) endLocation;
+
+
 @end

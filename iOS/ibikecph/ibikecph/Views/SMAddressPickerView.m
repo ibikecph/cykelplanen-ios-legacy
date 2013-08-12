@@ -13,9 +13,7 @@
 #define ANIMATION_HIDE_DURATION 0.3
 
 @implementation SMAddressPickerView{
-    int sourceCurrentIndex;
-    int destinationCurrentIndex;
-    
+        
     int tempIndex;
 }
 
@@ -37,8 +35,8 @@
     self.opaque= NO;
     self.addressType= AddressTypeUndefined;
     
-    sourceCurrentIndex= 0;
-    destinationCurrentIndex= 0;
+    self.sourceCurrentIndex= 0;
+    self.destinationCurrentIndex= 0;
 }
 
 - (IBAction)didTapOnCancel:(id)sender {
@@ -97,9 +95,9 @@
 -(int)index{
     NSAssert(self.addressType!=AddressTypeUndefined, @"Address Type is undefined");
     if(self.addressType==AddressTypeDestination)
-        return destinationCurrentIndex;
+        return self.destinationCurrentIndex;
     else if(self.addressType==AddressTypeSource){
-        return sourceCurrentIndex;
+        return self.sourceCurrentIndex;
     }
     
     return -1;
@@ -107,17 +105,17 @@
 
 -(void)resetTempIndex{
     if(self.addressType==AddressTypeDestination){
-        tempIndex= destinationCurrentIndex;
+        tempIndex= self.destinationCurrentIndex;
     }else if(self.addressType==AddressTypeSource){
-        tempIndex= sourceCurrentIndex;
+        tempIndex= self.sourceCurrentIndex;
     }
 }
 -(void)setIndex:(int)pIndex{
     NSAssert(self.addressType!=AddressTypeUndefined, @"Address Type is undefined");
     if(self.addressType==AddressTypeDestination)
-        destinationCurrentIndex= pIndex;
+        self.destinationCurrentIndex= pIndex;
     else if(self.addressType==AddressTypeSource){
-        sourceCurrentIndex= pIndex;
+        self.sourceCurrentIndex= pIndex;
     }
 }
 @end

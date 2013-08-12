@@ -106,6 +106,8 @@
 "error_invalid_to_address" = "Destinationsadressen er ugyldig!";
 "error_favorites_name_exists" = "Navn er allerede brugt";
 
+"route_info"= "Rejseforslag";
+
 "route_stop_title" = "Vil du afslutte ruten?";
 "route_stop_text" = "Afbryd ruten ved at trykke på ‘Stop’. Du kan rapportere problemer med ruten ved at trykke på ‘Rapporter et problem’.";
 "report_error" = "Rapporter";
@@ -158,6 +160,7 @@
 "break_route_header_title" = "Din rute er nu";
 "route_plan_button" = "Find rejse på Rejseplanen";
 
+"shift" = "Skift";
 "btn_skip" = "Spring over";
 "where_are_we_going" = "Ny rute";
 "ibikecph_route_planner" = "Cykelruteplanlægger";

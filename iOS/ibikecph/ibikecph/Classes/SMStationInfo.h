@@ -21,13 +21,13 @@ typedef enum  {
 -(id)initWithCoordinate:(CLLocationCoordinate2D)coord;
 -(id)initWithLongitude:(double)lon latitude:(double)lat;
 -(id)initWithLongitude:(double)lon latitude:(double)lat name:(NSString*)name;
--(id)initWIthLongitude:(double)lon latitude:(double)lat name:(NSString*)name type:(SMStationInfoType)type;
+-(id)initWithLongitude:(double)lon latitude:(double)lat name:(NSString*)name type:(SMStationInfoType)type;
 
 @property(nonatomic, strong) CLLocation* location;
 @property(nonatomic, assign, readonly) double longitude;
 @property(nonatomic, assign, readonly) double latitude;
 @property(nonatomic, strong) NSString* name;
-@property (nonatomic, assign) SMStationInfoType type;
+@property(nonatomic, assign) SMStationInfoType type;
 
 -(BOOL)isValid;
 @end

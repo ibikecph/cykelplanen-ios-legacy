@@ -374,7 +374,7 @@
       "type":"s-train"
     },
     {
-      "name":"Solrød strand",
+      "name":"Solrød Strand",
       "coords":"12.218083 55.533361",
       "line":"A,E",
       "type":"s-train"
@@ -482,7 +482,7 @@
       "type":"s-train"
     },
     {
-      "name":"Ålolm",
+      "name":"Ålholm",
       "coords":"12.4932 55.6721",
       "line":"F",
       "type":"s-train"
@@ -675,6 +675,445 @@
       "coords:":"12.5228 55.6806",
       "line":"0", 
       "type":"service"
+    },
+
+    {
+      "name":"Nærum",
+      "coords":"12.528312 55.813929",
+      "line":"910 Nærum - Jægerborg",
+      "type":"local-train"
+    },
+    {
+      "name":"Nørgaardsvej",
+      "coords":"12.5133 55.7704",
+      "line":"910 Nærum - Jægerborg",
+      "type":"local-train"
+    },
+    {
+      "name":"Fuglevad",
+      "coords":"12.4974 55.785",
+      "line":"910 Nærum - Jægerborg",
+      "type":"local-train"
+    },
+    {
+      "name":"Brede",
+      "coords":"12.5009 55.7936",
+      "line":"910 Nærum - Jægerborg",
+      "type":"local-train"
+    },
+    {
+      "name":"Ørholm",
+      "coords":"12.5099 55.7997",
+      "line":"910 Nærum - Jægerborg",
+      "type":"local-train"
+    },
+    {
+      "name":"Ravnholm",
+      "coords":"12.52 55.8022",
+      "line":"910 Nærum - Jægerborg",
+      "type":"local-train"
+    },
+    {
+      "name":"Lyngby Lokal",
+      "coords":"12.505571 55.773918",
+      "line":"910 Nærum - Jægerborg",
+      "type":"local-train"
+    },
+    {
+      "name":"Jægersborg",
+      "coords":"12.5218 55.7615",
+      "line":"910 Nærum - Jægerborg",
+      "type":"local-train"
+    },
+    {
+      "name":"Hillerød st",
+      "coords":"12.310993 55.927074",
+      "line":"930 Hillerød-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Grønholt",
+      "coords":"12.369462 55.953062",
+      "line":"930 Hillerød-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Kratbjerg",
+      "coords":"12.391911 55.966236",
+      "line":"930 Hillerød-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Fredensborg",
+      "coords":"12.406887 55.977208",
+      "line":"930 Hillerød-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Langerød",
+      "coords":"12.451154 55.98123",
+      "line":"930 Hillerød-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Kvistgård",
+      "coords":"12.502969 55.99037",
+      "line":"930 Hillerød-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Mørdrup",
+      "coords":"12.532439 56.002129",
+      "line":"930 Hillerød-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Snekkersten",
+      "coords":"12.583743 56.009251",
+      "line":"930 Hillerød-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Helsingør",
+      "coords":"12.613183 56.033122",
+      "line":"930 Hillerød-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Hundested Havn st",
+      "coords":"11.845981 55.965825",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Hundested st",
+      "coords":"11.852505 55.963519",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Vibehus st.",
+      "coords":"11.873117 55.960156",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Østerbjerg st ",
+      "coords":"11.913336 55.97668",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Dyssekilde st",
+      "coords":"11.942089 55.985467",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Melby st",
+      "coords":"11.971357 55.991589",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Hanehoved st",
+      "coords":"12.001827 55.975191",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Frederiksværk st",
+      "coords":"12.019594 55.968154",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Lille Knegme st",
+      "coords":"12.034615 55.946244",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Knegme st",
+      "coords":"12.047446 55.934515",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Ølsted st",
+      "coords":"12.072981 55.923071",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Grimstrup st",
+      "coords":"12.102035 55.915592",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Skævinge st",
+      "coords":"12.149199 55.907558",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Gøreløse st",
+      "coords":"12.202843 55.88701",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Brødeskov st",
+      "coords":"12.279275 55.893315",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Hillerød st",
+      "coords":"12.310993 55.927074",
+      "line":"920R Hundested - Hillerød",
+      "type":"local-train"
+    },
+    {
+      "name":"Hillerød st",
+      "coords":"12.310993 55.927074",
+      "line":"940R Hillerød-Tisvildeleje",
+      "type":"local-train"
+    },
+    {
+      "name":"Slotpavillonen st",
+      "coords":"12.311229 55.941774",
+      "line":"940R Hillerød-Tisvildeleje",
+      "type":"local-train"
+    },
+    {
+      "name":"Gribsø st",
+      "coords":"12.301702 55.987436",
+      "line":"940R Hillerød-Tisvildeleje",
+      "type":"local-train"
+    },
+    {
+      "name":"Kagerup st",
+      "coords":"12.285801 55.997565",
+      "line":"940R Hillerød-Tisvildeleje",
+      "type":"local-train"
+    },
+    {
+      "name":"Duemose st",
+      "coords":"12.262606 56.009695",
+      "line":"940R Hillerød-Tisvildeleje",
+      "type":"local-train"
+    },
+    {
+      "name":"Helsinge st",
+      "coords":"12.205163 56.023212",
+      "line":"940R Hillerød-Tisvildeleje",
+      "type":"local-train"
+    },
+    {
+      "name":"Laugø st",
+      "coords":"12.182783 56.03929",
+      "line":"940R Hillerød-Tisvildeleje",
+      "type":"local-train"
+    },
+    {
+      "name":"Ørby st",
+      "coords":"12.162527 56.055732",
+      "line":"940R Hillerød-Tisvildeleje",
+      "type":"local-train"
+    },
+    {
+      "name":"Vejby st",
+      "coords":"12.13637 56.062633",
+      "line":"940R Hillerød-Tisvildeleje",
+      "type":"local-train"
+    },
+    {
+      "name":"Holløse st",
+      "coords":"12.117101 56.059494",
+      "line":"940R Hillerød-Tisvildeleje",
+      "type":"local-train"
+    },
+    {
+      "name":"Godhavn st",
+      "coords":"12.097703 56.059889",
+      "line":"940R Hillerød-Tisvildeleje",
+      "type":"local-train"
+    },
+    {
+      "name":"Tisvildeleje st",
+      "coords":"12.077705 56.05923",
+      "line":"940R Hillerød-Tisvildeleje",
+      "type":"local-train"
+    },
+    {
+      "name":"Hillerød st",
+      "coords":"12.310993 55.927074",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Slotpavillonen st",
+      "coords":"12.311229 55.941774",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Gribsø st",
+      "coords":"12.301702 55.987436",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Kagerup st",
+      "coords":"12.285801 55.997565",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Mårum st",
+      "coords":"12.317001 56.030718",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Saltrup st",
+      "coords":"12.321764 56.05451",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Græsted syd st",
+      "coords":"12.2955 56.063172",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Græsted st",
+      "coords":"12.286552 56.072862",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Pårup st",
+      "coords":"56.100996,12.301465",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Fjellenstrup st",
+      "coords":"12.298354 56.116311",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Gilleleje st",
+      "coords":"12.302753 56.123572",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Gilleleje øst st",
+      "coords":"12.308997 56.122687",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Stæremosen st",
+      "coords":"12.318782 56.112328",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Søborg st",
+      "coords":"12.333781 56.100457",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Firhøj st",
+      "coords":"12.355689 56.098315",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Dronningemølle st",
+      "coords":"12.386953 56.097753",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Kildekrog st",
+      "coords":"12.423388 56.092666",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Horneby sand st",
+      "coords":"12.435168 56.0899",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Hørnbæk st",
+      "coords":"12.459415 56.089206",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Karinebæk st",
+      "coords":"12.468192 56.08316",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Saunte st",
+      "coords":"12.484671 56.076946",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Skibstrup st",
+      "coords":"56.078239,12.512781",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Ålsgårde st",
+      "coords":"12.538637 56.075125",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Hellebæk st",
+      "coords":"12.553958 56.066382",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Højstrup st",
+      "coords":"12.594084 56.047176",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Marienlyst st",
+      "coords":"12.602281 56.043269",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Grønnehave st",
+      "coords":"12.610864 56.040668",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
+    },
+    {
+      "name":"Helsingør",
+      "coords":"12.613183 56.033122",
+      "line":"940R Hillerød-Gilleje-Helsingør",
+      "type":"local-train"
     }
   ]
 }

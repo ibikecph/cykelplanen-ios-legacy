@@ -656,9 +656,15 @@
 		F64FA44D17995B82008F00AF /* separator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F64FA44B17995B82008F00AF /* separator@2x.png */; };
 		F64FA45017996617008F00AF /* break_route_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = F64FA44E17996617008F00AF /* break_route_gray.png */; };
 		F64FA45117996617008F00AF /* break_route_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F64FA44F17996617008F00AF /* break_route_gray@2x.png */; };
+		F68C4BDE17AFADFE003A115E /* arrow_large.png in Resources */ = {isa = PBXBuildFile; fileRef = F68C4BDA17AFADFE003A115E /* arrow_large.png */; };
+		F68C4BDF17AFADFE003A115E /* arrow_large@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F68C4BDB17AFADFE003A115E /* arrow_large@2x.png */; };
+		F68C4BE017AFADFE003A115E /* arrow_small.png in Resources */ = {isa = PBXBuildFile; fileRef = F68C4BDC17AFADFE003A115E /* arrow_small.png */; };
+		F68C4BE117AFADFE003A115E /* arrow_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F68C4BDD17AFADFE003A115E /* arrow_small@2x.png */; };
+		F68C4BEB17AFCB2D003A115E /* SMArrivalInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F68C4BEA17AFCB2D003A115E /* SMArrivalInfo.m */; };
+		F68C4BEE17AFDB5A003A115E /* SMDepartureInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F68C4BED17AFDB5A003A115E /* SMDepartureInfo.m */; };
+		F68C4BF117AFF73E003A115E /* SMLineData.m in Sources */ = {isa = PBXBuildFile; fileRef = F68C4BF017AFF73D003A115E /* SMLineData.m */; };
 		F68C64231768B453009B4A21 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C48641616F099BE00F01A7C /* MainStoryboard_iPhone.storyboard */; };
-		F68DBCC817AA9BE900A0E228 /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = F68DBCC717AA9BE900A0E228 /* stations.json */; };
-		F68DBCCF17AAAABC00A0E228 /* transportation-lines.json in Resources */ = {isa = PBXBuildFile; fileRef = F68DBCCE17AAAABC00A0E228 /* transportation-lines.json */; };
+		F68E4C1F17B2404500CFC798 /* timetable-new.json in Resources */ = {isa = PBXBuildFile; fileRef = F68E4C1E17B2404500CFC798 /* timetable-new.json */; };
 		F68F9DE71765CDC500578FFE /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F68F9DE61765CDC500578FFE /* FBUserSettingsViewResources.bundle */; };
 		F68F9DEB1765CEF900578FFE /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68F9DEA1765CEF900578FFE /* FacebookSDK.framework */; };
 		F690C47B178C3395006A6FEA /* smroute_settings_private.plist in Resources */ = {isa = PBXBuildFile; fileRef = F690C47A178C3395006A6FEA /* smroute_settings_private.plist */; };
@@ -679,6 +685,15 @@
 		F6928783178D664300267A09 /* SMStationPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F6928782178D664300267A09 /* SMStationPickerView.m */; };
 		F6928797178D883E00267A09 /* SMReminder.m in Sources */ = {isa = PBXBuildFile; fileRef = F6928796178D883E00267A09 /* SMReminder.m */; };
 		F693590817A25B0B00B2DF11 /* SMStationsCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F693590717A25B0B00B2DF11 /* SMStationsCache.m */; };
+		F6942F4117B0EECF00B6138A /* timetable.json in Resources */ = {isa = PBXBuildFile; fileRef = F6942F4017B0EECF00B6138A /* timetable.json */; };
+		F6942F4417B12E5400B6138A /* SMRouteTimeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F6942F4317B12E5400B6138A /* SMRouteTimeInfo.m */; };
+		F6942F4717B1436D00B6138A /* SMTime.m in Sources */ = {isa = PBXBuildFile; fileRef = F6942F4617B1436D00B6138A /* SMTime.m */; };
+		F695285717B52E9900AF98D3 /* local-trains-timetable.json in Resources */ = {isa = PBXBuildFile; fileRef = F695285617B52E9900AF98D3 /* local-trains-timetable.json */; };
+		F695DC8217ABD5A900DD1A53 /* SMRouteInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F695DC8117ABD5A900DD1A53 /* SMRouteInfoViewController.m */; };
+		F695DC8A17ABE14100DD1A53 /* route_info_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F695DC8817ABE14100DD1A53 /* route_info_icon.png */; };
+		F695DC8B17ABE14100DD1A53 /* route_info_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F695DC8917ABE14100DD1A53 /* route_info_icon@2x.png */; };
+		F695DC8D17ABEDE500DD1A53 /* transportation-lines.json in Resources */ = {isa = PBXBuildFile; fileRef = F695DC8C17ABEDE500DD1A53 /* transportation-lines.json */; };
+		F695DC8F17ABEF7F00DD1A53 /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = F695DC8E17ABEF7F00DD1A53 /* stations.json */; };
 		F695EFCE178AA95000D3E83D /* SMSingleRouteInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F695EFCD178AA95000D3E83D /* SMSingleRouteInfo.m */; };
 		F6977CBB17A6C7EB00548B31 /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAF95C316D50B3A002C047B /* libMapView.a */; };
 		F6977CC017A6C7F000548B31 /* libHockeySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA06F3816EF8BE4007603B4 /* libHockeySDK.a */; };
@@ -1457,9 +1472,18 @@
 		F64FA44B17995B82008F00AF /* separator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "separator@2x.png"; sourceTree = "<group>"; };
 		F64FA44E17996617008F00AF /* break_route_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = break_route_gray.png; sourceTree = "<group>"; };
 		F64FA44F17996617008F00AF /* break_route_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "break_route_gray@2x.png"; sourceTree = "<group>"; };
+		F68C4BDA17AFADFE003A115E /* arrow_large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_large.png; sourceTree = "<group>"; };
+		F68C4BDB17AFADFE003A115E /* arrow_large@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_large@2x.png"; sourceTree = "<group>"; };
+		F68C4BDC17AFADFE003A115E /* arrow_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_small.png; sourceTree = "<group>"; };
+		F68C4BDD17AFADFE003A115E /* arrow_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_small@2x.png"; sourceTree = "<group>"; };
+		F68C4BE917AFCB2D003A115E /* SMArrivalInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMArrivalInfo.h; sourceTree = "<group>"; };
+		F68C4BEA17AFCB2D003A115E /* SMArrivalInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMArrivalInfo.m; sourceTree = "<group>"; };
+		F68C4BEC17AFDB5A003A115E /* SMDepartureInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDepartureInfo.h; sourceTree = "<group>"; };
+		F68C4BED17AFDB5A003A115E /* SMDepartureInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDepartureInfo.m; sourceTree = "<group>"; };
+		F68C4BEF17AFF73D003A115E /* SMLineData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLineData.h; sourceTree = "<group>"; };
+		F68C4BF017AFF73D003A115E /* SMLineData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLineData.m; sourceTree = "<group>"; };
 		F68C64251768B5B3009B4A21 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		F68DBCC717AA9BE900A0E228 /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
-		F68DBCCE17AAAABC00A0E228 /* transportation-lines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "transportation-lines.json"; sourceTree = "<group>"; };
+		F68E4C1E17B2404500CFC798 /* timetable-new.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "timetable-new.json"; sourceTree = "<group>"; };
 		F68F9DE61765CDC500578FFE /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
 		F68F9DEA1765CEF900578FFE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		F690C47A178C3395006A6FEA /* smroute_settings_private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings_private.plist; sourceTree = "<group>"; };
@@ -1495,6 +1519,18 @@
 		F6928796178D883E00267A09 /* SMReminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMReminder.m; sourceTree = "<group>"; };
 		F693590617A25B0B00B2DF11 /* SMStationsCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMStationsCache.h; sourceTree = "<group>"; };
 		F693590717A25B0B00B2DF11 /* SMStationsCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMStationsCache.m; sourceTree = "<group>"; };
+		F6942F4017B0EECF00B6138A /* timetable.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = timetable.json; sourceTree = "<group>"; };
+		F6942F4217B12E5400B6138A /* SMRouteTimeInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRouteTimeInfo.h; sourceTree = "<group>"; };
+		F6942F4317B12E5400B6138A /* SMRouteTimeInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRouteTimeInfo.m; sourceTree = "<group>"; };
+		F6942F4517B1436D00B6138A /* SMTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTime.h; sourceTree = "<group>"; };
+		F6942F4617B1436D00B6138A /* SMTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTime.m; sourceTree = "<group>"; };
+		F695285617B52E9900AF98D3 /* local-trains-timetable.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "local-trains-timetable.json"; sourceTree = "<group>"; };
+		F695DC8017ABD5A900DD1A53 /* SMRouteInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRouteInfoViewController.h; sourceTree = "<group>"; };
+		F695DC8117ABD5A900DD1A53 /* SMRouteInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRouteInfoViewController.m; sourceTree = "<group>"; };
+		F695DC8817ABE14100DD1A53 /* route_info_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = route_info_icon.png; sourceTree = "<group>"; };
+		F695DC8917ABE14100DD1A53 /* route_info_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "route_info_icon@2x.png"; sourceTree = "<group>"; };
+		F695DC8C17ABEDE500DD1A53 /* transportation-lines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "transportation-lines.json"; sourceTree = "<group>"; };
+		F695DC8E17ABEF7F00DD1A53 /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
 		F695EFCC178AA95000D3E83D /* SMSingleRouteInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSingleRouteInfo.h; sourceTree = "<group>"; };
 		F695EFCD178AA95000D3E83D /* SMSingleRouteInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSingleRouteInfo.m; sourceTree = "<group>"; };
 		F698D70B178FF58E00DA6B7B /* SMAddressPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMAddressPickerView.xib; sourceTree = "<group>"; };
@@ -1554,6 +1590,8 @@
 				4C929AB71728026500DBAB5C /* SMFavoritesUtil.m */,
 				4CA5635D173D34990000D0BD /* SMSearchHistory.h */,
 				4CA5635E173D34990000D0BD /* SMSearchHistory.m */,
+				F6942F4517B1436D00B6138A /* SMTime.h */,
+				F6942F4617B1436D00B6138A /* SMTime.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1638,6 +1676,12 @@
 		4C365DE116F361FE00A836B3 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				F68C4BDA17AFADFE003A115E /* arrow_large.png */,
+				F68C4BDB17AFADFE003A115E /* arrow_large@2x.png */,
+				F68C4BDC17AFADFE003A115E /* arrow_small.png */,
+				F68C4BDD17AFADFE003A115E /* arrow_small@2x.png */,
+				F695DC8817ABE14100DD1A53 /* route_info_icon.png */,
+				F695DC8917ABE14100DD1A53 /* route_info_icon@2x.png */,
 				7872719417A15C6200478795 /* station_icon.png */,
 				7872719517A15C6200478795 /* station_icon@2x.png */,
 				7895DF72179E87430086A4BD /* direction_cell_small_bgr.png */,
@@ -2217,8 +2261,11 @@
 		4C73D21516AEDCDA00AED42A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F68DBCCE17AAAABC00A0E228 /* transportation-lines.json */,
-				F68DBCC717AA9BE900A0E228 /* stations.json */,
+				F695285617B52E9900AF98D3 /* local-trains-timetable.json */,
+				F68E4C1E17B2404500CFC798 /* timetable-new.json */,
+				F6942F4017B0EECF00B6138A /* timetable.json */,
+				F695DC8E17ABEF7F00DD1A53 /* stations.json */,
+				F695DC8C17ABEDE500DD1A53 /* transportation-lines.json */,
 				F690C47A178C3395006A6FEA /* smroute_settings_private.plist */,
 				F6922788178702F900C8CD76 /* Albertslundruten.line */,
 				F6922789178702F900C8CD76 /* Farumruten.line */,
@@ -2616,6 +2663,8 @@
 				F69227A41787326800C8CD76 /* SMBrokenRouteInfo.m */,
 				F695EFCC178AA95000D3E83D /* SMSingleRouteInfo.h */,
 				F695EFCD178AA95000D3E83D /* SMSingleRouteInfo.m */,
+				F6942F4217B12E5400B6138A /* SMRouteTimeInfo.h */,
+				F6942F4317B12E5400B6138A /* SMRouteTimeInfo.m */,
 			);
 			name = route;
 			sourceTree = "<group>";
@@ -2632,6 +2681,12 @@
 				78929E2D17A6662C00576458 /* SMMapOverlays.m */,
 				F693590617A25B0B00B2DF11 /* SMStationsCache.h */,
 				F693590717A25B0B00B2DF11 /* SMStationsCache.m */,
+				F68C4BE917AFCB2D003A115E /* SMArrivalInfo.h */,
+				F68C4BEA17AFCB2D003A115E /* SMArrivalInfo.m */,
+				F68C4BEC17AFDB5A003A115E /* SMDepartureInfo.h */,
+				F68C4BED17AFDB5A003A115E /* SMDepartureInfo.m */,
+				F68C4BEF17AFF73D003A115E /* SMLineData.h */,
+				F68C4BF017AFF73D003A115E /* SMLineData.m */,
 			);
 			name = transportation;
 			sourceTree = "<group>";
@@ -2647,6 +2702,8 @@
 				F692279A178723E200C8CD76 /* SMTransportationCell.m */,
 				F6928781178D664300267A09 /* SMStationPickerView.h */,
 				F6928782178D664300267A09 /* SMStationPickerView.m */,
+				F695DC8017ABD5A900DD1A53 /* SMRouteInfoViewController.h */,
+				F695DC8117ABD5A900DD1A53 /* SMRouteInfoViewController.m */,
 			);
 			name = BreakRoute;
 			sourceTree = "<group>";
@@ -3312,8 +3369,17 @@
 				780291FC17A80E4900C2F829 /* service_station_white.png in Resources */,
 				780291FD17A80E4900C2F829 /* service_station_white@2x.png in Resources */,
 				780F969F17A94938006B6694 /* metro-stations.json in Resources */,
-				F68DBCC817AA9BE900A0E228 /* stations.json in Resources */,
-				F68DBCCF17AAAABC00A0E228 /* transportation-lines.json in Resources */,
+				F695DC8A17ABE14100DD1A53 /* route_info_icon.png in Resources */,
+				F695DC8B17ABE14100DD1A53 /* route_info_icon@2x.png in Resources */,
+				F695DC8D17ABEDE500DD1A53 /* transportation-lines.json in Resources */,
+				F695DC8F17ABEF7F00DD1A53 /* stations.json in Resources */,
+				F68C4BDE17AFADFE003A115E /* arrow_large.png in Resources */,
+				F68C4BDF17AFADFE003A115E /* arrow_large@2x.png in Resources */,
+				F68C4BE017AFADFE003A115E /* arrow_small.png in Resources */,
+				F68C4BE117AFADFE003A115E /* arrow_small@2x.png in Resources */,
+				F6942F4117B0EECF00B6138A /* timetable.json in Resources */,
+				F68E4C1F17B2404500CFC798 /* timetable-new.json in Resources */,
+				F695285717B52E9900AF98D3 /* local-trains-timetable.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3423,6 +3489,12 @@
 				7880A536179EBF5A00969B9E /* SMReportMailCell.m in Sources */,
 				78929E2E17A6662C00576458 /* SMMapOverlays.m in Sources */,
 				F693590817A25B0B00B2DF11 /* SMStationsCache.m in Sources */,
+				F695DC8217ABD5A900DD1A53 /* SMRouteInfoViewController.m in Sources */,
+				F68C4BEB17AFCB2D003A115E /* SMArrivalInfo.m in Sources */,
+				F68C4BEE17AFDB5A003A115E /* SMDepartureInfo.m in Sources */,
+				F68C4BF117AFF73E003A115E /* SMLineData.m in Sources */,
+				F6942F4417B12E5400B6138A /* SMRouteTimeInfo.m in Sources */,
+				F6942F4717B1436D00B6138A /* SMTime.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum{
+    TravelTimeWeekDay = 0,
+    TravelTimeWeekend = 1,
+    TravelTimeWeekendNight = 2
+}  TravelTime ;
+
 @interface SMTransportation : NSObject<NSXMLParserDelegate,NSCoding>
 
 +(SMTransportation*)instance;

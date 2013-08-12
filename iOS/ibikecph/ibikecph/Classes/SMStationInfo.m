@@ -27,11 +27,10 @@
     return self;
 }
 
--(id)initWIthLongitude:(double)lon latitude:(double)lat name:(NSString*)name type:(SMStationInfoType)type{
+-(id)initWithLongitude:(double)lon latitude:(double)lat name:(NSString*)name type:(SMStationInfoType)type{
     if(self= [self initWithLongitude:lon latitude:lat name:name]){
         self.type= type;
     }
-    
     return self;
 }
 
@@ -55,7 +54,6 @@
     if(self= [super init]){
         self.name = name;
         self.location = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
-
     }
     return self;
 }
@@ -64,7 +62,7 @@
     _location= pLocation;
     _longitude= pLocation.coordinate.longitude;
     _latitude= pLocation.coordinate.latitude;
-
+    
     [[NSOperationQueue mainQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
         [self fetchName];
     }]];
@@ -72,7 +70,7 @@
 }
 
 -(void)fetchName{
-
+    return;
     CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(_latitude, _longitude);
     __weak SMStationInfo* selfRef= self;
     [SMGeocoder reverseGeocode:coord completionHandler:^(NSDictionary *response, NSError *error) {
@@ -90,8 +88,8 @@
 
 -(BOOL)isEqual:(id)object{
     SMStationInfo* other= object;
-
-    return [self.location isEqual:other.location];
+    BOOL equal= [self.location isEqual:other.location];
+    return equal;
 }
 
 -(BOOL)isValid{
