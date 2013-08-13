@@ -129,8 +129,6 @@ typedef enum {
     // Dispose of any resources that can be recreated.
 }
 
-
-
 #pragma mark - view lifecycle
 
 - (void)viewDidLoad {
@@ -212,7 +210,6 @@ typedef enum {
     
     //[overlayMenu setupForHorizontalSwipeWithStart:-260.0f andEnd:0.0f andStart:-260.0f andPullView:centerView];
     
-   
     [self setTitle:translateString(@"reminder_title") forButton:remindersHeaderButton];
     [self setTitle:translateString(@"account") forButton:accountHeaderButton];
     [self setTitle:translateString(@"about_css") forButton:aboutHeaderButton];
@@ -361,7 +358,6 @@ typedef enum {
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     
     [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackTranslucent];
-
     
     [self readjustViewsForRotation:self.interfaceOrientation];
     
@@ -410,7 +406,7 @@ typedef enum {
     
     [SMUser user].tripRoute= nil;
     [SMUser user].route= nil;
-    
+
     if ([[NSFileManager defaultManager] fileExistsAtPath: [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"lastRoute.plist"]]) {
         NSDictionary * d = [NSDictionary dictionaryWithContentsOfFile: [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"lastRoute.plist"]];
         
@@ -719,7 +715,7 @@ typedef enum {
 #ifdef TESTING
     lastLocation= loc;
 #endif
-    
+
     UIImageView * im = [[UIImageView alloc] initWithFrame:CGRectMake(point.x - 17.0f, 0.0f, 34.0f, 34.0f)];
     [im setImage:[UIImage imageNamed:@"markerFinish"]];
     [self.mpView addSubview:im];
