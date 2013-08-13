@@ -14,6 +14,8 @@
 #import "SMArrivalInfo.h"
 #import "SMTime.h"
 #import "SMDepartureInfo.h"
+#import "SMTrain.h"
+
 #define CACHE_FILE_NAME @"StationsCached.data"
 #define MAX_CONCURENT_ROUTE_THREADS 4
 
@@ -57,8 +59,9 @@ static NSOperationQueue* stationQueue;
 -(id)init{
     if(self= [super init]){
         allNodes= [NSMutableArray new];
+        self.lines= [NSMutableArray new];
         queue= dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0L);
-        
+
         dispatch_async(queue, ^{
             [self loadStations];
             [self loadLocalTrains];
@@ -230,7 +233,7 @@ static NSOperationQueue* stationQueue;
     NSError* error;
     NSDictionary* dict= [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:filePath] options:NSJSONReadingAllowFragments error:&error];
     NSArray* trainsArr= [dict objectForKey:@"local-trains"];
-
+    NSMutableArray* trains= [NSMutableArray new];
     for( NSDictionary* arr in trainsArr){
         NSString* lineName= [arr objectForKey:@"line"];
         NSString* firstStation= [arr objectForKey:@"first-station"];
@@ -240,17 +243,112 @@ static NSOperationQueue* stationQueue;
         NSDictionary* departureDict= [arr objectForKey:@"departure"];
         
         NSArray* weekDaysData= [departureDict objectForKey:@"weekdays"];
+        NSArray* days= [NSArray arrayWithObjects: @0, @1, @2, @3, @4, nil];
+        SMTime* time= [SMTime new];
+        
+        [self parseStationsFromArray:weekDaysData dataTable:nil stations:stations trains:trains days:days];
+        
+        // week days
         for( NSDictionary* infoDict in weekDaysData){
-            NSNumber* startTime= [infoDict objectForKey:@"start-time"];
-            NSNumber* endTime=  [infoDict objectForKey:@"end-time"];
+            NSNumber* startTimeNum= [infoDict objectForKey:@"start-time"];
+            NSNumber* endTimeNum=  [infoDict objectForKey:@"end-time"];
             NSArray* dataArr= [infoDict objectForKey:@"data"];
+            int trainCount= dataArr.count / stations.count;
+            SMTime* startTime= [self timeFromString:startTimeNum.stringValue separator:@"."];
+            SMTime* endTime= [self timeFromString:endTimeNum.stringValue separator:@"."];
+
+            if(startTime.hour> endTime.hour){
+                endTime.hour+= 24;
+            }
+            for(int j=0; j<trainCount; j++){
+                SMTrain* train= [SMTrain new];
+                [trains addObject:train];
+                for(int i=0; i<dataArr.count; i+=trainCount){
+                    int index= (i/trainCount);
+                    if(index>=stations.count){
+                        continue;
+                    }
+                    SMStationInfo* station= [self stationNamed:stations[index]];
+                    NSNumber* minute= dataArr[i+j];
+                    for(int hour= startTime.hour; hour<=endTime.hour; hour++){
+                        time.hour= hour;
+                        time.minutes= minute.intValue;
+                        if([time isBetween:startTime and:endTime]){
+                            SMArrivalInformation* info= [train informationForStation:station];
+                            [info addDepartureTime:[time copy] forDays:days];
+                        }
+                    }
+                }
+            }
         }
+        
+        // weekend
+        NSDictionary* weekend= [departureDict objectForKey:@"weekend"];
+        NSArray* dataTableArr= [weekend objectForKey:@"data-table"];
+        NSArray* arr= [weekend objectForKey:@"saturday"];
+        
+        days= [NSArray arrayWithObject:@5];
+        [self parseStationsFromArray:arr dataTable:dataTableArr stations:stations trains:trains days:days];
+    
+        arr= [weekend objectForKey:@"sunday"];
+        days= [NSArray arrayWithObject:@6];
+        [self parseStationsFromArray:arr dataTable:dataTableArr stations:stations trains:trains days:days];
+
     }
+
+    self.trains= [NSArray arrayWithArray:trains];
+}
+
+-(void)parseStationsFromArray:(NSArray*)d dataTable:(NSArray*)dataTableArr stations:(NSArray*)stations trains:(NSMutableArray*)trains days:(NSArray*)days{
+    int index= 0;
+    SMTime* time= [SMTime new];
+    for(NSDictionary* dict in d){
+        
+        NSNumber* startTimeNum= [dict objectForKey:@"start-time"];
+        NSNumber* endTimeNum=  [dict objectForKey:@"end-time"];
+        NSArray* dataArr= [dict objectForKey:@"data"];
+        if(!dataArr){
+            dataArr= dataTableArr[index];
+        }
+        
+        int trainCount= dataArr.count / stations.count;
+        SMTime* startTime= [self timeFromString:startTimeNum.stringValue separator:@"."];
+        SMTime* endTime= [self timeFromString:endTimeNum.stringValue separator:@"."];
+        
+        if(startTime.hour> endTime.hour){
+            endTime.hour+= 24;
+        }
+        for(int j=0; j<trainCount; j++){
+            SMTrain* train= [SMTrain new];
+            [trains addObject:train];
+            for(int i=0; i<dataArr.count; i+=trainCount){
+                int index= (i/trainCount);
+                if(index>=stations.count){
+                    continue;
+                }
+                SMStationInfo* station= [self stationNamed:stations[index]];
+                NSNumber* minute= dataArr[i+j];
+                for(int hour= startTime.hour; hour<=endTime.hour; hour++){
+                    time.hour= hour;
+                    time.minutes= minute.intValue;
+                    if([time isBetween:startTime and:endTime]){
+                        SMArrivalInformation* info= [train informationForStation:station];
+                        [info addDepartureTime:[time copy] forDays:days];
+                    }
+                }
+            }
+        }
+        
+        
+        index++;
+    }
+}
+
 //    {
 //        "line" : "910",
 //        "first-station" : "Nærum",
 //        "last-station" : "Jægersborg",
-//        
+//
 //        "stations":["København H","Vesterport","Nørreport","Østerport","Jægersborg","Jægersborg","Nørgaardsvej","Lyngby Lokal","Fuglevad","Brede","Ørholm","Ravnholm"],
 //        
 //        "departure": {
@@ -300,7 +398,8 @@ static NSOperationQueue* stationQueue;
 //            }
 //        },
 
-}
+
+
 
 -(void)loadStations{
     NSString* KEY_STATIONS_TYPE= @"type";
@@ -311,7 +410,7 @@ static NSOperationQueue* stationQueue;
     NSString* TYPE_METRO= @"metro";
     NSString* TYPE_TRAIN= @"s-train";
     NSString* TYPE_SERVICE= @"service";
-    
+    NSString* TYPE_LOCAL= @"local-train";
     //parse stations
     
     NSString* filePath= [[NSBundle mainBundle] pathForResource:@"stations" ofType:@"json"];
@@ -322,7 +421,7 @@ static NSOperationQueue* stationQueue;
 
     for(NSDictionary* stationDict in stationsArr){
         NSString* type= [stationDict objectForKey:KEY_STATIONS_TYPE];
-//        NSString* line= [stationDict objectForKey:KEY_STATIONS_LINES];
+        NSString* line= [stationDict objectForKey:KEY_STATIONS_LINES];
         NSString* coords= [stationDict objectForKey:KEY_STATIONS_COORDS];
         NSString* name= [stationDict objectForKey:KEY_STATIONS_NAME];
        // parse coordinates
@@ -338,6 +437,8 @@ static NSOperationQueue* stationQueue;
             stationType= SMStationInfoTypeTrain;
         }else if([type.lowercaseString isEqualToString:TYPE_SERVICE]){
             stationType= SMStationInfoTypeService;
+        }else if([type.lowercaseString isEqualToString:TYPE_LOCAL]){
+            stationType= SMStationInfoTypeLocalTrain;
         }
         
         SMStationInfo* stationInfo= [[SMStationInfo alloc] initWithLongitude:lon latitude:lat name:name type:stationType];
@@ -355,6 +456,7 @@ static NSOperationQueue* stationQueue;
         NSArray* stations= [lineDict objectForKey:@"stations"];
         NSMutableArray* lineStations= [NSMutableArray new];
         SMTransportationLine* line= [[SMTransportationLine alloc] init];
+        
         line.name= lineName;
         NSLog(@"Line %@, stations: ", lineName);
         for (NSNumber* stationIndex in stations) {
@@ -380,6 +482,7 @@ static NSOperationQueue* stationQueue;
     NSError* error;
     NSDictionary* json= [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:filePath] options:NSJSONReadingAllowFragments error:&error];
     NSArray* lines= [json objectForKey:@"timetable"];
+    NSMutableArray* allLines= [NSMutableArray new];
     for(NSDictionary* dict in lines){
         NSString* lineName= [dict objectForKey:@"line"];
         SMTransportationLine* transportationLine= [self lineNamed:lineName];
@@ -398,6 +501,7 @@ static NSOperationQueue* stationQueue;
         lineClones= [self loadLinesFromDict:weekdaysDict allLines:allLines originalLine:transportationLine time:TravelTimeWeekDay];
         [self loadDataFor:TravelTimeWeekDay lines:lineClones dict:weekdaysDict allLines:allLines];
         
+        
         lineClones= [self loadLinesFromDict:weekendsDict allLines:allLines originalLine:transportationLine time:TravelTimeWeekend];
         [self loadDataFor:TravelTimeWeekend lines:lineClones dict:weekendsDict allLines:allLines];
         
@@ -411,7 +515,7 @@ static NSOperationQueue* stationQueue;
     NSMutableArray* lineClones= [NSMutableArray new];
     
     for(NSDictionary* dict in arrivalArr){
-
+        
         // set start and end station
         SMStationInfo* startStation= [self stationNamed:[dict objectForKey:@"start"]];
         SMStationInfo* endStation= [self stationNamed:[dict objectForKey:@"stop"]];
@@ -484,7 +588,7 @@ static NSOperationQueue* stationQueue;
         
         switch (time) {
             case TravelTimeWeekDay:
-                line.weekLineData.departureInfo= departureInfo;
+         line.weekLineData.departureInfo= departureInfo;
                 break;
             case TravelTimeWeekend:
                 line.weekendLineData.departureInfo= departureInfo;
@@ -556,6 +660,16 @@ static NSOperationQueue* stationQueue;
     }
     
     return values;
+}
+
+-(SMTime*)timeFromString:(NSString*)str separator:(NSString*)separator{
+    NSArray* components= [str componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:separator]];
+    if(components.count!=2)
+        return nil;
+    SMTime* time= [[SMTime alloc] init];
+    time.hour= ((NSNumber*)components[0]).intValue;
+    time.minutes= ((NSNumber*)components[1]).intValue;
+    return time;
 }
 
 -(SMTransportationLine*)lineNamed:(NSString*)lineName{

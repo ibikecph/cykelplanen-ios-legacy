@@ -14,5 +14,5 @@
 @property(nonatomic, assign) int minutes;
 
 -(SMTime*)differenceFrom:(SMTime*)other;
-
+-(BOOL)isBetween:(SMTime*)first and:(SMTime*)second;
 @end

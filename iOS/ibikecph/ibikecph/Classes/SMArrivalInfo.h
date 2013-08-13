@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SMStationInfo.h"
+
 @interface SMArrivalInfo : NSObject
 
 -(id)initWithDepartures:(NSArray*)departures arrivals:(NSArray*)arrivals;
@@ -15,4 +16,5 @@
 @property(nonatomic, strong) NSArray* departures;
 @property(nonatomic, strong) NSArray* arrivals;
 @property(nonatomic, strong) SMStationInfo* station;
+
 @end

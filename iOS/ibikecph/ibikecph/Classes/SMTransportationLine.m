@@ -11,6 +11,7 @@
 #import "SMNode.h"
 #import "SMSingleRouteInfo.h"
 #import "SMRouteTimeInfo.h"
+
 #define KEY_STATIONS @"KeyStations"
 #define KEY_NAME @"KeyName"
 
@@ -101,6 +102,8 @@
     }
     return _weekendNightLineData;
 }
+
+
 
 -(BOOL)containsRouteFrom:(SMStationInfo*)sourceStation to:(SMStationInfo*)destStation forTime:(TravelTime)time{
     BOOL hasSource= NO;

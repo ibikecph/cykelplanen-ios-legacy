@@ -25,7 +25,6 @@
 @property(nonatomic, strong) SMLineData* weekendLineData;
 @property(nonatomic, strong) SMLineData* weekendNightLineData;
 
-@property(nonatomic, strong, readonly) NSString * name;
 @property(nonatomic, strong, readonly) NSString* lineType;
 
 

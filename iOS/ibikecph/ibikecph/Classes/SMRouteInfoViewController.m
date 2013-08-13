@@ -9,6 +9,7 @@
 #import "SMRouteInfoViewController.h"
 #import "SMTransportation.h"
 #import "SMRouteTimeInfo.h"
+#import "SMTrain.h"
 @interface SMRouteInfoViewController ()
 
 @end
@@ -43,7 +44,16 @@
     NSCalendar* cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *weekdayComponents =[cal components:NSWeekdayCalendarUnit fromDate:[NSDate new]];
     NSInteger weekday = [weekdayComponents weekday];
-
+    
+    // temp
+    NSArray* trains= [SMTransportation instance].trains;
+    
+    for(SMTrain* train in trains){
+        if([train isOnRouteWithSourceStation:self.singleRouteInfo.sourceStation destinationStation:self.singleRouteInfo.destStation forDay:weekday]){
+            NSLog(@"It is");
+        }
+    }
+    // temp
     TravelTime time;
     // determine current time (weekday / weekend / weekend night)
     if([self isNightForDayAtIndex:6 components:weekdayComponents] || [self isNightForDayAtIndex:7 components:weekdayComponents]){
