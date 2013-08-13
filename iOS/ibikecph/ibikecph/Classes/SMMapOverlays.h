@@ -20,6 +20,7 @@
 @property BOOL metroMarkersVisible;
 @property BOOL serviceMarkersVisible;
 @property BOOL stationMarkersVisible;
+@property BOOL localTrainMarkersVisible;
 @property BOOL pathVisible;
 
 @end

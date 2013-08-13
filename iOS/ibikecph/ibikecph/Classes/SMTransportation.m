@@ -311,6 +311,7 @@ static NSOperationQueue* stationQueue;
     NSString* TYPE_METRO= @"metro";
     NSString* TYPE_TRAIN= @"s-train";
     NSString* TYPE_SERVICE= @"service";
+    NSString* TYPE_LOCAL_TRAIN = @"local-train";
     
     //parse stations
     
@@ -338,6 +339,8 @@ static NSOperationQueue* stationQueue;
             stationType= SMStationInfoTypeTrain;
         }else if([type.lowercaseString isEqualToString:TYPE_SERVICE]){
             stationType= SMStationInfoTypeService;
+        }else if([type.lowercaseString isEqualToString:TYPE_LOCAL_TRAIN]) {
+            stationType = SMStationInfoTypeLocalTrain;
         }
         
         SMStationInfo* stationInfo= [[SMStationInfo alloc] initWithLongitude:lon latitude:lat name:name type:stationType];

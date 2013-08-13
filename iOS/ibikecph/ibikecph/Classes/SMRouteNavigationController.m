@@ -1708,6 +1708,8 @@ typedef enum {
         [self.appDelegate.mapOverlays toggleMarkers:@"station" state:pSelected];
     } else if ( row == 3 ) {
         [self.appDelegate.mapOverlays toggleMarkers:@"metro" state:pSelected];
+    } else if ( row == 4 ) {
+        [self.appDelegate.mapOverlays toggleMarkers:@"local-trains" state:pSelected];
     }
 }
 

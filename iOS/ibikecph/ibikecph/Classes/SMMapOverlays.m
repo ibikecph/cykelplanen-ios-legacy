@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSMutableArray* metroMarkers;
 @property (nonatomic, strong) NSMutableArray* serviceMarkers;
 @property (nonatomic, strong) NSMutableArray* stationMarkers;
+@property (nonatomic, strong) NSMutableArray* localTrainMarkers;
 @end
 
 @implementation SMMapOverlays
@@ -179,6 +180,85 @@
     }
 
 - (void)loadMarkers {
+    
+    self.stationMarkers = [[NSMutableArray alloc] init];
+    self.serviceMarkers = [[NSMutableArray alloc] init];
+    self.localTrainMarkers = [[NSMutableArray alloc] init];
+    self.metroMarkers = [[NSMutableArray alloc] init];
+    
+    NSString* filePath = [[NSBundle mainBundle] pathForResource:@"stations" ofType:@"json"];
+    NSError* err;
+    NSData* data = [NSData dataWithContentsOfFile:filePath];
+    NSDictionary* dict = nil;
+    if ( data ) {
+        dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&err];
+        NSLog(@"Error %@", err);
+    }
+    NSArray* stations = [dict valueForKey:@"stations"];
+    
+    for(NSDictionary* station in stations) {
+        
+        NSString* s = [station objectForKey:@"coords"];
+        
+        NSRange range = [s rangeOfString:@" "];
+        //range.location = 0;
+        NSString* sLatitude = [s substringToIndex:range.location];
+        range.length = [s length] - range.location;
+        NSString* sLongitude = [s substringWithRange:range];
+        
+        NSString* type = [station objectForKey:@"type"];
+        
+        NSLog(@"STATION: %f %f", [sLongitude floatValue], [sLatitude floatValue]);
+        
+        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake([sLongitude floatValue], [sLatitude floatValue]); //lon, lat);
+        //[self addMarkerToMapView:self.mpView withCoordinate:coord title:@"Marker" imageName:@"station_icon" annotationTitle:@"Marker text" alternateTitle:@"Marker alternate title"];
+        
+        NSString* imageName = @"";
+        if ([type isEqualToString:@"metro"]) {
+            imageName = @"metro_logo_pin";
+        } else if ([type isEqualToString:@"service"]) {
+            imageName = @"service_pin";
+        } else if ([type isEqualToString:@"s-train"]) {
+            imageName = @"station_icon";
+        } else if ([type isEqualToString:@"local-train"]) {
+            imageName = @"local_train_icon";
+        }
+        
+        NSString* title = @"metro";
+        NSString* annotationTitle = @"title";
+        NSString* alternateTitle = @"alternate title";
+        
+        SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
+        
+        annotation.annotationType = @"station";
+        annotation.annotationIcon = [UIImage imageNamed:imageName];
+        annotation.anchorPoint = CGPointMake(0.5, 1.0);
+        NSMutableArray * arr = [[self.source componentsSeparatedByString:@","] mutableCopy];
+        annotation.title = annotationTitle;
+        
+        if ([annotation.title isEqualToString:@""] && alternateTitle) {
+            annotation.title = alternateTitle;
+        }
+        annotation.subtitle = [[arr componentsJoinedByString:@","] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        //[self.mpView addAnnotation:annotation];
+        
+        if ([type isEqualToString:@"metro"]) {
+            [self.metroMarkers addObject:annotation];
+        } else if ([type isEqualToString:@"service"]) {
+            [self.serviceMarkers addObject:annotation];
+        } else if ([type isEqualToString:@"s-train"]) {
+            [self.stationMarkers addObject:annotation];
+        } else if ([type isEqualToString:@"local-train"]) {
+            [self.localTrainMarkers addObject:annotation];
+        }
+
+    }
+    
+    [self toggleMarkers];
+
+}
+
+- (void)oldLoadMarkers {
     
 //    if ( !self.mpView ) {
 //        return;
@@ -344,6 +424,12 @@
         [self.mpView removeAnnotations:self.stationMarkers];
     }
     
+    if ( self.localTrainMarkersVisible ) {
+        [self.mpView addAnnotations:self.localTrainMarkers];
+    } else {
+        [self.mpView removeAnnotations:self.localTrainMarkers];
+    }
+    
     if ( self.pathVisible ) {
         //        [self showRouteAnnotation];
     } else {
@@ -364,6 +450,8 @@
     }else if([markerType isEqualToString:@"path"]){
         self.pathVisible= state;
         
+    } else if ([markerType isEqualToString:@"local-trains"]) {
+        self.localTrainMarkersVisible = state;
     }
     
     [self toggleMarkers];
