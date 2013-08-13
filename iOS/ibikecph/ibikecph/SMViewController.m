@@ -1424,7 +1424,7 @@ typedef enum {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     if (tableView == self.overlaysMenuTable) {
-        return 4;
+        return [self.overlaysMenuItems count];
     }
     
     if (tableView == self.tblFavorites) {
@@ -1544,6 +1544,8 @@ typedef enum {
         [self.appDelegate.mapOverlays toggleMarkers:@"station" state:pSelected];
     } else if ( row == 3 ) {
         [self.appDelegate.mapOverlays toggleMarkers:@"metro" state:pSelected];
+    } else if ( row == 4 ) {
+        [self.appDelegate.mapOverlays toggleMarkers:@"local-trains" state:pSelected];
     }
 }
 

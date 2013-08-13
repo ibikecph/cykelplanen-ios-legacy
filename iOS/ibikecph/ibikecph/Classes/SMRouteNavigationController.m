@@ -1593,8 +1593,8 @@ typedef enum {
             } else {
                 brVC.sourceAddress = address;
             }
-            
-            NSLog(@"RESPONSE: %@",response);
+
+            [brVC.tableView reloadData];
         }];
         
         [SMGeocoder reverseGeocode:self.endLocation.coordinate completionHandler:^(NSDictionary *response, NSError *error) {
@@ -1604,6 +1604,8 @@ typedef enum {
             } else {
                 brVC.destinationAddress = address;
             }
+            
+           [brVC.tableView reloadData];
         }];
         
         if(self.currentlyRouting){
@@ -1706,6 +1708,8 @@ typedef enum {
         [self.appDelegate.mapOverlays toggleMarkers:@"station" state:pSelected];
     } else if ( row == 3 ) {
         [self.appDelegate.mapOverlays toggleMarkers:@"metro" state:pSelected];
+    } else if ( row == 4 ) {
+        [self.appDelegate.mapOverlays toggleMarkers:@"local-trains" state:pSelected];
     }
 }
 

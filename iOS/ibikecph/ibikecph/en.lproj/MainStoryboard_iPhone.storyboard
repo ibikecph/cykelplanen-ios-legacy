@@ -4768,6 +4768,7 @@ Cykelsuperstierne har overordnet fire kvalitetsmål. Kvalitetsmålene er udvikle
         <image name="white_btn.png" width="12" height="12"/>
         <image name="white_btn_pressed.png" width="11" height="11"/>
     </resources>
+
     <classes>
         <class className="AsyncImageView" superclassName="UIImageView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AsyncImageView.h"/>
@@ -5202,6 +5203,8 @@ Cykelsuperstierne har overordnet fire kvalitetsmål. Kvalitetsmålene er udvikle
             </relationships>
         </class>
     </classes>
+
+
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

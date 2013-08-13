@@ -95,6 +95,7 @@
 "marker_type_2" = "Servicestationer";
 "marker_type_3" = "S-togs stationer";
 "marker_type_4" = "Metro stationer";
+"marker_type_5" = "Lokale stationer";
 
 "Error" = "Error";
 "OK" = "OK";
