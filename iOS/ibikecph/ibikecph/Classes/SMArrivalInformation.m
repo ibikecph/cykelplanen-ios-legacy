@@ -7,11 +7,22 @@
 //
 
 #import "SMArrivalInformation.h"
-#import "SMArrivalMapping.h"
+
 @implementation SMArrivalInformation
 
+-(SMArrivalMapping*)mappingForDayAtIndex:(int)index{
+    NSNumber* num= [NSNumber numberWithInt:index];
+    for(SMArrivalMapping* mapping in self.mappings){
+        if([mapping.days containsObject:num]){
+            return mapping;
+        }
+    }
+    
+    return nil;
+}
+
 -(void)addArrivalTime:(SMTime*)pTime forDays:(NSArray*)days{
-    NSLog(@"Adding arrival time %d:%d for %@",pTime.hour, pTime.minutes, self.station.name);
+//    NSLog(@"Adding arrival time %d:%d for %@",pTime.hour, pTime.minutes, self.station.name);
     for(SMArrivalMapping* mapping in self.mappings){
         if([mapping daysMatch:days]){
             [mapping addArrivalTime:pTime];
@@ -22,10 +33,11 @@
     SMArrivalMapping* arrivalMapping= [SMArrivalMapping new];
     arrivalMapping.days= days;
     [arrivalMapping addArrivalTime:pTime];
+    [self.mappings addObject:arrivalMapping];
 }
 
 -(void)addDepartureTime:(SMTime*)pTime forDays:(NSArray*)days{
-        NSLog(@"Adding departure time %d:%d for %@",pTime.hour, pTime.minutes, self.station.name);
+//        NSLog(@"Adding departure time %d:%d for %@",pTime.hour, pTime.minutes, self.station.name);
     for(SMArrivalMapping* mapping in self.mappings){
         if([mapping daysMatch:days]){
             [mapping addDepartureTime:pTime];
@@ -36,6 +48,7 @@
     SMArrivalMapping* arrivalMapping= [SMArrivalMapping new];
     arrivalMapping.days= days;
     [arrivalMapping addDepartureTime:pTime];
+    [self.mappings addObject:arrivalMapping];
 }
 
 -(NSMutableArray*)mappings{

@@ -32,7 +32,7 @@
       "type":"s-train"
     },
     {
-      "name":"Bernstorffsvej",
+      "name":"Bernstorsvej",
       "coords":"12.5575 55.743",
       "line":"B",
       "type":"s-train"
@@ -726,7 +726,7 @@
       "type":"local-train"
     },
     {
-      "name":"Hillerød st",
+      "name":"Hillerød",
       "coords":"12.310993 55.927074",
       "line":"930 Hillerød-Helsingør",
       "type":"local-train"
@@ -780,331 +780,331 @@
       "type":"local-train"
     },
     {
-      "name":"Hundested Havn st",
+      "name":"Hundested Havn",
       "coords":"11.845981 55.965825",
       "line":"920R Hundested - Hillerød",
       "type":"local-train"
     },
     {
-      "name":"Hundested st",
+      "name":"Hundested",
       "coords":"11.852505 55.963519",
       "line":"920R Hundested - Hillerød",
       "type":"local-train"
     },
     {
-      "name":"Vibehus st.",
+      "name":"Vibehus",
       "coords":"11.873117 55.960156",
       "line":"920R Hundested - Hillerød",
       "type":"local-train"
     },
     {
-      "name":"Østerbjerg st ",
+      "name":"Østerbjerg",
       "coords":"11.913336 55.97668",
       "line":"920R Hundested - Hillerød",
       "type":"local-train"
     },
     {
-      "name":"Dyssekilde st",
+      "name":"Dyssekilde",
       "coords":"11.942089 55.985467",
       "line":"920R Hundested - Hillerød",
       "type":"local-train"
     },
     {
-      "name":"Melby st",
+      "name":"Melby",
       "coords":"11.971357 55.991589",
       "line":"920R Hundested - Hillerød",
       "type":"local-train"
     },
     {
-      "name":"Hanehoved st",
+      "name":"Hanehoved",
       "coords":"12.001827 55.975191",
       "line":"920R Hundested - Hillerød",
       "type":"local-train"
     },
     {
-      "name":"Frederiksværk st",
+      "name":"Frederiksværk",
       "coords":"12.019594 55.968154",
       "line":"920R Hundested - Hillerød",
       "type":"local-train"
     },
     {
-      "name":"Lille Knegme st",
+      "name":"Lille-Kregme",
       "coords":"12.034615 55.946244",
       "line":"920R Hundested - Hillerød",
       "type":"local-train"
     },
     {
-      "name":"Knegme st",
+      "name":"Kregme",
       "coords":"12.047446 55.934515",
       "line":"920R Hundested - Hillerød",
       "type":"local-train"
     },
     {
-      "name":"Ølsted st",
+      "name":"Ølsted",
       "coords":"12.072981 55.923071",
       "line":"920R Hundested - Hillerød",
       "type":"local-train"
     },
     {
-      "name":"Grimstrup st",
+      "name":"Grimstrup",
       "coords":"12.102035 55.915592",
       "line":"920R Hundested - Hillerød",
       "type":"local-train"
     },
     {
-      "name":"Skævinge st",
+      "name":"Skævinge",
       "coords":"12.149199 55.907558",
       "line":"920R Hundested - Hillerød",
       "type":"local-train"
     },
     {
-      "name":"Gøreløse st",
+      "name":"Gøreløse",
       "coords":"12.202843 55.88701",
       "line":"920R Hundested - Hillerød",
       "type":"local-train"
     },
     {
-      "name":"Brødeskov st",
+      "name":"Brødeskov",
       "coords":"12.279275 55.893315",
       "line":"920R Hundested - Hillerød",
       "type":"local-train"
     },
     {
-      "name":"Hillerød st",
+      "name":"Hillerød",
       "coords":"12.310993 55.927074",
       "line":"920R Hundested - Hillerød",
       "type":"local-train"
     },
     {
-      "name":"Hillerød st",
+      "name":"Hillerød",
       "coords":"12.310993 55.927074",
       "line":"940R Hillerød-Tisvildeleje",
       "type":"local-train"
     },
     {
-      "name":"Slotpavillonen st",
+      "name":"Slotspavillonen",
       "coords":"12.311229 55.941774",
       "line":"940R Hillerød-Tisvildeleje",
       "type":"local-train"
     },
     {
-      "name":"Gribsø st",
+      "name":"Gribsø",
       "coords":"12.301702 55.987436",
       "line":"940R Hillerød-Tisvildeleje",
       "type":"local-train"
     },
     {
-      "name":"Kagerup st",
+      "name":"Kagerup",
       "coords":"12.285801 55.997565",
       "line":"940R Hillerød-Tisvildeleje",
       "type":"local-train"
     },
     {
-      "name":"Duemose st",
+      "name":"Duemose",
       "coords":"12.262606 56.009695",
       "line":"940R Hillerød-Tisvildeleje",
       "type":"local-train"
     },
     {
-      "name":"Helsinge st",
+      "name":"Helsinge",
       "coords":"12.205163 56.023212",
       "line":"940R Hillerød-Tisvildeleje",
       "type":"local-train"
     },
     {
-      "name":"Laugø st",
+      "name":"Laugø",
       "coords":"12.182783 56.03929",
       "line":"940R Hillerød-Tisvildeleje",
       "type":"local-train"
     },
     {
-      "name":"Ørby st",
+      "name":"Ørby",
       "coords":"12.162527 56.055732",
       "line":"940R Hillerød-Tisvildeleje",
       "type":"local-train"
     },
     {
-      "name":"Vejby st",
+      "name":"Vejby",
       "coords":"12.13637 56.062633",
       "line":"940R Hillerød-Tisvildeleje",
       "type":"local-train"
     },
     {
-      "name":"Holløse st",
+      "name":"Holløse",
       "coords":"12.117101 56.059494",
       "line":"940R Hillerød-Tisvildeleje",
       "type":"local-train"
     },
     {
-      "name":"Godhavn st",
+      "name":"Godhavn",
       "coords":"12.097703 56.059889",
       "line":"940R Hillerød-Tisvildeleje",
       "type":"local-train"
     },
     {
-      "name":"Tisvildeleje st",
+      "name":"Tisvildeleje",
       "coords":"12.077705 56.05923",
       "line":"940R Hillerød-Tisvildeleje",
       "type":"local-train"
     },
     {
-      "name":"Hillerød st",
+      "name":"Hillerød",
       "coords":"12.310993 55.927074",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Slotpavillonen st",
+      "name":"Slotspavillonen",
       "coords":"12.311229 55.941774",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Gribsø st",
+      "name":"Gribsø",
       "coords":"12.301702 55.987436",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Kagerup st",
+      "name":"Kagerup",
       "coords":"12.285801 55.997565",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Mårum st",
+      "name":"Mårum",
       "coords":"12.317001 56.030718",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Saltrup st",
+      "name":"Saltrup",
       "coords":"12.321764 56.05451",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Græsted syd st",
+      "name":"Græsted syd",
       "coords":"12.2955 56.063172",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Græsted st",
+      "name":"Græsted",
       "coords":"12.286552 56.072862",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Pårup st",
+      "name":"Pårup",
       "coords":"56.100996 12.301465",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Fjellenstrup st",
+      "name":"Fjellenstrup",
       "coords":"12.298354 56.116311",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Gilleleje st",
+      "name":"Gilleleje",
       "coords":"12.302753 56.123572",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Gilleleje øst st",
+      "name":"Gilleleje øst",
       "coords":"12.308997 56.122687",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Stæremosen st",
+      "name":"Stæremosen",
       "coords":"12.318782 56.112328",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Søborg st",
+      "name":"Søborg",
       "coords":"12.333781 56.100457",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Firhøj st",
+      "name":"Firhøj",
       "coords":"12.355689 56.098315",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Dronningemølle st",
+      "name":"Dronningmølle",
       "coords":"12.386953 56.097753",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Kildekrog st",
+      "name":"Kildekrog",
       "coords":"12.423388 56.092666",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Horneby sand st",
+      "name":"Horneby sand",
       "coords":"12.435168 56.0899",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Hørnbæk st",
+      "name":"Hornbæk",
       "coords":"12.459415 56.089206",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Karinebæk st",
+      "name":"Karinebæk",
       "coords":"12.468192 56.08316",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Saunte st",
+      "name":"Saunte",
       "coords":"12.484671 56.076946",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Skibstrup st",
+      "name":"Skibstrup",
       "coords":"56.078239 12.512781",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Ålsgårde st",
+      "name":"Ålsgårde",
       "coords":"12.538637 56.075125",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Hellebæk st",
+      "name":"Hellebæk",
       "coords":"12.553958 56.066382",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Højstrup st",
+      "name":"Højstrup",
       "coords":"12.594084 56.047176",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Marienlyst st",
+      "name":"Marienlyst",
       "coords":"12.602281 56.043269",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
     },
     {
-      "name":"Grønnehave st",
+      "name":"Grønnehave",
       "coords":"12.610864 56.040668",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"

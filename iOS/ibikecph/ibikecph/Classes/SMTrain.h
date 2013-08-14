@@ -15,5 +15,5 @@
 
 -(SMArrivalInformation*)informationForStation:(SMStationInfo*)station;
 
--(BOOL)isOnRouteWithSourceStation:(SMStationInfo*)sourceSt destinationStation:(SMStationInfo*)destinationSt forDay:(int)dayIndex;
+-(NSArray*)routeTimestampsForSourceStation:(SMStationInfo*)sourceSt destinationStation:(SMStationInfo*)destinationSt forDay:(int)dayIndex time:(SMTime*)time;
 @end

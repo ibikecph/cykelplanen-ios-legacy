@@ -10,6 +10,19 @@
 
 @implementation SMTime
 
+-(id)initWithTime:(SMTime*)pTime{
+    if(self=[super init]){
+        self.hour= pTime.hour;
+        self.minutes= pTime.minutes;
+    }
+    return self;
+}
+
+-(int)differenceInMinutesFrom:(SMTime *)other{
+    SMTime* diff= [self differenceFrom:other];
+    return diff.hour*60+diff.minutes;
+}
+
 -(SMTime*)differenceFrom:(SMTime*)other{
     SMTime* time= [SMTime new];
     
@@ -28,12 +41,14 @@
 
 -(BOOL)isBetween:(SMTime*)first and:(SMTime*)second{
     int secondHour= second.hour;
-    if(first.hour > second.hour){
+    if(first.hour > second.hour ){
         secondHour+= 24;
     }
 
     return (self.hour>first.hour && self.hour<secondHour) || (self.hour==first.hour && self.minutes > first.minutes) || (self.hour==secondHour && self.minutes<second.minutes);
 }
+
+
 
 -(id)copy{
     SMTime* time= [SMTime new];
@@ -41,5 +56,15 @@
     time.minutes= self.minutes;
     
     return time;
+}
+
+-(NSString*)description{
+    return [NSString stringWithFormat:@"%d:%d",self.hour, self.minutes];
+}
+
+-(BOOL)isEqual:(id)object{
+    SMTime* other= object;
+    
+    return self.hour==other.hour && self.minutes==other.minutes;
 }
 @end

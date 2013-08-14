@@ -121,15 +121,15 @@
     NSNumber* invalid= @-1;
     for (SMArrivalInfo* arrivalInfo in lineData.arrivalInfos) {
         if(arrivalInfo.station==sourceStation){
-
-            if(![arrivalInfo.arrivals containsObject:invalid]){
+            if(![arrivalInfo.arrivals containsObject:invalid] || ![arrivalInfo.departures containsObject:invalid]){
                 hasSource= YES;
             }
         }else if(arrivalInfo.station==destStation){
-            if(![arrivalInfo.arrivals containsObject:invalid]){
+            if(![arrivalInfo.arrivals containsObject:invalid] || ![arrivalInfo.departures containsObject:invalid]){
                 hasDestination= YES;
             }
         }
+        
     }
     
     return hasSource && hasDestination;

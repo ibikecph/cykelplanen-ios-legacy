@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SMStationInfo.h"
-
+#import "SMArrivalMapping.h"
 @interface SMArrivalInformation : NSObject
 
 @property(nonatomic, strong) SMStationInfo* station;
@@ -16,6 +16,6 @@
 
 -(void)addArrivalTime:(SMTime*)pTime forDays:(NSArray*)days;
 -(void)addDepartureTime:(SMTime*)pTime forDays:(NSArray*)days;
-
+-(SMArrivalMapping*)mappingForDayAtIndex:(int)index;
 -(BOOL)hasInfoForDayAtIndex:(int)index;
 @end

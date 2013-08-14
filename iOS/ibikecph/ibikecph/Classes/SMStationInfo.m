@@ -88,7 +88,7 @@
 
 -(BOOL)isEqual:(id)object{
     SMStationInfo* other= object;
-    BOOL equal= [self.location isEqual:other.location];
+    BOOL equal= [self.location isEqual:other.location] || [self.name isEqualToString:other.name];
     return equal;
 }
 

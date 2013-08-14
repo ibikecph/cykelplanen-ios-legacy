@@ -108,7 +108,6 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
-    
     if(breakRouteFailed){
         [self displayBreakRouteError];
     }else{
@@ -198,8 +197,31 @@
             
             // Translatations
             [tCell.buttonAddressInfo setTitle:translateString(@"route_plan_button") forState:UIControlStateNormal];
-            [tCell.buttonAddressSource setTitle:self.sourceStation.name forState:UIControlStateNormal];
-            [tCell.buttonAddressDestination setTitle:self.destinationStation.name forState:UIControlStateNormal];
+            
+            if(self.sourceStation){
+                [tCell.buttonAddressSource setEnabled:YES];
+                [tCell.buttonAddressSource setTitle:self.sourceStation.name forState:UIControlStateNormal];
+                [tCell.sourceActivityIndicator setHidden:YES];
+            }else{
+                [tCell.buttonAddressSource setEnabled:NO];
+                [tCell.buttonAddressSource setTitle:@"" forState:UIControlStateNormal];
+                [tCell.sourceActivityIndicator setHidden:NO];
+                [tCell.sourceActivityIndicator startAnimating];
+            }
+            
+            if(self.destinationStation){
+                [tCell.buttonAddressDestination setEnabled:YES];
+                [tCell.buttonAddressDestination setTitle:self.destinationStation.name forState:UIControlStateNormal];
+                [tCell.destinationActivityIndicator setHidden:YES];
+            }else{
+                [tCell.buttonAddressDestination setEnabled:NO];
+                [tCell.buttonAddressDestination setTitle:@"" forState:UIControlStateNormal];
+                [tCell.destinationActivityIndicator setHidden:NO];
+                [tCell.destinationActivityIndicator startAnimating];
+            }
+            
+            [tCell.buttonAddressInfo setEnabled:(self.sourceStation && self.destinationStation)];
+
             return tCell;
         }
         case 2:{
@@ -225,7 +247,7 @@
             CellId= @"ButtonCell";
             SMBreakRouteButtonCell* cell= [tableView dequeueReusableCellWithIdentifier:CellId];
             [cell.btnBreakRoute setTitle:translateString(@"break_route_title") forState:UIControlStateNormal];
-            
+            [cell.btnBreakRoute setEnabled:(self.sourceStation && self.destinationStation)];
             return cell;
         }
         default:
@@ -248,7 +270,6 @@
 
 - (IBAction)onBack:(id)sender {
     [self dismiss];
-    
 }
 
 -(void)dismiss{
@@ -272,11 +293,9 @@
     addressPickerView.addressType= pAddressType;
     pickerModel= pModel;
     [addressPickerView displayAnimated];
-    
 }
 
 -(IBAction)onDestinationAddressButtonTap:(id)sender {
-    
     [self displayAddressViewWithAddressType:AddressTypeDestination model:destinationStations];
 }
 

@@ -10,9 +10,13 @@
 
 @interface SMTime : NSObject
 
+-(id)initWithTime:(SMTime*)time;
+
 @property(nonatomic, assign) int hour;
 @property(nonatomic, assign) int minutes;
 
+-(int)differenceInMinutesFrom:(SMTime *)other;
 -(SMTime*)differenceFrom:(SMTime*)other;
 -(BOOL)isBetween:(SMTime*)first and:(SMTime*)second;
+
 @end

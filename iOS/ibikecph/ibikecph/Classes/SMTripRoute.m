@@ -92,7 +92,9 @@
                 SMSingleRouteInfo* singleRouteInfo= [[SMSingleRouteInfo alloc] init];//WithStart:stationLocation.location end:stationLocationDest.location transportationLine:transportationLine bikeDistance:bikeDistance];
                 singleRouteInfo.sourceStation= stationLocation;
                 singleRouteInfo.destStation= stationLocationDest;
-
+                
+                singleRouteInfo.type= transportationLine.type;
+                
                 singleRouteInfo.transportationLine= transportationLine;
                 singleRouteInfo.bikeDistance= bikeDistance;
                 singleRouteInfo.distance1= bikeDistanceToSourceStation;
@@ -106,7 +108,6 @@
         }
         
     }
-
 
     self.transportationRoutes= [transportationRoutesTemp sortedArrayUsingComparator:^NSComparisonResult(SMSingleRouteInfo* r1, SMSingleRouteInfo* r2){
         if(r1.bikeDistance < r2.bikeDistance)
