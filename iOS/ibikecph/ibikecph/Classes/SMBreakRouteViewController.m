@@ -213,7 +213,7 @@
                 if ([streetName isEqualToString:@""]) {
                     streetName = [NSString stringWithFormat:@"%f, %f", coord.latitude, coord.longitude];
                 }
-                [tCell.buttonAddressSource setTitle:streetName forState:UIControlStateNormal];
+                //[tCell.buttonAddressSource setTitle:streetName forState:UIControlStateNormal];
             }];
             
             coord = CLLocationCoordinate2DMake(self.destinationStation.latitude, self.destinationStation.longitude);
@@ -222,7 +222,7 @@
                 if ([streetName isEqualToString:@""]) {
                     streetName = [NSString stringWithFormat:@"%f, %f", coord.latitude, coord.longitude];
                 }
-                [tCell.buttonAddressDestination setTitle:streetName forState:UIControlStateNormal];
+                //[tCell.buttonAddressDestination setTitle:streetName forState:UIControlStateNormal];
             }];
             
 

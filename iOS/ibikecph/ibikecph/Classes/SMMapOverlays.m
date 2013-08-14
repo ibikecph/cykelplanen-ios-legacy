@@ -9,6 +9,7 @@
 #import "SMMapOverlays.h"
 #import "SMStationInfo.h"
 #import "SMAnnotation.h"
+#import "RMAnnotation.h"
 #import "SMTransportation.h"
 #import "SMTransportationLine.h"
 
@@ -178,6 +179,44 @@
             [self.metroMarkers addObject:annotation];
         }
     }
+
+- (void)drawPaths {
+    
+    self.stationMarkers = [[NSMutableArray alloc] init];
+    NSArray* lines= [SMTransportation instance].lines;
+    
+    //CLLocationCoordinate2D* array = malloc(sizeof(CLLocationCoordinate2D) * 100);
+    
+    NSArray* lineColors = @[[UIColor redColor], [UIColor greenColor], [UIColor yellowColor], [UIColor orangeColor], [UIColor cyanColor], [UIColor blackColor], [UIColor purpleColor]];
+    int lineIndex = 0;
+    
+    for( SMTransportationLine* transportationLine in lines){
+        
+        NSMutableArray* points = [[NSMutableArray alloc] init];
+        for(int i=0; i<transportationLine.stations.count; i++){
+            SMStationInfo* stationLocation= [transportationLine.stations objectAtIndex:i];
+            //[stationLocation fetchName];
+            CLLocation* loc = [[CLLocation alloc] initWithLatitude:stationLocation.latitude longitude:stationLocation.longitude];
+            [points addObject:loc];
+        }
+        
+        CLLocation* startLoc = [points objectAtIndex:0];
+        CLLocationCoordinate2D start = startLoc.coordinate;
+        RMAnnotation *calculatedPathAnnotation = [RMAnnotation annotationWithMapView:self.mpView coordinate:start andTitle:nil];
+        calculatedPathAnnotation.annotationType = @"path";
+        calculatedPathAnnotation.userInfo = @{
+                                          @"linePoints" : [NSArray arrayWithArray:points],
+                                          @"lineColor" : [lineColors objectAtIndex:lineIndex],
+                                          @"fillColor" : [UIColor clearColor],
+                                          @"lineWidth" : [NSNumber numberWithFloat:4.0f],
+                                          };
+    
+    [calculatedPathAnnotation setBoundingBoxFromLocations:[NSArray arrayWithArray:points]];
+        [self.mpView addAnnotation:calculatedPathAnnotation];
+        lineIndex++;
+        lineIndex = lineIndex % 7;
+    }
+}
 
 - (void)loadMarkers {
     
@@ -406,6 +445,9 @@
 }
 
 -(void)toggleMarkers{
+    
+    //[self drawPaths];
+    
     if ( self.metroMarkersVisible ) {
         [self.mpView addAnnotations:self.metroMarkers];
     } else {

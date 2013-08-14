@@ -166,7 +166,8 @@ typedef enum {
      */
     self.favorites = [@[] mutableCopy];
     [self setFavoritesList:[SMFavoritesUtil getFavorites]];
-
+    
+    [self.appDelegate.mapOverlays loadMarkers];
 
 #ifndef TESTING     
     [buttonAddFakeStation setHidden:YES];
@@ -225,7 +226,7 @@ typedef enum {
         self.appDelegate.mapOverlays = [[SMMapOverlays alloc] initWithMapView:nil];
     }
     [self.appDelegate.mapOverlays useMapView:self.mpView];
-    //[self.appDelegate.mapOverlays loadMarkers];
+    [self.appDelegate.mapOverlays loadMarkers];
     
 //    [self loadMarkers];
     
@@ -241,14 +242,14 @@ typedef enum {
 }
 
 -(void)onTapMenuBtn:(UITapGestureRecognizer*)tapGR {
-    if (centerView.frame.origin.x == 0) {
+    //if (centerView.frame.origin.x == 0) {
         
         [UIView animateWithDuration:0.2f animations:^{
             [menuView setAlpha:1.0];
         }];
         
         //[menuView setHidden:YES];
-    }
+    //}
     NSLog(@"onTap");
 }
 
@@ -262,14 +263,14 @@ typedef enum {
 }
 
 -(void)onTapOverlayMenuBtn:(UITapGestureRecognizer*)tapGR {
-    if (centerView.frame.origin.x == 0) {
+    //if (centerView.frame.origin.x == 0) {
         
         [UIView animateWithDuration:0.2f animations:^{
             [menuView setAlpha:0.0];
         }];
         
         //[menuView setHidden:YES];
-    }
+    //}
     NSLog(@"onTapOverlay");
 }
 
