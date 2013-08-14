@@ -9,6 +9,7 @@
 #import "SMRouteInfoViewController.h"
 #import "SMTransportation.h"
 #import "SMRouteTimeInfo.h"
+#import "SMTrain.h"
 @interface SMRouteInfoViewController ()
 
 @end
@@ -39,31 +40,84 @@
 
 -(void)filterLines{
     SMTransportation* transportation= [SMTransportation instance];
-
+    NSDate* date= [NSDate new];
     NSCalendar* cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *weekdayComponents =[cal components:NSWeekdayCalendarUnit fromDate:[NSDate new]];
+    NSDateComponents *weekdayComponents =[cal components:NSWeekdayCalendarUnit fromDate:date];
+    NSDateComponents *timeComponents =[cal components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:date];
     NSInteger weekday = [weekdayComponents weekday];
 
-    TravelTime time;
-    // determine current time (weekday / weekend / weekend night)
-    if([self isNightForDayAtIndex:6 components:weekdayComponents] || [self isNightForDayAtIndex:7 components:weekdayComponents]){
-        time= TravelTimeWeekendNight;
-    }else if(weekday>=1 && weekday<=5){
-        time= TravelTimeWeekDay;
-    }else if(weekday==6 || weekday==0){
-        time= TravelTimeWeekend;
-    }
-    
-    NSMutableArray* timesArr= [NSMutableArray new];
-//    NSMutableArray* lines= [NSMutableArray new];
-    NSDate* date= [NSDate new];
-    for(SMTransportationLine* line in transportation.lines){
-        if([line containsRouteFrom:self.singleRouteInfo.sourceStation to:self.singleRouteInfo.destStation forTime:time]){
-            [line addTimestampsForRouteInfo:self.singleRouteInfo array:timesArr currentTime:date time:time];
-        }
-    }
-    times= [NSArray arrayWithArray:timesArr];
+    int hour= [timeComponents hour];
+    int mins= [timeComponents minute];
 
+    if(self.singleRouteInfo.type == SMStationInfoTypeLocalTrain){
+        // temp
+        NSArray* trains= [SMTransportation instance].trains;
+        SMTime* cTime=[SMTime new];
+        cTime.hour= hour;
+        cTime.minutes= mins;
+        NSMutableArray* timesArray= [NSMutableArray new];
+        for(SMTrain* train in trains){
+            NSArray* array= [train routeTimestampsForSourceStation:self.singleRouteInfo.sourceStation destinationStation:self.singleRouteInfo.destStation forDay:weekday time:cTime];
+            if(array){
+                [timesArray addObjectsFromArray:array];
+            }
+        }
+        
+        [timesArray sortUsingComparator:^NSComparisonResult(SMRouteTimeInfo* t1, SMRouteTimeInfo* t2){
+            SMTime* src= [[SMTime alloc] initWithTime:t1.sourceTime];
+            SMTime* src2= [[SMTime alloc] initWithTime:t2.sourceTime];
+            
+            int diff1= [cTime differenceInMinutesFrom:src];
+            int diff2= [cTime differenceInMinutesFrom:src2];
+            if(diff1 > diff2)
+                return NSOrderedDescending;
+            else
+                return NSOrderedAscending;
+            
+        }];
+        
+        BOOL hasDuplicates= NO;
+        do{
+            hasDuplicates= NO;
+            for(int i=0; i<timesArray.count-1; i++){
+                
+                SMRouteTimeInfo* first= timesArray[i];
+                for(int j=i+1; j<timesArray.count; j++){
+                    SMRouteTimeInfo* second= timesArray[j];
+                    if([second.sourceTime isEqual:first.sourceTime]){
+                        [timesArray removeObject:second];
+                        hasDuplicates= YES;
+                        break;
+                    }
+                    if(hasDuplicates)
+                        break;
+                    
+                }
+            }
+        }while(hasDuplicates);
+        times= [NSArray arrayWithArray:timesArray];
+
+    }else{
+        TravelTime time;
+        // determine current time (weekday / weekend / weekend night)
+        if([self isNightForDayAtIndex:6 components:weekdayComponents] || [self isNightForDayAtIndex:7 components:weekdayComponents]){
+            time= TravelTimeWeekendNight;
+        }else if(weekday>=1 && weekday<=5){
+            time= TravelTimeWeekDay;
+        }else if(weekday==6 || weekday==0){
+            time= TravelTimeWeekend;
+        }
+        
+        NSMutableArray* timesArr= [NSMutableArray new];
+    //    NSMutableArray* lines= [NSMutableArray new];
+        
+        for(SMTransportationLine* line in transportation.lines){
+            if([line containsRouteFrom:self.singleRouteInfo.sourceStation to:self.singleRouteInfo.destStation forTime:time]){
+                [line addTimestampsForRouteInfo:self.singleRouteInfo array:timesArr currentTime:date time:time];
+            }
+        }
+        times= [NSArray arrayWithArray:timesArr];
+    }
     [self.tableView reloadData];
 
 

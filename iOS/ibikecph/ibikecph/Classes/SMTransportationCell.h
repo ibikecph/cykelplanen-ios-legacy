@@ -13,4 +13,6 @@
 @property(weak, nonatomic) IBOutlet UIButton* buttonAddressSource;
 @property(weak, nonatomic) IBOutlet UIButton* buttonAddressDestination;
 @property(weak, nonatomic) IBOutlet UIButton* buttonAddressInfo;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *sourceActivityIndicator;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *destinationActivityIndicator;
 @end

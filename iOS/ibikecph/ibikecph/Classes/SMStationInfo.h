@@ -13,7 +13,9 @@ typedef enum  {
     SMStationInfoTypeTrain = 1,
     SMStationInfoTypeMetro = 2,
     SMStationInfoTypeService = 3,
-    SMStationInfoTypeLocalTrain = 4
+
+    SMStationInfoTypeLocalTrain= 4
+
 } SMStationInfoType;
 
 @interface SMStationInfo : NSObject<NSCoding>

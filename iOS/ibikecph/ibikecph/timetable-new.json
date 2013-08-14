@@ -549,7 +549,7 @@
           },
           {
             "departure":"33 03",
-            "station":"Ølby 22 52"
+            "station":"Ølby"
           },
           {
             "departure":"37 07",
@@ -1522,8 +1522,10 @@
             "arrival":"18 28 38 48 58 08"
           },
           {
-            "departure":"13 23 33 43 53 03 Birkerød",
-            "station":"13 23 33 43 53 03"
+            
+            "departure":"13 23 33 43 53 03",
+            "station":"Birkerød",
+            "arrival":"13 23 33 43 53 03"
           },
           {
             "departure":"17 27 37 47 57 07",
@@ -1680,7 +1682,20 @@
       "last-station" : "Frederikssund",
 
       "weekdays" : {
-          
+                 "departure" : [
+                                { "start":"Farum", "stop":"København H", "night":"", "day":"6.51 8.51" },
+                                { "start":"Farum", "stop":"København H", "night":"", "day":"14.11 17.11" },
+                                { "start":"Østerport", "stop":"København H", "night":"", "day":"5.59 23.39" },
+                                { "start":"København H", "stop":"Frederikssund", "night":"", "day":"5.06 23.46" }
+                                ],
+                 
+                 "arrival" : [
+                              { "start":"Frederikssund", "stop":"København H", "night":"", "day":"5.16 23.56" },
+                              { "start":"København H", "stop":"Østerport", "night":"", "day":"5.41 23.21" },
+                              { "start":"København H", "stop":"Farum", "night":"", "day":"7.01 9.01" },
+                              { "start":"København H", "stop":"Farum", "night":"", "day":"14.21 17.21" }
+                              ]
+                 
         "data" : [
           {
             "departure":"11 31 51",

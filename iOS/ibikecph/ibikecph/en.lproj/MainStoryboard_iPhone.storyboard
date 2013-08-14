@@ -3662,6 +3662,11 @@ Cykelsuperstierne har overordnet fire kvalitetsmål. Kvalitetsmålene er udvikle
                                                         <action selector="onDestinationAddressButtonTap:" destination="mvk-ry-IY6" eventType="touchUpInside" id="3cC-HF-oUN"/>
                                                     </connections>
                                                 </button>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="white" id="6lI-Bu-eT0">
+                                                    <rect key="frame" x="160" y="105" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </activityIndicatorView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="n6p-di-lm1">
                                                     <rect key="frame" x="68" y="48" width="232" height="36"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -3689,6 +3694,11 @@ Cykelsuperstierne har overordnet fire kvalitetsmål. Kvalitetsmålene er udvikle
                                                     <rect key="frame" x="32" y="37" width="16" height="58"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="white" id="uKn-T7-S94">
+                                                    <rect key="frame" x="160" y="8" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -3696,6 +3706,8 @@ Cykelsuperstierne har overordnet fire kvalitetsmål. Kvalitetsmålene er udvikle
                                             <outlet property="buttonAddressDestination" destination="uKG-fY-IFy" id="GKh-f3-rJG"/>
                                             <outlet property="buttonAddressInfo" destination="n6p-di-lm1" id="tso-78-g3i"/>
                                             <outlet property="buttonAddressSource" destination="2iJ-pQ-GOW" id="eJg-aA-CEo"/>
+                                            <outlet property="destinationActivityIndicator" destination="6lI-Bu-eT0" id="JJu-r8-mJC"/>
+                                            <outlet property="sourceActivityIndicator" destination="uKn-T7-S94" id="hn8-UA-8Wx"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ButtonCell" rowHeight="80" id="Sct-qe-98z" customClass="SMBreakRouteButtonCell">

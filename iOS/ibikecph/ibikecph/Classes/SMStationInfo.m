@@ -88,7 +88,7 @@
 
 -(BOOL)isEqual:(id)object{
     SMStationInfo* other= object;
-    BOOL equal= [self.location isEqual:other.location];
+    BOOL equal= [self.location isEqual:other.location] || [self.name isEqualToString:other.name];
     return equal;
 }
 
@@ -103,9 +103,11 @@
         return @"service_pin";
     }else if(type==SMStationInfoTypeTrain){
         return @"station_icon";
+
     }else if (type==SMStationInfoTypeLocalTrain) {
         return @"local_train_icon";
     }
+
         return nil;
 }
 @end

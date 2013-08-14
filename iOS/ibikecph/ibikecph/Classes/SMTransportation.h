@@ -20,7 +20,8 @@ typedef enum{
 +(NSOperationQueue*) transportationQueue;
 
 @property(nonatomic, strong) NSArray* allStations;
-@property(nonatomic, strong) NSArray* lines;
+@property(nonatomic, strong) NSMutableArray* lines;
+@property(nonatomic, strong) NSArray* trains;
 @property(nonatomic, assign) BOOL loadingStations;
 -(void)save;
 -(void)validateAndSave;

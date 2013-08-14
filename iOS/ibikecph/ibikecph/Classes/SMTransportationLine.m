@@ -11,6 +11,7 @@
 #import "SMNode.h"
 #import "SMSingleRouteInfo.h"
 #import "SMRouteTimeInfo.h"
+
 #define KEY_STATIONS @"KeyStations"
 #define KEY_NAME @"KeyName"
 
@@ -102,6 +103,8 @@
     return _weekendNightLineData;
 }
 
+
+
 -(BOOL)containsRouteFrom:(SMStationInfo*)sourceStation to:(SMStationInfo*)destStation forTime:(TravelTime)time{
     BOOL hasSource= NO;
     BOOL hasDestination= NO;
@@ -118,15 +121,15 @@
     NSNumber* invalid= @-1;
     for (SMArrivalInfo* arrivalInfo in lineData.arrivalInfos) {
         if(arrivalInfo.station==sourceStation){
-
-            if(![arrivalInfo.arrivals containsObject:invalid]){
+            if(![arrivalInfo.arrivals containsObject:invalid] || ![arrivalInfo.departures containsObject:invalid]){
                 hasSource= YES;
             }
         }else if(arrivalInfo.station==destStation){
-            if(![arrivalInfo.arrivals containsObject:invalid]){
+            if(![arrivalInfo.arrivals containsObject:invalid] || ![arrivalInfo.departures containsObject:invalid]){
                 hasDestination= YES;
             }
         }
+        
     }
     
     return hasSource && hasDestination;

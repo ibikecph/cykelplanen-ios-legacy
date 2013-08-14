@@ -698,6 +698,11 @@
 		F6942F4117B0EECF00B6138A /* timetable.json in Resources */ = {isa = PBXBuildFile; fileRef = F6942F4017B0EECF00B6138A /* timetable.json */; };
 		F6942F4417B12E5400B6138A /* SMRouteTimeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F6942F4317B12E5400B6138A /* SMRouteTimeInfo.m */; };
 		F6942F4717B1436D00B6138A /* SMTime.m in Sources */ = {isa = PBXBuildFile; fileRef = F6942F4617B1436D00B6138A /* SMTime.m */; };
+		F694BEBE17B8EF3800545578 /* SMTrain.m in Sources */ = {isa = PBXBuildFile; fileRef = F694BEBD17B8EF3800545578 /* SMTrain.m */; };
+		F694BEC617B9012100545578 /* SMArrivalMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = F694BEC517B9012100545578 /* SMArrivalMapping.m */; };
+		F694BEC917B901EA00545578 /* SMArrivalInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = F694BEC817B901EA00545578 /* SMArrivalInformation.m */; };
+		F694BECC17B933C700545578 /* L.png in Resources */ = {isa = PBXBuildFile; fileRef = F694BECA17B933C700545578 /* L.png */; };
+		F694BECD17B933C700545578 /* L@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F694BECB17B933C700545578 /* L@2x.png */; };
 		F695285717B52E9900AF98D3 /* local-trains-timetable.json in Resources */ = {isa = PBXBuildFile; fileRef = F695285617B52E9900AF98D3 /* local-trains-timetable.json */; };
 		F695DC8217ABD5A900DD1A53 /* SMRouteInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F695DC8117ABD5A900DD1A53 /* SMRouteInfoViewController.m */; };
 		F695DC8A17ABE14100DD1A53 /* route_info_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F695DC8817ABE14100DD1A53 /* route_info_icon.png */; };
@@ -1544,6 +1549,14 @@
 		F6942F4317B12E5400B6138A /* SMRouteTimeInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRouteTimeInfo.m; sourceTree = "<group>"; };
 		F6942F4517B1436D00B6138A /* SMTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTime.h; sourceTree = "<group>"; };
 		F6942F4617B1436D00B6138A /* SMTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTime.m; sourceTree = "<group>"; };
+		F694BEBC17B8EF3800545578 /* SMTrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTrain.h; sourceTree = "<group>"; };
+		F694BEBD17B8EF3800545578 /* SMTrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTrain.m; sourceTree = "<group>"; };
+		F694BEC417B9012100545578 /* SMArrivalMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMArrivalMapping.h; sourceTree = "<group>"; };
+		F694BEC517B9012100545578 /* SMArrivalMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMArrivalMapping.m; sourceTree = "<group>"; };
+		F694BEC717B901EA00545578 /* SMArrivalInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMArrivalInformation.h; sourceTree = "<group>"; };
+		F694BEC817B901EA00545578 /* SMArrivalInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMArrivalInformation.m; sourceTree = "<group>"; };
+		F694BECA17B933C700545578 /* L.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = L.png; sourceTree = "<group>"; };
+		F694BECB17B933C700545578 /* L@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "L@2x.png"; sourceTree = "<group>"; };
 		F695285617B52E9900AF98D3 /* local-trains-timetable.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "local-trains-timetable.json"; sourceTree = "<group>"; };
 		F695DC8017ABD5A900DD1A53 /* SMRouteInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRouteInfoViewController.h; sourceTree = "<group>"; };
 		F695DC8117ABD5A900DD1A53 /* SMRouteInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRouteInfoViewController.m; sourceTree = "<group>"; };
@@ -1696,12 +1709,17 @@
 		4C365DE116F361FE00A836B3 /* images */ = {
 			isa = PBXGroup;
 			children = (
+
+				F694BECA17B933C700545578 /* L.png */,
+				F694BECB17B933C700545578 /* L@2x.png */,
+
 				7842B9D417BA2E81007B1604 /* local_train_icon.png */,
 				7842B9D517BA2E81007B1604 /* local_train_icon@2x.png */,
 				7842B9C717BA267A007B1604 /* l-gray.png */,
 				7842B9C817BA267A007B1604 /* l-gray@2x.png */,
 				7842B9C917BA267A007B1604 /* l-white.png */,
 				7842B9CA17BA267A007B1604 /* l-white@2x.png */,
+
 				F68C4BDA17AFADFE003A115E /* arrow_large.png */,
 				F68C4BDB17AFADFE003A115E /* arrow_large@2x.png */,
 				F68C4BDC17AFADFE003A115E /* arrow_small.png */,
@@ -2695,6 +2713,12 @@
 				F695EFCD178AA95000D3E83D /* SMSingleRouteInfo.m */,
 				F6942F4217B12E5400B6138A /* SMRouteTimeInfo.h */,
 				F6942F4317B12E5400B6138A /* SMRouteTimeInfo.m */,
+				F694BEBC17B8EF3800545578 /* SMTrain.h */,
+				F694BEBD17B8EF3800545578 /* SMTrain.m */,
+				F694BEC417B9012100545578 /* SMArrivalMapping.h */,
+				F694BEC517B9012100545578 /* SMArrivalMapping.m */,
+				F694BEC717B901EA00545578 /* SMArrivalInformation.h */,
+				F694BEC817B901EA00545578 /* SMArrivalInformation.m */,
 			);
 			name = route;
 			sourceTree = "<group>";
@@ -3414,12 +3438,17 @@
 				785ADC5217AA6CFB00BAADFA /* s-train-lines.json in Resources */,
 				785ADC5817AA988F00BAADFA /* stations.json in Resources */,
 				785ADC5A17AAA3B300BAADFA /* transportation-lines.json in Resources */,
+
+				F694BECC17B933C700545578 /* L.png in Resources */,
+				F694BECD17B933C700545578 /* L@2x.png in Resources */,
+
 				7842B9CB17BA267A007B1604 /* l-gray.png in Resources */,
 				7842B9CC17BA267A007B1604 /* l-gray@2x.png in Resources */,
 				7842B9CD17BA267A007B1604 /* l-white.png in Resources */,
 				7842B9CE17BA267A007B1604 /* l-white@2x.png in Resources */,
 				7842B9D617BA2E81007B1604 /* local_train_icon.png in Resources */,
 				7842B9D717BA2E81007B1604 /* local_train_icon@2x.png in Resources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3535,6 +3564,9 @@
 				F68C4BF117AFF73E003A115E /* SMLineData.m in Sources */,
 				F6942F4417B12E5400B6138A /* SMRouteTimeInfo.m in Sources */,
 				F6942F4717B1436D00B6138A /* SMTime.m in Sources */,
+				F694BEBE17B8EF3800545578 /* SMTrain.m in Sources */,
+				F694BEC617B9012100545578 /* SMArrivalMapping.m in Sources */,
+				F694BEC917B901EA00545578 /* SMArrivalInformation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

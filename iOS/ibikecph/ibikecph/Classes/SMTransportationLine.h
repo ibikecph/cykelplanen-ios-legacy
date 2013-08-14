@@ -11,6 +11,7 @@
 #import "SMLineData.h"
 #import "SMTransportation.h"
 #import "SMSingleRouteInfo.h"
+#import "SMStationInfo.h"
 
 @interface SMTransportationLine : NSObject<NSCoding>
 
@@ -25,8 +26,7 @@
 @property(nonatomic, strong) SMLineData* weekendLineData;
 @property(nonatomic, strong) SMLineData* weekendNightLineData;
 
-@property(nonatomic, strong, readonly) NSString* lineType;
-
+@property(nonatomic, assign) SMStationInfoType type;
 
 -(id) initWithFile:(NSString*)filePath;
 -(id)initWithRelation:(SMRelation*)pRelation;
