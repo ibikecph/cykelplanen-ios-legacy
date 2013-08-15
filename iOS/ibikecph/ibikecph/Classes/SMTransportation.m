@@ -516,14 +516,20 @@ static NSOperationQueue* stationQueue;
         NSMutableArray* allLines= [NSMutableArray new];
         NSMutableArray* lineClones;
 
-        lineClones= [self loadLinesFromDict:weekdaysDict allLines:allLines originalLine:transportationLine time:TravelTimeWeekDay];
-        [self loadDataFor:TravelTimeWeekDay lines:lineClones dict:weekdaysDict allLines:allLines];
-
-        lineClones= [self loadLinesFromDict:weekendsDict allLines:allLines originalLine:transportationLine time:TravelTimeWeekend];
-        [self loadDataFor:TravelTimeWeekend lines:lineClones dict:weekendsDict allLines:allLines];
+        if(weekdaysDict){
+            lineClones= [self loadLinesFromDict:weekdaysDict allLines:allLines originalLine:transportationLine time:TravelTimeWeekDay];
+            [self loadDataFor:TravelTimeWeekDay lines:lineClones dict:weekdaysDict allLines:allLines];
+        }
         
-        lineClones= [self loadLinesFromDict:weekendNightDict allLines:allLines originalLine:transportationLine time:TravelTimeWeekendNight];
-        [self loadDataFor:TravelTimeWeekendNight lines:lineClones dict:weekendNightDict allLines:allLines];
+        if(weekendsDict) {
+            lineClones= [self loadLinesFromDict:weekendsDict allLines:allLines originalLine:transportationLine time:TravelTimeWeekend];
+            [self loadDataFor:TravelTimeWeekend lines:lineClones dict:weekendsDict allLines:allLines];
+        }
+        
+        if(weekendNightDict){
+            lineClones= [self loadLinesFromDict:weekendNightDict allLines:allLines originalLine:transportationLine time:TravelTimeWeekendNight];
+            [self loadDataFor:TravelTimeWeekendNight lines:lineClones dict:weekendNightDict allLines:allLines];
+        }
     }
 }
 
@@ -624,7 +630,7 @@ static NSOperationQueue* stationQueue;
 
 -(void)loadDataFor:(TravelTime)time lines:(NSArray*)lineClones dict:(NSDictionary*)d allLines:(NSMutableArray*)allLines{
     NSArray* data= [d objectForKey:@"data"];
-    
+    NSAssert(data, @"Data can't be nil.");
     for(NSDictionary* stationDict in data){
         NSString* departureStr= [stationDict objectForKey:@"departure"];
         NSString* arrivalStr= [stationDict objectForKey:@"arrival"];
