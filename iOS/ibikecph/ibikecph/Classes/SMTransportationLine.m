@@ -121,13 +121,34 @@
     NSNumber* invalid= @-1;
     for (SMArrivalInfo* arrivalInfo in lineData.arrivalInfos) {
         if(arrivalInfo.station==sourceStation){
-            if(![arrivalInfo.arrivals containsObject:invalid] || ![arrivalInfo.departures containsObject:invalid]){
-                hasSource= YES;
+            for(NSNumber* num in arrivalInfo.arrivals){
+                if(![num isEqual:invalid]){
+                    hasSource= YES;
+                    break;
+                }
+            }
+            for(NSNumber* num in arrivalInfo.departures){
+                if(![num isEqual:invalid]){
+                    hasSource= YES;
+                    break;
+                }
             }
         }else if(arrivalInfo.station==destStation){
-            if(![arrivalInfo.arrivals containsObject:invalid] || ![arrivalInfo.departures containsObject:invalid]){
-                hasDestination= YES;
+
+            for(NSNumber* num in arrivalInfo.arrivals){
+                if(![num isEqual:invalid]){
+                    hasDestination= YES;
+                    break;
+                }
             }
+            for(NSNumber* num in arrivalInfo.departures){
+                if(![num isEqual:invalid]){
+                    hasDestination= YES;
+                    break;
+                }
+            }
+
+            return hasDestination;
         }
         
     }
@@ -157,7 +178,7 @@
     }
     for (SMArrivalInfo* arrivalInfo in lineData.arrivalInfos) {
         if(arrivalInfo.station==singleRouteInfo.sourceStation){
-
+            NSArray* destArr= (departure)?arrivalInfo.departures:arrivalInfo.arrivals;
             int index= -1;
             int i=0;
             int num= 0;
@@ -169,14 +190,13 @@
             
             do{
                 num= ((NSNumber*)[srcArr objectAtIndex:i]).intValue;
-                if(num<((NSNumber*)srcArr[indexOfSmallestNumberInArray]).intValue){
+                if(num<((NSNumber*)srcArr[indexOfSmallestNumberInArray]).intValue && ![destArr[i] isEqual:@-1]){
                     // Find the smallest minute in an hour. Used if we don't find a single index. For example it's 11:59 atm. and minutes are [2, 12, ..., 52].
                     // We wont find a minute that is > 59. Therefore we take the smallest value - and it is 2.
                     indexOfSmallestNumberInArray= i;
                 }
-                
 
-                if(num > mins && num < minimumMinute){
+                if(num > mins && num < minimumMinute && ![destArr[i] isEqual:@-1]){
                     minimumMinute= num;
                     index= i;
                 }
@@ -190,10 +210,10 @@
             
             int hr= hour;
             int cHour= hr;
-            for (int j=0; j<3; j++) {
+            int count= 0;
+            for (int j=0; j<6; j++) {
                 SMRouteTimeInfo* timeInfo= [SMRouteTimeInfo new];
                 timeInfo.routeInfo= singleRouteInfo;
-
                 
                 num= ((NSNumber*)[srcArr objectAtIndex:(j+index)%srcArr.count]).intValue;
                 
@@ -226,12 +246,17 @@
                         break;
                     }
                 }
-
-                [arr addObject:timeInfo];
                 
+                if(timeInfo.destTime.minutes>=0  && timeInfo.sourceTime.minutes>=0){
+                    [arr addObject:timeInfo];
+                    count++;
+                }
+                
+                if(count==3)
+                    break;
             }
 
         }
     }
-   }
+}
 @end
