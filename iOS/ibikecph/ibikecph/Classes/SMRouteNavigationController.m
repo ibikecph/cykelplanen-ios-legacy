@@ -482,7 +482,16 @@ typedef enum {
     
     [routeOverview setFrame:instructionsView.frame];
     
-    [overviewTimeDistance setText:[NSString stringWithFormat:@"%@, via %@", formatDistance(self.route.estimatedRouteDistance), self.route.longestStreet]];
+    //[overviewTimeDistance setText:[NSString stringWithFormat:@"%@, via %@", formatDistance(self.route.estimatedRouteDistance), self.route.longestStreet]];
+    if ( [self.brokenRoute.brokenRoutes count] > 1 ) {
+        float brokenRouteDistance = ((SMRoute*)[self.brokenRoute.brokenRoutes objectAtIndex:0]).estimatedRouteDistance;
+        brokenRouteDistance += ((SMRoute*)[self.brokenRoute.brokenRoutes objectAtIndex:1]).estimatedRouteDistance;
+        [overviewTimeDistance setText:[NSString stringWithFormat:@"%@, via %@", formatDistance(brokenRouteDistance), self.brokenRoute.brokenRouteInfo.sourceStation.name]];
+    } else {
+        [overviewTimeDistance setText:[NSString stringWithFormat:@"%@, via %@", formatDistance(self.route.estimatedRouteDistance), self.route.longestStreet]];
+    }
+    
+    //self.brokenRoute.brokenRouteInfo.sourceStation.
     
     NSArray * a = [self.destination componentsSeparatedByString:@","];
     NSString* streetName= [a objectAtIndex:0];

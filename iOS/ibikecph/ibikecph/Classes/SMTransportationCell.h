@@ -15,4 +15,6 @@
 @property(weak, nonatomic) IBOutlet UIButton* buttonAddressInfo;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *sourceActivityIndicator;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *destinationActivityIndicator;
+@property (weak, nonatomic) IBOutlet UIImageView *sourceStationIcon;
+@property (weak, nonatomic) IBOutlet UIImageView *destStationIcon;
 @end

@@ -146,12 +146,21 @@
         CGRect newFrame = header.routeDistance.frame;
         newFrame.origin.x = frame.origin.x + frame.size.width;
         
+        float breakRouteDistance = startDistance + endDistance;
+        //self.appDelegate.breakRouteDistance = breakRouteDistance;
+        float tripDistance = self.tripRoute.fullRoute.estimatedRouteDistance;
+        if ( breakRouteDistance < self.tripRoute.fullRoute.estimatedRouteDistance && breakRouteDistance > 0 ) {
+            tripDistance = breakRouteDistance;
+        }
+        
         NSString* routeDistanceFormat = @" %4.1f km";
-        if (self.tripRoute.fullRoute.estimatedRouteDistance / 1000 < 10) {
+        if (tripDistance / 1000 < 10) {
             routeDistanceFormat = @"%4.1f km";
         }
-        NSString* routeDistance = [NSString stringWithFormat:routeDistanceFormat, self.tripRoute.fullRoute.estimatedRouteDistance / 1000.0];
         
+        NSLog(@"Break route distance: %f", breakRouteDistance);
+        NSString* routeDistance = [NSString stringWithFormat:routeDistanceFormat, tripDistance / 1000.0];
+              
         [header.routeDistance setText:routeDistance];
         [header.routeDistance setFrame:newFrame];
         return header;
@@ -180,13 +189,19 @@
             SMBikeWaypointCell* wpCell= [tableView dequeueReusableCellWithIdentifier:CellId];
             [wpCell setupWithString:self.sourceName];
             
-            float fDistance = startDistance / 1000.0;;
+            float fDistance = startDistance / 1000.0;
             int fTime = startTime  / 60;
             NSString* distance= @"";
             if(fDistance!=0 || fTime!=0){
                 distance= [NSString stringWithFormat:@"%4.1f km  %d min.", fDistance, fTime];
             }
             [wpCell.labelDistance setText:distance];
+            
+            NSString* strAddress = @"address";
+            
+                        
+            //[wpCell.labelAddressBottom setText:strAddress];
+            [wpCell.labelAddressBottom setText:self.sourceAddress];
             
             return wpCell;
         }
@@ -220,10 +235,34 @@
                 //[tCell.buttonAddressDestination setTitle:streetName forState:UIControlStateNormal];
             }];
 //=======
+            
+            UIImage* sourceIcon = [UIImage imageNamed:@"metro_icon.png"];
+            if (self.sourceStation.type == SMStationInfoTypeTrain) {
+                sourceIcon = [UIImage imageNamed:@"station_icon.png"];
+            } else if (self.sourceStation.type == SMStationInfoTypeMetro) {
+                sourceIcon = [UIImage imageNamed:@"metro_logo_pin.png"];
+            } else if (self.sourceStation.type == SMStationInfoTypeLocalTrain) {
+                sourceIcon = [UIImage imageNamed:@"local_train_icon.png"];
+            } else if (self.sourceStation.type == SMStationInfoTypeUndefined) {
+                sourceIcon = [UIImage imageNamed:@"metro_icon.png"];
+            }
+            
+            UIImage* destIcon = nil;
+            if (self.destinationStation.type == SMStationInfoTypeTrain) {
+                destIcon = [UIImage imageNamed:@"station_icon.png"];
+            } else if (self.sourceStation.type == SMStationInfoTypeMetro) {
+                destIcon = [UIImage imageNamed:@"metro_logo_pin.png"];
+            } else if (self.sourceStation.type == SMStationInfoTypeLocalTrain) {
+                destIcon = [UIImage imageNamed:@"local_train_icon.png"];
+            } else if (self.sourceStation.type == SMStationInfoTypeUndefined) {
+                destIcon = [UIImage imageNamed:@"metro_icon.png"];
+            }
+            
             if(self.sourceStation){
                 [tCell.buttonAddressSource setEnabled:YES];
                 [tCell.buttonAddressSource setTitle:self.sourceStation.name forState:UIControlStateNormal];
                 [tCell.sourceActivityIndicator setHidden:YES];
+                [tCell.sourceStationIcon setImage:sourceIcon];
             }else{
                 [tCell.buttonAddressSource setEnabled:NO];
                 [tCell.buttonAddressSource setTitle:@"" forState:UIControlStateNormal];
@@ -235,6 +274,7 @@
                 [tCell.buttonAddressDestination setEnabled:YES];
                 [tCell.buttonAddressDestination setTitle:self.destinationStation.name forState:UIControlStateNormal];
                 [tCell.destinationActivityIndicator setHidden:YES];
+                [tCell.destStationIcon setImage:destIcon];
             }else{
                 [tCell.buttonAddressDestination setEnabled:NO];
                 [tCell.buttonAddressDestination setTitle:@"" forState:UIControlStateNormal];
@@ -262,6 +302,8 @@
                 distance= @"";
             }
             [wpCell.labelDistance setText:distance];
+            //[wpCell.labelAddressBottom setText:@"Address"];
+            [wpCell.labelAddressBottom setText:self.destinationAddress];
             
             return wpCell;
             
@@ -346,6 +388,13 @@
     return info.name;
 }
 
+- (void)didFinishBreakingRoute:(SMTripRoute*)route{
+    [self.tableView reloadData];
+    [SMUser user].tripRoute= self.tripRoute;
+    [SMUser user].route= self.fullRoute;
+    [self dismiss];
+}
+
 -(void)addressView:(SMAddressPickerView*)pAddressPickerView didSelectItemAtIndex:(int)index forAddressType:(AddressType)pAddressType{
     NSAssert(pAddressType!=AddressTypeUndefined, @"Address type is undefined");
     if(pAddressType==AddressTypeDestination){
@@ -366,14 +415,6 @@
 #pragma mark - break route delegate
 
 -(void)didStartBreakingRoute:(SMTripRoute*)route{}
-
--(void)didFinishBreakingRoute:(SMTripRoute*)route{
-    [self.tableView reloadData];
-    [SMUser user].tripRoute= self.tripRoute;
-    [SMUser user].route= self.fullRoute;
-    [self dismiss];
-    
-}
 
 -(void)didFailBreakingRoute:(SMTripRoute*)route{}
 

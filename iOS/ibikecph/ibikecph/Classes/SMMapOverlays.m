@@ -294,7 +294,6 @@
     }
     
     [self toggleMarkers];
-
 }
 
 - (void)oldLoadMarkers {
@@ -446,7 +445,7 @@
 
 -(void)toggleMarkers{
     
-    //[self drawPaths];
+//    [self drawPaths];
     
     if ( self.metroMarkersVisible ) {
         [self.mpView addAnnotations:self.metroMarkers];
