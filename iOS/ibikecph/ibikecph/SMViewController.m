@@ -65,6 +65,9 @@ typedef enum {
     FavoriteType currentFav;
     
     CLLocation* lastLocation;
+    
+    CLLocation* cStart;
+    CLLocation* cEnd;
 }
 
 @property (nonatomic, strong) SMContacts *contacts;
@@ -1831,8 +1834,8 @@ typedef enum {
         [fadeView setAlpha:1.0f];
     }];
     
-    CLLocation * cEnd = [[CLLocation alloc] initWithLatitude:annotation.routingCoordinate.coordinate.latitude longitude:annotation.routingCoordinate.coordinate.longitude];
-    CLLocation * cStart = [[CLLocation alloc] initWithLatitude:[SMLocationManager instance].lastValidLocation.coordinate.latitude longitude:[SMLocationManager instance].lastValidLocation.coordinate.longitude];
+    cEnd = [[CLLocation alloc] initWithLatitude:annotation.routingCoordinate.coordinate.latitude longitude:annotation.routingCoordinate.coordinate.longitude];
+    cStart = [[CLLocation alloc] initWithLatitude:[SMLocationManager instance].lastValidLocation.coordinate.latitude longitude:[SMLocationManager instance].lastValidLocation.coordinate.longitude];
     /**
      * remove this if we need to find the closest point
      */
@@ -1914,7 +1917,27 @@ typedef enum {
             [av show];
         } else {
             [self findRouteFrom:self.startLoc to:self.endLoc fromAddress:self.startName toAddress:self.endName withJSON:jsonRoot];
+            NSDictionary* dict= jsonRoot;
+   
+            NSDictionary* routeDict= [dict objectForKey:@"route_summary"];
+            NSString* name= [routeDict objectForKey:@"end_point"];
+            NSString* address= [routeDict objectForKey:@"end_point"];
+
+            NSDictionary * d = @{
+                                 @"name" : name,
+                                 @"address" : address,
+                                 @"startDate" : [NSDate date],
+                                 @"endDate" : [NSDate date],
+                                 @"source" : @"searchHistory",
+                                 @"subsource" : @"",
+                                 @"lat" : [NSNumber numberWithDouble:cEnd.coordinate.latitude],
+                                 @"long" : [NSNumber numberWithDouble:cEnd.coordinate.longitude],
+                                 @"order" : @1
+                                 };
+            [SMSearchHistory saveToSearchHistory:d];
+
             [self dismissViewControllerAnimated:YES completion:^{
+               
             }];
             
         }
