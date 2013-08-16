@@ -1141,6 +1141,7 @@ typedef enum {
         }
         RMMarker * rm = [[RMMarker alloc] initWithUIImage:annotation.annotationIcon anchorPoint:annotation.anchorPoint];
         [rm setZPosition:z];
+        
         return rm;
     }
     
