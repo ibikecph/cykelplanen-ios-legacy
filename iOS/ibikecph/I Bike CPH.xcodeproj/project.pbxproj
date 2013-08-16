@@ -1709,17 +1709,14 @@
 		4C365DE116F361FE00A836B3 /* images */ = {
 			isa = PBXGroup;
 			children = (
-
 				F694BECA17B933C700545578 /* L.png */,
 				F694BECB17B933C700545578 /* L@2x.png */,
-
 				7842B9D417BA2E81007B1604 /* local_train_icon.png */,
 				7842B9D517BA2E81007B1604 /* local_train_icon@2x.png */,
 				7842B9C717BA267A007B1604 /* l-gray.png */,
 				7842B9C817BA267A007B1604 /* l-gray@2x.png */,
 				7842B9C917BA267A007B1604 /* l-white.png */,
 				7842B9CA17BA267A007B1604 /* l-white@2x.png */,
-
 				F68C4BDA17AFADFE003A115E /* arrow_large.png */,
 				F68C4BDB17AFADFE003A115E /* arrow_large@2x.png */,
 				F68C4BDC17AFADFE003A115E /* arrow_small.png */,
@@ -3438,17 +3435,14 @@
 				785ADC5217AA6CFB00BAADFA /* s-train-lines.json in Resources */,
 				785ADC5817AA988F00BAADFA /* stations.json in Resources */,
 				785ADC5A17AAA3B300BAADFA /* transportation-lines.json in Resources */,
-
 				F694BECC17B933C700545578 /* L.png in Resources */,
 				F694BECD17B933C700545578 /* L@2x.png in Resources */,
-
 				7842B9CB17BA267A007B1604 /* l-gray.png in Resources */,
 				7842B9CC17BA267A007B1604 /* l-gray@2x.png in Resources */,
 				7842B9CD17BA267A007B1604 /* l-white.png in Resources */,
 				7842B9CE17BA267A007B1604 /* l-white@2x.png in Resources */,
 				7842B9D617BA2E81007B1604 /* local_train_icon.png in Resources */,
 				7842B9D717BA2E81007B1604 /* local_train_icon@2x.png in Resources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3653,8 +3647,8 @@
 			baseConfigurationReference = 4C48641216F0994600F01A7C /* ibikecph.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nikola Markovic (EE62QX6H34)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nikola Markovic (EE62QX6H34)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ibikecph/Libs/FacebookSDK\"",
@@ -3682,8 +3676,8 @@
 					"\"$(SRCROOT)/ibikecph/Libs/GA v2.0b4\"/**",
 				);
 				PRODUCT_NAME = "I Bike CPH";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "C579CE23-B997-43B2-8B11-5D12331EBBC1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C579CE23-B997-43B2-8B11-5D12331EBBC1";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

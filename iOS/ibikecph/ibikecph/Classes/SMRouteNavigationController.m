@@ -127,11 +127,13 @@ typedef enum {
     self.directionsShownCount = -1;
 
     [SMLocationManager instance];
+
+    self.mpView.contentScaleFactor= 0.5;
     
     [self.mpView setTileSource:TILE_SOURCE];
     [self.mpView setDelegate:self];
     [self.mpView setMaxZoom:MAX_MAP_ZOOM];
-    
+
     [self setDirectionsState:directionsHidden];
     
     [self.mpView setUserTrackingMode:RMUserTrackingModeNone];
@@ -229,6 +231,8 @@ typedef enum {
         [labelTimeLeft setTextColor:[UIColor darkGrayColor]];
     }
     
+    
+    
     CGRect rect= self.mapFade.frame;
     rect.size.height= 0;
     self.mapFade.frame= rect;
@@ -242,8 +246,11 @@ typedef enum {
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [tblDirections reloadData];
+    
 
+    
+    [tblDirections reloadData];
+    
     if (self.currentlyRouting) {
         [UIApplication sharedApplication].idleTimerDisabled = YES;
     } else {
@@ -722,6 +729,7 @@ typedef enum {
 }
 
 - (IBAction)onBreakRoute:(id)sender {
+
     if ([SMLocationManager instance].hasValidLocation == NO) {
         UIAlertView * av = [[UIAlertView alloc] initWithTitle:nil message:translateString(@"error_no_gps_location") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
         [av show];
@@ -912,13 +920,14 @@ typedef enum {
 //    self.pathVisible= YES;
     RMAnnotation *calculatedPathAnnotation = [RMAnnotation annotationWithMapView:self.mpView coordinate:[r getStartLocation].coordinate andTitle:nil];
     calculatedPathAnnotation.annotationType = @"path";
+
     calculatedPathAnnotation.userInfo = @{
                                          @"linePoints" : [NSArray arrayWithArray:r.waypoints],
                                          @"lineColor" : PATH_COLOR,
                                          @"fillColor" : [UIColor clearColor],
                                          @"lineWidth" : [NSNumber numberWithFloat:10.0f],
                                          };
-    
+
     [calculatedPathAnnotation setBoundingBoxFromLocations:[NSArray arrayWithArray:r.waypoints]];
     [self.mpView addAnnotation:calculatedPathAnnotation];
     return @{
@@ -1132,6 +1141,7 @@ typedef enum {
         }
         RMMarker * rm = [[RMMarker alloc] initWithUIImage:annotation.annotationIcon anchorPoint:annotation.anchorPoint];
         [rm setZPosition:z];
+
         return rm;
     }
     
@@ -1175,8 +1185,6 @@ typedef enum {
            NSLog(@"Next route");
            self.route= nextRoute;
            self.route.delegate= self;
-           
-//           [self startRouting];
        }
    }
 }

@@ -176,6 +176,7 @@
     if([self.stations indexOfObject:singleRouteInfo.sourceStation]<[self.stations indexOfObject:singleRouteInfo.destStation]){
         departure= YES;
     }
+    
     for (SMArrivalInfo* arrivalInfo in lineData.arrivalInfos) {
         if(arrivalInfo.station==singleRouteInfo.sourceStation){
             NSArray* destArr= (departure)?arrivalInfo.departures:arrivalInfo.arrivals;
