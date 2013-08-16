@@ -492,6 +492,7 @@
 		7842B9CE17BA267A007B1604 /* l-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7842B9CA17BA267A007B1604 /* l-white@2x.png */; };
 		7842B9D617BA2E81007B1604 /* local_train_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7842B9D417BA2E81007B1604 /* local_train_icon.png */; };
 		7842B9D717BA2E81007B1604 /* local_train_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7842B9D517BA2E81007B1604 /* local_train_icon@2x.png */; };
+		78551AAE17BE55D9003184BE /* farum-route.json in Resources */ = {isa = PBXBuildFile; fileRef = 78551AAD17BE55D9003184BE /* farum-route.json */; };
 		785ADC4B17AA632F00BAADFA /* s-train-stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 785ADC4A17AA632F00BAADFA /* s-train-stations.json */; };
 		785ADC5217AA6CFB00BAADFA /* s-train-lines.json in Resources */ = {isa = PBXBuildFile; fileRef = 785ADC5117AA6CFB00BAADFA /* s-train-lines.json */; };
 		785ADC5817AA988F00BAADFA /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 785ADC5717AA988F00BAADFA /* stations.json */; };
@@ -584,6 +585,7 @@
 		78C537B7178D898E00F6BAD3 /* sidemenu_handle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C537B3178D898E00F6BAD3 /* sidemenu_handle@2x.png */; };
 		78C537BF178D9EF700F6BAD3 /* tableViewBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C537BD178D9EF700F6BAD3 /* tableViewBG.png */; };
 		78C537C0178D9EF700F6BAD3 /* tableViewBG@2x copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C537BE178D9EF700F6BAD3 /* tableViewBG@2x copy.png */; };
+		78CD26EF17BD2E0300D1DDCB /* metro_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 78CD26EE17BD2E0300D1DDCB /* metro_icon.png */; };
 		78D3E69417969C85006D0782 /* break_route_info_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D3E69217969C85006D0782 /* break_route_info_btn.png */; };
 		78D3E69517969C85006D0782 /* break_route_info_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D3E69317969C85006D0782 /* break_route_info_btn@2x.png */; };
 		78D3E6981796A426006D0782 /* normalDirectionsShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D3E6961796A426006D0782 /* normalDirectionsShadow.png */; };
@@ -1302,6 +1304,7 @@
 		7842B9CA17BA267A007B1604 /* l-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "l-white@2x.png"; sourceTree = "<group>"; };
 		7842B9D417BA2E81007B1604 /* local_train_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = local_train_icon.png; sourceTree = "<group>"; };
 		7842B9D517BA2E81007B1604 /* local_train_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "local_train_icon@2x.png"; sourceTree = "<group>"; };
+		78551AAD17BE55D9003184BE /* farum-route.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "farum-route.json"; sourceTree = "<group>"; };
 		785ADC4A17AA632F00BAADFA /* s-train-stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "s-train-stations.json"; sourceTree = "<group>"; };
 		785ADC5117AA6CFB00BAADFA /* s-train-lines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "s-train-lines.json"; sourceTree = "<group>"; };
 		785ADC5717AA988F00BAADFA /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
@@ -1397,6 +1400,7 @@
 		78C537B3178D898E00F6BAD3 /* sidemenu_handle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sidemenu_handle@2x.png"; sourceTree = "<group>"; };
 		78C537BD178D9EF700F6BAD3 /* tableViewBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableViewBG.png; sourceTree = "<group>"; };
 		78C537BE178D9EF700F6BAD3 /* tableViewBG@2x copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableViewBG@2x copy.png"; sourceTree = "<group>"; };
+		78CD26EE17BD2E0300D1DDCB /* metro_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metro_icon.png; sourceTree = "<group>"; };
 		78D3E69217969C85006D0782 /* break_route_info_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = break_route_info_btn.png; sourceTree = "<group>"; };
 		78D3E69317969C85006D0782 /* break_route_info_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "break_route_info_btn@2x.png"; sourceTree = "<group>"; };
 		78D3E6961796A426006D0782 /* normalDirectionsShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = normalDirectionsShadow.png; sourceTree = "<group>"; };
@@ -1709,6 +1713,9 @@
 		4C365DE116F361FE00A836B3 /* images */ = {
 			isa = PBXGroup;
 			children = (
+
+				78CD26EE17BD2E0300D1DDCB /* metro_icon.png */,
+
 				F694BECA17B933C700545578 /* L.png */,
 				F694BECB17B933C700545578 /* L@2x.png */,
 				7842B9D417BA2E81007B1604 /* local_train_icon.png */,
@@ -2302,6 +2309,7 @@
 		4C73D21516AEDCDA00AED42A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				78551AAD17BE55D9003184BE /* farum-route.json */,
 				F695285617B52E9900AF98D3 /* local-trains-timetable.json */,
 				F68E4C1E17B2404500CFC798 /* timetable-new.json */,
 				F6942F4017B0EECF00B6138A /* timetable.json */,
@@ -3443,6 +3451,10 @@
 				7842B9CE17BA267A007B1604 /* l-white@2x.png in Resources */,
 				7842B9D617BA2E81007B1604 /* local_train_icon.png in Resources */,
 				7842B9D717BA2E81007B1604 /* local_train_icon@2x.png in Resources */,
+
+				78CD26EF17BD2E0300D1DDCB /* metro_icon.png in Resources */,
+				78551AAE17BE55D9003184BE /* farum-route.json in Resources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

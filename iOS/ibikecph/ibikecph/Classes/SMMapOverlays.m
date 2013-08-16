@@ -22,6 +22,8 @@
 @property (nonatomic, strong) NSMutableArray* serviceMarkers;
 @property (nonatomic, strong) NSMutableArray* stationMarkers;
 @property (nonatomic, strong) NSMutableArray* localTrainMarkers;
+@property (nonatomic, strong) NSMutableArray* bikeRouteCoords;
+@property (nonatomic, strong) NSMutableArray* bikeRouteAnnotations;
 @end
 
 @implementation SMMapOverlays
@@ -30,10 +32,14 @@
     if(self) {
         self.mpView = mapView;
         
-        self.pathVisible = YES;
+        self.pathVisible = NO;
         self.serviceMarkersVisible = NO;
         self.stationMarkersVisible = NO;
         self.metroMarkersVisible = NO;
+        self.localTrainMarkersVisible = NO;
+        
+        self.bikeRouteCoords = nil;
+        self.bikeRouteAnnotations = [[NSMutableArray alloc] init];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(loadMarkers)
@@ -81,6 +87,54 @@
         NSLog(@"{ \"name\" : \"%@\", \"stations\" : [ %@ ] }%@", [line objectForKey:@"name"], strIndices, [line isEqual:lines.lastObject] ? @"" : @",");
     }
 #endif
+}
+
+- (void)loadBikeRouteData {
+    
+    NSString* filePath = [[NSBundle mainBundle] pathForResource:@"farum-route" ofType:@"json"];
+    NSError* error;
+    NSData* data = [NSData dataWithContentsOfFile:filePath];
+    NSDictionary* dict = nil;
+    if ( data ) {
+        dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+        if ( error ) {
+            NSLog(@"ERROR parsing %@: %@", filePath, error);
+        }
+    }
+    NSArray* lines = [dict valueForKey:@"coordinates"];
+    for (NSArray* line in lines) {
+        NSMutableArray* polyLine = [[NSMutableArray alloc] init];
+        int index = 0;
+        for (NSArray* coords in line) {
+            float lat = [[coords objectAtIndex:0] floatValue];
+            float lon = [[coords objectAtIndex:1] floatValue];
+            
+//            NSLog(@"%f, %f", lat, lon);
+            CLLocationCoordinate2D point = CLLocationCoordinate2DMake(lon, lat);
+//            CLLocation* location = [CLLocation alloc]
+            CLLocation* location = [[CLLocation alloc] initWithLatitude:lon longitude:lat];
+            [polyLine addObject:location];
+            
+        }
+        
+        CLLocation* startLoc = [polyLine objectAtIndex:0];
+        CLLocationCoordinate2D start = startLoc.coordinate;
+        RMAnnotation *calculatedPathAnnotation = [RMAnnotation annotationWithMapView:self.mpView coordinate:start andTitle:nil];
+        calculatedPathAnnotation.annotationType = @"path";
+        calculatedPathAnnotation.userInfo = @{
+                                              @"linePoints" : [NSArray arrayWithArray:polyLine],
+                                              @"lineColor" : [UIColor colorWithRed:245.0/255.0 green:130.0/255.0 blue:32.0/255.0 alpha:0.5],
+                                              @"fillColor" : [UIColor clearColor],
+                                              @"lineWidth" : [NSNumber numberWithFloat:4.0f],
+                                              };
+        
+        [calculatedPathAnnotation setBoundingBoxFromLocations:[NSArray arrayWithArray:polyLine]];
+        //[self.mpView addAnnotation:calculatedPathAnnotation];
+        index++;
+        
+        [self.bikeRouteAnnotations addObject:calculatedPathAnnotation];
+        
+        }
 }
 
 - (NSArray*)parseStationData {
@@ -220,6 +274,9 @@
 
 - (void)loadMarkers {
     
+    // Load bike route data
+    [self loadBikeRouteData];
+    
     self.stationMarkers = [[NSMutableArray alloc] init];
     self.serviceMarkers = [[NSMutableArray alloc] init];
     self.localTrainMarkers = [[NSMutableArray alloc] init];
@@ -294,7 +351,6 @@
     }
     
     [self toggleMarkers];
-
 }
 
 - (void)oldLoadMarkers {
@@ -446,7 +502,13 @@
 
 -(void)toggleMarkers{
     
-    //[self drawPaths];
+//    [self drawPaths];
+    
+    if ( self.pathVisible ) {
+        [self.mpView addAnnotations:self.bikeRouteAnnotations];
+    } else {
+        [self.mpView removeAnnotations:self.bikeRouteAnnotations];
+    }
     
     if ( self.metroMarkersVisible ) {
         [self.mpView addAnnotations:self.metroMarkers];

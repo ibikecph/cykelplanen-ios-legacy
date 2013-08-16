@@ -671,12 +671,64 @@
     },
     { 
       "name":"Den Grønne Sti, ved Howitzvej", 
-      "coords:":"12.5228 55.6806",
+      "coords":"12.5228 55.6806",
       "line":"0", 
       "type":"service"
-
     },
-
+    {
+      "name":"Service station",
+      "coords":"12.4652 55.7349",
+      "line":"0",
+      "type":"service"
+    },
+    {
+      "name":"Service station",
+      "coords":"12.4516 55.7457",
+      "line":"0",
+      "type":"service"
+    },
+    {
+      "name":"Service station",
+      "coords":"12.4365 55.7629",
+      "line":"0",
+      "type":"service"
+    },
+    {
+      "name":"Service station",
+      "coords":"12.4039 55.7793",
+      "line":"0",
+      "type":"service"
+    },
+    {
+      "name":"Service station",
+      "coords":"12.4250 55.7723",
+      "line":"0",
+      "type":"service"
+    },
+    {
+      "name":"Service station",
+      "coords":"12.4375 55.7633",
+      "line":"0",
+      "type":"service"
+    },
+    {
+      "name":"Service station",
+      "coords":"12.4666 55.7350",
+      "line":"0",
+      "type":"service"
+    },
+    {
+      "name":"Service station",
+      "coords":"12.5050 55.7127",
+      "line":"0",
+      "type":"service"
+    },
+    {
+      "name":"Service station",
+      "coords":"12.5219 55.7057",
+      "line":"0",
+      "type":"service"
+    },
     {
       "name":"Nærum",
       "coords":"12.528312 55.813929",

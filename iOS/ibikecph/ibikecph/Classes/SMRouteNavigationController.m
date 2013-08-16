@@ -489,7 +489,16 @@ typedef enum {
     
     [routeOverview setFrame:instructionsView.frame];
     
-    [overviewTimeDistance setText:[NSString stringWithFormat:@"%@, via %@", formatDistance(self.route.estimatedRouteDistance), self.route.longestStreet]];
+    //[overviewTimeDistance setText:[NSString stringWithFormat:@"%@, via %@", formatDistance(self.route.estimatedRouteDistance), self.route.longestStreet]];
+    if ( [self.brokenRoute.brokenRoutes count] > 1 ) {
+        float brokenRouteDistance = ((SMRoute*)[self.brokenRoute.brokenRoutes objectAtIndex:0]).estimatedRouteDistance;
+        brokenRouteDistance += ((SMRoute*)[self.brokenRoute.brokenRoutes objectAtIndex:1]).estimatedRouteDistance;
+        [overviewTimeDistance setText:[NSString stringWithFormat:@"%@, via %@", formatDistance(brokenRouteDistance), self.brokenRoute.brokenRouteInfo.sourceStation.name]];
+    } else {
+        [overviewTimeDistance setText:[NSString stringWithFormat:@"%@, via %@", formatDistance(self.route.estimatedRouteDistance), self.route.longestStreet]];
+    }
+    
+    //self.brokenRoute.brokenRouteInfo.sourceStation.
     
     NSArray * a = [self.destination componentsSeparatedByString:@","];
     NSString* streetName= [a objectAtIndex:0];
@@ -1140,7 +1149,7 @@ typedef enum {
             z= zIndex.intValue;
         }
         RMMarker * rm = [[RMMarker alloc] initWithUIImage:annotation.annotationIcon anchorPoint:annotation.anchorPoint];
-        [rm setZPosition:z];
+        [rm setZPosition:z];        
 
         return rm;
     }

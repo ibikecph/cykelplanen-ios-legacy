@@ -537,7 +537,7 @@ static NSOperationQueue* stationQueue;
     NSArray* arrivalArr= [dict objectForKey:@"arrival"];
     NSMutableArray* lineClones= [NSMutableArray new];
 
-    NSAssert(dict!=nil, @"Arrival array doesn't exist");
+//    NSAssert(dict!=nil, @"Arrival array doesn't exist");
     
     for(NSDictionary* dict in arrivalArr){
         
