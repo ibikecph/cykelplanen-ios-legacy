@@ -14,6 +14,6 @@
 @property(nonatomic, strong) NSMutableArray* arrivalInformation;
 
 -(SMArrivalInformation*)informationForStation:(SMStationInfo*)station;
-
 -(NSArray*)routeTimestampsForSourceStation:(SMStationInfo*)sourceSt destinationStation:(SMStationInfo*)destinationSt forDay:(int)dayIndex time:(SMTime*)time;
+
 @end
