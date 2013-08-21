@@ -1112,51 +1112,33 @@
                                 <rect key="frame" x="15" y="70" width="290" height="115"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" id="pPf-vR-37x">
-                                <rect key="frame" x="15" y="150" width="290" height="300"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VKV-gN-rs2">
-                                        <rect key="frame" x="15" y="0.0" width="265" height="1300"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <string key="text">Projektet består af 22 samarbejdende kommuner og Region Hovedstaden, der alle er med til at planlægge og finansiere projektet. Derudover er Cykelsuperstierne også støttet af statens pulje til mere cykeltrafik. I 2009 tog Københavns Kommune initiativet til et bredt samarbejde om at lave et net af cykelpendlerruter i hovedstadsregionen. Samarbejdet mellem kommunerne i hovedstadsregionen er et vigtigt fundament for udviklingen af grøn vækst og bæredygtig transport i regionen. Visionen for Cykelsuperstierne er, at hele hovedstadsregionen skal udvikle sig til verdens bedste cykelregion.
- 
-Det er en målsætning for kommunerne at skabe stærke samarbejder med udbydere af offentlig transport og virksomheder langs rutenettet. Samarbejderne skal sikre de bedst mulige vilkår for cyklisterne - uanset om de kombinerer turen med andre transportformer, og derfor har brug for stationer med sikker cykelparkering, cykelramper, muligheden for at medbringe cyklen i tog eller bus. Eller om de cykler hele vejen til arbejde eller studie og har behov for fx omklædningsrum, luftpumper og overdækket cykelparkering.
- 
-Cykelsuperstierne har overordnet fire kvalitetsmål. Kvalitetsmålene er udviklet, så cyklisterne kan få den bedst mulige oplevelse ved at cykle på Cykelsuperstierne. De fire mål er:
- 
-·         Tilgængelighed til nettet
- 
-·         Fremkommelighed
- 
-·         Komfort
- 
-·         Sikkerhed og tryghed</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </scrollView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" editable="NO" id="QQd-JJ-3KW">
                                 <rect key="frame" x="15" y="150" width="290" height="398"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">Projektet består af 22 samarbejdende kommuner og Region Hovedstaden, der alle er med til at planlægge og finansiere projektet. Derudover er Cykelsuperstierne også støttet af statens pulje til mere cykeltrafik. I 2009 tog Københavns Kommune initiativet til et bredt samarbejde om at lave et net af cykelpendlerruter i hovedstadsregionen. Samarbejdet mellem kommunerne i hovedstadsregionen er et vigtigt fundament for udviklingen af grøn vækst og bæredygtig transport i regionen. Visionen for Cykelsuperstierne er, at hele hovedstadsregionen skal udvikle sig til verdens bedste cykelregion.
- 
-Det er en målsætning for kommunerne at skabe stærke samarbejder med udbydere af offentlig transport og virksomheder langs rutenettet. Samarbejderne skal sikre de bedst mulige vilkår for cyklisterne - uanset om de kombinerer turen med andre transportformer, og derfor har brug for stationer med sikker cykelparkering, cykelramper, muligheden for at medbringe cyklen i tog eller bus. Eller om de cykler hele vejen til arbejde eller studie og har behov for fx omklædningsrum, luftpumper og overdækket cykelparkering.
- 
-Cykelsuperstierne har overordnet fire kvalitetsmål. Kvalitetsmålene er udviklet, så cyklisterne kan få den bedst mulige oplevelse ved at cykle på Cykelsuperstierne. De fire mål er:
- 
-·         Tilgængelighed til nettet
- 
-·         Fremkommelighed
- 
-·         Komfort
- 
-·         Sikkerhed og tryghed</string>
+                                <string key="text">CykelPlanen app’en er Region Hovedstadens mobile rutevejleder for dig, der cykler i regionen. App’en kender de gode smutveje i regionen, hvor du må cykle og finder den hurtigste rute for dig. CykelPlanen skal bidrage til at få flere pendlere i regionen til at vælge cyklen frem for bilen.
+
+Kortet er særligt tilpasset cyklister. CykelPlanen udregner den hurtigste rute for dig. Motorveje er tonet ned, hvorimod brosten er fremhævet, så du kan slippe for rysteture. Kortet viser de anlagte cykelsuperstier og servicestationer. Endvidere har app’en funktionen ”knæk ruten”, som leder dig hen til nærmeste Lokalbane, S- og metrostation, hvis cykelturen bliver for lang eller cyklen går i stykker.
+App’en anvender kortdata fra det brugerdrevne OpenStreetMap (OSM), der opdateres løbende, fx når der anlægges nye cykelstier i regionen, og brugerne skal være med til at opdatere kortet i regionen.
+
+Bemærk at det er tilladt at tage cyklen gratis med i s-toget og lokalbanen (maks. 6 stk) mens det kræver en cykelbillet i metroen.
+
+Kom godt i gang:
+Du kan vælge hvor du vil hen på to måder:
+
+Vælg på kort: Find stedet på kortet og hold fingeren nede indtil en nål bliver sat på kortet. Den nærmeste adresse bliver nu vist nederst. Vælg ’Start’ for at beregne ruten fra din nuværende position til destinationen.
+
+Søg efter adresse: Klik på forstørrelsesglasset i øverste højre hjørne. Indtast adressen hvor du vil hen og klik ’Gå’. Klik derefter på ’Start’ for at beregne ruten.
+
+Når ruten vises kan du klikke på ’Start’ for at aktivere GPS navigation. Undervejs vil instruktioner om hvornår du skal svinge blive vist nederst. Forventet ankomsttidspunkt vises øverst til højre ud for det lille flag.
+
+Vis position:
+Tryk på knappen med en pil i nederste højre hjørne, for at se hvor du er på kortet. Kortet vil herefter følge din position indtil du selv manuelt flytter kortet. Funktionen er slået til, når pilen er blå.
+
+Læs mere:
+App’en kan bl.a. også gemme favorit-steder, hvis du opretter en profil. Læs mere om kort og funktioner på www.cykelsuperstier.dk.
+  
+God tur og tak fordi du cykler!</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
@@ -1175,7 +1157,6 @@ Cykelsuperstierne har overordnet fire kvalitetsmål. Kvalitetsmålene er udvikle
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="scrlView" destination="pPf-vR-37x" id="hfu-A2-QWx"/>
                         <outlet property="textView" destination="QQd-JJ-3KW" id="Ymn-KA-4fh"/>
                     </connections>
                 </viewController>
@@ -3863,6 +3844,7 @@ Cykelsuperstierne har overordnet fire kvalitetsmål. Kvalitetsmålene er udvikle
                                 <rect key="frame" x="0.0" y="49" width="320" height="498"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellHeader" rowHeight="132" id="qaY-Xl-6q5">
                                         <rect key="frame" x="0.0" y="22" width="320" height="132"/>
@@ -3932,23 +3914,23 @@ Cykelsuperstierne har overordnet fire kvalitetsmål. Kvalitetsmålene er udvikle
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kkm-AB-9Vr">
-                                                    <rect key="frame" x="66" y="6" width="218" height="21"/>
+                                                    <rect key="frame" x="56" y="6" width="218" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fAH-vV-WAR">
-                                                    <rect key="frame" x="67" y="33" width="216" height="21"/>
+                                                    <rect key="frame" x="56" y="33" width="216" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DnW-L5-hkq">
-                                                    <rect key="frame" x="67" y="60" width="231" height="21"/>
+                                                    <rect key="frame" x="56" y="60" width="255" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
@@ -3991,7 +3973,7 @@ Cykelsuperstierne har overordnet fire kvalitetsmål. Kvalitetsmålene er udvikle
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="route_info_icon.png" id="GcW-Sn-aBq">
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="route_info_icon.png" id="GcW-Sn-aBq">
                                                     <rect key="frame" x="237" y="6" width="32" height="26"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -4003,14 +3985,14 @@ Cykelsuperstierne har overordnet fire kvalitetsmål. Kvalitetsmålene er udvikle
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellText" rowHeight="29" id="ibQ-bQ-vJU">
-                                        <rect key="frame" x="0.0" y="194" width="320" height="29"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellText" rowHeight="6" id="ibQ-bQ-vJU">
+                                        <rect key="frame" x="0.0" y="194" width="320" height="6"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="28"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QDp-jh-9Yi">
+                                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QDp-jh-9Yi">
                                                     <rect key="frame" x="7" y="0.0" width="309" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -4781,454 +4763,6 @@ Cykelsuperstierne har overordnet fire kvalitetsmål. Kvalitetsmålene er udvikle
         <image name="white_btn.png" width="12" height="12"/>
         <image name="white_btn_pressed.png" width="11" height="11"/>
     </resources>
-
-    <classes>
-        <class className="AsyncImageView" superclassName="UIImageView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AsyncImageView.h"/>
-        </class>
-        <class className="FlickableView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FlickableView.h"/>
-        </class>
-        <class className="GAITrackedViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GAITrackedViewController.h"/>
-        </class>
-        <class className="RMMapView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RMMapView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="delegate"/>
-            </relationships>
-        </class>
-        <class className="SMAboutController" superclassName="SMTranslatedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMAboutController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="scrlView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="SMAccountController" superclassName="SMTranslatedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMAccountController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="fbImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="fbName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="fbView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="name" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordRepeat" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="regularImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="regularView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="scrlView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="SMAddFavoriteCell" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMAddFavoriteCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="addFavoritesSymbol" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="cellBG" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="image" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="text" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SMAutocompleteHeader" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMAutocompleteHeader.h"/>
-            <relationships>
-                <relationship kind="outlet" name="headerTitle" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SMBikeWaypointCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMBikeWaypointCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imageViewAddress" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="imageViewDistance" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="labelAddressBottom" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="labelAddressTop" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="labelDistance" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="viewAddress" candidateClass="UIView"/>
-                <relationship kind="outlet" name="viewDistance" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="SMBreakRouteButtonCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMBreakRouteButtonCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="btnBreakRoute" candidateClass="SMPatternedButton"/>
-            </relationships>
-        </class>
-        <class className="SMBreakRouteHeader" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMBreakRouteHeader.h"/>
-            <relationships>
-                <relationship kind="outlet" name="routeDistance" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="title" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SMBreakRouteViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMBreakRouteViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="buttonAddressDestination" candidateClass="SMPatternedButton"/>
-                <relationship kind="outlet" name="buttonAddressSource" candidateClass="SMPatternedButton"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SMCustomButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMCustomButton.h"/>
-        </class>
-        <class className="SMCustomCheckbox" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMCustomCheckbox.h"/>
-        </class>
-        <class className="SMCyLwFirstTimeIntro" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMCyLwFirstTimeIntro.h"/>
-            <relationships>
-                <relationship kind="action" name="onExit:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="btnExitGuide" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="exitButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="screenBottomText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="screenTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="screenTopText" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SMCyLwReminderVC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMCyLwReminderVC.h"/>
-            <relationships>
-                <relationship kind="action" name="saveReminder:" candidateClass="UIButton"/>
-                <relationship kind="action" name="skip:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="btnSave" candidateClass="SMPatternedButton"/>
-                <relationship kind="outlet" name="btnSkip" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="friday" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="monday" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="screenText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="screenTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="swFriday" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="swMonday" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="swThursday" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="swTuesday" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="swWednesday" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="thursday" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="tuesday" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="wednesday" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SMDirectionCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMDirectionCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imgBackground" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="imgDirection" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="lblDescription" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblDistance" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblWayname" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SMDirectionTopCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMDirectionTopCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imgDirection" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="lblDescription" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblDistance" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="lblWayname" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SMEmptyFavoritesCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMEmptyFavoritesCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="addFavoritesSymbol" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="addFavoritesText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="text" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SMEnterRouteCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMEnterRouteCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="backImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="iconImage" candidateClass="AsyncImageView"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="TTTAttributedLabel"/>
-            </relationships>
-        </class>
-        <class className="SMEnterRouteController" superclassName="SMTranslatedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMEnterRouteController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="fadeView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="fromLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="locationArrow" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="startButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="swapButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="tblView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="toLabel" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="SMFavoritesController" superclassName="SMTranslatedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMFavoritesController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="btnSave" candidateClass="SMPatternedButton"/>
-                <relationship kind="outlet" name="btnSkip" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="favoriteHome" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="favoriteWork" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="favoritesView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="screenText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="screenTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="scrlView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="SMGPSTrackButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMGPSTrackButton.h"/>
-        </class>
-        <class className="SMLoginController" superclassName="SMTranslatedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMLoginController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="loginEmail" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="loginPassword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="scrlView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="SMMenuCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMMenuCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="cellBG" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="editBtn" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="image" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="text" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SMPatternedButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMPatternedButton.h"/>
-        </class>
-        <class className="SMRadioCheckedCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRadioCheckedCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="radioTextBox" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="radioTitle" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SMRadioUncheckedCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRadioUncheckedCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="radioTitle" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SMRegisterController" superclassName="SMTranslatedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRegisterController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="registerEmail" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="registerImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="registerName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="registerPassword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="registerRepeatPassword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="scrlView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="SMReminderTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMReminderTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="day" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="reminderSwitch" candidateClass="UISwitch"/>
-            </relationships>
-        </class>
-        <class className="SMReportErrorController" superclassName="SMTranslatedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMReportErrorController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="bottomView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="btnSelectRouteSegment" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="fadeView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="pckrView" candidateClass="UIPickerView"/>
-                <relationship kind="outlet" name="reportEmail" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="reportSentView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="scrlView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="switchContactMe" candidateClass="SMCustomCheckbox"/>
-                <relationship kind="outlet" name="tblView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="SMReportMailCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMReportMailCell.h"/>
-            <relationships>
-                <relationship kind="action" name="checkboxSelected:"/>
-                <relationship kind="outlet" name="checkboxMail" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="email" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="SMRouteInfoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRouteInfoViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="didTapOnBack:"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SMRouteNavigationController" superclassName="SMTranslatedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRouteNavigationController.h"/>
-            <relationships>
-                <relationship kind="action" name="buttonPressed:"/>
-                <relationship kind="action" name="hideFinishView:"/>
-                <relationship kind="action" name="hideStopView:"/>
-                <relationship kind="action" name="onBreakRoute:"/>
-                <relationship kind="action" name="onPanGestureDirections:" candidateClass="UIPanGestureRecognizer"/>
-                <relationship kind="action" name="startRouting:"/>
-                <relationship kind="action" name="trackUser:"/>
-                <relationship kind="outlet" name="arrivalBG" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="blockingView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="breakRouteButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonTrackUser" candidateClass="SMGPSTrackButton"/>
-                <relationship kind="outlet" name="cargoHandleImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="cargoTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="centerView" candidateClass="FlickableView"/>
-                <relationship kind="outlet" name="closeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="finishDestination" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="finishDistance" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="finishFadeView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="finishStreet" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="finishTime" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="finishView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="imgNextTurnDirection" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="instructionsView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="labelDistanceLeft" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="labelDistanceToNextTurn" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="labelTimeLeft" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="mapContainer" candidateClass="UIView"/>
-                <relationship kind="outlet" name="mapFade" candidateClass="UIView"/>
-                <relationship kind="outlet" name="minimizedInstructionsView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="mpView" candidateClass="RMMapView"/>
-                <relationship kind="outlet" name="noConnectionView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="overviewDestination" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="overviewDestinationBottom" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="overviewTimeDistance" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="progressView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="pullHandleImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="recalculatingView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="routeOverview" candidateClass="UIView"/>
-                <relationship kind="outlet" name="routeOverviewBottom" candidateClass="UIView"/>
-                <relationship kind="outlet" name="stopView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="swipableView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="swipeLeftArrow" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="swipeRightArrow" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="tblDirections" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="SMRouteTypeSelectCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRouteTypeSelectCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="cellCheckbox" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="cellImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="cellText" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SMSearchCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMSearchCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="iconImage" candidateClass="AsyncImageView"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="TTTAttributedLabel"/>
-            </relationships>
-        </class>
-        <class className="SMSearchController" superclassName="SMTranslatedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMSearchController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="searchField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="tblFade" candidateClass="UIView"/>
-                <relationship kind="outlet" name="tblView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="SMSearchTwoRowCell" superclassName="SMSearchCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMSearchTwoRowCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="addressLabel" candidateClass="TTTAttributedLabel"/>
-            </relationships>
-        </class>
-        <class className="SMSplashController" superclassName="SMTranslatedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMSplashController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="btnRegisterWithMail" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="btnSkip" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="dialogView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="loginDialog" candidateClass="UIView"/>
-                <relationship kind="outlet" name="loginEmail" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="loginPassword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="loginScroll" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="loginView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="nameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordRepeatField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="registerDialog" candidateClass="UIView"/>
-                <relationship kind="outlet" name="registerImage" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="registerScroll" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="registerView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="SMTranslatedViewController" superclassName="GAITrackedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMTranslatedViewController.h"/>
-        </class>
-        <class className="SMTransportationCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMTransportationCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="buttonAddressDestination" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonAddressInfo" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonAddressSource" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="destStationIcon" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="destinationActivityIndicator" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="sourceActivityIndicator" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="sourceStationIcon" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="SMViewController" superclassName="SMTranslatedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="aboutHeaderButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="accHeader" candidateClass="UIView"/>
-                <relationship kind="outlet" name="accountHeaderButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="account_label" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="addFavAddress" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="addFavFavoriteButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="addFavHomeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="addFavName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="addFavSchoolButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="addFavWorkButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="addMenu" candidateClass="UIView"/>
-                <relationship kind="outlet" name="addSaveButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="blockingView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="btnFavorites" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="btnReminders" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonAddFakeStation" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonTrackUser" candidateClass="SMGPSTrackButton"/>
-                <relationship kind="outlet" name="centerView" candidateClass="FlickableView"/>
-                <relationship kind="outlet" name="debugLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="dropPinView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="editDeleteButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="editSaveButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="editTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="fadeView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="favEditDone" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="favEditStart" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="favHeader" candidateClass="UIView"/>
-                <relationship kind="outlet" name="findRouteBig" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="findRouteSmall" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="headerReminders" candidateClass="UIView"/>
-                <relationship kind="outlet" name="imgReminders" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="infHeader" candidateClass="UIView"/>
-                <relationship kind="outlet" name="mainMenu" candidateClass="UIView"/>
-                <relationship kind="outlet" name="mainMenuBtn" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="menuBtn" candidateClass="UIView"/>
-                <relationship kind="outlet" name="menuView" candidateClass="FlickableView"/>
-                <relationship kind="outlet" name="overlayMenu" candidateClass="FlickableView"/>
-                <relationship kind="outlet" name="overlayMenuBtn" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="overlaysMenuTable" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="pinButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="remindersHeaderButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="routeStreet" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="tableFooter" candidateClass="SMAddFavoriteCell"/>
-                <relationship kind="outlet" name="tblFavorites" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="tblMenu" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="SMViewMoreCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMViewMoreCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="buttonLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="TTTAttributedLabel" superclassName="UILabel">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TTTAttributedLabel.h"/>
-            <relationships>
-                <relationship kind="outlet" name="delegate"/>
-            </relationships>
-        </class>
-    </classes>
-
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
@@ -5237,6 +4771,6 @@ Cykelsuperstierne har overordnet fire kvalitetsmål. Kvalitetsmålene er udvikle
     <inferredMetricsTieBreakers>
         <segue reference="yP5-9Q-UWd"/>
         <segue reference="SAG-9b-Vbu"/>
-        <segue reference="wAx-WK-VM3"/>
+        <segue reference="DqZ-cl-vTA"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -1789,18 +1789,111 @@ typedef enum {
 }
 
 - (void)mapViewRegionDidChange:(RMMapView *)mapView {
+    
+    float t = MAX((mapView.zoom / 10.0) - 1.0, 0.0)*2.0;
+    float zoom = lerp(0.35, 1.5, t);
+    
+    for (SMAnnotation* an in mapView.annotations) {
+        if ([an.annotationType isEqualToString:@"station"]) {
+            RMMarker* marker = (RMMarker*)(an.layer);
+            [marker updateBoundsWithZoom: zoom];
+        }
+    }
+    
     [self checkCallouts];
 }
 
-- (RMMapLayer *)mapView:(RMMapView *)aMapView layerForAnnotation:(SMAnnotation *)annotation {
-    if ([annotation.annotationType isEqualToString:@"marker"] || [annotation.annotationType isEqualToString:@"station"]) {
-        RMMarker * m = [[RMMarker alloc] initWithUIImage:annotation.annotationIcon anchorPoint:annotation.anchorPoint];
-        return m;
-    }
-    return nil;
+float lerp(float a, float b, float t) {
+    return b*t + (1.0-t)*a;
 }
 
-- (void)afterMapZoom:(RMMapView *)map byUser:(BOOL)wasUserAction {
+- (RMMapLayer *)mapView:(RMMapView *)aMapView layerForAnnotation:(SMAnnotation *)annotation {
+//    if ([annotation.annotationType isEqualToString:@"marker"] || [annotation.annotationType isEqualToString:@"station"]) {
+//        RMMarker * m = [[RMMarker alloc] initWithUIImage:annotation.annotationIcon anchorPoint:annotation.anchorPoint];
+//        return m;
+//    }
+//    return nil;
+    
+    
+    
+
+        if ([annotation.annotationType isEqualToString:@"path"]) {
+            //        RMPath * path = [[RMPath alloc] initWithView:aMapView];
+            RMShape *path = [[RMShape alloc] initWithView:aMapView];
+            [path setZPosition:-MAXFLOAT];
+            [path setLineColor:[annotation.userInfo objectForKey:@"lineColor"]];
+            [path setOpacity:PATH_OPACITY];
+            [path setFillColor:[annotation.userInfo objectForKey:@"fillColor"]];
+            [path setLineWidth:[[annotation.userInfo objectForKey:@"lineWidth"] floatValue]];
+            path.scaleLineWidth = NO;
+            
+            if ([[annotation.userInfo objectForKey:@"closePath"] boolValue])
+                [path closePath];
+            
+            @synchronized([annotation.userInfo objectForKey:@"linePoints"]) {
+                for (CLLocation *location in [annotation.userInfo objectForKey:@"linePoints"]) {
+                    [path addLineToCoordinate:location.coordinate];
+                }
+            }
+            
+            return path;
+        }
+        
+        if ([annotation.annotationType isEqualToString:@"line"]) {
+            RMShape *line = [[RMShape alloc] initWithView:aMapView];
+            [line setZPosition:-MAXFLOAT];
+            [line setLineColor:[annotation.userInfo objectForKey:@"lineColor"]];
+            [line setOpacity:PATH_OPACITY];
+            [line setFillColor:[annotation.userInfo objectForKey:@"fillColor"]];
+            [line setLineWidth:[[annotation.userInfo objectForKey:@"lineWidth"] floatValue]];
+            line.scaleLineWidth = YES;
+            
+            CLLocation *start = [annotation.userInfo objectForKey:@"lineStart"];
+            [line addLineToCoordinate:start.coordinate];
+            CLLocation *end = [annotation.userInfo objectForKey:@"lineEnd"];
+            [line addLineToCoordinate:end.coordinate];
+            
+            return line;
+        }
+        
+        if ([annotation.annotationType isEqualToString:@"marker"] || [annotation.annotationType isEqualToString:@"station"]) {
+//            NSNumber* zIndex= [annotation.userInfo objectForKey:keyZIndex];
+//            int z= 100;
+//            if(zIndex && ![zIndex isEqual:[NSNull null]]){
+//                z= zIndex.intValue;
+//            }
+            RMMarker * rm = [[RMMarker alloc] initWithUIImage:annotation.annotationIcon anchorPoint:annotation.anchorPoint];
+            
+            NSLog(@"Map Zoom: %f", aMapView.zoom);
+            
+            //float scale = (aMapView.zoom - 10) / 10;
+//            float scale = 1.0;
+//            if (aMapView.zoom > 20) {
+//                scale = 0.25;
+//            } else if (aMapView.zoom > 15 && aMapView.zoom < 20 ) {
+//                scale = 0.5;
+//            } else if (aMapView.zoom > 10 && aMapView.zoom < 15 ) {
+//                scale = 1.0;
+//            }
+            
+            float scale = 1.0;
+            if (aMapView.zoom > 14) {
+                scale = 0.4;
+            }
+            
+            //rm.bounds = CGRectMake(0, 0, 44*scale , 44*scale);
+            //[rm setZPosition:z];
+            //[rm setContentsScale:0.1];
+            
+            return rm;
+        }
+        
+        return nil;
+    }
+
+//}
+
+- (void)afterMapZoom:(RMMapView *)map byUser:(BOOL)wasUserAction {    
     [self checkCallouts];
 }
 

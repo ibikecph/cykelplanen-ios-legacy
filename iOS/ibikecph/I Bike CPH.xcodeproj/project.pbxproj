@@ -1713,9 +1713,7 @@
 		4C365DE116F361FE00A836B3 /* images */ = {
 			isa = PBXGroup;
 			children = (
-
 				78CD26EE17BD2E0300D1DDCB /* metro_icon.png */,
-
 				F694BECA17B933C700545578 /* L.png */,
 				F694BECB17B933C700545578 /* L@2x.png */,
 				7842B9D417BA2E81007B1604 /* local_train_icon.png */,
@@ -3451,10 +3449,8 @@
 				7842B9CE17BA267A007B1604 /* l-white@2x.png in Resources */,
 				7842B9D617BA2E81007B1604 /* local_train_icon.png in Resources */,
 				7842B9D717BA2E81007B1604 /* local_train_icon@2x.png in Resources */,
-
 				78CD26EF17BD2E0300D1DDCB /* metro_icon.png in Resources */,
 				78551AAE17BE55D9003184BE /* farum-route.json in Resources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3659,8 +3655,8 @@
 			baseConfigurationReference = 4C48641216F0994600F01A7C /* ibikecph.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Nikola Markovic (EE62QX6H34)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nikola Markovic (EE62QX6H34)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Igor Jerkovic (39D278YE39)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Igor Jerkovic (39D278YE39)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ibikecph/Libs/FacebookSDK\"",
@@ -3688,8 +3684,8 @@
 					"\"$(SRCROOT)/ibikecph/Libs/GA v2.0b4\"/**",
 				);
 				PRODUCT_NAME = "I Bike CPH";
-				PROVISIONING_PROFILE = "C579CE23-B997-43B2-8B11-5D12331EBBC1";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C579CE23-B997-43B2-8B11-5D12331EBBC1";
+				PROVISIONING_PROFILE = "83E7E6C9-3A87-46BD-AF2A-B9890F24F164";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "83E7E6C9-3A87-46BD-AF2A-B9890F24F164";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -3700,8 +3696,8 @@
 			baseConfigurationReference = 4C48641216F0994600F01A7C /* ibikecph.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Igor Jerkovic (39D278YE39)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Igor Jerkovic (39D278YE39)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ibikecph/Libs/FacebookSDK\"",
@@ -3726,8 +3722,7 @@
 					"\"$(SRCROOT)/ibikecph/Libs/GA v2.0b4\"/**",
 				);
 				PRODUCT_NAME = "I Bike CPH";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "83E7E6C9-3A87-46BD-AF2A-B9890F24F164";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
