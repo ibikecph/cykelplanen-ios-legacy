@@ -2022,15 +2022,6 @@ float lerp(float a, float b, float t) {
             [SMGeocoder reverseGeocode:self.endLoc completionHandler:^(NSDictionary *response, NSError *error) {
                 NSString* streetName = [response objectForKey:@"title"];
                 
-                //NSLog(@"Response: %@", response);
-                
-//                if ([streetName isEqualToString:@""]) {
-//                    streetName = [NSString stringWithFormat:@"%f, %f", coord.latitude, coord.longitude];
-//                }
-                //[tCell.buttonAddressSource setTitle:streetName forState:UIControlStateNormal];
-                
-                NSLog(@"Recent: %@ address: %@", self.endName, streetName);
-                
                 NSString* new_address = streetName;
                 NSString* new_name = streetName; //[NSString stringWithFormat:@"%@, %@", streetName, [response objectForKey:@"subtitle"] ];
                 
@@ -2040,6 +2031,10 @@ float lerp(float a, float b, float t) {
                 } else {
                     new_name = self.endName;
                     new_address = streetName;
+                }
+                
+                if ([new_name isEqualToString:@""]) {
+                    new_name = [NSString stringWithFormat:@"%f, %f", self.endLoc.latitude, self.endLoc.longitude];
                 }
             
                 NSDictionary * d = @{
