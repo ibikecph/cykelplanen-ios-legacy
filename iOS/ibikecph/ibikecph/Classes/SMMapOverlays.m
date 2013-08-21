@@ -12,6 +12,7 @@
 #import "RMAnnotation.h"
 #import "SMTransportation.h"
 #import "SMTransportationLine.h"
+#import "RMMarker.h"
 
 //#define GEN_STATION_INDICES
 
@@ -42,7 +43,7 @@
         self.bikeRouteAnnotations = [[NSMutableArray alloc] init];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(loadMarkers)
+                                                 selector:@selector(loadTransportationPaths)
                                                      name:NOTIFICATION_STATIONS_FETCHED
                                                    object:nil];
     }
@@ -216,10 +217,11 @@
             NSString* alternateTitle = @"alternate title";
             
             SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
-            
+        
             annotation.annotationType = @"station";
             annotation.annotationIcon = [UIImage imageNamed:imageName];
             annotation.anchorPoint = CGPointMake(0.5, 1.0);
+            
 //            NSMutableArray * arr = [[self.source componentsSeparatedByString:@","] mutableCopy];
 //            annotation.title = annotationTitle;
 //            
@@ -234,7 +236,7 @@
         }
     }
 
-- (void)drawPaths {
+- (void)loadTransportationPaths {
     
     self.stationMarkers = [[NSMutableArray alloc] init];
     NSArray* lines= [SMTransportation instance].lines;
@@ -262,11 +264,12 @@
                                           @"linePoints" : [NSArray arrayWithArray:points],
                                           @"lineColor" : [lineColors objectAtIndex:lineIndex],
                                           @"fillColor" : [UIColor clearColor],
-                                          @"lineWidth" : [NSNumber numberWithFloat:4.0f],
+                                          @"lineWidth" : [NSNumber numberWithFloat:2.0f],
                                           };
     
-    [calculatedPathAnnotation setBoundingBoxFromLocations:[NSArray arrayWithArray:points]];
-        [self.mpView addAnnotation:calculatedPathAnnotation];
+        [calculatedPathAnnotation setBoundingBoxFromLocations:[NSArray arrayWithArray:points]];
+        [self.bikeRouteAnnotations addObject:calculatedPathAnnotation];
+        //[self.mpView addAnnotation:calculatedPathAnnotation];
         lineIndex++;
         lineIndex = lineIndex % 7;
     }
@@ -327,6 +330,7 @@
         SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
         
         annotation.annotationType = @"station";
+        annotation.userInfo= @{@"station" : [[SMTransportation instance] stationWithName:[station objectForKey:@"name"]]};
         annotation.annotationIcon = [UIImage imageNamed:imageName];
         annotation.anchorPoint = CGPointMake(0.5, 1.0);
         NSMutableArray * arr = [[self.source componentsSeparatedByString:@","] mutableCopy];
@@ -502,7 +506,7 @@
 
 -(void)toggleMarkers{
     
-//    [self drawPaths];
+    //[self drawPaths];
     
     if ( self.pathVisible ) {
         [self.mpView addAnnotations:self.bikeRouteAnnotations];
@@ -539,6 +543,21 @@
     } else {
         //        [self hideRouteAnnotation];
     }
+    
+    float t = MAX((self.mpView.zoom / 10.0) - 1.0, 0.0)*2.0;
+    float zoom = lerp(0.35, 1.5, t);
+    NSLog(@"Map ZOOM: %f", self.mpView.zoom);
+    
+    for (SMAnnotation* an in self.mpView.annotations) {
+        if ([an.annotationType isEqualToString:@"station"]) {
+            RMMarker* marker = (RMMarker*)(an.layer);
+            [marker updateBoundsWithZoom: zoom];
+        }
+    }
+    
+    [self.mpView setZoom:self.mpView.zoom+0.0001];
+
+//    [self.mpView setNeedsLayout];
 }
 
 - (void)toggleMarkers:(NSString*)markerType state:(BOOL)state {
@@ -562,5 +581,8 @@
     NSLog(@"Toggle markers: %@ %d", markerType, state);
 }
 
+float lerp(float a, float b, float t) {
+    return (1.0-t)*a + t*b;
+}
 
 @end

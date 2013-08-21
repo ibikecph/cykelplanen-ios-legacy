@@ -429,6 +429,7 @@ typedef enum {
         NSDictionary * currentRow = [[self.groupedList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         SMEnterRouteCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         [cell.nameLabel setText:[currentRow objectForKey:@"name"]];
+        NSLog(@"Past route name: %@", currentRow);
         
         if ([[currentRow objectForKey:@"source"] isEqualToString:@"fb"]) {
             [cell.iconImage setImage:[UIImage imageNamed:@"findRouteCalendar"]];

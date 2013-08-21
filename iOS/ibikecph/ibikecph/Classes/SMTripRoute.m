@@ -7,7 +7,6 @@
 //
 
 #import "SMTripRoute.h"
-#import "SMTransportationRoute.h"
 #import "SMTransportation.h"
 #import "SMTransportationLine.h"
 #import "SMStationInfo.h"
@@ -36,11 +35,6 @@
 -(BOOL) breakRoute{
     if(!self.fullRoute)
         return NO;
-    
-//    if(self.state == RS_SEARCHING_FOR_ROUTE){
-//        [searchingOperation cancel];
-//        searchingOperation= nil;
-//    }
     
     __weak SMTripRoute* selfRef= self;
 
@@ -156,19 +150,41 @@
 }
 
 -(void)createSplitRoutes{
-
     
     SMRoute* startRoute= [[SMRoute alloc] initWithRouteStart:[self start].coordinate andEnd:self.brokenRouteInfo.sourceStation.location.coordinate andDelegate:self];
     SMRoute* endRoute= [[SMRoute alloc] initWithRouteStart:self.brokenRouteInfo.destinationStation.location.coordinate andEnd:[self end].coordinate andDelegate:self];
+
+//    BOOL returning= NO;
+//    int sourceIndex= [self.brokenRouteInfo.transportationLine.stations indexOfObject:self.brokenRouteInfo.sourceStation];
+//    int destIndex= [self.brokenRouteInfo.transportationLine.stations indexOfObject:self.brokenRouteInfo.destinationStation];
+//    if( sourceIndex> destIndex){
+//        returning= YES;
+//    }
+    
+//    NSMutableArray* instructions= [NSMutableArray new];
+//    if(!returning){
+//        for(int i=sourceIndex; i<=destIndex; i++){
+//            SMStationInfo* station= self.brokenRouteInfo.transportationLine.stations[i];
+//            
+//            SMTurnInstruction* turnInstruction= [[SMTurnInstruction alloc] init];
+//            turnInstruction.wayName= station.name;
+//            turnInstruction.loc= station.location;
+//            [instructions addObject:turnInstruction];
+//        }
+//    }else{
+//        for(int i=sourceIndex; i>=destIndex; i--){
+//            SMStationInfo* station= self.brokenRouteInfo.transportationLine.stations[i];
+//
+//            SMTurnInstruction* turnInstruction= [[SMTurnInstruction alloc] init];
+//            turnInstruction.wayName= station.name;
+//            turnInstruction.loc= station.location;
+//            [instructions addObject:turnInstruction];
+//        }
+//    }
+//    SMRoute* transportRoute= [[SMRoute alloc] init];
+//    transportRoute.turnInstructions= instructions;
     
     self.brokenRoutes= @[startRoute, endRoute];
-
-//    CLLocation* loc= [[CLLocation alloc] initWithLatitude:55.663117 longitude:12.542664];
-//    SMRoute* startRoute= [[SMRoute alloc] initWithRouteStart:[self start].coordinate andEnd:CLLocationCoordinate2DMake(55.672820, 12.571004) andDelegate:self];
-//    SMRoute* endRoute= [[SMRoute alloc] initWithRouteStart:CLLocationCoordinate2DMake(55.668344, 12.564604) andEnd:loc.coordinate andDelegate:self];
-    
-//    self.brokenRoutes= @[startRoute, endRoute];
-
 }
 
 - (void) updateTurn:(BOOL)firstElementRemoved{}
@@ -203,7 +219,7 @@
 
 }
 - (void) serverError{
-    NSLog(@"Server error");
+
 }
 
 @end

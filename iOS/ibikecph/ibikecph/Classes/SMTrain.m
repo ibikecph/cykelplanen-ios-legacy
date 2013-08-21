@@ -37,7 +37,6 @@
     SMArrivalInformation* srcAI;
     SMArrivalInformation* destAI;
     for(SMArrivalInformation* arrivalInformation in self.arrivalInformation){
-        
         if([arrivalInformation.station isEqual:sourceSt] && [arrivalInformation hasInfoForDayAtIndex:dayIndex]){
             hasSource= YES;
             srcAI= arrivalInformation;

@@ -161,7 +161,7 @@
             return 40;
         case 2:
         case 4:
-            return 29;
+            return 5; //29;
     }
     return 44;
 }
@@ -174,12 +174,17 @@
         {
             cell= [tableView dequeueReusableCellWithIdentifier:@"CellHeader"];
 
+            NSDate* today = [NSDate date];
+            NSDateFormatter* dateFormatterTime = [[NSDateFormatter alloc] init];
+            [dateFormatterTime setTimeStyle:NSDateFormatterShortStyle];
+            NSString* currentTime = [dateFormatterTime stringFromDate:today];
+            
             UILabel* lbl= (UILabel*)[cell viewWithTag:1];
             [lbl setText:self.singleRouteInfo.sourceStation.name];
             lbl= (UILabel*)[cell viewWithTag:2];
             [lbl setText:self.singleRouteInfo.destStation.name];
             lbl= (UILabel*)[cell viewWithTag:3];
-            [lbl setText:[NSString stringWithFormat:@"%@, Afg. kl. 15:50", [dateFormatter stringFromDate:[NSDate new]]]];
+            [lbl setText:[NSString stringWithFormat:@"%@, Afg. kl. %@", [dateFormatter stringFromDate:[NSDate new]], currentTime ]];
             
             lbl= (UILabel*)[cell viewWithTag:11];
             lbl= (UILabel*)[cell viewWithTag:12];

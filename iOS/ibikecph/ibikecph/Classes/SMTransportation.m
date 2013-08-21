@@ -729,4 +729,15 @@ static NSOperationQueue* stationQueue;
     NSLog(@"Station not found %@",name);
     return nil;
 }
+
+-(SMStationInfo*)stationWithName:(NSString*)name{
+    NSArray* arr= [self.allStations filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.name == %@",name]];
+    
+
+    if(arr.count>0){
+        return arr[0];
+    }
+    
+    return nil; // station with that name doesn't exist
+}
 @end

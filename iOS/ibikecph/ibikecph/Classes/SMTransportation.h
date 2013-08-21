@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class SMStationInfo;
+
 typedef enum{
     TravelTimeWeekDay = 0,
     TravelTimeWeekend = 1,
@@ -22,7 +24,9 @@ typedef enum{
 @property(nonatomic, strong) NSArray* allStations;
 @property(nonatomic, strong) NSMutableArray* lines;
 @property(nonatomic, strong) NSArray* trains;
+
 @property(nonatomic, assign) BOOL loadingStations;
 -(void)save;
 -(void)validateAndSave;
+-(SMStationInfo*)stationWithName:(NSString*)name;
 @end

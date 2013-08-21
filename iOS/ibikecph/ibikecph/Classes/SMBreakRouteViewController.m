@@ -213,7 +213,7 @@
             // Translatations
             [tCell.buttonAddressInfo setTitle:translateString(@"route_plan_button") forState:UIControlStateNormal];
             
-//<<<<<<< HEAD
+
             CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(self.sourceStation.latitude, self.sourceStation.longitude); 
             [SMGeocoder reverseGeocode:coord completionHandler:^(NSDictionary *response, NSError *error) {
                 NSString* streetName = [response objectForKey:@"title"];
@@ -234,7 +234,7 @@
                 }
                 //[tCell.buttonAddressDestination setTitle:streetName forState:UIControlStateNormal];
             }];
-//=======
+
             
             UIImage* sourceIcon = [UIImage imageNamed:@"metro_icon.png"];
             if (self.sourceStation.type == SMStationInfoTypeTrain) {
@@ -281,7 +281,7 @@
                 [tCell.destinationActivityIndicator setHidden:NO];
                 [tCell.destinationActivityIndicator startAnimating];
             }
-//>>>>>>> b37de4cef3483008314727f06b51e52c9f8df1e3
+
             
             [tCell.buttonAddressInfo setEnabled:(self.sourceStation && self.destinationStation)];
 
@@ -380,6 +380,12 @@
     SMBrokenRouteInfo* brokenRouteInfo= [[SMBrokenRouteInfo alloc] init];
     brokenRouteInfo.sourceStation= self.sourceStation;;
     brokenRouteInfo.destinationStation= self.destinationStation;
+    
+    NSArray* st= [sourceStations filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.sourceStation == %@ AND SELF.destStation == %@", self.sourceStation, self.destinationStation]];
+    NSAssert(st.count==1, @"Invalid route");
+    SMSingleRouteInfo* singleRouteInfo= st[0];
+    brokenRouteInfo.transportationLine= singleRouteInfo.transportationLine;
+    
     self.tripRoute.brokenRouteInfo= brokenRouteInfo;
 }
 
@@ -401,7 +407,7 @@
         self.destinationStation= pickerModel[index];
         
     }else if(pAddressType==AddressTypeSource){
-        self.sourceStation=  pickerModel[index];
+        self.sourceStation= pickerModel[index];
         
         addressPickerView.destinationCurrentIndex= 0;
         destinationStations= [self endStationsForSourceStation:self.sourceStation];

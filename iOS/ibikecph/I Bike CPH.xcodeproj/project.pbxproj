@@ -683,7 +683,6 @@
 		F691E7DD17A167C9002E822E /* SMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F691E7DC17A167C9002E822E /* SMUser.m */; };
 		F691E7E017A172C6002E822E /* SMMapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F691E7DF17A172C6002E822E /* SMMapManager.m */; };
 		F69227761786FD0B00C8CD76 /* SMTripRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = F69227751786FD0B00C8CD76 /* SMTripRoute.m */; };
-		F69227801786FF5700C8CD76 /* SMTransportationRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = F692277F1786FF5700C8CD76 /* SMTransportationRoute.m */; };
 		F69227841787003A00C8CD76 /* SMTransportationLine.m in Sources */ = {isa = PBXBuildFile; fileRef = F69227831787003A00C8CD76 /* SMTransportationLine.m */; };
 		F6922787178700BC00C8CD76 /* SMTransportation.m in Sources */ = {isa = PBXBuildFile; fileRef = F6922786178700BC00C8CD76 /* SMTransportation.m */; };
 		F692278A178702F900C8CD76 /* Albertslundruten.line in Resources */ = {isa = PBXBuildFile; fileRef = F6922788178702F900C8CD76 /* Albertslundruten.line */; };
@@ -707,6 +706,7 @@
 		F694BECD17B933C700545578 /* L@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F694BECB17B933C700545578 /* L@2x.png */; };
 		F695285717B52E9900AF98D3 /* local-trains-timetable.json in Resources */ = {isa = PBXBuildFile; fileRef = F695285617B52E9900AF98D3 /* local-trains-timetable.json */; };
 		F6954B4A17C21E2C0020345A /* metro.json in Resources */ = {isa = PBXBuildFile; fileRef = F6954B4917C21E2C0020345A /* metro.json */; };
+		F6954B5517C25CD40020345A /* SMMetroStationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F6954B5417C25CD40020345A /* SMMetroStationInfo.m */; };
 		F695DC8217ABD5A900DD1A53 /* SMRouteInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F695DC8117ABD5A900DD1A53 /* SMRouteInfoViewController.m */; };
 		F695DC8A17ABE14100DD1A53 /* route_info_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F695DC8817ABE14100DD1A53 /* route_info_icon.png */; };
 		F695DC8B17ABE14100DD1A53 /* route_info_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F695DC8917ABE14100DD1A53 /* route_info_icon@2x.png */; };
@@ -1523,8 +1523,6 @@
 		F691E7DF17A172C6002E822E /* SMMapManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMapManager.m; sourceTree = "<group>"; };
 		F69227741786FD0B00C8CD76 /* SMTripRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTripRoute.h; sourceTree = "<group>"; };
 		F69227751786FD0B00C8CD76 /* SMTripRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTripRoute.m; sourceTree = "<group>"; };
-		F692277E1786FF5700C8CD76 /* SMTransportationRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTransportationRoute.h; sourceTree = "<group>"; };
-		F692277F1786FF5700C8CD76 /* SMTransportationRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTransportationRoute.m; sourceTree = "<group>"; };
 		F69227821787003A00C8CD76 /* SMTransportationLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTransportationLine.h; sourceTree = "<group>"; };
 		F69227831787003A00C8CD76 /* SMTransportationLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTransportationLine.m; sourceTree = "<group>"; };
 		F6922785178700BC00C8CD76 /* SMTransportation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTransportation.h; sourceTree = "<group>"; };
@@ -1564,6 +1562,8 @@
 		F694BECB17B933C700545578 /* L@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "L@2x.png"; sourceTree = "<group>"; };
 		F695285617B52E9900AF98D3 /* local-trains-timetable.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "local-trains-timetable.json"; sourceTree = "<group>"; };
 		F6954B4917C21E2C0020345A /* metro.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = metro.json; sourceTree = "<group>"; };
+		F6954B5317C25CD40020345A /* SMMetroStationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMetroStationInfo.h; sourceTree = "<group>"; };
+		F6954B5417C25CD40020345A /* SMMetroStationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMetroStationInfo.m; sourceTree = "<group>"; };
 		F695DC8017ABD5A900DD1A53 /* SMRouteInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRouteInfoViewController.h; sourceTree = "<group>"; };
 		F695DC8117ABD5A900DD1A53 /* SMRouteInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRouteInfoViewController.m; sourceTree = "<group>"; };
 		F695DC8817ABE14100DD1A53 /* route_info_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = route_info_icon.png; sourceTree = "<group>"; };
@@ -2709,8 +2709,6 @@
 				F692278D17870A7700C8CD76 /* SMStationInfo.m */,
 				F69227741786FD0B00C8CD76 /* SMTripRoute.h */,
 				F69227751786FD0B00C8CD76 /* SMTripRoute.m */,
-				F692277E1786FF5700C8CD76 /* SMTransportationRoute.h */,
-				F692277F1786FF5700C8CD76 /* SMTransportationRoute.m */,
 				F692278F17870DAE00C8CD76 /* SMRouteTransportationInfo.h */,
 				F692279017870DAE00C8CD76 /* SMRouteTransportationInfo.m */,
 				F69227A31787326800C8CD76 /* SMBrokenRouteInfo.h */,
@@ -2725,6 +2723,8 @@
 				F694BEC517B9012100545578 /* SMArrivalMapping.m */,
 				F694BEC717B901EA00545578 /* SMArrivalInformation.h */,
 				F694BEC817B901EA00545578 /* SMArrivalInformation.m */,
+				F6954B5317C25CD40020345A /* SMMetroStationInfo.h */,
+				F6954B5417C25CD40020345A /* SMMetroStationInfo.m */,
 			);
 			name = route;
 			sourceTree = "<group>";
@@ -3540,7 +3540,6 @@
 				78E64E08178AEEFE008135B3 /* SMCyLwReminderVC.m in Sources */,
 				78E64E22178B0044008135B3 /* SMCyLwFirstTimeIntro.m in Sources */,
 				F69227761786FD0B00C8CD76 /* SMTripRoute.m in Sources */,
-				F69227801786FF5700C8CD76 /* SMTransportationRoute.m in Sources */,
 				F69227841787003A00C8CD76 /* SMTransportationLine.m in Sources */,
 				F6922787178700BC00C8CD76 /* SMTransportation.m in Sources */,
 				F692278E17870A7700C8CD76 /* SMStationInfo.m in Sources */,
@@ -3573,6 +3572,7 @@
 				F694BEBE17B8EF3800545578 /* SMTrain.m in Sources */,
 				F694BEC617B9012100545578 /* SMArrivalMapping.m in Sources */,
 				F694BEC917B901EA00545578 /* SMArrivalInformation.m in Sources */,
+				F6954B5517C25CD40020345A /* SMMetroStationInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3659,8 +3659,8 @@
 			baseConfigurationReference = 4C48641216F0994600F01A7C /* ibikecph.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Nikola Markovic (EE62QX6H34)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nikola Markovic (EE62QX6H34)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Igor Jerkovic (39D278YE39)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Igor Jerkovic (39D278YE39)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ibikecph/Libs/FacebookSDK\"",
@@ -3688,8 +3688,8 @@
 					"\"$(SRCROOT)/ibikecph/Libs/GA v2.0b4\"/**",
 				);
 				PRODUCT_NAME = "I Bike CPH";
-				PROVISIONING_PROFILE = "C579CE23-B997-43B2-8B11-5D12331EBBC1";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C579CE23-B997-43B2-8B11-5D12331EBBC1";
+				PROVISIONING_PROFILE = "83E7E6C9-3A87-46BD-AF2A-B9890F24F164";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "83E7E6C9-3A87-46BD-AF2A-B9890F24F164";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -3700,8 +3700,8 @@
 			baseConfigurationReference = 4C48641216F0994600F01A7C /* ibikecph.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Igor Jerkovic (39D278YE39)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Igor Jerkovic (39D278YE39)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ibikecph/Libs/FacebookSDK\"",
@@ -3726,8 +3726,7 @@
 					"\"$(SRCROOT)/ibikecph/Libs/GA v2.0b4\"/**",
 				);
 				PRODUCT_NAME = "I Bike CPH";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "83E7E6C9-3A87-46BD-AF2A-B9890F24F164";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

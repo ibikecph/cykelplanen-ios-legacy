@@ -168,20 +168,20 @@ typedef enum {
     
 
     if ( self.appDelegate.mapOverlays == nil ) {
-        self.appDelegate.mapOverlays = [[SMMapOverlays alloc] initWithMapView:nil];
+        self.appDelegate.mapOverlays = [[SMMapOverlays alloc] initWithMapView:self.mpView];
     }
     [self.appDelegate.mapOverlays useMapView:self.mpView];
-    [self.appDelegate.mapOverlays loadMarkers];
+    //[self.appDelegate.mapOverlays loadMarkers];
     
     //[self loadMarkers];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onStationsFetched:) name:NOTIFICATION_STATIONS_FETCHED object:nil];
     
-    [self loadMarkers];
+    //[self loadMarkers];
 }
 
 -(void)onStationsFetched:(NSNotification*)notification{
-    [self loadMarkers];
+    //[self loadMarkers];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -238,16 +238,23 @@ typedef enum {
     self.mapFade.frame= rect;
     
     // markers visibility
-    [self removeAllMarkers];
-    [self toggleMarkers];
+    //[self removeAllMarkers];
+    //[self toggleMarkers];
     
-
+    [self.appDelegate.mapOverlays useMapView:self.mpView];
+    [self.appDelegate.mapOverlays toggleMarkers];
+    [self.mpView setZoom:self.mpView.zoom+0.0001];
+    [self mapViewRegionDidChange:self.mpView];
+    
+    double delayInSeconds = 1.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.mpView setZoom:self.mpView.zoom+0.0001];
+    });
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-
     
     [tblDirections reloadData];
     
@@ -257,9 +264,7 @@ typedef enum {
         [UIApplication sharedApplication].idleTimerDisabled = NO;
     }
     
-    [self.appDelegate.mapOverlays useMapView:self.mpView];
-    [self.appDelegate.mapOverlays toggleMarkers];
-    
+        
     if ( self.appDelegate.mapOverlays.pathVisible )
         [self.cargoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
     if ( self.appDelegate.mapOverlays.serviceMarkersVisible )
@@ -268,8 +273,25 @@ typedef enum {
         [self.cargoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
     if ( self.appDelegate.mapOverlays.metroMarkersVisible )
         [self.cargoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+    if ( self.appDelegate.mapOverlays.localTrainMarkersVisible )
+        [self.cargoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+    
+//    
+//    
+//    float t = MAX((self.mpView.zoom / 10.0) - 1.0, 0.0)*2.0;
+//    // lerp(1.5, 0.35, t)
+//    float zoom = (1.0-t)*0.35 + t*1.5;
+//    
+//    for (SMAnnotation* an in self.mpView.annotations) {
+//        if ([an.annotationType isEqualToString:@"station"]) {
+//            if (an.layer) {
+//                RMMarker* marker = (RMMarker*)(an.layer);
+//                [marker updateBoundsWithZoom: zoom];
+//            }
+//        }
+//    }
 
-
+ 
 }
 
 
@@ -1077,6 +1099,20 @@ typedef enum {
 }
 
 - (void)mapViewRegionDidChange:(RMMapView *)mapView {
+
+    float t = MAX((mapView.zoom / 10.0) - 1.0, 0.0)*2.0;
+    // lerp(1.5, 0.35, t)
+    float zoom = (1.0-t)*0.35 + t*1.5;
+
+    for (SMAnnotation* an in mapView.annotations) {
+        if ([an.annotationType isEqualToString:@"station"]) {
+            if (an.layer) {
+                RMMarker* marker = (RMMarker*)(an.layer);
+                [marker updateBoundsWithZoom: zoom];
+            }
+        }
+    }
+    
     [self checkCallouts];
 }
 
@@ -1149,7 +1185,7 @@ typedef enum {
             z= zIndex.intValue;
         }
         RMMarker * rm = [[RMMarker alloc] initWithUIImage:annotation.annotationIcon anchorPoint:annotation.anchorPoint];
-        [rm setZPosition:z];        
+        [rm setZPosition:z];
 
         return rm;
     }
@@ -1217,10 +1253,12 @@ typedef enum {
 
 - (void)afterMapZoom:(RMMapView *)map byUser:(BOOL)wasUserAction {
     debugLog(@"After map zoom!!!! wasUserAction = %d", wasUserAction);
+    
     if (wasUserAction) {
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(resetZoomTurn) object:nil];
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(trackingOn) object:nil];
     }
+    
     [self checkCallouts];
 }
 
@@ -2232,5 +2270,9 @@ typedef enum {
 
 -(BOOL)breakRouteButtonEnabled{
     return !self.currentlyRouting;
+}
+
+-(void)setDestination:(NSString *)pDestination{
+    _destination= pDestination;
 }
 @end

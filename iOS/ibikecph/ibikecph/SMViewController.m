@@ -188,7 +188,6 @@ typedef enum {
 
     [self.mpView setCenterCoordinate:CLLocationCoordinate2DMake(55.675455,12.566643) animated:NO];
     [self.mpView setZoom:16];
-//    [self.mpView zoomByFactor:1 near:CGPointMake(self.mpView.frame.size.width/2.0f, self.mpView.frame.size.height/2.0f) animated:NO];
     [self.mpView setEnableBouncing:TRUE];
     
     [self openMenu:menuFavorites];
@@ -212,8 +211,6 @@ typedef enum {
 
     [centerView setupForHorizontalSwipeWithStart:0.0f andEnd:260.0f andStart:0.0f andPullView:overlayMenuBtn];
     
-    //[overlayMenu setupForHorizontalSwipeWithStart:-260.0f andEnd:0.0f andStart:-260.0f andPullView:centerView];
-    
     [self setTitle:translateString(@"reminder_title") forButton:remindersHeaderButton];
     [self setTitle:translateString(@"account") forButton:accountHeaderButton];
     [self setTitle:translateString(@"about_css") forButton:aboutHeaderButton];
@@ -227,8 +224,6 @@ typedef enum {
     }
     [self.appDelegate.mapOverlays useMapView:self.mpView];
     [self.appDelegate.mapOverlays loadMarkers];
-    
-//    [self loadMarkers];
     
     UITapGestureRecognizer* singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapMenuBtn:)];
     UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPanMenuBtn:)];
@@ -493,7 +488,9 @@ typedef enum {
     return 45.0f;
 }
 
-
+-(void)setDestination:(NSString *)pDestination{
+    _destination= pDestination;
+}
 - (IBAction)openOverlaysMenu:(UIImageView*)sender {
     if (centerView.frame.origin.x == 0) {
         
@@ -673,7 +670,7 @@ typedef enum {
     [self tapAccount:sender];
 }
 
-- (IBAction)tapAccount:(id)sender {    
+- (IBAction)tapAccount:(id)sender {
     if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
         [self performSegueWithIdentifier:@"mainToAccount" sender:nil];
     } else {
@@ -720,6 +717,12 @@ typedef enum {
     lastLocation= loc;
 #endif
 
+    [self displayPinWithPoint:point atLocation:loc ];
+    [self showPinDrop];
+    [self displayDestinationNameWithLocation:loc];
+}
+
+-(void)displayPinWithPoint:(CGPoint)point atLocation:(CLLocation*)loc{
     UIImageView * im = [[UIImageView alloc] initWithFrame:CGRectMake(point.x - 17.0f, 0.0f, 34.0f, 34.0f)];
     [im setImage:[UIImage imageNamed:@"markerFinish"]];
     [self.mpView addSubview:im];
@@ -727,62 +730,65 @@ typedef enum {
         [im setFrame:CGRectMake(point.x - 17.0f, point.y - 34.0f, 34.0f, 34.0f)];
     } completion:^(BOOL finished) {
         debugLog(@"dropped pin");
-//        [self.mpView removeAllAnnotations];
-        //SMAnnotation *endMarkerAnnotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:@""];
-
+        
         if ( self.endMarkerAnnotation != nil ) {
             [self.mpView removeAnnotation:self.endMarkerAnnotation];
             self.endMarkerAnnotation = nil;
-            self.endMarkerAnnotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:@""];
+            self.endMarkerAnnotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:loc.coordinate andTitle:@""];
         }
-
+        
         self.endMarkerAnnotation.annotationType = @"marker";
         self.endMarkerAnnotation.annotationIcon = [UIImage imageNamed:@"markerFinish"];
         self.endMarkerAnnotation.anchorPoint = CGPointMake(0.5, 1.0);
         [self.mpView addAnnotation:self.endMarkerAnnotation];
-        [self setDestinationPin:self.endMarkerAnnotation];
-        
-        [self.destinationPin setSubtitle:@""];
-        [self.destinationPin setDelegate:self];
-        [self.destinationPin setRoutingCoordinate:loc];
-
+        [self setDestinationAnnotation:self.endMarkerAnnotation withLocation:loc];
         
         [im removeFromSuperview];
         
-        [self showPinDrop];
+//        [self showPinDrop];
         
-        [SMGeocoder reverseGeocode:coord completionHandler:^(NSDictionary *response, NSError *error) {
-            [routeStreet setText:[response objectForKey:@"title"]];
-            if ([routeStreet.text isEqualToString:@""]) {
-                [routeStreet setText:[NSString stringWithFormat:@"%f, %f", coord.latitude, coord.longitude]];
-            }
-            
-            NSPredicate * pred = [NSPredicate predicateWithFormat:@"SELF.name = %@ AND SELF.address = %@", routeStreet.text, routeStreet.text];
-            NSArray * arr = [[SMFavoritesUtil getFavorites] filteredArrayUsingPredicate:pred];
-            if ([arr count] > 0) {
-                [pinButton setSelected:YES];
-            } else {
-                [pinButton setSelected:NO];
-            }
-//            NSString* authTokenStr= [self.appDelegate.appSettings objectForKey:@"auth_token"];
-//            if ( authTokenStr && ![authTokenStr isEqual:[NSNull null]] && [[self.appDelegate.appSettings objectForKey:@"auth_token"] isEqualToString:@""] == NO) {
-            NSNumber* loginID= [self.appDelegate.appSettings objectForKey:@"id"];
-            if(loginID && loginID.intValue!=0){
-                pinButton.enabled = YES;
-            }
-            
-//            [self.destinationPin setSubtitle:@""];
-            [self.destinationPin setTitle:[response objectForKey:@"title"]];
-//            [self.destinationPin setDelegate:self];
-//            [self.destinationPin setRoutingCoordinate:loc];
-        }];
         
-//        SMNearbyPlaces * np = [[SMNearbyPlaces alloc] initWithDelegate:self];
-//        [np findPlacesForLocation:[[CLLocation alloc] initWithLatitude:loc.coordinate.latitude longitude:loc.coordinate.longitude]];
+    }];
+}
+
+-(void)setDestinationAnnotation:(SMAnnotation*)annotation withLocation:(CLLocation*)loc{
+    [self setDestinationPin:annotation];
+    
+    [self.destinationPin setSubtitle:@""];
+    [self.destinationPin setDelegate:self];
+    [self.destinationPin setRoutingCoordinate:loc];
+}
+
+-(void)displayDestinationNameWithString:(NSString*)str{
+    [routeStreet setText:str];
+}
+
+-(void)displayDestinationNameWithLocation:(CLLocation*)loc{
+    [SMGeocoder reverseGeocode:loc.coordinate completionHandler:^(NSDictionary *response, NSError *error) {
+        [routeStreet setText:[response objectForKey:@"title"]];
+        if ([routeStreet.text isEqualToString:@""]) {
+            [routeStreet setText:[NSString stringWithFormat:@"%f, %f", loc.coordinate.latitude, loc.coordinate.longitude]];
+        }
+        
+        NSPredicate * pred = [NSPredicate predicateWithFormat:@"SELF.name = %@ AND SELF.address = %@", routeStreet.text, routeStreet.text];
+        NSArray * arr = [[SMFavoritesUtil getFavorites] filteredArrayUsingPredicate:pred];
+        if ([arr count] > 0) {
+            [pinButton setSelected:YES];
+        } else {
+            [pinButton setSelected:NO];
+        }
+        
+        NSNumber* loginID= [self.appDelegate.appSettings objectForKey:@"id"];
+        if(loginID && loginID.intValue!=0){
+            pinButton.enabled = YES;
+        }
+        
+        
+        [self.destinationPin setTitle:[response objectForKey:@"title"]];
+        
     }];
 
 }
-
 - (void)readjustViewsForRotation:(UIInterfaceOrientation) orientation {
     CGFloat scrWidth;
     CGFloat scrHeight;
@@ -1486,7 +1492,6 @@ typedef enum {
                 [cell.text setText:[currentRow objectForKey:@"name"]];
                 return cell;
             } else {
-//                if (indexPath.row < [self.favoritesList count]) {
                     NSDictionary * currentRow = [self.favoritesList objectAtIndex:indexPath.row];
                     SMMenuCell * cell = [tableView dequeueReusableCellWithIdentifier:@"favoritesCell"];
                     [cell.image setContentMode:UIViewContentModeCenter];
@@ -1517,16 +1522,12 @@ typedef enum {
             [cell.text setText:translateString(@"cell_add_favorite")];
             if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
                 [cell.addFavoritesText setText:translateString(@"cell_empty_favorite_text")];
-                //[cell.addFavoritesText setTextColor:[UIColor whiteColor]];
                 [cell.text setTextColor:[UIColor colorWithRed:245.0f/255.0f green:130.0f/255.0f blue:32.0f/255.0f alpha:1.0f]];
                 [cell.addFavoritesSymbol setImage:[UIImage imageNamed:@"favAdd"]];
-//                [cell.text setTextColor:[UIColor greenColor]];
             } else {
-                [cell.addFavoritesText setText:translateString(@"favorites_login")];                
-//                [cell.addFavoritesText setTextColor:[UIColor colorWithRed:96.0f/255.0f green:96.0f/255.0f blue:96.0f/255.0f alpha:1.0f]];
+                [cell.addFavoritesText setText:translateString(@"favorites_login")];
                 [cell.addFavoritesText setTextColor:[UIColor colorWithRed:77.0f/255.0f green:77.0f/255.0f blue:77.0f/255.0f alpha:1.0f]];
                 [cell.text setTextColor:[UIColor colorWithRed:77.0f/255.0f green:77.0f/255.0f blue:77.0f/255.0f alpha:1.0f]];
-//                [cell.text setTextColor:[UIColor redColor]];
                 [cell.addFavoritesSymbol setImage:[UIImage imageNamed:@"fav_plus_none_grey"]];
             }
             
@@ -1795,6 +1796,7 @@ typedef enum {
 - (RMMapLayer *)mapView:(RMMapView *)aMapView layerForAnnotation:(SMAnnotation *)annotation {
     if ([annotation.annotationType isEqualToString:@"marker"] || [annotation.annotationType isEqualToString:@"station"]) {
         RMMarker * m = [[RMMarker alloc] initWithUIImage:annotation.annotationIcon anchorPoint:annotation.anchorPoint];
+
         return m;
     }
     return nil;
@@ -1809,16 +1811,31 @@ typedef enum {
 }
 
 - (void)tapOnAnnotation:(SMAnnotation *)annotation onMap:(RMMapView *)map {
-    if ([annotation.annotationType isEqualToString:@"marker"]) {
+//    if ([annotation.annotationType isEqualToString:@"marker"]) {
         for (id v in self.mpView.subviews) {
             if ([v isKindOfClass:[SMCalloutView class]]) {
                 [v removeFromSuperview];
             }
         }
-        //[self.mpView removeAllAnnotations];
         [self.mpView removeAnnotation:self.endMarkerAnnotation];
-        [self hidePinDrop];
+//        [self hidePinDrop];
+//    }
+    
+    if([annotation.annotationType.lowercaseString isEqualToString:@"station"]){
+        SMStationInfo* station= [annotation.userInfo objectForKey:@"station"];
+        if(station){
+            [self showPinDrop];
+            [self displayDestinationNameWithString:station.name];
+            [self setDestinationAnnotation:annotation withLocation:station.location];
+            
+            RMMapLayer* layer= [self mapView:map layerForAnnotation:annotation];
+
+//            layer.frame= CGRectMake(layer.frame.origin.x-layer.frame.size.width/4, layer.frame.origin.y-layer.frame.size.height/4, 1.5*layer.frame.size.width, 1.5*layer.frame.size.height);
+//            [layer setNeedsDisplay];
+        }
     }
+
+    
 }
 
 #pragma mark - SMAnnotation delegate methods
@@ -1845,7 +1862,13 @@ typedef enum {
         debugLog(@"error in trackPageview");
     }
     self.startName = CURRENT_POSITION_STRING;
-    self.endName = annotation.title;
+    SMStationInfo* station= [annotation.userInfo objectForKey:@"station"];
+    if(station){
+        self.endName= station.name;
+    }else{
+        self.endName = annotation.title;
+    }
+
     self.startLoc = cStart.coordinate;
     self.endLoc = cEnd.coordinate;
     SMRequestOSRM * r = [[SMRequestOSRM alloc] initWithDelegate:self];
@@ -1880,7 +1903,6 @@ typedef enum {
 }
 
 #pragma mark - osrm request delegate
-
 - (void)request:(SMRequestOSRM *)req finishedWithResult:(id)res {
     if ([req.requestIdentifier isEqualToString:@"getNearestForPinDrop"]) {
         NSDictionary * r = res;
@@ -1918,26 +1940,49 @@ typedef enum {
         } else {
             [self findRouteFrom:self.startLoc to:self.endLoc fromAddress:self.startName toAddress:self.endName withJSON:jsonRoot];
             NSDictionary* dict= jsonRoot;
-   
+            
             NSDictionary* routeDict= [dict objectForKey:@"route_summary"];
             NSString* name= [routeDict objectForKey:@"end_point"];
             NSString* address= [routeDict objectForKey:@"end_point"];
             
-            NSDictionary * d = @{
-                                 @"name" : name,
-                                 @"address" : address,
-                                 @"startDate" : [NSDate date],
-                                 @"endDate" : [NSDate date],
-                                 @"source" : @"searchHistory",
-                                 @"subsource" : @"",
-                                 @"lat" : [NSNumber numberWithDouble:cEnd.coordinate.latitude],
-                                 @"long" : [NSNumber numberWithDouble:cEnd.coordinate.longitude],
-                                 @"order" : @1
-                                 };
-            [SMSearchHistory saveToSearchHistory:d];
-
-            [self dismissViewControllerAnimated:YES completion:^{
-               
+            address = self.endName;
+            name = self.endName;
+            
+            [SMGeocoder reverseGeocode:self.endLoc completionHandler:^(NSDictionary *response, NSError *error) {
+                NSString* streetName = [response objectForKey:@"title"];
+                
+                NSString* new_address = streetName;
+                NSString* new_name = streetName; //[NSString stringWithFormat:@"%@, %@", streetName, [response objectForKey:@"subtitle"] ];
+                
+                if ([streetName isEqualToString:self.endName]) {
+                    new_name = streetName;
+                    new_address = streetName;
+                } else {
+                    new_name = self.endName;
+                    new_address = streetName;
+                }
+                
+                if ([new_name isEqualToString:@""]) {
+                    new_name = [NSString stringWithFormat:@"%f, %f", self.endLoc.latitude, self.endLoc.longitude];
+                }
+                
+                NSDictionary * d = @{
+                                     @"name" : new_name,
+                                     @"address" : new_address,
+                                     @"startDate" : [NSDate date],
+                                     @"endDate" : [NSDate date],
+                                     @"source" : @"searchHistory",
+                                     @"subsource" : @"",
+                                     @"lat" : [NSNumber numberWithDouble:cEnd.coordinate.latitude],
+                                     @"long" : [NSNumber numberWithDouble:cEnd.coordinate.longitude],
+                                     @"order" : @1
+                                     };
+                [SMSearchHistory saveToSearchHistory:d];
+                
+                [self dismissViewControllerAnimated:YES completion:^{
+                    
+                }];
+                
             }];
             
         }
@@ -1945,6 +1990,9 @@ typedef enum {
             [fadeView setAlpha:0.0f];
         }];
     }
+}
+-(void)setEndName:(NSString *)pEndName{
+    _endName= pEndName;
 }
 
 - (void)request:(SMRequestOSRM *)req failedWithError:(NSError *)error {
