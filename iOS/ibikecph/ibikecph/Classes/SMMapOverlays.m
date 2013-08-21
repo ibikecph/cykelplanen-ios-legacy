@@ -581,8 +581,8 @@
     NSLog(@"Toggle markers: %@ %d", markerType, state);
 }
 
-float lerp(float a, float b, float t) {
-    return (1.0-t)*a + t*b;
-}
+//float lerp(float a, float b, float t) {
+//    return (1.0-t)*a + t*b;
+//}
 
 @end
