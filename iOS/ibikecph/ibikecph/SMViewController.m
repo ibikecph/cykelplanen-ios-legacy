@@ -2016,21 +2016,49 @@ float lerp(float a, float b, float t) {
             NSString* name= [routeDict objectForKey:@"end_point"];
             NSString* address= [routeDict objectForKey:@"end_point"];
             
-            NSDictionary * d = @{
-                                 @"name" : name,
-                                 @"address" : address,
-                                 @"startDate" : [NSDate date],
-                                 @"endDate" : [NSDate date],
-                                 @"source" : @"searchHistory",
-                                 @"subsource" : @"",
-                                 @"lat" : [NSNumber numberWithDouble:cEnd.coordinate.latitude],
-                                 @"long" : [NSNumber numberWithDouble:cEnd.coordinate.longitude],
-                                 @"order" : @1
-                                 };
-            [SMSearchHistory saveToSearchHistory:d];
+            address = self.endName;
+            name = self.endName;
+            
+            [SMGeocoder reverseGeocode:self.endLoc completionHandler:^(NSDictionary *response, NSError *error) {
+                NSString* streetName = [response objectForKey:@"title"];
+                
+                //NSLog(@"Response: %@", response);
+                
+//                if ([streetName isEqualToString:@""]) {
+//                    streetName = [NSString stringWithFormat:@"%f, %f", coord.latitude, coord.longitude];
+//                }
+                //[tCell.buttonAddressSource setTitle:streetName forState:UIControlStateNormal];
+                
+                NSLog(@"Recent: %@ address: %@", self.endName, streetName);
+                
+                NSString* new_address = streetName;
+                NSString* new_name = streetName; //[NSString stringWithFormat:@"%@, %@", streetName, [response objectForKey:@"subtitle"] ];
+                
+                if ([streetName isEqualToString:self.endName]) {
+                    new_name = streetName;
+                    new_address = streetName;
+                } else {
+                    new_name = self.endName;
+                    new_address = streetName;
+                }
+            
+                NSDictionary * d = @{
+                                     @"name" : new_name,
+                                     @"address" : new_address,
+                                     @"startDate" : [NSDate date],
+                                     @"endDate" : [NSDate date],
+                                     @"source" : @"searchHistory",
+                                     @"subsource" : @"",
+                                     @"lat" : [NSNumber numberWithDouble:cEnd.coordinate.latitude],
+                                     @"long" : [NSNumber numberWithDouble:cEnd.coordinate.longitude],
+                                     @"order" : @1
+                                     };
+                [SMSearchHistory saveToSearchHistory:d];
 
-            [self dismissViewControllerAnimated:YES completion:^{
-               
+                [self dismissViewControllerAnimated:YES completion:^{
+                   
+                }];
+            
             }];
             
         }

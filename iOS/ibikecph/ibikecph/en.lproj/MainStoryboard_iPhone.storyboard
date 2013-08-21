@@ -4622,147 +4622,625 @@ God tur og tak fordi du cykler!</string>
         </scene>
     </scenes>
     <resources>
-        <image name="about_bgr.png" width="16" height="16"/>
-        <image name="about_header.png" width="16" height="16"/>
-        <image name="arrow_large.png" width="16" height="16"/>
-        <image name="arrow_small.png" width="16" height="16"/>
-        <image name="autocompleteHeader.png" width="16" height="16"/>
-        <image name="back_arrow_btn.png" width="16" height="16"/>
-        <image name="back_arrow_btn_black.png" width="16" height="16"/>
-        <image name="back_arrow_btn_black_press.png" width="16" height="16"/>
-        <image name="back_arrow_btn_press.png" width="16" height="16"/>
-        <image name="bike_route.png" width="16" height="16"/>
-        <image name="blue_btn.png" width="16" height="16"/>
-        <image name="blue_btn_ibike.png" width="16" height="16"/>
-        <image name="blue_btn_ibike_pressed.png" width="16" height="16"/>
-        <image name="blue_btn_pressed.png" width="16" height="16"/>
-        <image name="bottom_divider_vertical.png" width="16" height="16"/>
-        <image name="break_route.png" width="16" height="16"/>
-        <image name="break_route_info_btn.png" width="16" height="16"/>
-        <image name="break_route_press.png" width="16" height="16"/>
-        <image name="btnClose.png" width="16" height="16"/>
-        <image name="camera.png" width="16" height="16"/>
-        <image name="checkbox.png" width="16" height="16"/>
-        <image name="checkboxChecked.png" width="16" height="16"/>
-        <image name="checkboxUnchecked.png" width="16" height="16"/>
-        <image name="css_logo.png" width="16" height="16"/>
-        <image name="css_logo_small.png" width="16" height="16"/>
-        <image name="direction_cell_small_bgr.png" width="16" height="16"/>
-        <image name="distance_white.png" width="16" height="16"/>
-        <image name="divider_side_menu_btn.png" width="16" height="16"/>
-        <image name="dotted_line.png" width="16" height="16"/>
-        <image name="drop_pin_add_fav_btn.png" width="16" height="16"/>
-        <image name="drop_pin_add_fav_btn_active.png" width="16" height="16"/>
-        <image name="drop_pin_add_fav_btn_press.png" width="16" height="16"/>
-        <image name="drop_pin_start_bgr.png" width="16" height="16"/>
-        <image name="drop_shadow_sliding_image.png" width="16" height="16"/>
+        <image name="about_bgr.png" width="320" height="411"/>
+        <image name="about_header.png" width="286" height="77"/>
+        <image name="arrow_large.png" width="37" height="32"/>
+        <image name="arrow_small.png" width="20" height="18"/>
+        <image name="autocompleteHeader.png" width="152" height="4"/>
+        <image name="back_arrow_btn.png" width="46" height="34"/>
+        <image name="back_arrow_btn_black.png" width="46" height="34"/>
+        <image name="back_arrow_btn_black_press.png" width="46" height="34"/>
+        <image name="back_arrow_btn_press.png" width="46" height="34"/>
+        <image name="bike_route.png" width="30" height="39"/>
+        <image name="blue_btn.png" width="11" height="11"/>
+        <image name="blue_btn_ibike.png" width="11" height="11"/>
+        <image name="blue_btn_ibike_pressed.png" width="11" height="11"/>
+        <image name="blue_btn_pressed.png" width="11" height="11"/>
+        <image name="bottom_divider_vertical.png" width="2" height="2"/>
+        <image name="break_route.png" width="36" height="36"/>
+        <image name="break_route_info_btn.png" width="243" height="36"/>
+        <image name="break_route_press.png" width="36" height="36"/>
+        <image name="btnClose.png" width="43" height="43"/>
+        <image name="camera.png" width="61" height="61"/>
+        <image name="checkbox.png" width="32" height="32"/>
+        <image name="checkboxChecked.png" width="22" height="22"/>
+        <image name="checkboxUnchecked.png" width="22" height="22"/>
+        <image name="css_logo.png" width="130" height="108"/>
+        <image name="css_logo_small.png" width="45" height="45"/>
+        <image name="direction_cell_small_bgr.png" width="5" height="61"/>
+        <image name="distance_white.png" width="91" height="35"/>
+        <image name="divider_side_menu_btn.png" width="1" height="2"/>
+        <image name="dotted_line.png" width="16" height="58"/>
+        <image name="drop_pin_add_fav_btn.png" width="37" height="77"/>
+        <image name="drop_pin_add_fav_btn_active.png" width="37" height="77"/>
+        <image name="drop_pin_add_fav_btn_press.png" width="37" height="77"/>
+        <image name="drop_pin_start_bgr.png" width="320" height="113"/>
+        <image name="drop_shadow_sliding_image.png" width="10" height="2"/>
         <image name="favAdd_grey.png" width="16" height="16"/>
-        <image name="favEdit.png" width="16" height="16"/>
-        <image name="favEditBtn.png" width="16" height="16"/>
-        <image name="favEditBtnPressed.png" width="16" height="16"/>
-        <image name="favEditDoneBtn.png" width="16" height="16"/>
-        <image name="favEditDoneBtnPressed.png" width="16" height="16"/>
-        <image name="favListRow.png" width="16" height="16"/>
-        <image name="favListRowLight.png" width="16" height="16"/>
-        <image name="favListRowSelected.png" width="16" height="16"/>
-        <image name="favSearch_Name_icon.png" width="16" height="16"/>
-        <image name="favSearch_icon.png" width="16" height="16"/>
-        <image name="favStarWhiteLarge.png" width="16" height="16"/>
-        <image name="favTypeFavoriteButton.png" width="16" height="16"/>
-        <image name="favTypeFavoriteButtonPressed.png" width="16" height="16"/>
-        <image name="favTypeHomeButton.png" width="16" height="16"/>
-        <image name="favTypeHomeButtonPressed.png" width="16" height="16"/>
-        <image name="favTypeSchoolButton.png" width="16" height="16"/>
-        <image name="favTypeSchoolButtonPressed.png" width="16" height="16"/>
-        <image name="favTypeWorkButton.png" width="16" height="16"/>
-        <image name="favTypeWorkButtonPressed.png" width="16" height="16"/>
-        <image name="fav_rect_bgr.png" width="16" height="16"/>
-        <image name="fb_linked_icon.png" width="16" height="16"/>
-        <image name="field_email_icon.png" width="16" height="16"/>
-        <image name="field_password_icon.png" width="16" height="16"/>
-        <image name="field_user_icon.png" width="16" height="16"/>
-        <image name="findRouteCalendar.png" width="16" height="16"/>
-        <image name="gray_btn.png" width="16" height="16"/>
-        <image name="gray_btn_pressed.png" width="16" height="16"/>
-        <image name="homeSearchSmall.png" width="16" height="16"/>
-        <image name="home_btn_active.png" width="16" height="16"/>
-        <image name="home_btn_inactive.png" width="16" height="16"/>
-        <image name="icon_locate_me.png" width="16" height="16"/>
-        <image name="info.png" width="16" height="16"/>
-        <image name="input_field__scalable.png" width="16" height="16"/>
-        <image name="intro_bottom_menu_bgr.png" width="16" height="16"/>
-        <image name="leftArrow.png" width="16" height="16"/>
-        <image name="list_find_icon.png" width="16" height="16"/>
-        <image name="locate_icon.png" width="16" height="16"/>
-        <image name="loginBG.png" width="16" height="16"/>
-        <image name="loginFacebook.png" width="16" height="16"/>
-        <image name="loginFacebookPressed.png" width="16" height="16"/>
-        <image name="mover.png" width="16" height="16"/>
-        <image name="no_connection.png" width="16" height="16"/>
-        <image name="normalDirectionsBG.png" width="16" height="16"/>
-        <image name="pin_a_orange.png" width="16" height="16"/>
-        <image name="pin_b_orange.png" width="16" height="16"/>
-        <image name="profile.png" width="16" height="16"/>
-        <image name="profile_default_image.png" width="16" height="16"/>
-        <image name="pullHandle.png" width="16" height="16"/>
-        <image name="radioChecked.png" width="16" height="16"/>
-        <image name="radioUnchecked.png" width="16" height="16"/>
-        <image name="red_btn.png" width="16" height="16"/>
-        <image name="red_btn_pressed.png" width="16" height="16"/>
-        <image name="register.png" width="16" height="16"/>
-        <image name="registerBG.png" width="16" height="16"/>
+        <image name="favEdit.png" width="22" height="22"/>
+        <image name="favEditBtn.png" width="33" height="33"/>
+        <image name="favEditBtnPressed.png" width="33" height="33"/>
+        <image name="favEditDoneBtn.png" width="72" height="33"/>
+        <image name="favEditDoneBtnPressed.png" width="72" height="33"/>
+        <image name="favListRow.png" width="260" height="45"/>
+        <image name="favListRowLight.png" width="130" height="23"/>
+        <image name="favListRowSelected.png" width="260" height="45"/>
+        <image name="favSearch_Name_icon.png" width="19" height="21"/>
+        <image name="favSearch_icon.png" width="17" height="21"/>
+        <image name="favStarWhiteLarge.png" width="22" height="22"/>
+        <image name="favTypeFavoriteButton.png" width="85" height="85"/>
+        <image name="favTypeFavoriteButtonPressed.png" width="85" height="85"/>
+        <image name="favTypeHomeButton.png" width="85" height="85"/>
+        <image name="favTypeHomeButtonPressed.png" width="85" height="85"/>
+        <image name="favTypeSchoolButton.png" width="85" height="85"/>
+        <image name="favTypeSchoolButtonPressed.png" width="85" height="85"/>
+        <image name="favTypeWorkButton.png" width="85" height="85"/>
+        <image name="favTypeWorkButtonPressed.png" width="85" height="85"/>
+        <image name="fav_rect_bgr.png" width="289" height="123"/>
+        <image name="fb_linked_icon.png" width="54" height="54"/>
+        <image name="field_email_icon.png" width="27" height="27"/>
+        <image name="field_password_icon.png" width="27" height="27"/>
+        <image name="field_user_icon.png" width="27" height="27"/>
+        <image name="findRouteCalendar.png" width="21" height="22"/>
+        <image name="gray_btn.png" width="11" height="11"/>
+        <image name="gray_btn_pressed.png" width="11" height="11"/>
+        <image name="homeSearchSmall.png" width="45" height="45"/>
+        <image name="home_btn_active.png" width="80" height="80"/>
+        <image name="home_btn_inactive.png" width="80" height="80"/>
+        <image name="icon_locate_me.png" width="55" height="55"/>
+        <image name="info.png" width="22" height="22"/>
+        <image name="input_field__scalable.png" width="11" height="11"/>
+        <image name="intro_bottom_menu_bgr.png" width="320" height="61"/>
+        <image name="leftArrow.png" width="7" height="12"/>
+        <image name="list_find_icon.png" width="34" height="34"/>
+        <image name="locate_icon.png" width="13" height="13"/>
+        <image name="loginBG.png" width="320" height="318"/>
+        <image name="loginFacebook.png" width="216" height="45"/>
+        <image name="loginFacebookPressed.png" width="216" height="45"/>
+        <image name="mover.png" width="20" height="12"/>
+        <image name="no_connection.png" width="24" height="24"/>
+        <image name="normalDirectionsBG.png" width="320" height="105"/>
+        <image name="pin_a_orange.png" width="30" height="43"/>
+        <image name="pin_b_orange.png" width="30" height="43"/>
+        <image name="profile.png" width="22" height="22"/>
+        <image name="profile_default_image.png" width="80" height="80"/>
+        <image name="pullHandle.png" width="60" height="30"/>
+        <image name="radioChecked.png" width="22" height="22"/>
+        <image name="radioUnchecked.png" width="22" height="22"/>
+        <image name="red_btn.png" width="24" height="24"/>
+        <image name="red_btn_pressed.png" width="24" height="24"/>
+        <image name="register.png" width="22" height="22"/>
+        <image name="registerBG.png" width="320" height="457"/>
         <image name="registerBlueButton.png" width="16" height="16"/>
-        <image name="register_orange.png" width="16" height="16"/>
-        <image name="reminder_icon.png" width="16" height="16"/>
-        <image name="reminder_table_bgr.png" width="16" height="16"/>
-        <image name="reminders_arrow_down.png" width="16" height="16"/>
-        <image name="reportBottom.png" width="16" height="16"/>
-        <image name="reportBulb.png" width="16" height="16"/>
-        <image name="reportClose.png" width="16" height="16"/>
-        <image name="reportClose_pressed.png" width="16" height="16"/>
-        <image name="reportHeaderBG.png" width="16" height="16"/>
-        <image name="reportPulldown.png" width="16" height="16"/>
-        <image name="reportTextView.png" width="16" height="16"/>
-        <image name="rightArrow.png" width="16" height="16"/>
-        <image name="routeComplete_close_btn.png" width="16" height="16"/>
-        <image name="routeComplete_report_problem.png" width="16" height="16"/>
-        <image name="routeComplete_report_problem_press.png" width="16" height="16"/>
-        <image name="routeEnterBottomRow.png" width="16" height="16"/>
-        <image name="routeEnterBottomRowPressed.png" width="16" height="16"/>
-        <image name="routeEnterHeader.png" width="16" height="16"/>
-        <image name="routeEnterInputBG.png" width="16" height="16"/>
-        <image name="routeEnterMiddleRow.png" width="16" height="16"/>
-        <image name="routeEnterMiddleRowPressed.png" width="16" height="16"/>
-        <image name="routeEnterSingleRow.png" width="16" height="16"/>
-        <image name="routeEnterSingleRowPressed.png" width="16" height="16"/>
-        <image name="routeEnterStartOrange_active.png" width="16" height="16"/>
-        <image name="routeEnterStart_inactive.png" width="16" height="16"/>
-        <image name="routeEnterSwitchIcon.png" width="16" height="16"/>
-        <image name="routeEnterTopRow.png" width="16" height="16"/>
-        <image name="routeEnterTopRowPressed.png" width="16" height="16"/>
-        <image name="routeEnterViewMoreRow.png" width="16" height="16"/>
-        <image name="routeStopOverlay.png" width="16" height="16"/>
-        <image name="route_info_icon.png" width="16" height="16"/>
-        <image name="search_back_btn.png" width="16" height="16"/>
-        <image name="search_btn_start.png" width="16" height="16"/>
-        <image name="select_station_bgr.png" width="16" height="16"/>
-        <image name="separator.png" width="16" height="16"/>
-        <image name="sidemenu_handle.png" width="16" height="16"/>
-        <image name="sidemenu_handle_press.png" width="16" height="16"/>
-        <image name="skip.png" width="16" height="16"/>
-        <image name="skip_orange.png" width="16" height="16"/>
-        <image name="smallDirectionsBG.png" width="16" height="16"/>
-        <image name="splashDialog.png" width="16" height="16"/>
-        <image name="splash_bg_btn_blue_pressed.png" width="16" height="16"/>
-        <image name="splash_bg_btn_red_pressed.png" width="16" height="16"/>
-        <image name="splash_break_route.png" width="16" height="16"/>
-        <image name="splash_fav_input_fields.png" width="16" height="16"/>
-        <image name="splash_greass.png" width="16" height="16"/>
-        <image name="splash_illustration.png" width="16" height="16"/>
-        <image name="splash_sky.png" width="16" height="16"/>
-        <image name="white_btn.png" width="16" height="16"/>
-        <image name="white_btn_pressed.png" width="16" height="16"/>
+        <image name="register_orange.png" width="22" height="22"/>
+        <image name="reminder_icon.png" width="22" height="22"/>
+        <image name="reminder_table_bgr.png" width="288" height="225"/>
+        <image name="reminders_arrow_down.png" width="22" height="22"/>
+        <image name="reportBottom.png" width="320" height="64"/>
+        <image name="reportBulb.png" width="82" height="121"/>
+        <image name="reportClose.png" width="47" height="36"/>
+        <image name="reportClose_pressed.png" width="47" height="36"/>
+        <image name="reportHeaderBG.png" width="320" height="51"/>
+        <image name="reportPulldown.png" width="286" height="44"/>
+        <image name="reportTextView.png" width="285" height="65"/>
+        <image name="rightArrow.png" width="7" height="12"/>
+        <image name="routeComplete_close_btn.png" width="23" height="23"/>
+        <image name="routeComplete_report_problem.png" width="320" height="38"/>
+        <image name="routeComplete_report_problem_press.png" width="320" height="38"/>
+        <image name="routeEnterBottomRow.png" width="300" height="44"/>
+        <image name="routeEnterBottomRowPressed.png" width="300" height="44"/>
+        <image name="routeEnterHeader.png" width="320" height="51"/>
+        <image name="routeEnterInputBG.png" width="307" height="90"/>
+        <image name="routeEnterMiddleRow.png" width="320" height="44"/>
+        <image name="routeEnterMiddleRowPressed.png" width="320" height="44"/>
+        <image name="routeEnterSingleRow.png" width="320" height="44"/>
+        <image name="routeEnterSingleRowPressed.png" width="320" height="44"/>
+        <image name="routeEnterStartOrange_active.png" width="61" height="35"/>
+        <image name="routeEnterStart_inactive.png" width="61" height="35"/>
+        <image name="routeEnterSwitchIcon.png" width="25" height="23"/>
+        <image name="routeEnterTopRow.png" width="320" height="44"/>
+        <image name="routeEnterTopRowPressed.png" width="320" height="44"/>
+        <image name="routeEnterViewMoreRow.png" width="320" height="47"/>
+        <image name="routeStopOverlay.png" width="320" height="212"/>
+        <image name="route_info_icon.png" width="40" height="33"/>
+        <image name="search_back_btn.png" width="47" height="37"/>
+        <image name="search_btn_start.png" width="75" height="37"/>
+        <image name="select_station_bgr.png" width="243" height="37"/>
+        <image name="separator.png" width="2" height="83"/>
+        <image name="sidemenu_handle.png" width="16" height="62"/>
+        <image name="sidemenu_handle_press.png" width="16" height="62"/>
+        <image name="skip.png" width="22" height="22"/>
+        <image name="skip_orange.png" width="22" height="22"/>
+        <image name="smallDirectionsBG.png" width="76" height="76"/>
+        <image name="splashDialog.png" width="240" height="130"/>
+        <image name="splash_bg_btn_blue_pressed.png" width="1" height="60"/>
+        <image name="splash_bg_btn_red_pressed.png" width="1" height="60"/>
+        <image name="splash_break_route.png" width="320" height="263"/>
+        <image name="splash_fav_input_fields.png" width="285" height="119"/>
+        <image name="splash_greass.png" width="320" height="131"/>
+        <image name="splash_illustration.png" width="320" height="119"/>
+        <image name="splash_sky.png" width="320" height="212"/>
+        <image name="white_btn.png" width="12" height="12"/>
+        <image name="white_btn_pressed.png" width="11" height="11"/>
     </resources>
+    <classes>
+        <class className="AsyncImageView" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AsyncImageView.h"/>
+        </class>
+        <class className="FlickableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FlickableView.h"/>
+        </class>
+        <class className="GAITrackedViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GAITrackedViewController.h"/>
+        </class>
+        <class className="RMMapView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RMMapView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delegate"/>
+            </relationships>
+        </class>
+        <class className="SMAboutController" superclassName="SMTranslatedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMAboutController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="scrlView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="SMAccountController" superclassName="SMTranslatedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMAccountController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="fbImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="fbName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="fbView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="name" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordRepeat" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="regularImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="regularView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="scrlView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="SMAddFavoriteCell" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMAddFavoriteCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="addFavoritesSymbol" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="cellBG" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="image" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="text" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMAutocompleteHeader" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMAutocompleteHeader.h"/>
+            <relationships>
+                <relationship kind="outlet" name="headerTitle" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMBikeWaypointCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMBikeWaypointCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageViewAddress" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="imageViewDistance" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="labelAddressBottom" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelAddressTop" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelDistance" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="viewAddress" candidateClass="UIView"/>
+                <relationship kind="outlet" name="viewDistance" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="SMBreakRouteButtonCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMBreakRouteButtonCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="btnBreakRoute" candidateClass="SMPatternedButton"/>
+            </relationships>
+        </class>
+        <class className="SMBreakRouteHeader" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMBreakRouteHeader.h"/>
+            <relationships>
+                <relationship kind="outlet" name="routeDistance" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="title" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMBreakRouteViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMBreakRouteViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="buttonAddressDestination" candidateClass="SMPatternedButton"/>
+                <relationship kind="outlet" name="buttonAddressSource" candidateClass="SMPatternedButton"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMCustomButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMCustomButton.h"/>
+        </class>
+        <class className="SMCustomCheckbox" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMCustomCheckbox.h"/>
+        </class>
+        <class className="SMCyLwFirstTimeIntro" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMCyLwFirstTimeIntro.h"/>
+            <relationships>
+                <relationship kind="action" name="onExit:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="btnExitGuide" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="exitButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="screenBottomText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="screenTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="screenTopText" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMCyLwReminderVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMCyLwReminderVC.h"/>
+            <relationships>
+                <relationship kind="action" name="saveReminder:" candidateClass="UIButton"/>
+                <relationship kind="action" name="skip:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="btnSave" candidateClass="SMPatternedButton"/>
+                <relationship kind="outlet" name="btnSkip" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="friday" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="monday" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="screenText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="screenTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="swFriday" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="swMonday" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="swThursday" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="swTuesday" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="swWednesday" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="thursday" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tuesday" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="wednesday" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMDirectionCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMDirectionCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imgBackground" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="imgDirection" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="lblDescription" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblDistance" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblWayname" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMDirectionTopCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMDirectionTopCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imgDirection" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="lblDescription" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblDistance" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblWayname" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMEmptyFavoritesCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMEmptyFavoritesCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="addFavoritesSymbol" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="addFavoritesText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="text" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMEnterRouteCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMEnterRouteCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="iconImage" candidateClass="AsyncImageView"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="TTTAttributedLabel"/>
+            </relationships>
+        </class>
+        <class className="SMEnterRouteController" superclassName="SMTranslatedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMEnterRouteController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="fadeView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="fromLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="locationArrow" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="startButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="swapButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tblView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="toLabel" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SMFavoritesController" superclassName="SMTranslatedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMFavoritesController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="btnSave" candidateClass="SMPatternedButton"/>
+                <relationship kind="outlet" name="btnSkip" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="favoriteHome" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="favoriteWork" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="favoritesView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="screenText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="screenTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrlView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="SMGPSTrackButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMGPSTrackButton.h"/>
+        </class>
+        <class className="SMLoginController" superclassName="SMTranslatedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMLoginController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="loginEmail" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="loginPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="scrlView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="SMMenuCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMMenuCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cellBG" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="editBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="image" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="text" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMPatternedButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMPatternedButton.h"/>
+        </class>
+        <class className="SMRadioCheckedCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRadioCheckedCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="radioTextBox" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="radioTitle" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMRadioUncheckedCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRadioUncheckedCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="radioTitle" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMRegisterController" superclassName="SMTranslatedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRegisterController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="registerEmail" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="registerImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="registerName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="registerPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="registerRepeatPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="scrlView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="SMReminderTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMReminderTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="day" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="reminderSwitch" candidateClass="UISwitch"/>
+            </relationships>
+        </class>
+        <class className="SMReportErrorController" superclassName="SMTranslatedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMReportErrorController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="bottomView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="btnSelectRouteSegment" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="fadeView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="pckrView" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="reportEmail" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="reportSentView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="scrlView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="switchContactMe" candidateClass="SMCustomCheckbox"/>
+                <relationship kind="outlet" name="tblView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SMReportMailCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMReportMailCell.h"/>
+            <relationships>
+                <relationship kind="action" name="checkboxSelected:"/>
+                <relationship kind="outlet" name="checkboxMail" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="email" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="SMRouteInfoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRouteInfoViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMRouteNavigationController" superclassName="SMTranslatedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRouteNavigationController.h"/>
+            <relationships>
+                <relationship kind="action" name="buttonPressed:"/>
+                <relationship kind="action" name="goBack:"/>
+                <relationship kind="action" name="hideFinishView:"/>
+                <relationship kind="action" name="hideStopView:"/>
+                <relationship kind="action" name="onBreakRoute:"/>
+                <relationship kind="action" name="onPanGestureDirections:" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="action" name="reportError:"/>
+                <relationship kind="action" name="startRouting:"/>
+                <relationship kind="action" name="trackUser:"/>
+                <relationship kind="outlet" name="arrivalBG" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="blockingView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="breakRouteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonTrackUser" candidateClass="SMGPSTrackButton"/>
+                <relationship kind="outlet" name="cargoHandleImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="cargoTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="centerView" candidateClass="FlickableView"/>
+                <relationship kind="outlet" name="closeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="finishDestination" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="finishDistance" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="finishFadeView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="finishStreet" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="finishTime" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="finishView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="imgNextTurnDirection" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="instructionsView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="labelDistanceLeft" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelDistanceToNextTurn" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelTimeLeft" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="mapContainer" candidateClass="UIView"/>
+                <relationship kind="outlet" name="mapFade" candidateClass="UIView"/>
+                <relationship kind="outlet" name="minimizedInstructionsView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="mpView" candidateClass="RMMapView"/>
+                <relationship kind="outlet" name="noConnectionView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="overviewDestination" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="overviewDestinationBottom" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="overviewTimeDistance" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="progressView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="pullHandleImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="recalculatingView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="routeOverview" candidateClass="UIView"/>
+                <relationship kind="outlet" name="routeOverviewBottom" candidateClass="UIView"/>
+                <relationship kind="outlet" name="stopView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="swipableView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="swipeLeftArrow" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="swipeRightArrow" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tblDirections" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SMRouteTypeSelectCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRouteTypeSelectCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cellCheckbox" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="cellImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="cellText" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SMSearchCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMSearchCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="iconImage" candidateClass="AsyncImageView"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="TTTAttributedLabel"/>
+            </relationships>
+        </class>
+        <class className="SMSearchController" superclassName="SMTranslatedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMSearchController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="tblFade" candidateClass="UIView"/>
+                <relationship kind="outlet" name="tblView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SMSearchTwoRowCell" superclassName="SMSearchCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMSearchTwoRowCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="addressLabel" candidateClass="TTTAttributedLabel"/>
+            </relationships>
+        </class>
+        <class className="SMSplashController" superclassName="SMTranslatedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMSplashController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="btnRegisterWithMail" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="btnSkip" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="dialogView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="loginDialog" candidateClass="UIView"/>
+                <relationship kind="outlet" name="loginEmail" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="loginPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="loginScroll" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="loginView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="nameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordRepeatField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="registerDialog" candidateClass="UIView"/>
+                <relationship kind="outlet" name="registerImage" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="registerScroll" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="registerView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="SMTranslatedViewController" superclassName="GAITrackedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMTranslatedViewController.h"/>
+        </class>
+        <class className="SMTransportationCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMTransportationCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="buttonAddressDestination" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonAddressInfo" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonAddressSource" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="destStationIcon" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="destinationActivityIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="sourceActivityIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="sourceStationIcon" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="SMViewController" superclassName="SMTranslatedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addFakeStation:"/>
+                <relationship kind="action" name="addFavoriteHide:"/>
+                <relationship kind="action" name="addFavoriteShow:"/>
+                <relationship kind="action" name="addSelectFavorite:"/>
+                <relationship kind="action" name="addSelectHome:"/>
+                <relationship kind="action" name="addSelectSchool:"/>
+                <relationship kind="action" name="addSelectWork:"/>
+                <relationship kind="action" name="deleteFavorite:"/>
+                <relationship kind="action" name="doubleTap:" candidateClass="UITapGestureRecognizer"/>
+                <relationship kind="action" name="editFavoriteShow:"/>
+                <relationship kind="action" name="editSaveFavorite:"/>
+                <relationship kind="action" name="enterRoute:"/>
+                <relationship kind="action" name="findAddress:"/>
+                <relationship kind="action" name="goToPin:"/>
+                <relationship kind="action" name="onSelectAccount:" candidateClass="UIButton"/>
+                <relationship kind="action" name="onSelectInfo:" candidateClass="UIButton"/>
+                <relationship kind="action" name="openOverlaysMenu:" candidateClass="UIImageView"/>
+                <relationship kind="action" name="panMainMenu:"/>
+                <relationship kind="action" name="pinAddToFavorites:"/>
+                <relationship kind="action" name="saveFavorite:"/>
+                <relationship kind="action" name="showMenu:"/>
+                <relationship kind="action" name="slideMenuOpen:"/>
+                <relationship kind="action" name="startEdit:"/>
+                <relationship kind="action" name="stopEdit:"/>
+                <relationship kind="action" name="tapAccount:"/>
+                <relationship kind="action" name="tapFavorites:"/>
+                <relationship kind="action" name="tapInfo:"/>
+                <relationship kind="action" name="toggleReminders:" candidateClass="UIButton"/>
+                <relationship kind="action" name="touchOpenMainMenu:"/>
+                <relationship kind="action" name="touchOpenOverlaysMenu:"/>
+                <relationship kind="action" name="trackUser:"/>
+                <relationship kind="outlet" name="aboutHeaderButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="accHeader" candidateClass="UIView"/>
+                <relationship kind="outlet" name="accountHeaderButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="account_label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="addFavAddress" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="addFavFavoriteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="addFavHomeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="addFavName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="addFavSchoolButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="addFavWorkButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="addMenu" candidateClass="UIView"/>
+                <relationship kind="outlet" name="addSaveButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="blockingView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="btnFavorites" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="btnReminders" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonAddFakeStation" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonTrackUser" candidateClass="SMGPSTrackButton"/>
+                <relationship kind="outlet" name="centerView" candidateClass="FlickableView"/>
+                <relationship kind="outlet" name="debugLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dropPinView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="editDeleteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="editSaveButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="editTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="fadeView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="favEditDone" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="favEditStart" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="favHeader" candidateClass="UIView"/>
+                <relationship kind="outlet" name="findRouteBig" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="findRouteSmall" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="headerReminders" candidateClass="UIView"/>
+                <relationship kind="outlet" name="imgReminders" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="infHeader" candidateClass="UIView"/>
+                <relationship kind="outlet" name="mainMenu" candidateClass="UIView"/>
+                <relationship kind="outlet" name="mainMenuBtn" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="menuBtn" candidateClass="UIView"/>
+                <relationship kind="outlet" name="menuView" candidateClass="FlickableView"/>
+                <relationship kind="outlet" name="overlayMenu" candidateClass="FlickableView"/>
+                <relationship kind="outlet" name="overlayMenuBtn" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="overlaysMenuTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="pinButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="remindersHeaderButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="routeStreet" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tableFooter" candidateClass="SMAddFavoriteCell"/>
+                <relationship kind="outlet" name="tblFavorites" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="tblMenu" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SMViewMoreCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMViewMoreCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="buttonLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="TTTAttributedLabel" superclassName="UILabel">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TTTAttributedLabel.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delegate"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
