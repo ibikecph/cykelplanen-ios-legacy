@@ -706,6 +706,7 @@
 		F694BECC17B933C700545578 /* L.png in Resources */ = {isa = PBXBuildFile; fileRef = F694BECA17B933C700545578 /* L.png */; };
 		F694BECD17B933C700545578 /* L@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F694BECB17B933C700545578 /* L@2x.png */; };
 		F695285717B52E9900AF98D3 /* local-trains-timetable.json in Resources */ = {isa = PBXBuildFile; fileRef = F695285617B52E9900AF98D3 /* local-trains-timetable.json */; };
+		F6954B4A17C21E2C0020345A /* metro.json in Resources */ = {isa = PBXBuildFile; fileRef = F6954B4917C21E2C0020345A /* metro.json */; };
 		F695DC8217ABD5A900DD1A53 /* SMRouteInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F695DC8117ABD5A900DD1A53 /* SMRouteInfoViewController.m */; };
 		F695DC8A17ABE14100DD1A53 /* route_info_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F695DC8817ABE14100DD1A53 /* route_info_icon.png */; };
 		F695DC8B17ABE14100DD1A53 /* route_info_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F695DC8917ABE14100DD1A53 /* route_info_icon@2x.png */; };
@@ -1562,6 +1563,7 @@
 		F694BECA17B933C700545578 /* L.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = L.png; sourceTree = "<group>"; };
 		F694BECB17B933C700545578 /* L@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "L@2x.png"; sourceTree = "<group>"; };
 		F695285617B52E9900AF98D3 /* local-trains-timetable.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "local-trains-timetable.json"; sourceTree = "<group>"; };
+		F6954B4917C21E2C0020345A /* metro.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = metro.json; sourceTree = "<group>"; };
 		F695DC8017ABD5A900DD1A53 /* SMRouteInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRouteInfoViewController.h; sourceTree = "<group>"; };
 		F695DC8117ABD5A900DD1A53 /* SMRouteInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRouteInfoViewController.m; sourceTree = "<group>"; };
 		F695DC8817ABE14100DD1A53 /* route_info_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = route_info_icon.png; sourceTree = "<group>"; };
@@ -2307,6 +2309,7 @@
 		4C73D21516AEDCDA00AED42A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F6954B4917C21E2C0020345A /* metro.json */,
 				78551AAD17BE55D9003184BE /* farum-route.json */,
 				F695285617B52E9900AF98D3 /* local-trains-timetable.json */,
 				F68E4C1E17B2404500CFC798 /* timetable-new.json */,
@@ -3451,6 +3454,7 @@
 				7842B9D717BA2E81007B1604 /* local_train_icon@2x.png in Resources */,
 				78CD26EF17BD2E0300D1DDCB /* metro_icon.png in Resources */,
 				78551AAE17BE55D9003184BE /* farum-route.json in Resources */,
+				F6954B4A17C21E2C0020345A /* metro.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

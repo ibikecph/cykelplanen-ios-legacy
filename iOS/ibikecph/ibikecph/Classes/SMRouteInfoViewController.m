@@ -75,11 +75,12 @@
                 return NSOrderedAscending;
             
         }];
-        
+     
         BOOL hasDuplicates= NO;
         do{
             hasDuplicates= NO;
-            for(int i=0; i<timesArray.count-1; i++){
+            
+            for(int i=0; i<((int)timesArray.count)-1; i++){
                 
                 SMRouteTimeInfo* first= timesArray[i];
                 for(int j=i+1; j<timesArray.count; j++){
