@@ -1,9 +1,11 @@
-/* 
-  dictionary_dk.strings
-  I Bike CPH
+﻿
+/*
+dictionary_dk.strings
+I Bike CPH
 
-  Created by Ivan Pavlovic on 31/01/2013.
-  Copyright (c) 2013 City of Copenhagen. All rights reserved.
+Created by Ivan Pavlovic on 31/01/2013. Copyright � 2013 City of
+Copenhagen. All rights reserved.
+
 */
 
 "current_position" = "Current position";
@@ -95,7 +97,6 @@
 "{roundabout:yes}" = "roundabout";
 "{area:yes}" = "area";
 
-
 "direction_number_1" = "1st";
 "direction_number_2" = "2nd";
 "direction_number_3" = "3rd";
@@ -121,7 +122,7 @@
 "error_invalid_to_address" = "The destination address is invalid!";
 
 "route_stop_title" = "Want to stop the routing?";
-"route_stop_text" = "Stop the routing by tapping the 'Stop'. You can report a problem with the route to us by tapping on 'Report'.";
+"route_stop_text" = "Stop the routing by tapping the `Stop'. You can report a problem with the route to us by tapping on `Report'.";
 "report_error" = "Report";
 
 "report_wrong_address" = "Address is wrong";
@@ -162,23 +163,22 @@
 "btn_skip" = "Skip";
 
 "reminder_title" = "REMINDER";
-"reminder_text" = "Få hjælp til at komme op på cyklen. Vælg de dage du ønsker at cykle, så hjælper vi dig med at komme igang.";
+"reminder_text" = "Get help to start biking. Please select the day(s) you want to bike and we will help you get started.";
 "reminder_save_btn" = "SAVE REMINDER";
 
 // Favorites
 "favorites_title" = "Favorites";
-"favorites_text" = "Nu kan du nemt og hurtigt navigere til dine foretrukne pendlerruter. Start med at tilføje din hjemme- og arbejdsadresse.";
-"favorites_home_placeholder" = "Hjemmeadresse …";
-"favorites_work_placeholder" = "Arbejdsadresse …";
+"favorites_text" = "Now you can easily and quick access your favorite routes. Start by adding your home and work address.";
+"favorites_home_placeholder" = "Home address…";
+"favorites_work_placeholder" = "Work address…";
 "favorites_save_btn" = "SAVE FAVORITESF";
 
 // Break route
-"break_route_title" = "Break route";
-"btn_break_route" = "BREAK ROUTE";
-"break_route_text_top" = "Vidste du, at du let kan knække din pendlerrute ved at tage toget noget af vejen.";
-"break_route_text_bottom" = "Når du vælger “Knæk ruten” giver vi dig en ny rute til nærmeste S-togsstation og bringer dig frem til din endelige destination.";
-"break_route_exit" = "Afslut guide og ta’ en tur";
-
+"break_route_title" = "Less biking";
+"btn_break_route" = "LESS BIKING";
+"break_route_text_top" = "Did you know that you can easily do less biking by replacing some of the route with public transportation.";
+"break_route_text_bottom" = "When you choose \"Less biking\", we will provide a new and alternative route to the nearest train station that will bring you to your final destination.";
+"break_route_exit" = "Got it - let's go biking";
 
 "where_are_we_going" = "Where should we go?";
 "ibikecph_route_planner" = "I Bike CPH";
@@ -191,13 +191,13 @@
 "From:" = "From:";
 "To:" = "To:";
 "hello_cyclist" = "Hello cyclist";
-"thanks_for_testing_text" = "Tak fordi du hjælper os med at teste.";
-"start_text" = "Cykelruteplanlæggeren.\nVi er glade for du hjælper os med at teste app’en, og for at vi kan komme i kontakt med dig, vil vi gerne bede om din email-addresse:";
+"thanks_for_testing_text" = "Thank you for helping testing.";
+"start_text" = "Cykelruteplanlæggeren.\nWe are happy that you will help us test the app. To get in contact with you, we will need your e-mail please:";
 "e_mail_address" = "E-mail address";
 "start_app" = "Start";
 "notify_me_when_fixed" = "Notify me when fixed";
 "report" = "Report";
-"report_text" = "Ved tryk på “Rapportér” sendes teknisk information om ruten til os.\n\nVælger du at få besked når fejlen er udbedret, bliver din email-adresse sendt med.";
+"report_text" = "By tapping \"Report\" the information of the route will be sent to us. \n\nIf you choose to get notified once the error is correct, your e-mail will be included.";
 "choose_a_route_step" = "Choose a route step";
 "cancel_picker" = "Cancel";
 "done_picker" = "Done";
@@ -207,7 +207,7 @@
 "show_less" = "SHOW LESS";
 
 "good_ride" = "Good ride!";
-"hope_you_had_a_good_trip" = "Hope you had a good trip.";
+"hope_you_had_a_good_trip" = "Hope you had a nice trip.";
 "back_ride" = "BACK";
 "stop_ride" = "STOP RIDE";
 "ride_report_a_problem" = "REPORT A PROBLEM";
@@ -239,7 +239,7 @@
 "add_favorite" = "ADD A FAVORITE";
 "cell_add_favorite" = "ADD NEW FAVORITE";
 "edit_favorite" = "EDIT";
-"cell_empty_favorite_text" = "Du har ingen favoritter, men du kan hurtigt tilføje en nu.";
+"cell_empty_favorite_text" = "You don't have any favorites, but you can easily add some now.";
 "save_favorite" = "SAVE";
 "delete_favorite" = "DELETE";
 "Home" = "Home";
@@ -262,7 +262,7 @@
 "report_enter_email_address_placeholder" = "Enter you email address";
 "home_find_route" = "FIND ROUTE";
 
-"about_text" = "Hvordan kommer jeg hurtigst på cykel til Nordhavn? Hvornår skal jeg cykle hjemmefra, hvis jeg skal være på Kongens Nytorv kl. 14? Kan min daglige pendlerrute optimeres?\n\nEn troværdig og opdateret digital cykelruteplanlægger, der kender de gode smutveje, ved hvilke parker man må cykle i og hvor man må cykle mod ensretningen, vil kunne give dig svaret - så du kan komme hurtigere fra A til B.\n\nSådan en cykelruteplanlægger har vi sat os for at skabe - og du kan være med! Filosofien bag projektet er, at involvere cyklisterne i udviklingen, at anvende open source og at gøre data frit tilgængelig. Vi tror, at det vil give den bedste løsning og medvirke til at skabe innovation på cykelområdet.\n\nProjektet er del af Københavns overordnede målsætning om at blive verdens bedste cykelby.";
+"about_text" = "";
 "about_ibikecph_title" = "ABOUT CYKELSUPERSTIERNE";
 "delete_my_account" = "DELETE ACCOUNT";
 "you_are_logged_in_as" = "You are logged in as";
@@ -291,7 +291,7 @@
 "close" = "CLOSE";
 
 "account_login" = "LOGIN";
-"favorites_login" = "Du har ingen favoritter, men du kan hurtigt tilføje en, hvis du logger ind.";
+"favorites_login" = "You don't have any favorites, but you can easily add some if you log in.";
 "fb_login_error" = "Error while using FB to log in.";
 
 "account_is_linked_to_facebook" = "Your account is linked to the Facebook";
