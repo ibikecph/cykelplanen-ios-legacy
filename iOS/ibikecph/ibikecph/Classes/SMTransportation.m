@@ -41,9 +41,9 @@ static NSOperationQueue* stationQueue;
     dispatch_once(&onceToken, ^{
         stationQueue= [[NSOperationQueue alloc] init];
         
-        NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentDirectory = [documentDirectories objectAtIndex:0];
-        NSString *myFilePath = [documentDirectory stringByAppendingPathComponent:CACHE_FILE_NAME];
+//        NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//        NSString *documentDirectory = [documentDirectories objectAtIndex:0];
+//        NSString *myFilePath = [documentDirectory stringByAppendingPathComponent:CACHE_FILE_NAME];
         
 //        instance= [NSKeyedUnarchiver unarchiveObjectWithFile:myFilePath];
         
@@ -63,10 +63,14 @@ static NSOperationQueue* stationQueue;
         queue= dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0L);
 
         dispatch_async(queue, ^{
+            self.dataLoaded= NO;
             [self loadStations];
             [self loadLocalTrains];
             [self loadDepartureTimes];
-//            [self pullData];
+     
+            self.dataLoaded= YES;
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_DID_PARSE_DATA_KEY object:nil];
+            
         });
 
     }

@@ -43,6 +43,7 @@
 #import "SMTransportation.h"
 #import "SMTransportationLine.h"
 #import "SMStationInfo.h"
+#import "SMLoadStationsView.h"
 
 typedef enum {
     menuFavorites = 0,
@@ -68,6 +69,8 @@ typedef enum {
     
     CLLocation* cStart;
     CLLocation* cEnd;
+    
+    SMLoadStationsView* loadView;
 }
 
 @property (nonatomic, strong) SMContacts *contacts;
@@ -379,6 +382,12 @@ typedef enum {
 - (void)viewWillDisappear:(BOOL)animated {
     [self.mpView setUserTrackingMode:RMUserTrackingModeNone];
 
+    if(loadView){
+        [loadView.activityIndicatorView stopAnimating];
+        [loadView removeFromSuperview];
+        loadView= nil;
+    }
+    
     if(observersAdded){
         [self.mpView removeObserver:self forKeyPath:@"userTrackingMode"];
         [centerView removeObserver:self forKeyPath:@"frame"];
@@ -405,50 +414,16 @@ typedef enum {
     
     [SMUser user].tripRoute= nil;
     [SMUser user].route= nil;
-
-    if ([[NSFileManager defaultManager] fileExistsAtPath: [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"lastRoute.plist"]]) {
-        NSDictionary * d = [NSDictionary dictionaryWithContentsOfFile: [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"lastRoute.plist"]];
-        
-        NSString * st = [NSString stringWithFormat:@"Start: %@ (%f,%f) End: %@ (%f,%f)",CURRENT_POSITION_STRING, [[d objectForKey:@"startLat"] doubleValue], [[d objectForKey:@"startLong"] doubleValue], [d objectForKey:@"destination"], [[d objectForKey:@"endLat"] doubleValue], [[d objectForKey:@"endLong"] doubleValue]];
-        debugLog(@"%@", st);
-        if (![[GAI sharedInstance].defaultTracker trackEventWithCategory:@"Route:" withAction:@"Resume" withLabel:st withValue:0]) {
-            debugLog(@"error in trackPageview");
-        }
-        
-        /**
-         * show new route
-         */
-        CLLocation * cEnd = [[CLLocation alloc] initWithLatitude:[[d objectForKey:@"endLat"] floatValue] longitude:[[d objectForKey:@"endLong"] floatValue]];
-        CLLocation * cStart = [[CLLocation alloc] initWithLatitude:[[d objectForKey:@"startLat"] floatValue] longitude:[[d objectForKey:@"startLong"] floatValue]];
-        
-        SMRequestOSRM * r = [[SMRequestOSRM alloc] initWithDelegate:self];
-        [r setRequestIdentifier:@"rowSelectRoute"];
-        [r setAuxParam:[d objectForKey:@"destination"]];
-        [r findNearestPointForStart:cStart andEnd:cEnd];        
-        
-//        /**
-//         * drop pin
-//         */
-//        CLLocation * loc = [[CLLocation alloc] initWithLatitude:[[d objectForKey:@"endLat"] doubleValue] longitude:[[d objectForKey:@"endLong"] doubleValue]];
-//        
-//        SMRequestOSRM * r2 = [[SMRequestOSRM alloc] initWithDelegate:self];
-//        [r2 setRequestIdentifier:@"getNearestForPinDrop"];
-//        [r2 findNearestPointForLocation:loc];
-//        
-//        [self.mpView removeAllAnnotations];
-//        SMAnnotation *endMarkerAnnotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:CLLocationCoordinate2DMake([[d objectForKey:@"endLat"] doubleValue], [[d objectForKey:@"endLong"] doubleValue]) andTitle:@""];
-//        endMarkerAnnotation.annotationType = @"marker";
-//        endMarkerAnnotation.annotationIcon = [UIImage imageNamed:@"markerFinish"];
-//        endMarkerAnnotation.anchorPoint = CGPointMake(0.5, 0.5);
-//        [self.mpView addAnnotation:endMarkerAnnotation];
-//        [self setDestinationPin:endMarkerAnnotation];
-    } else {
-        observersAdded= YES;
-        [self.mpView addObserver:self forKeyPath:@"userTrackingMode" options:0 context:nil];
-        [tblMenu addObserver:self forKeyPath:@"editing" options:0 context:nil];
-        [centerView addObserver:self forKeyPath:@"frame" options:0 context:nil];
-    }
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLoadTransformationData:) name:NOTIFICATION_DID_PARSE_DATA_KEY object:nil];
+    if([SMTransportation instance].dataLoaded){
+        [self loadLastRoute];
+    }else{
+        NSLog(@"DATA NOT LOADED... SHOWING VIEW");
+        loadView= [[SMLoadStationsView alloc] initWithFrame:self.view.bounds];
+        [loadView setup];
+        [self.view addSubview:loadView];
+    }
     [self.mpView setUserTrackingMode:RMUserTrackingModeFollow];
     
     if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
@@ -470,6 +445,74 @@ typedef enum {
         [self.overlaysMenuTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
     if ( self.appDelegate.mapOverlays.metroMarkersVisible )
         [self.overlaysMenuTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+    
+    
+}
+
+-(void)didLoadTransformationData:(NSNotification*)notification{
+    NSLog(@"NOTIFICATION");
+    if(loadView){
+        [self performSelectorOnMainThread:@selector(hideLoadingView) withObject:nil waitUntilDone:NO];
+
+    }else{
+        [self performSelectorOnMainThread:@selector(loadLastRoute) withObject:nil waitUntilDone:NO];
+    }
+}
+
+-(void)hideLoadingView{
+    [UIView animateWithDuration:0.4 delay:0.0 options:nil animations:^{
+        loadView.alpha= 0.0;
+    }completion:^(BOOL finished){
+        [loadView removeFromSuperview];
+        loadView= nil;
+        [self performSelectorOnMainThread:@selector(loadLastRoute) withObject:nil waitUntilDone:NO];
+    }];
+}
+-(void)loadLastRoute{
+    if ([[NSFileManager defaultManager] fileExistsAtPath: [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"lastRoute.plist"]]) {
+        NSDictionary * d = [NSDictionary dictionaryWithContentsOfFile: [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"lastRoute.plist"]];
+        
+        NSString * st = [NSString stringWithFormat:@"Start: %@ (%f,%f) End: %@ (%f,%f)",CURRENT_POSITION_STRING, [[d objectForKey:@"startLat"] doubleValue], [[d objectForKey:@"startLong"] doubleValue], [d objectForKey:@"destination"], [[d objectForKey:@"endLat"] doubleValue], [[d objectForKey:@"endLong"] doubleValue]];
+        debugLog(@"%@", st);
+        if (![[GAI sharedInstance].defaultTracker trackEventWithCategory:@"Route:" withAction:@"Resume" withLabel:st withValue:0]) {
+            debugLog(@"error in trackPageview");
+        }
+        
+        /**
+         * show new route
+         */
+        CLLocation * cEnd = [[CLLocation alloc] initWithLatitude:[[d objectForKey:@"endLat"] floatValue] longitude:[[d objectForKey:@"endLong"] floatValue]];
+        CLLocation * cStart = [[CLLocation alloc] initWithLatitude:[[d objectForKey:@"startLat"] floatValue] longitude:[[d objectForKey:@"startLong"] floatValue]];
+        
+        SMRequestOSRM * r = [[SMRequestOSRM alloc] initWithDelegate:self];
+        [r setRequestIdentifier:@"rowSelectRoute"];
+        [r setAuxParam:[d objectForKey:@"destination"]];
+        [r findNearestPointForStart:cStart andEnd:cEnd];
+        
+        //        /**
+        //         * drop pin
+        //         */
+        //        CLLocation * loc = [[CLLocation alloc] initWithLatitude:[[d objectForKey:@"endLat"] doubleValue] longitude:[[d objectForKey:@"endLong"] doubleValue]];
+        //
+        //        SMRequestOSRM * r2 = [[SMRequestOSRM alloc] initWithDelegate:self];
+        //        [r2 setRequestIdentifier:@"getNearestForPinDrop"];
+        //        [r2 findNearestPointForLocation:loc];
+        //
+        //        [self.mpView removeAllAnnotations];
+        //        SMAnnotation *endMarkerAnnotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:CLLocationCoordinate2DMake([[d objectForKey:@"endLat"] doubleValue], [[d objectForKey:@"endLong"] doubleValue]) andTitle:@""];
+        //        endMarkerAnnotation.annotationType = @"marker";
+        //        endMarkerAnnotation.annotationIcon = [UIImage imageNamed:@"markerFinish"];
+        //        endMarkerAnnotation.anchorPoint = CGPointMake(0.5, 0.5);
+        //        [self.mpView addAnnotation:endMarkerAnnotation];
+        //        [self setDestinationPin:endMarkerAnnotation];
+    } else {
+        observersAdded= YES;
+        [self.mpView addObserver:self forKeyPath:@"userTrackingMode" options:0 context:nil];
+        [tblMenu addObserver:self forKeyPath:@"editing" options:0 context:nil];
+        [centerView addObserver:self forKeyPath:@"frame" options:0 context:nil];
+    }
+    
+    
 }
 
 #pragma mark - custom methods
