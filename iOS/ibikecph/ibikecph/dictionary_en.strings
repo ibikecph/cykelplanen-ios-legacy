@@ -13,9 +13,10 @@ Copenhagen. All rights reserved.
 "tomorrow" = "Tomorrow";
 "account" = "Account";
 "settings" = "Settings";
-"about_css" = "About Cykelsuperstier";
+"about_css" = "About CykelPlanen";
 "contacts" = "CONTACTS";
 "favorites" = "FAVORITES";
+"favorites_search" = "FAVORITES";
 
 "direction_0" = "";
 "direction_1" = "Continue on";
@@ -144,6 +145,7 @@ Copenhagen. All rights reserved.
 "Done" = "Done";
 "Cancel" = "Cancel";
 
+"loading_stations_data" = "Loading station data";
 "error_route_not_found" = "Route not found!";
 
 "calculating" = "Calculating...";
@@ -171,7 +173,7 @@ Copenhagen. All rights reserved.
 "favorites_text" = "Now you can easily and quick access your favorite routes. Start by adding your home and work address.";
 "favorites_home_placeholder" = "Home address…";
 "favorites_work_placeholder" = "Work address…";
-"favorites_save_btn" = "SAVE FAVORITESF";
+"favorites_save_btn" = "SAVE FAVORITES";
 
 // Break route
 "break_route_title" = "Less biking";
@@ -179,7 +181,15 @@ Copenhagen. All rights reserved.
 "break_route_text_top" = "Did you know that you can easily do less biking by replacing some of the route with public transportation.";
 "break_route_text_bottom" = "When you choose \"Less biking\", we will provide a new and alternative route to the nearest train station that will bring you to your final destination.";
 "break_route_exit" = "Got it - let's go biking";
+//"break_route_header_title" = "";
+"break_route_no_route" = "No Route";
+"break_route_cant_break" = "Route cannot be broken.";
 
+"route_info"= "Route Information";
+
+"departure" = "Dep.";
+"departures_at" = "Dep. at";
+"arrival" = "Arr.";
 "where_are_we_going" = "Where should we go?";
 "ibikecph_route_planner" = "I Bike CPH";
 "calculating_new_route" = "Calculating new route...";
@@ -263,7 +273,7 @@ Copenhagen. All rights reserved.
 "home_find_route" = "FIND ROUTE";
 
 "about_text" = "";
-"about_ibikecph_title" = "ABOUT CYKELSUPERSTIERNE";
+"about_ibikecph_title" = "ABOUT CYKELPLANEN";
 "delete_my_account" = "DELETE ACCOUNT";
 "you_are_logged_in_as" = "You are logged in as";
 "edit_my_account" = "Edit account";

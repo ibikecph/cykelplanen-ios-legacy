@@ -707,6 +707,8 @@
 		F695285717B52E9900AF98D3 /* local-trains-timetable.json in Resources */ = {isa = PBXBuildFile; fileRef = F695285617B52E9900AF98D3 /* local-trains-timetable.json */; };
 		F6954B4A17C21E2C0020345A /* metro.json in Resources */ = {isa = PBXBuildFile; fileRef = F6954B4917C21E2C0020345A /* metro.json */; };
 		F6954B5517C25CD40020345A /* SMMetroStationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F6954B5417C25CD40020345A /* SMMetroStationInfo.m */; };
+		F6955F1F17C627FF00DFDF28 /* SMLoadStationsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6955F1E17C627FF00DFDF28 /* SMLoadStationsView.xib */; };
+		F6955F2217C628F900DFDF28 /* SMLoadStationsView.m in Sources */ = {isa = PBXBuildFile; fileRef = F6955F2117C628F900DFDF28 /* SMLoadStationsView.m */; };
 		F695DC8217ABD5A900DD1A53 /* SMRouteInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F695DC8117ABD5A900DD1A53 /* SMRouteInfoViewController.m */; };
 		F695DC8A17ABE14100DD1A53 /* route_info_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F695DC8817ABE14100DD1A53 /* route_info_icon.png */; };
 		F695DC8B17ABE14100DD1A53 /* route_info_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F695DC8917ABE14100DD1A53 /* route_info_icon@2x.png */; };
@@ -754,11 +756,11 @@
 		4BA5295716D5230B000CA4A2 /* AsyncImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		4BA5295C16D5255E000CA4A2 /* SMCustomCheckbox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMCustomCheckbox.h; sourceTree = "<group>"; };
 		4BA5295D16D5255E000CA4A2 /* SMCustomCheckbox.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMCustomCheckbox.m; sourceTree = "<group>"; };
-		4BA5296D16D63840000CA4A2 /* kopenhagen2_withtimestamps.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = kopenhagen2_withtimestamps.gpx; sourceTree = "<group>"; };
+		4BA5296D16D63840000CA4A2 /* kopenhagen2_withtimestamps.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = kopenhagen2_withtimestamps.gpx; path = ../kopenhagen2_withtimestamps.gpx; sourceTree = "<group>"; };
 		4BA915C816AFF798004E04A4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4BA915CA16AFF7E4004E04A4 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		4BA915CC16AFF809004E04A4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		4BA915E816B0097C004E04A4 /* kopenhagen_withtimestamps.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = kopenhagen_withtimestamps.gpx; sourceTree = "<group>"; };
+		4BA915E816B0097C004E04A4 /* kopenhagen_withtimestamps.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = kopenhagen_withtimestamps.gpx; path = ../kopenhagen_withtimestamps.gpx; sourceTree = "<group>"; };
 		4BA9161816B14629004E04A4 /* LoadingTile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoadingTile.png; path = ../Libs/MapView/Map/Resources/LoadingTile.png; sourceTree = "<group>"; };
 		4BA9161916B14629004E04A4 /* LoadingTileZoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoadingTileZoom.png; path = ../Libs/MapView/Map/Resources/LoadingTileZoom.png; sourceTree = "<group>"; };
 		4BA9163C16B14F01004E04A4 /* HeadingAngleSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = HeadingAngleSmall.png; path = ../Libs/MapView/Map/Resources/HeadingAngleSmall.png; sourceTree = "<group>"; };
@@ -1324,8 +1326,8 @@
 		78673528178C11CB00DF978F /* intro_bottom_menu_bgr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intro_bottom_menu_bgr@2x.png"; sourceTree = "<group>"; };
 		7867352B178C305800DF978F /* css_logo_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = css_logo_small.png; sourceTree = "<group>"; };
 		7867352C178C305800DF978F /* css_logo_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "css_logo_small@2x.png"; sourceTree = "<group>"; };
-		78673539178C431A00DF978F /* 114-Retina-Home-Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "114-Retina-Home-Screen.png"; sourceTree = "<group>"; };
-		7867353B178C432D00DF978F /* 114-Retina-Home-Screen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "114-Retina-Home-Screen@2x.png"; sourceTree = "<group>"; };
+		78673539178C431A00DF978F /* 114-Retina-Home-Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "114-Retina-Home-Screen.png"; path = "../114-Retina-Home-Screen.png"; sourceTree = "<group>"; };
+		7867353B178C432D00DF978F /* 114-Retina-Home-Screen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "114-Retina-Home-Screen@2x.png"; path = "../114-Retina-Home-Screen@2x.png"; sourceTree = "<group>"; };
 		78673546178C55CC00DF978F /* splash_break_route.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_break_route.png; sourceTree = "<group>"; };
 		78673547178C55CC00DF978F /* splash_break_route@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash_break_route@2x.png"; sourceTree = "<group>"; };
 		78673548178C55CC00DF978F /* splash_fav_input_fields.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_fav_input_fields.png; sourceTree = "<group>"; };
@@ -1564,6 +1566,9 @@
 		F6954B4917C21E2C0020345A /* metro.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = metro.json; sourceTree = "<group>"; };
 		F6954B5317C25CD40020345A /* SMMetroStationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMetroStationInfo.h; sourceTree = "<group>"; };
 		F6954B5417C25CD40020345A /* SMMetroStationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMetroStationInfo.m; sourceTree = "<group>"; };
+		F6955F1E17C627FF00DFDF28 /* SMLoadStationsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMLoadStationsView.xib; sourceTree = "<group>"; };
+		F6955F2017C628F900DFDF28 /* SMLoadStationsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMLoadStationsView.h; sourceTree = "<group>"; };
+		F6955F2117C628F900DFDF28 /* SMLoadStationsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMLoadStationsView.m; sourceTree = "<group>"; };
 		F695DC8017ABD5A900DD1A53 /* SMRouteInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRouteInfoViewController.h; sourceTree = "<group>"; };
 		F695DC8117ABD5A900DD1A53 /* SMRouteInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMRouteInfoViewController.m; sourceTree = "<group>"; };
 		F695DC8817ABE14100DD1A53 /* route_info_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = route_info_icon.png; sourceTree = "<group>"; };
@@ -2239,12 +2244,6 @@
 		4C73D1FF16AEDCDA00AED42A = {
 			isa = PBXGroup;
 			children = (
-				7819215C17958C1D0082BFE2 /* CFNetwork.framework */,
-				7867353B178C432D00DF978F /* 114-Retina-Home-Screen@2x.png */,
-				78673539178C431A00DF978F /* 114-Retina-Home-Screen.png */,
-				4C1D27B11761BE9C00018196 /* Security.framework */,
-				4BA915E816B0097C004E04A4 /* kopenhagen_withtimestamps.gpx */,
-				4BA5296D16D63840000CA4A2 /* kopenhagen2_withtimestamps.gpx */,
 				4CDA5D2716EF4FA20079AA5E /* HockeySDK.xcodeproj */,
 				4CAF95BE16D50B39002C047B /* MapView.xcodeproj */,
 				4C73D21416AEDCDA00AED42A /* I Bike CPH */,
@@ -2265,6 +2264,8 @@
 		4C73D20D16AEDCDA00AED42A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7819215C17958C1D0082BFE2 /* CFNetwork.framework */,
+				4C1D27B11761BE9C00018196 /* Security.framework */,
 				F68F9DEA1765CEF900578FFE /* FacebookSDK.framework */,
 				F68F9DE61765CDC500578FFE /* FBUserSettingsViewResources.bundle */,
 				4C693ABB16F74E8B00B63475 /* MobileCoreServices.framework */,
@@ -2309,6 +2310,10 @@
 		4C73D21516AEDCDA00AED42A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7867353B178C432D00DF978F /* 114-Retina-Home-Screen@2x.png */,
+				78673539178C431A00DF978F /* 114-Retina-Home-Screen.png */,
+				4BA915E816B0097C004E04A4 /* kopenhagen_withtimestamps.gpx */,
+				4BA5296D16D63840000CA4A2 /* kopenhagen2_withtimestamps.gpx */,
 				F6954B4917C21E2C0020345A /* metro.json */,
 				78551AAD17BE55D9003184BE /* farum-route.json */,
 				F695285617B52E9900AF98D3 /* local-trains-timetable.json */,
@@ -2487,6 +2492,9 @@
 				78192151179566540082BFE2 /* SMBreakRouteButtonCell.m */,
 				7880A534179EBF5A00969B9E /* SMReportMailCell.h */,
 				7880A535179EBF5A00969B9E /* SMReportMailCell.m */,
+				F6955F1E17C627FF00DFDF28 /* SMLoadStationsView.xib */,
+				F6955F2017C628F900DFDF28 /* SMLoadStationsView.h */,
+				F6955F2117C628F900DFDF28 /* SMLoadStationsView.m */,
 			);
 			name = Views;
 			path = ibikecph/Views;
@@ -3455,6 +3463,7 @@
 				78CD26EF17BD2E0300D1DDCB /* metro_icon.png in Resources */,
 				78551AAE17BE55D9003184BE /* farum-route.json in Resources */,
 				F6954B4A17C21E2C0020345A /* metro.json in Resources */,
+				F6955F1F17C627FF00DFDF28 /* SMLoadStationsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3573,6 +3582,7 @@
 				F694BEC617B9012100545578 /* SMArrivalMapping.m in Sources */,
 				F694BEC917B901EA00545578 /* SMArrivalInformation.m in Sources */,
 				F6954B5517C25CD40020345A /* SMMetroStationInfo.m in Sources */,
+				F6955F2217C628F900DFDF28 /* SMLoadStationsView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3659,8 +3669,8 @@
 			baseConfigurationReference = 4C48641216F0994600F01A7C /* ibikecph.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Igor Jerkovic (39D278YE39)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Igor Jerkovic (39D278YE39)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nikola Markovic (EE62QX6H34)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nikola Markovic (EE62QX6H34)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ibikecph/Libs/FacebookSDK\"",
@@ -3688,8 +3698,8 @@
 					"\"$(SRCROOT)/ibikecph/Libs/GA v2.0b4\"/**",
 				);
 				PRODUCT_NAME = "I Bike CPH";
-				PROVISIONING_PROFILE = "83E7E6C9-3A87-46BD-AF2A-B9890F24F164";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "83E7E6C9-3A87-46BD-AF2A-B9890F24F164";
+				PROVISIONING_PROFILE = "C579CE23-B997-43B2-8B11-5D12331EBBC1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C579CE23-B997-43B2-8B11-5D12331EBBC1";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -3700,8 +3710,8 @@
 			baseConfigurationReference = 4C48641216F0994600F01A7C /* ibikecph.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Igor Jerkovic (39D278YE39)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Igor Jerkovic (39D278YE39)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nikola Markovic (EE62QX6H34)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nikola Markovic (EE62QX6H34)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ibikecph/Libs/FacebookSDK\"",
@@ -3726,7 +3736,8 @@
 					"\"$(SRCROOT)/ibikecph/Libs/GA v2.0b4\"/**",
 				);
 				PRODUCT_NAME = "I Bike CPH";
-				PROVISIONING_PROFILE = "83E7E6C9-3A87-46BD-AF2A-B9890F24F164";
+				PROVISIONING_PROFILE = "C579CE23-B997-43B2-8B11-5D12331EBBC1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C579CE23-B997-43B2-8B11-5D12331EBBC1";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

@@ -1,4 +1,4 @@
-//
+     //
 //  SMSplashController.m
 //  I Bike CPH
 //
@@ -39,7 +39,6 @@ typedef enum {
 @property (nonatomic, strong) SMFavoritesUtil * favfetch;
 @end
 
-
 @implementation SMSplashController
 
 - (void)viewDidLoad {
@@ -61,14 +60,14 @@ typedef enum {
         [sh fetchSearchHistoryFromServer];
         [[SMFavoritesUtil instance] fetchFavoritesFromServer];
     }
+    
     [SMTransportation instance];
     // Translation
     self.btnRegisterWithMail.titleLabel.adjustsFontSizeToFitWidth= YES;
     [self.btnRegisterWithMail setTitle:translateString(@"register_with_mail") forState:UIControlStateNormal];
     [self.btnSkip setTitle:translateString(@"btn_skip") forState:UIControlStateNormal];
-    
-
 }
+
 
 - (void)viewDidUnload {
     registerView = nil;
@@ -509,18 +508,22 @@ typedef enum {
             [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
             [self.appDelegate saveSettings];
             [self fetchFavs];
-        } else if ([req.requestIdentifier isEqualToString:@"autoLogin"]) {
+        } else if ([req.requestIdentifier isEqualToString:@"Login"]) {
                 [self.appDelegate.appSettings setValue:[[result objectForKey:@"data"] objectForKey:@"auth_token"] forKey:@"auth_token"];
                 [self.appDelegate.appSettings setValue:[[result objectForKey:@"data"] objectForKey:@"id"] forKey:@"id"];
                 [self.appDelegate.appSettings setValue:@"regular" forKey:@"loginType"];
                 [self.appDelegate saveSettings];
                 [self fetchFavs];
-        } else if ([req.requestIdentifier isEqualToString:@"loginFB"]) {
-            [self.appDelegate.appSettings setValue:[[result objectForKey:@"data"] objectForKey:@"auth_token"] forKey:@"auth_token"];
+        } else if ([req.requestIdentifier isEqualToString:@"loginFB"] && ![[[result objectForKey:@"data"] objectForKey:@"auth_token"] isEqual:[NSNull null]]) {
+            id token=[[result objectForKey:@"data"] objectForKey:@"auth_token"];
+            BOOL hasToken=token && ![token isEqual:[NSNull null]];
+            if(hasToken)
+                [self.appDelegate.appSettings setValue:token forKey:@"auth_token"];
             [self.appDelegate.appSettings setValue:[[result objectForKey:@"data"] objectForKey:@"id"] forKey:@"id"];
             [self.appDelegate.appSettings setValue:@"FB" forKey:@"loginType"];
             [self.appDelegate saveSettings];
-            [self fetchFavs];
+            if(hasToken)
+                [self fetchFavs];
         } else if ([req.requestIdentifier isEqualToString:@"register"]) {
             UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"" message:translateString(@"register_successful") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
             [av show];

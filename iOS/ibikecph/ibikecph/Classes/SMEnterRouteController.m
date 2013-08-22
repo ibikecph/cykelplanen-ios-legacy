@@ -53,7 +53,7 @@ typedef enum {
     [fromLabel setFrame:frame];
     [fromLabel setTextColor:[UIColor colorWithRed:7.0f/255.0f green:86.0f/255.0f blue:135.0f/255.0f alpha:1.0f]];
     
-    
+    toLabel.placeholder= translateString(@"search_to_placeholder");
     
     [toLabel setText:@""];
     
