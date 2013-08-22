@@ -97,7 +97,7 @@
 }
 
 -(void)displayBreakRouteError{
-    UIAlertView* noRouteAlertView= [[UIAlertView alloc] initWithTitle:@"No route" message:@"Route cannot be broken" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    UIAlertView* noRouteAlertView= [[UIAlertView alloc] initWithTitle:translateString(@"break_route_no_route") message:translateString(@"break_route_cant_break") delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [noRouteAlertView show];
 }
 

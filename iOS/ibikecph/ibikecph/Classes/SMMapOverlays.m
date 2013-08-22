@@ -538,22 +538,17 @@
         [self.mpView removeAnnotations:self.localTrainMarkers];
     }
     
-    if ( self.pathVisible ) {
-        //        [self showRouteAnnotation];
-    } else {
-        //        [self hideRouteAnnotation];
-    }
-    
-    float t = MAX((self.mpView.zoom / 10.0) - 1.0, 0.0)*2.0;
-    float zoom = lerp(0.35, 1.5, t);
-    NSLog(@"Map ZOOM: %f", self.mpView.zoom);
-    
-    for (SMAnnotation* an in self.mpView.annotations) {
-        if ([an.annotationType isEqualToString:@"station"]) {
-            RMMarker* marker = (RMMarker*)(an.layer);
-            [marker updateBoundsWithZoom: zoom];
-        }
-    }
+        
+//    float t = MAX((self.mpView.zoom / 10.0) - 1.0, 0.0)*2.0;
+//    float zoom = lerp(0.35, 1.5, t);
+//    NSLog(@"Map ZOOM: %f", self.mpView.zoom);
+//    
+//    for (SMAnnotation* an in self.mpView.annotations) {
+//        if ([an.annotationType isEqualToString:@"station"]) {
+//            RMMarker* marker = (RMMarker*)(an.layer);
+//            [marker updateBoundsWithZoom: zoom];
+//        }
+//    }
     
     [self.mpView setZoom:self.mpView.zoom+0.0001];
 

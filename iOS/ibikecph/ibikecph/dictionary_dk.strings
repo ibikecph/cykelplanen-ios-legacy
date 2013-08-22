@@ -161,6 +161,9 @@
 "break_route_header_title" = "Din rute er nu";
 "route_plan_button" = "Find rejse på Rejseplanen";
 
+"break_route_no_route" = "Ingen ruteforslag";
+"break_route_cant_break" = "Denne rute kan desværre ikke knækkes.";
+
 "shift" = "Skift";
 "btn_skip" = "Spring over";
 "where_are_we_going" = "Ny rute";
