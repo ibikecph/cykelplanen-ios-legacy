@@ -330,7 +330,9 @@
         SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
         
         annotation.annotationType = @"station";
-        annotation.userInfo= @{@"station" : [[SMTransportation instance] stationWithName:[station objectForKey:@"name"]]};
+        SMStationInfo* st= [[SMTransportation instance] stationWithName:[station objectForKey:@"name"]];
+        if(st)
+            annotation.userInfo= @{@"station" : st};
         annotation.annotationIcon = [UIImage imageNamed:imageName];
         annotation.anchorPoint = CGPointMake(0.5, 1.0);
         NSMutableArray * arr = [[self.source componentsSeparatedByString:@","] mutableCopy];

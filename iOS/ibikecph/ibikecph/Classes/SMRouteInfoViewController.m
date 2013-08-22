@@ -184,10 +184,12 @@
             lbl= (UILabel*)[cell viewWithTag:2];
             [lbl setText:self.singleRouteInfo.destStation.name];
             lbl= (UILabel*)[cell viewWithTag:3];
-            [lbl setText:[NSString stringWithFormat:@"%@, Afg. kl. %@", [dateFormatter stringFromDate:[NSDate new]], currentTime ]];
+            [lbl setText:[NSString stringWithFormat:@"%@, %@ %@", [dateFormatter stringFromDate:[NSDate new]], translateString(@"departures_at"), currentTime ]];
             
             lbl= (UILabel*)[cell viewWithTag:11];
+            [lbl setText:translateString(@"departure")];
             lbl= (UILabel*)[cell viewWithTag:12];
+            [lbl setText:translateString(@"arrival")];
             lbl= (UILabel*)[cell viewWithTag:13];
             [lbl setText:translateString(@"Time")];
             lbl= (UILabel*)[cell viewWithTag:14];

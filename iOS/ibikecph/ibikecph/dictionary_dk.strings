@@ -88,6 +88,8 @@
 "{roundabout:yes}" = "rundkørsel";
 "{area:yes}" = "plads";
 
+"search_to_placeholder" = "Indtast vej, gade, post nr.";
+
 "new_route" = "Ny rute";
 "Stop" = "Stop";
 
@@ -164,6 +166,9 @@
 "break_route_no_route" = "Ingen ruteforslag";
 "break_route_cant_break" = "Denne rute kan desværre ikke knækkes.";
 
+"departure" = "Afg.";
+"departures_at" = "Afg. kl.";
+"arrival" = "Ank.";
 "shift" = "Skift";
 "btn_skip" = "Spring over";
 "where_are_we_going" = "Ny rute";
