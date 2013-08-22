@@ -151,29 +151,30 @@
 "marker_start" = "Start";
 
 // markers
-"marker_type_1" = "Anlagte Ruter";
-"marker_type_2" = "Servicestationer";
-"marker_type_3" = "S-togs stationer";
-"marker_type_4" = "Metro stationer";
+"marker_type_1" = "Landscape route";
+"marker_type_2" = "Service stations";
+"marker_type_3" = "S-train stations";
+"marker_type_4" = "Metro stations";
+"marker_type_5" = "Local trains stations";
 
 // these are in the storyboard
-"register_with_mail" = "Opret med email";
-"btn_skip" = "Spring over";
+"register_with_mail" = "Register with email";
+"btn_skip" = "Skip";
 
-"reminder_title" = "Påmindelser";
+"reminder_title" = "REMINDER";
 "reminder_text" = "Få hjælp til at komme op på cyklen. Vælg de dage du ønsker at cykle, så hjælper vi dig med at komme igang.";
-"reminder_save_btn" = "GEM PÅMINDELSER";
+"reminder_save_btn" = "SAVE REMINDER";
 
 // Favorites
-"favorites_title" = "Tilføj favoritter";
+"favorites_title" = "Favorites";
 "favorites_text" = "Nu kan du nemt og hurtigt navigere til dine foretrukne pendlerruter. Start med at tilføje din hjemme- og arbejdsadresse.";
 "favorites_home_placeholder" = "Hjemmeadresse …";
 "favorites_work_placeholder" = "Arbejdsadresse …";
-"favorites_save_btn" = "GEM FAVORITTER";
+"favorites_save_btn" = "SAVE FAVORITESF";
 
 // Break route
-"break_route_title" = "Knæk ruten";
-"btn_break_route" = "KNÆK RUTEN";
+"break_route_title" = "Break route";
+"btn_break_route" = "BREAK ROUTE";
 "break_route_text_top" = "Vidste du, at du let kan knække din pendlerrute ved at tage toget noget af vejen.";
 "break_route_text_bottom" = "Når du vælger “Knæk ruten” giver vi dig en ny rute til nærmeste S-togsstation og bringer dig frem til din endelige destination.";
 "break_route_exit" = "Afslut guide og ta’ en tur";

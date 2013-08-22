@@ -64,20 +64,20 @@
     [self loadSettings];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:@"dk" forKey:@"appLanguage"];
-    if (![defaults stringForKey:@"appLanguage"]) {
-        /**
-         * init default settings
-         */
-        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-        NSArray* languages = [defaults objectForKey:@"AppleLanguages"];
+    NSLog(@"Language: %@", [defaults objectForKey:@"appLanguage"]);
+    //[defaults setObject:@"dk" forKey:@"appLanguage"];
+//    if (![defaults stringForKey:@"appLanguage"]) {
+//        /**
+//         * init default settings
+//         */
+//        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+//        NSArray* languages = [defaults objectForKey:@"AppleLanguages"];
 //        if ([[languages objectAtIndex:0] isEqualToString:@"da"] || [[languages objectAtIndex:0] isEqualToString:@"dan"]) {
-            [defaults setObject:@"dk" forKey:@"appLanguage"];
+//            [defaults setObject:@"dk" forKey:@"appLanguage"];
 //        } else {
-//            [defaults setObject:@"en" forKey:@"appLanguage"];
-//        }
-        [defaults synchronize];
-    }
+//            [defaults setObject:@"en" forKey:@"appLanguage"];        }
+//        [defaults synchronize];
+//    }
     
 //#ifdef ENGLISH_VERSION
 //    UIStoryboard *iPhone4Storyboard = [UIStoryboard storyboardWithName:@"EnglishStoryboard_iPhone" bundle:nil];
