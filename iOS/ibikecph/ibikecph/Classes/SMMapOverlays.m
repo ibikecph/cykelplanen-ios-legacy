@@ -324,7 +324,7 @@
         }
         
         NSString* title = @"metro";
-        NSString* annotationTitle = @"title";
+        NSString* annotationTitle = [station objectForKey:@"name"]; //@"title";
         NSString* alternateTitle = @"alternate title";
         
         SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
@@ -335,11 +335,14 @@
         annotation.anchorPoint = CGPointMake(0.5, 1.0);
         NSMutableArray * arr = [[self.source componentsSeparatedByString:@","] mutableCopy];
         annotation.title = annotationTitle;
+        annotation.subtitle = alternateTitle;
+        annotation.calloutShown = NO;
         
         if ([annotation.title isEqualToString:@""] && alternateTitle) {
             annotation.title = alternateTitle;
         }
         annotation.subtitle = [[arr componentsJoinedByString:@","] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        annotation.subtitle = alternateTitle;
         //[self.mpView addAnnotation:annotation];
         
         if ([type isEqualToString:@"metro"]) {

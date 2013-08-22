@@ -21,6 +21,7 @@
 
 @property (nonatomic, strong) SMCalloutView * calloutView;
 @property BOOL calloutShown;
+@property BOOL calloutVisible;
 
 
 @property (nonatomic, strong) NSArray * nearbyObjects;

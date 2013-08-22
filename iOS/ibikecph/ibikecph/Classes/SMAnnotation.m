@@ -8,11 +8,13 @@
 
 #import "SMAnnotation.h"
 #import "RMMapView.h"
+#import "RMMapLayer.h"
 
 @implementation SMAnnotation
 
 - (void)showCallout {
     self.calloutShown = YES;
+    self.calloutVisible = NO;
     if (self.calloutView == nil) {
         SMCalloutView * v = [SMCalloutView getFromNib];
         [v setDelegate:self];
@@ -29,7 +31,7 @@
         frame.size.width = MAX(177.0f, frame.size.width);
         
         frame.origin.x = point.x - roundf(frame.size.width/2.0f) + 4.0f;
-        frame.origin.y = point.y - 95.0f;
+        frame.origin.y = point.y - 75; //self.annotationIcon.size.height; // 80;//95.0f;
         
         [v setFrame:frame];
         
@@ -54,14 +56,14 @@
             CGRect frame = self.calloutView.frame;
             CGPoint point = [self.mapView coordinateToPixel:self.coordinate];
             frame.origin.x = point.x - roundf(frame.size.width/2.0f) + 4.0f;
-            frame.origin.y = point.y - 95.0f;
+            frame.origin.y = point.y - 75.0f;
             [self.calloutView setFrame:frame];
             [self.mapView addSubview:self.calloutView];
         } else {
             CGRect frame = self.calloutView.frame;
             CGPoint point = [self.mapView coordinateToPixel:self.coordinate];
             frame.origin.x = point.x - roundf(frame.size.width/2.0f) + 4.0f;
-            frame.origin.y = point.y - 95.0f;
+            frame.origin.y = point.y - 75.0f;
             [self.calloutView setFrame:frame];
         }
     }

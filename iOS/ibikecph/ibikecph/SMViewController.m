@@ -1781,9 +1781,11 @@ typedef enum {
 
 - (void)checkCallouts {
     for (SMAnnotation * annotation in self.mpView.annotations) {
-        if ([annotation.annotationType isEqualToString:@"marker"] && [annotation isKindOfClass:[SMAnnotation class]]) {
+        if (([annotation.annotationType isEqualToString:@"marker"] || [annotation.annotationType isEqualToString:@"station"]) && [annotation isKindOfClass:[SMAnnotation class]]) {
             if (annotation.calloutShown) {
-                [annotation showCallout];
+                    [annotation showCallout];
+//            } else {
+//                    [annotation hideCallout];
             }
         }
     }
@@ -1800,7 +1802,7 @@ typedef enum {
             [marker updateBoundsWithZoom: zoom];
         }
     }
-    
+
     [self checkCallouts];
 }
 
@@ -1813,7 +1815,7 @@ float lerp(float a, float b, float t) {
         RMMarker * m = [[RMMarker alloc] initWithUIImage:annotation.annotationIcon anchorPoint:annotation.anchorPoint];
 
         return m;
-
+    }
 //    if ([annotation.annotationType isEqualToString:@"marker"] || [annotation.annotationType isEqualToString:@"station"]) {
 //        RMMarker * m = [[RMMarker alloc] initWithUIImage:annotation.annotationIcon anchorPoint:annotation.anchorPoint];
 //        return m;
@@ -1896,7 +1898,6 @@ float lerp(float a, float b, float t) {
         
         return nil;
 
-    }
 }
 //}
 
@@ -1919,6 +1920,17 @@ float lerp(float a, float b, float t) {
 //        [self hidePinDrop];
 //    }
     
+    BOOL visible = NO;
+    if (annotation.calloutShown)
+        visible = YES;
+    
+    
+    for (SMAnnotation* ann in map.annotations) {
+        if ([ann isKindOfClass:[SMAnnotation class]]) {
+            [ann hideCallout];
+        }
+    }
+    
     if([annotation.annotationType.lowercaseString isEqualToString:@"station"]){
         SMStationInfo* station= [annotation.userInfo objectForKey:@"station"];
         if(station){
@@ -1926,13 +1938,18 @@ float lerp(float a, float b, float t) {
             [self displayDestinationNameWithString:station.name];
             [self setDestinationAnnotation:annotation withLocation:station.location];
             
+            if (visible)
+                [annotation hideCallout];
+            else
+                [annotation showCallout];
+            
             RMMapLayer* layer= [self mapView:map layerForAnnotation:annotation];
+//            [self checkCallouts];
 
 //            layer.frame= CGRectMake(layer.frame.origin.x-layer.frame.size.width/4, layer.frame.origin.y-layer.frame.size.height/4, 1.5*layer.frame.size.width, 1.5*layer.frame.size.height);
 //            [layer setNeedsDisplay];
         }
     }
-
     
 }
 

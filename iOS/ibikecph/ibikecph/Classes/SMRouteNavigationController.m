@@ -1090,10 +1090,10 @@ typedef enum {
 
 - (void)checkCallouts {
     for (SMAnnotation * annotation in self.mpView.annotations) {
-        if ([annotation.annotationType isEqualToString:@"marker"] && [annotation isKindOfClass:[SMAnnotation class]]) {
-            if (annotation.calloutShown) {
+        if ([annotation.annotationType isEqualToString:@"station"]) {// || [annotation.annotationType isEqualToString:@"station"] )&& [annotation isKindOfClass:[SMAnnotation class]]) {
+            //if (annotation.calloutShown) {
                 [annotation showCallout];
-            }
+            //}
         }
     }
 }
@@ -1117,24 +1117,27 @@ typedef enum {
 }
 
 - (void)tapOnAnnotation:(SMAnnotation *)annotation onMap:(RMMapView *)map {
-    if ([annotation.annotationType isEqualToString:@"marker"]) {
+    if ( [annotation.annotationType isEqualToString:@"station"]) {
+        [annotation showCallout];
         for (id v in self.mpView.subviews) {
             if ([v isKindOfClass:[SMCalloutView class]]) {
                 [v removeFromSuperview];
             }
         }
         
-        for(SMAnnotation* pAnnotation in map.annotations){
-            if([pAnnotation.annotationType isEqualToString:@"marker"]){
-                [pAnnotation hideCallout];
-            }
-        }
+//        for(SMAnnotation* pAnnotation in map.annotations){
+//            if(([pAnnotation.annotationType isEqualToString:@"marker"] || [annotation.annotationType isEqualToString:@"station"]) && [annotation.annotationType isKindOfClass:[SMAnnotation class]]){
+//                [pAnnotation hideCallout];
+//            }
+//        }
         
-        if ([annotation calloutShown]) {
-            [annotation hideCallout];
-        } else {
-            [annotation showCallout];
-        }
+        
+        
+//        if ([annotation calloutShown]) {
+//            [annotation hideCallout];
+//        } else {
+//            [annotation showCallout];
+//        }
     }
 }
 
