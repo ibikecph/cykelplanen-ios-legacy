@@ -103,7 +103,6 @@
         return @"service_pin";
     }else if(type==SMStationInfoTypeTrain){
         return @"station_icon";
-
     }else if (type==SMStationInfoTypeLocalTrain) {
         return @"local_train_icon";
     }

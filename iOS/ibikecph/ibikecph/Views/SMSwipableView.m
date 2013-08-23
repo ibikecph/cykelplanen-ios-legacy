@@ -25,20 +25,14 @@
 
 
 - (void)renderViewFromInstruction:(SMTurnInstruction *)turn {
-//    [self.lblDescription setText:[turn descriptionString]];
+
     
-    if ([turn.shortDescriptionString rangeOfString:@"\\{.+\\:.+\\}" options:NSRegularExpressionSearch].location != NSNotFound) {
-        [self.lblWayname setText:translateString(turn.shortDescriptionString)];
-    } else {
-        [self.lblWayname setText:turn.shortDescriptionString];
-    }
-    
-//    CGSize size = [self.lblDescription.text sizeWithFont:[UIFont systemFontOfSize:DIRECTION_FONT_SIZE] constrainedToSize:CGSizeMake(INSTRUCTIONS_LABEL_WIDTH, 60.0f) lineBreakMode:NSLineBreakByWordWrapping];
-//    CGRect frame = self.lblDescription.frame;
-//    frame.origin.y = frame.size.height + frame.origin.y - size.height;
-//    frame.size.height = size.height;
-//    [self.lblDescription setFrame:frame];
-    
+//    if ([turn.shortDescriptionString rangeOfString:@"\\{.+\\:.+\\}" options:NSRegularExpressionSearch].location != NSNotFound) {
+//        [self.lblWayname setText:turn.wayName];
+//    } else {
+        [self.lblWayname setText:turn.wayName];
+//    }
+        
     CGSize size = [self.lblWayname.text sizeWithFont:[UIFont boldSystemFontOfSize:self.lblWayname.font.pointSize] constrainedToSize:CGSizeMake(INSTRUCTIONS_LABEL_WIDTH, 80.0f) lineBreakMode:NSLineBreakByWordWrapping];
     CGRect frame = self.lblWayname.frame;
     frame.size.height = size.height;

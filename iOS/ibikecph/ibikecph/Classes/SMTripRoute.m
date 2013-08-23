@@ -154,37 +154,50 @@
     SMRoute* startRoute= [[SMRoute alloc] initWithRouteStart:[self start].coordinate andEnd:self.brokenRouteInfo.sourceStation.location.coordinate andDelegate:self];
     SMRoute* endRoute= [[SMRoute alloc] initWithRouteStart:self.brokenRouteInfo.destinationStation.location.coordinate andEnd:[self end].coordinate andDelegate:self];
 
-//    BOOL returning= NO;
-//    int sourceIndex= [self.brokenRouteInfo.transportationLine.stations indexOfObject:self.brokenRouteInfo.sourceStation];
-//    int destIndex= [self.brokenRouteInfo.transportationLine.stations indexOfObject:self.brokenRouteInfo.destinationStation];
-//    if( sourceIndex> destIndex){
-//        returning= YES;
-//    }
+    SMRoute* transportRoute= [self newTransportationRoute];
     
-//    NSMutableArray* instructions= [NSMutableArray new];
-//    if(!returning){
-//        for(int i=sourceIndex; i<=destIndex; i++){
-//            SMStationInfo* station= self.brokenRouteInfo.transportationLine.stations[i];
-//            
-//            SMTurnInstruction* turnInstruction= [[SMTurnInstruction alloc] init];
-//            turnInstruction.wayName= station.name;
-//            turnInstruction.loc= station.location;
-//            [instructions addObject:turnInstruction];
-//        }
-//    }else{
-//        for(int i=sourceIndex; i>=destIndex; i--){
-//            SMStationInfo* station= self.brokenRouteInfo.transportationLine.stations[i];
-//
-//            SMTurnInstruction* turnInstruction= [[SMTurnInstruction alloc] init];
-//            turnInstruction.wayName= station.name;
-//            turnInstruction.loc= station.location;
-//            [instructions addObject:turnInstruction];
-//        }
-//    }
-//    SMRoute* transportRoute= [[SMRoute alloc] init];
-//    transportRoute.turnInstructions= instructions;
+    self.brokenRoutes= @[startRoute, transportRoute, endRoute];
+}
+
+-(SMRoute*)newTransportationRoute{
+    BOOL returning= NO;
+    int sourceIndex= [self.brokenRouteInfo.transportationLine.stations indexOfObject:self.brokenRouteInfo.sourceStation];
+    int destIndex= [self.brokenRouteInfo.transportationLine.stations indexOfObject:self.brokenRouteInfo.destinationStation];
+    if( sourceIndex> destIndex){
+        returning= YES;
+    }
     
-    self.brokenRoutes= @[startRoute, endRoute];
+    NSMutableArray* instructions= [NSMutableArray new];
+    NSMutableArray* waypoints= [NSMutableArray new];
+    if(!returning){
+        for(int i=sourceIndex; i<=destIndex; i++){
+            SMStationInfo* station= self.brokenRouteInfo.transportationLine.stations[i];
+            SMTurnInstruction* turnInstruction= [self newTurnInstructionWithStation:station];
+            [instructions addObject:turnInstruction];
+            [waypoints addObject:station.location];
+        }
+    }else{
+        for(int i=sourceIndex; i>=destIndex; i--){
+            SMStationInfo* station= self.brokenRouteInfo.transportationLine.stations[i];
+            SMTurnInstruction* turnInstruction= [self newTurnInstructionWithStation:station];
+            [instructions addObject:turnInstruction];
+            [waypoints addObject:station.location];
+        }
+    }
+    SMRoute* transportRoute= [[SMRoute alloc] init];
+    transportRoute.turnInstructions= instructions;
+    transportRoute.waypoints= waypoints;
+    transportRoute.routeType= SMRouteTypeTransport;
+    
+    return transportRoute;
+}
+
+-(SMTurnInstruction*)newTurnInstructionWithStation:(SMStationInfo*)station{
+    SMTurnInstruction* turnInstruction= [SMTurnInstruction new];
+    turnInstruction.wayName= station.name;
+    turnInstruction.loc= station.location;
+    turnInstruction.smallImageName= [SMStationInfo imageNameForType:station.type];
+    return turnInstruction;
 }
 
 - (void) updateTurn:(BOOL)firstElementRemoved{}
