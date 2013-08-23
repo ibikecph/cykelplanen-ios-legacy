@@ -238,8 +238,8 @@ typedef enum {
     self.mapFade.frame= rect;
     
     // markers visibility
-    //[self removeAllMarkers];
-    //[self toggleMarkers];
+    [self removeAllMarkers];
+    [self toggleMarkers];
     
     [self.appDelegate.mapOverlays useMapView:self.mpView];
     [self.appDelegate.mapOverlays toggleMarkers];
@@ -1091,9 +1091,9 @@ typedef enum {
 - (void)checkCallouts {
     for (SMAnnotation * annotation in self.mpView.annotations) {
         if ([annotation.annotationType isEqualToString:@"station"]) {// || [annotation.annotationType isEqualToString:@"station"] )&& [annotation isKindOfClass:[SMAnnotation class]]) {
-            //if (annotation.calloutShown) {
+            if (annotation.calloutShown) {
                 [annotation showCallout];
-            //}
+            }
         }
     }
 }

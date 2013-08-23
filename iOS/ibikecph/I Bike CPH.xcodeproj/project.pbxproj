@@ -3669,8 +3669,8 @@
 			baseConfigurationReference = 4C48641216F0994600F01A7C /* ibikecph.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Nikola Markovic (EE62QX6H34)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nikola Markovic (EE62QX6H34)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Igor Jerkovic (VCLHFXRDJM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Igor Jerkovic (39D278YE39)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ibikecph/Libs/FacebookSDK\"",
@@ -3698,8 +3698,8 @@
 					"\"$(SRCROOT)/ibikecph/Libs/GA v2.0b4\"/**",
 				);
 				PRODUCT_NAME = "I Bike CPH";
-				PROVISIONING_PROFILE = "C579CE23-B997-43B2-8B11-5D12331EBBC1";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C579CE23-B997-43B2-8B11-5D12331EBBC1";
+				PROVISIONING_PROFILE = "509F7700-EBF5-4E69-8C25-B5DDBB47C088";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "83E7E6C9-3A87-46BD-AF2A-B9890F24F164";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -3710,8 +3710,8 @@
 			baseConfigurationReference = 4C48641216F0994600F01A7C /* ibikecph.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Nikola Markovic (EE62QX6H34)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nikola Markovic (EE62QX6H34)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Igor Jerkovic (VCLHFXRDJM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Igor Jerkovic (39D278YE39)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ibikecph/Libs/FacebookSDK\"",
@@ -3736,8 +3736,8 @@
 					"\"$(SRCROOT)/ibikecph/Libs/GA v2.0b4\"/**",
 				);
 				PRODUCT_NAME = "I Bike CPH";
-				PROVISIONING_PROFILE = "C579CE23-B997-43B2-8B11-5D12331EBBC1";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C579CE23-B997-43B2-8B11-5D12331EBBC1";
+				PROVISIONING_PROFILE = "509F7700-EBF5-4E69-8C25-B5DDBB47C088";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "83E7E6C9-3A87-46BD-AF2A-B9890F24F164";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

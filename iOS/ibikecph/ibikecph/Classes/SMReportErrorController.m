@@ -307,7 +307,7 @@
 #pragma mark - tableview delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1; // "Let me know when it is fixed" is in section 2
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

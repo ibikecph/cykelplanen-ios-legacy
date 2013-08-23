@@ -294,6 +294,7 @@
         NSLog(@"Error %@", err);
     }
     NSArray* stations = [dict valueForKey:@"stations"];
+    NSMutableArray* tempMarkers = [[NSMutableArray alloc] init];
     
     for(NSDictionary* station in stations) {
         
@@ -339,13 +340,17 @@
         annotation.title = annotationTitle;
         annotation.subtitle = alternateTitle;
         annotation.calloutShown = NO;
+        [annotation hideCallout];
         
         if ([annotation.title isEqualToString:@""] && alternateTitle) {
             annotation.title = alternateTitle;
         }
         annotation.subtitle = [[arr componentsJoinedByString:@","] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         annotation.subtitle = alternateTitle;
+        [annotation.calloutView.markerIcon setImage:annotation.annotationIcon];
         //[self.mpView addAnnotation:annotation];
+        
+        [tempMarkers addObject:annotation];
         
         if ([type isEqualToString:@"metro"]) {
             [self.metroMarkers addObject:annotation];
@@ -357,6 +362,28 @@
             [self.localTrainMarkers addObject:annotation];
         }
 
+    }
+    
+    for (SMAnnotation* annotation in tempMarkers)
+    for (SMAnnotation* a in tempMarkers) {
+        if ( a != annotation ) {
+            if ( a.coordinate.latitude == annotation.coordinate.latitude && a.coordinate.longitude == annotation.coordinate.longitude ) {
+                NSLog(@"Annotation same coords!");
+                //annotation.calloutShown = YES;
+                CGRect frame = a.calloutView.calloutLabel.frame;
+                frame.origin.x += 18;
+                [a.calloutView.calloutLabel setFrame:frame];
+                [annotation.calloutView.calloutLabel setFrame:frame];
+                [annotation.calloutView.markerIcon setImage:annotation.annotationIcon];
+                [a.calloutView.markerIcon setImage:annotation.annotationIcon];
+                
+                [annotation.calloutView.markerIcon2 setImage:a.annotationIcon];
+                [a.calloutView.markerIcon2 setImage:a.annotationIcon];
+                
+                [annotation showCallout];
+                [annotation hideCallout];
+            }
+        }
     }
     
     [self toggleMarkers];

@@ -34,6 +34,7 @@
     if (self.delegate) {
         [self.delegate buttonClicked];
     }
+    //[self.calloutLabel setTextColor:[UIColor orangeColor]];
 }
 
 @end

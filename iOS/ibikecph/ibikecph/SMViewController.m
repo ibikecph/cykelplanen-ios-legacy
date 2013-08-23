@@ -172,6 +172,8 @@ typedef enum {
     [self setFavoritesList:[SMFavoritesUtil getFavorites]];
     
     [self.appDelegate.mapOverlays loadMarkers];
+    
+    
 
 #ifndef TESTING     
     [buttonAddFakeStation setHidden:YES];
@@ -437,6 +439,12 @@ typedef enum {
     [self.appDelegate.mapOverlays useMapView:self.mpView];
     [self.appDelegate.mapOverlays toggleMarkers];
     
+    for (SMAnnotation* annotation in self.mpView.annotations) {
+        if ([annotation isKindOfClass:[SMAnnotation class]] && [annotation.annotationType isEqualToString:@"station"]) {
+            [annotation hideCallout];
+        }
+    }
+    
     if ( self.appDelegate.mapOverlays.pathVisible )
         [self.overlaysMenuTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
     if ( self.appDelegate.mapOverlays.serviceMarkersVisible )
@@ -446,6 +454,11 @@ typedef enum {
     if ( self.appDelegate.mapOverlays.metroMarkersVisible )
         [self.overlaysMenuTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
     
+    for (SMAnnotation* annotation in self.mpView.annotations) {
+        if ([annotation isKindOfClass:[SMAnnotation class]] && [annotation.annotationType isEqualToString:@"station"]) {
+            [annotation hideCallout];
+        }
+    }
     
 }
 
@@ -1974,6 +1987,18 @@ float lerp(float a, float b, float t) {
             [ann hideCallout];
         }
     }
+    
+    NSLog(@"Annotation coords:%f %f", annotation.coordinate.latitude, annotation.coordinate.longitude);
+//    for (SMAnnotation* a in map.annotations) {
+//        if ( a != annotation ) {
+//            if ( a.coordinate.latitude == annotation.coordinate.latitude && a.coordinate.longitude == annotation.coordinate.longitude ) {
+//                NSLog(@"Annotation same coords!");
+//                [annotation.calloutView.calloutLabel setText:@"Two stations."];
+//                [a.calloutView.calloutLabel setText:@"Two stations."];
+//
+//            }
+//        }
+//    }
     
     if([annotation.annotationType.lowercaseString isEqualToString:@"station"]){
         SMStationInfo* station= [annotation.userInfo objectForKey:@"station"];

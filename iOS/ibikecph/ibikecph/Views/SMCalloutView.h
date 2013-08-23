@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *bgLeft;
 @property (weak, nonatomic) IBOutlet UIImageView *bgMiddle;
 @property (weak, nonatomic) IBOutlet UIImageView *bgRight;
+@property (weak, nonatomic) IBOutlet UIImageView *markerIcon;
+@property (weak, nonatomic) IBOutlet UIImageView *markerIcon2;
 
 + (SMCalloutView*) getFromNib;
 + (CGFloat)getHeight;

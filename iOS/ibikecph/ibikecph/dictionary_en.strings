@@ -181,10 +181,10 @@ Copenhagen. All rights reserved.
 "break_route_text_top" = "Did you know that you can easily do less biking by replacing some of the route with public transportation.";
 "break_route_text_bottom" = "When you choose \"Less biking\", we will provide a new and alternative route to the nearest train station that will bring you to your final destination.";
 "break_route_exit" = "Got it - let's go biking";
-//"break_route_header_title" = "";
+"break_route_header_title" = "Your route is now";
 "break_route_no_route" = "No Route";
 "break_route_cant_break" = "Route cannot be broken.";
-
+"route_plan_button" = "Transportation info";
 "route_info"= "Route Information";
 
 "departure" = "Dep.";
