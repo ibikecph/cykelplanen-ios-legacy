@@ -160,8 +160,6 @@ typedef enum {
     [self.cargoTableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     [self.cargoTableView reloadData];
     
-    //[self.cargoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
-    
     [centerView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
     
     self.pathVisible= YES;
@@ -171,18 +169,12 @@ typedef enum {
         self.appDelegate.mapOverlays = [[SMMapOverlays alloc] initWithMapView:self.mpView];
     }
     [self.appDelegate.mapOverlays useMapView:self.mpView];
-    //[self.appDelegate.mapOverlays loadMarkers];
-    
-    //[self loadMarkers];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onStationsFetched:) name:NOTIFICATION_STATIONS_FETCHED object:nil];
     
-    //[self loadMarkers];
 }
 
--(void)onStationsFetched:(NSNotification*)notification{
-    //[self loadMarkers];
-}
+-(void)onStationsFetched:(NSNotification*)notification{}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -276,22 +268,6 @@ typedef enum {
     if ( self.appDelegate.mapOverlays.localTrainMarkersVisible )
         [self.cargoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
     
-//    
-//    
-//    float t = MAX((self.mpView.zoom / 10.0) - 1.0, 0.0)*2.0;
-//    // lerp(1.5, 0.35, t)
-//    float zoom = (1.0-t)*0.35 + t*1.5;
-//    
-//    for (SMAnnotation* an in self.mpView.annotations) {
-//        if ([an.annotationType isEqualToString:@"station"]) {
-//            if (an.layer) {
-//                RMMarker* marker = (RMMarker*)(an.layer);
-//                [marker updateBoundsWithZoom: zoom];
-//            }
-//        }
-//    }
-
- 
 }
 
 
@@ -501,8 +477,8 @@ typedef enum {
     NSMutableArray * coordinates= [NSMutableArray new];
     
     for(SMRoute* rt in self.brokenRoute.brokenRoutes){
-        [coordinates addObject:[self addRouteAnnotation:rt]];
-
+        if(rt.routeType == SMRouteTypeNormal)
+            [coordinates addObject:[self addRouteAnnotation:rt]];
     }
     [self.mpView setRoutingDelegate:self];
     [tblDirections reloadData];
@@ -520,13 +496,11 @@ typedef enum {
         [overviewTimeDistance setText:[NSString stringWithFormat:@"%@, via %@", formatDistance(self.route.estimatedRouteDistance), self.route.longestStreet]];
     }
     
-    //self.brokenRoute.brokenRouteInfo.sourceStation.
+    
     
     NSArray * a = [self.destination componentsSeparatedByString:@","];
     NSString* streetName= [a objectAtIndex:0];
     
-//    [overviewDestination setText:[a objectAtIndex:0]];
-//    [overviewDestination setText:testStreet];
     overviewDestination.lineBreakMode= UILineBreakModeCharacterWrap;
     overviewDestinationBottom.lineBreakMode= UILineBreakModeTailTruncation;
     
@@ -543,13 +517,6 @@ typedef enum {
        overviewDestination.text= @"";
         overviewDestinationBottom.text= @"";
     }
-    
-//    NSInteger characterCountInFirstLine= [self fitString:testStreet intoLabel:overviewDestination size:singleLineSize];
-//    if(characterCountInFirstLine<testStreet.length){
-    
-//        NSString* newValue= [self splitString:testStreet lastCharacterIndex:characterCountInFirstLine-1];
-//        [overviewDestination setText:newValue];
-//    }
     
     CLLocationCoordinate2D sw= CLLocationCoordinate2DMake(DBL_MAX, DBL_MAX);
     CLLocationCoordinate2D ne= CLLocationCoordinate2DMake(-DBL_MAX, -DBL_MAX);
@@ -730,17 +697,13 @@ typedef enum {
 -(BOOL)isVowel:(NSString*)chr{
     if(!chr)
         return NO;
-    return [chr isEqualToString:@"a"] || [chr isEqualToString:@"e"] || [chr isEqualToString:@"i"] || [chr isEqualToString:@"o"] || [chr isEqualToString:@"u"] || [chr isEqualToString:@"æ"] || [chr isEqualToString:@"ø"] || [chr isEqualToString:@"å"]; 
+    return [chr isEqualToString:@"a"] || [chr isEqualToString:@"e"] || [chr isEqualToString:@"i"] || [chr isEqualToString:@"o"] || [chr isEqualToString:@"u"] || [chr isEqualToString:@"æ"] || [chr isEqualToString:@"ø"] || [chr isEqualToString:@"å"];
 
 }
 
 - (NSUInteger)fitString:(NSString *)string intoLabel:(UILabel *)label size:(CGSize)size
 {
     UIFont *font           = label.font;
-//    UILineBreakMode mode   = label.lineBreakMode;
-    
-    
-//    CGSize  sizeConstraint = CGSizeMake(size.width, CGFLOAT_MAX);
 
     CGSize sizeForString= [string sizeWithFont:font];
     if (sizeForString.width >= size.width-1) // sizeWithFont rounding
@@ -970,6 +933,7 @@ typedef enum {
 -(void)showRouteAnnotation{
 
     for(SMRoute* rt in self.brokenRoute.brokenRoutes){
+        if(rt.routeType==SMRouteTypeNormal)
         [self addRouteAnnotation:rt];
     }
 }
@@ -2026,7 +1990,11 @@ typedef enum {
         if ([self.instructionsForScrollview count] > start || start > 0) {
             instr = [self.instructionsForScrollview objectAtIndex:start];
         }
-        self.instructionsForScrollview = [NSArray arrayWithArray:self.route.turnInstructions];
+        NSMutableArray* arr= [NSMutableArray new];
+        for(SMRoute* route in self.brokenRoute.brokenRoutes){
+            [arr addObjectsFromArray:route.turnInstructions];
+        }
+        self.instructionsForScrollview = [NSArray arrayWithArray:arr];
         for (SMSwipableView * cell in self.activeItems) {
             cell.position = -1;
             [self.recycledItems addObject:cell];
