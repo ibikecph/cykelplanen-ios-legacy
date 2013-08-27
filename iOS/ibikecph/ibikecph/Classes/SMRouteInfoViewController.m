@@ -49,13 +49,14 @@
     int hour= [timeComponents hour];
     int mins= [timeComponents minute];
 
+    SMTime* cTime=[SMTime new];
+    cTime.hour= hour;
+    cTime.minutes= mins;
+
     if(self.singleRouteInfo.type == SMStationInfoTypeLocalTrain){
         // temp
         NSArray* trains= [SMTransportation instance].trains;
-        SMTime* cTime=[SMTime new];
-        cTime.hour= hour;
-        cTime.minutes= mins;
-        NSMutableArray* timesArray= [NSMutableArray new];
+                NSMutableArray* timesArray= [NSMutableArray new];
         for(SMTrain* train in trains){
             NSArray* array= [train routeTimestampsForSourceStation:self.singleRouteInfo.sourceStation destinationStation:self.singleRouteInfo.destStation forDay:weekday time:cTime];
             if(array){
@@ -98,7 +99,7 @@
         }while(hasDuplicates);
         times= [NSArray arrayWithArray:timesArray];
 
-    }else{
+    }else if(self.singleRouteInfo.type == SMStationInfoTypeTrain){
         TravelTime time;
         // determine current time (weekday / weekend / weekend night)
         if([self isNightForDayAtIndex:6 components:weekdayComponents] || [self isNightForDayAtIndex:7 components:weekdayComponents]){
@@ -110,7 +111,6 @@
         }
         
         NSMutableArray* timesArr= [NSMutableArray new];
-    //    NSMutableArray* lines= [NSMutableArray new];
         
         for(SMTransportationLine* line in transportation.lines){
             if([line containsRouteFrom:self.singleRouteInfo.sourceStation to:self.singleRouteInfo.destStation forTime:time]){
@@ -118,9 +118,29 @@
             }
         }
         times= [NSArray arrayWithArray:timesArr];
+    }else if(self.singleRouteInfo.type == SMStationInfoTypeMetro){
+        SMTime* firstTime= [[SMTime alloc] initWithTime:cTime];
+        NSMutableArray* arr= [NSMutableArray new];
+        
+        if(firstTime.minutes%2==1){
+            [firstTime addMinutes:1];
+        }
+        
+        int diff= [self.singleRouteInfo.transportationLine differenceFrom:self.singleRouteInfo.sourceStation to:self.singleRouteInfo.destStation];
+        
+        for(int i=0; i<3; i++){
+            [firstTime addMinutes:2];
+
+            SMTime* sTime= [[SMTime alloc] initWithTime:firstTime];
+            SMTime* destTime= [[SMTime alloc] initWithTime:sTime];
+            [destTime addMinutes:diff*2];
+            SMRouteTimeInfo* routeTimeInfo= [[SMRouteTimeInfo alloc] initWithRouteInfo:self.singleRouteInfo sourceTime:sTime destinationTime:destTime];
+            [arr addObject:routeTimeInfo];
+        }
+        
+        times= [NSArray arrayWithArray:arr];
     }
     [self.tableView reloadData];
-
 
 }
 

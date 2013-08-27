@@ -48,7 +48,18 @@
     return (self.hour>first.hour && self.hour<secondHour) || (self.hour==first.hour && self.minutes > first.minutes) || (self.hour==secondHour && self.minutes<second.minutes);
 }
 
-
+-(void)addMinutes:(int)mins{
+    self.minutes+= mins;
+    
+    if(self.minutes > 60){
+        self.hour+= (self.minutes/60);
+        self.minutes= (self.minutes%60);
+        
+        if(self.hour>=24){
+            self.hour= (self.hour%24);
+        }
+    }
+}
 
 -(id)copy{
     SMTime* time= [SMTime new];

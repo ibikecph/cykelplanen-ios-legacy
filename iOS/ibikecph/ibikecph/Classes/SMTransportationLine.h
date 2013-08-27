@@ -33,6 +33,6 @@
 -(void) loadFromFile:(NSString*)filePath;
 -(SMTransportationLine*)clone;
 -(BOOL)containsRouteFrom:(SMStationInfo*)sourceStation to:(SMStationInfo*)destStation forTime:(TravelTime)time;
-
+-(int)differenceFrom:(SMStationInfo*)sourceStation to:(SMStationInfo*)destStation;
 -(void)addTimestampsForRouteInfo:(SMSingleRouteInfo*)singleRouteInfo array:(NSMutableArray*)arr currentTime:(NSDate*)date time:(TravelTime)time;
 @end

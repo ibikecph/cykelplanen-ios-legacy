@@ -156,6 +156,22 @@
     return hasSource && hasDestination;
 }
 
+-(int)differenceFrom:(SMStationInfo*)sourceStation to:(SMStationInfo*)destStation{
+    int sourceIndex= 0;
+    int destIndex= 0;
+    int index= 0;
+    for(SMStationInfo* station in self.stations){
+        if(station == sourceStation){
+            sourceIndex= index;
+        }else if(station == destStation){
+            destIndex= index;
+        }
+        index++;
+    }
+    
+    return abs(sourceIndex-destIndex);
+}
+
 -(void)addTimestampsForRouteInfo:(SMSingleRouteInfo*)singleRouteInfo array:(NSMutableArray*)arr currentTime:(NSDate*)date time:(TravelTime)time{
     NSCalendar* cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *weekdayComponents =[cal components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:date];

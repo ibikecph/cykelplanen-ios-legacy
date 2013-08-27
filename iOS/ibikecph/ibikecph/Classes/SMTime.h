@@ -18,5 +18,5 @@
 -(int)differenceInMinutesFrom:(SMTime *)other;
 -(SMTime*)differenceFrom:(SMTime*)other;
 -(BOOL)isBetween:(SMTime*)first and:(SMTime*)second;
-
+-(void)addMinutes:(int)mins;
 @end

@@ -662,7 +662,6 @@ static NSOperationQueue* stationQueue;
                     default:
                         break;
                 }
-                
             }
         }else{
             NSLog(@"Station %@ not found.",stationName);
@@ -681,11 +680,10 @@ static NSOperationQueue* stationQueue;
         
         if(myNumber){
             time= myNumber;
-        }else{
-            time= [NSNull null];
+            
+            [values addObject:time];
         }
         
-        [values addObject:time];
     }
     
     return values;
