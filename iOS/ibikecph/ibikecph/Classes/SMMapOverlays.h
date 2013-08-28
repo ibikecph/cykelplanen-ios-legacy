@@ -22,5 +22,6 @@
 @property BOOL stationMarkersVisible;
 @property BOOL localTrainMarkersVisible;
 @property BOOL pathVisible;
+@property (nonatomic, strong) NSMutableArray* metroTimingConst;
 
 @end

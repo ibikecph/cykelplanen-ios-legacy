@@ -3669,7 +3669,7 @@
 			baseConfigurationReference = 4C48641216F0994600F01A7C /* ibikecph.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Igor Jerkovic (VCLHFXRDJM)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Igor Jerkovic (39D278YE39)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Igor Jerkovic (39D278YE39)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3697,8 +3697,25 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ibikecph/Libs/GA v2.0b4\"/**",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					CoreText,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					Foundation,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					SystemConfiguration,
+					"-framework",
+					UIKit,
+					"-framework",
+					Security,
+				);
 				PRODUCT_NAME = "I Bike CPH";
-				PROVISIONING_PROFILE = "509F7700-EBF5-4E69-8C25-B5DDBB47C088";
+				PROVISIONING_PROFILE = "83E7E6C9-3A87-46BD-AF2A-B9890F24F164";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "83E7E6C9-3A87-46BD-AF2A-B9890F24F164";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -3735,9 +3752,26 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ibikecph/Libs/GA v2.0b4\"/**",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					CoreText,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					Foundation,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					SystemConfiguration,
+					"-framework",
+					UIKit,
+					"-framework",
+					Security,
+				);
 				PRODUCT_NAME = "I Bike CPH";
 				PROVISIONING_PROFILE = "509F7700-EBF5-4E69-8C25-B5DDBB47C088";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "83E7E6C9-3A87-46BD-AF2A-B9890F24F164";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "35D47EAA-973E-4FEB-8784-CC211B5A3957";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

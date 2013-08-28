@@ -382,11 +382,51 @@
                 
                 [annotation showCallout];
                 [annotation hideCallout];
+                [a showCallout];
+                [a hideCallout];
             }
         }
     }
     
+    [self calcMetroData];
+    
     [self toggleMarkers];
+}
+
+- (void)calcMetroData {
+    float totalDistance = 0.0f;
+    int numStations = [self.metroMarkers count];
+   
+    float* times = (float*)malloc(numStations * sizeof(float));
+    
+    int i=0;
+    for (i=0; i<numStations; i++) {
+        SMAnnotation* station = [self.metroMarkers objectAtIndex:i];
+        SMAnnotation* nextStation = [self.metroMarkers objectAtIndex:MIN(i+1, numStations-1)];
+        
+        // Get aprox. distance to next station
+        float x0 = station.coordinate.longitude;
+        float y0 = station.coordinate.latitude;
+        
+        float x1 = nextStation.coordinate.longitude;
+        float y1 = nextStation.coordinate.latitude;
+        
+        float distance = sqrtf((x1 - x0)*(x1 - x0) + (y1 - y0)*(y1 - y0));
+        NSLog(@"%@ -> %@ Distance: %4.4f", station.title, nextStation.title, distance*100);
+        
+        totalDistance += distance;
+        times[i] = distance;
+    }
+    
+    NSLog(@"Total distance: %4.4f", totalDistance*100);
+    NSLog(@"Average distance: %4.4f", totalDistance*100 / i);
+    
+    self.metroTimingConst = [[NSMutableArray alloc] init];
+    
+    for (i=0; i<numStations; i++) {
+        times[i] /= totalDistance / numStations;
+        [self.metroTimingConst addObject:[NSNumber numberWithFloat:times[i]]];
+    }
 }
 
 - (void)oldLoadMarkers {

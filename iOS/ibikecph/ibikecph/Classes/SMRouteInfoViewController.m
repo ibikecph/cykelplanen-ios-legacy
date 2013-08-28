@@ -122,18 +122,111 @@
         SMTime* firstTime= [[SMTime alloc] initWithTime:cTime];
         NSMutableArray* arr= [NSMutableArray new];
         
-        if(firstTime.minutes%2==1){
-            [firstTime addMinutes:1];
+        int diff= [self.singleRouteInfo.transportationLine differenceFrom:self.singleRouteInfo.sourceStation to:self.singleRouteInfo.destStation];
+        NSArray* stations = self.singleRouteInfo.transportationLine.stations;
+        int startIndex = 0;
+        int endIndex = 0;
+        for (int i=0; i<[stations count]; i++) {
+            if ( [[stations objectAtIndex:i] isEqual:self.singleRouteInfo.sourceStation] ) {
+                startIndex = i;
+            }
+            
+            if ( [[stations objectAtIndex:i] isEqual:self.singleRouteInfo.destStation] ) {
+                endIndex = i;
+            }
         }
         
-        int diff= [self.singleRouteInfo.transportationLine differenceFrom:self.singleRouteInfo.sourceStation to:self.singleRouteInfo.destStation];
+        // TO DO: separate M1 and M2 metro lines
+        
+        int minutesBetweenDeparture = 2;
+        int h = firstTime.hour;
+        if (startIndex < 7) {
+            if ( (h >= 7 && h < 9) || (h >= 14 && h < 18) ) {
+                // Rush hours
+                minutesBetweenDeparture = 2;
+            } else {
+                // ...
+                minutesBetweenDeparture = 3;
+            }
+            
+            // Nights (work days and sunday)
+            if (h >= 0 && h < 5 && weekdayComponents.weekday >=1 && weekdayComponents.weekday < 6) {
+                minutesBetweenDeparture = 20;
+            }
+            
+            // Nights (weekends)
+            if (h >= 1 && h < 7 && weekdayComponents.weekday >=6 && weekdayComponents.weekday <= 7) {
+                minutesBetweenDeparture = 8;
+            }
+            
+            if(firstTime.minutes%2==1){
+                [firstTime addMinutes:1];
+            }
+        } else {
+            if ( (h >= 7 && h < 9) || (h >= 14 && h < 18) ) {
+                // Rush hours
+                minutesBetweenDeparture = 4;
+            } else {
+                // ...
+                minutesBetweenDeparture = 6;
+            }
+            
+            // Nights (work days and sunday)
+            if (h >= 0 && h < 5 && weekdayComponents.weekday >=1 && weekdayComponents.weekday < 6) {
+                minutesBetweenDeparture = 30;
+            }
+            
+            // Nights (weekends)
+            if (h >= 1 && h < 7 && weekdayComponents.weekday >=6 && weekdayComponents.weekday <= 7) {
+                minutesBetweenDeparture = 15;
+            }
+            
+            if(firstTime.minutes%2==1){
+                [firstTime addMinutes:1];
+            }
+            [firstTime addMinutes:2];
+
+        }
+        
+        NSLog(@"start index: %d, end index: %d", startIndex, endIndex);
+        
+        double metroTimingConst[] = {0.7335,1.4172,1.0357,0.9220,2.0112,1.9194,1.4138,0.9644,1.7651,0.8496,1.1164,0.7781,0.9434,1.0419,5.1643,1.5944,1.3921,0.6224,1.2332,1.3312,1.0685}; //,0.0000};
+        double m1Const[] = {0.7335,1.4172,1.0357,0.9220,2.0112,1.9194,1.4138,0.9644,1.0651,0.8496,1.1164,0.7781,0.9434,1.0419};
+        double m2Const[] = {0.7335,1.4172,1.0357,0.9220,2.0112,1.9194,1.4138,0.9644,1.0651,1.3944,1.1921,0.6224,1.2332,1.3312,0.5685};
+        
+        double totalTime = 0;
+        for (int i=0; i<[stations count]; i++) {
+            totalTime += metroTimingConst[i] * 2.0;
+        }
+        
+        NSLog(@"Total time for metro: %f", totalTime);
         
         for(int i=0; i<3; i++){
-            [firstTime addMinutes:2];
+            [firstTime addMinutes:minutesBetweenDeparture];
 
             SMTime* sTime= [[SMTime alloc] initWithTime:firstTime];
             SMTime* destTime= [[SMTime alloc] initWithTime:sTime];
-            [destTime addMinutes:diff*2];
+            
+            //[destTime addMinutes:diff*2];
+            float travelTime = 0;
+            float averageTimePerStation = 25.0 / 14.0;
+            float magicNumber = 19.0f/22.0f;
+            
+            NSLog(@"Stations for route:");
+            if (startIndex < endIndex) {
+                for (int st=startIndex; st<endIndex; st++) {
+                    travelTime += averageTimePerStation * metroTimingConst[st] * magicNumber;
+                    SMStationInfo* station = [stations objectAtIndex:st];
+                    NSLog(@"%@ -> [%d]", station.name, st);
+                }
+            } else {
+                for (int st=endIndex; st<startIndex; st++) {
+                    travelTime += averageTimePerStation * metroTimingConst[st] * magicNumber;
+                }
+            }
+            
+            [destTime addMinutes:round(travelTime) ];
+            
             SMRouteTimeInfo* routeTimeInfo= [[SMRouteTimeInfo alloc] initWithRouteInfo:self.singleRouteInfo sourceTime:sTime destinationTime:destTime];
             [arr addObject:routeTimeInfo];
         }
