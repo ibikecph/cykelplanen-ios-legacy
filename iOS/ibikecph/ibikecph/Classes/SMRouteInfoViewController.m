@@ -102,11 +102,12 @@
     }else if(self.singleRouteInfo.type == SMStationInfoTypeTrain){
         TravelTime time;
         // determine current time (weekday / weekend / weekend night)
-        if([self isNightForDayAtIndex:6 components:weekdayComponents] || [self isNightForDayAtIndex:7 components:weekdayComponents]){
+        
+        if([self isNightForDayAtIndex:6 dayIndex:[weekdayComponents weekday] hour:cTime.hour] || [self isNightForDayAtIndex:7 dayIndex:[weekdayComponents weekday] hour:cTime.hour]){
             time= TravelTimeWeekendNight;
-        }else if(weekday>=1 && weekday<=5){
+        }else if(weekday>=2 && weekday<=6){
             time= TravelTimeWeekDay;
-        }else if(weekday==6 || weekday==0){
+        }else if(weekday==7 || weekday==1){
             time= TravelTimeWeekend;
         }
         
@@ -144,8 +145,8 @@
 
 }
 
--(BOOL)isNightForDayAtIndex:(int)index components:(NSDateComponents*)comps{
-    return ([comps weekday]== index && [comps hour]>20) || ( (([comps weekday]+1)%7) == index && [comps hour]<5);
+-(BOOL)isNightForDayAtIndex:(int)index dayIndex:(int)dayIndex hour:(int)hour{
+    return (dayIndex== index && hour>20) || ( ((dayIndex+1)%7) == index && hour<5);
 }
 
 -(BOOL)isDayForDayAtIndex:(int)index components:(NSDateComponents*)comps{
