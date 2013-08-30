@@ -104,7 +104,7 @@
         // determine current time (weekday / weekend / weekend night)
         if([self isNightForDayAtIndex:6 components:weekdayComponents] || [self isNightForDayAtIndex:7 components:weekdayComponents]){
             time= TravelTimeWeekendNight;
-        }else if(weekday>=1 && weekday<=5){
+        }else if(weekday>1 && weekday<=6){
             time= TravelTimeWeekDay;
         }else if(weekday==6 || weekday==0){
             time= TravelTimeWeekend;
@@ -113,6 +113,7 @@
         NSMutableArray* timesArr= [NSMutableArray new];
         
         for(SMTransportationLine* line in transportation.lines){
+            NSLog(@"line: %@, station: %@", line.name, self.singleRouteInfo.sourceStation.name);
             if([line containsRouteFrom:self.singleRouteInfo.sourceStation to:self.singleRouteInfo.destStation forTime:time]){
                 [line addTimestampsForRouteInfo:self.singleRouteInfo array:timesArr currentTime:date time:time];
             }
@@ -181,11 +182,16 @@
                 minutesBetweenDeparture = 15;
             }
             
-            if(firstTime.minutes%2==1){
+            if(firstTime.minutes%2==1) {
                 [firstTime addMinutes:1];
             }
             [firstTime addMinutes:2];
-
+        }
+        
+        if (firstTime.minutes >= 60) {
+            firstTime.minutes = firstTime.minutes % 60;
+            firstTime.hour += 1;
+            firstTime.hour = firstTime.hour % 24;
         }
         
         NSLog(@"start index: %d, end index: %d", startIndex, endIndex);

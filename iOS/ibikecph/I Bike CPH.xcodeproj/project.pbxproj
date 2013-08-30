@@ -3617,8 +3617,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ivan Pavlovic (X7Z5G52Q9J)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Igor Jerkovic (39D278YE39)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Spoiled Milk Aps";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -3633,7 +3633,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F75FE8C0-2E2E-4176-BC9C-98BC2B0D6781";
+				PROVISIONING_PROFILE = "83E7E6C9-3A87-46BD-AF2A-B9890F24F164";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "442EE0F4-A430-4227-AD84-C77E6DE13E61";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3648,7 +3649,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Igor Jerkovic (39D278YE39)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3657,6 +3658,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "83E7E6C9-3A87-46BD-AF2A-B9890F24F164";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3669,8 +3671,8 @@
 			baseConfigurationReference = 4C48641216F0994600F01A7C /* ibikecph.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Igor Jerkovic (39D278YE39)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Igor Jerkovic (39D278YE39)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Spoiled Milk Aps";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Spoiled Milk Aps";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ibikecph/Libs/FacebookSDK\"",
@@ -3715,8 +3717,8 @@
 					Security,
 				);
 				PRODUCT_NAME = "I Bike CPH";
-				PROVISIONING_PROFILE = "83E7E6C9-3A87-46BD-AF2A-B9890F24F164";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "83E7E6C9-3A87-46BD-AF2A-B9890F24F164";
+				PROVISIONING_PROFILE = "42D716B8-4A08-4A56-84C6-17F93DD81634";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "42D716B8-4A08-4A56-84C6-17F93DD81634";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -3727,8 +3729,8 @@
 			baseConfigurationReference = 4C48641216F0994600F01A7C /* ibikecph.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Igor Jerkovic (VCLHFXRDJM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Igor Jerkovic (39D278YE39)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Spoiled Milk Aps";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Spoiled Milk Aps";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ibikecph/Libs/FacebookSDK\"",
@@ -3770,8 +3772,8 @@
 					Security,
 				);
 				PRODUCT_NAME = "I Bike CPH";
-				PROVISIONING_PROFILE = "509F7700-EBF5-4E69-8C25-B5DDBB47C088";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "35D47EAA-973E-4FEB-8784-CC211B5A3957";
+				PROVISIONING_PROFILE = "42D716B8-4A08-4A56-84C6-17F93DD81634";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "42D716B8-4A08-4A56-84C6-17F93DD81634";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
