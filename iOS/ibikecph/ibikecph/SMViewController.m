@@ -459,6 +459,7 @@ typedef enum {
             [annotation hideCallout];
         }
     }
+
 }
 
 -(void)didLoadTransformationData:(NSNotification*)notification{
