@@ -51,7 +51,7 @@
 -(void)addMinutes:(int)mins{
     self.minutes+= mins;
     
-    if(self.minutes > 60){
+    if(self.minutes >= 60){
         self.hour+= (self.minutes/60);
         self.minutes= (self.minutes%60);
         
