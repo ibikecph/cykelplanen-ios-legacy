@@ -3796,6 +3796,7 @@ God tur og tak fordi du cykler!</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="IF6-3x-d2w"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="7f9-dx-pCA" id="Kuf-hL-bYd"/>
                         <outlet property="titleLabel" destination="6IF-e7-qhP" id="cg9-yt-uvC"/>
@@ -4847,6 +4848,7 @@ God tur og tak fordi du cykler!</string>
                 <relationship kind="outlet" name="buttonAddressDestination" candidateClass="SMPatternedButton"/>
                 <relationship kind="outlet" name="buttonAddressSource" candidateClass="SMPatternedButton"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="SMCustomButton" superclassName="UIButton">
@@ -4996,6 +4998,10 @@ God tur og tak fordi du cykler!</string>
         </class>
         <class className="SMReminderTableViewCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SMReminderTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="day" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="reminderSwitch" candidateClass="UISwitch"/>
+            </relationships>
         </class>
         <class className="SMReportErrorController" superclassName="SMTranslatedViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SMReportErrorController.h"/>
@@ -5022,7 +5028,6 @@ God tur og tak fordi du cykler!</string>
         <class className="SMRouteInfoViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SMRouteInfoViewController.h"/>
             <relationships>
-                <relationship kind="action" name="didTapOnBack:"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
             </relationships>
@@ -5150,6 +5155,8 @@ God tur og tak fordi du cykler!</string>
                 <relationship kind="outlet" name="addMenu" candidateClass="UIView"/>
                 <relationship kind="outlet" name="addSaveButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="blockingView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="btnFavorites" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="btnReminders" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="buttonAddFakeStation" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="buttonTrackUser" candidateClass="SMGPSTrackButton"/>
                 <relationship kind="outlet" name="centerView" candidateClass="FlickableView"/>
@@ -5164,6 +5171,8 @@ God tur og tak fordi du cykler!</string>
                 <relationship kind="outlet" name="favHeader" candidateClass="UIView"/>
                 <relationship kind="outlet" name="findRouteBig" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="findRouteSmall" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="headerReminders" candidateClass="UIView"/>
+                <relationship kind="outlet" name="imgReminders" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="infHeader" candidateClass="UIView"/>
                 <relationship kind="outlet" name="mainMenu" candidateClass="UIView"/>
                 <relationship kind="outlet" name="mainMenuBtn" candidateClass="UIImageView"/>
@@ -5171,10 +5180,12 @@ God tur og tak fordi du cykler!</string>
                 <relationship kind="outlet" name="menuView" candidateClass="FlickableView"/>
                 <relationship kind="outlet" name="overlayMenu" candidateClass="FlickableView"/>
                 <relationship kind="outlet" name="overlayMenuBtn" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="overlaysMenuTable" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="pinButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="remindersHeaderButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="routeStreet" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="tableFooter" candidateClass="SMAddFavoriteCell"/>
+                <relationship kind="outlet" name="tblFavorites" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="tblMenu" candidateClass="UITableView"/>
             </relationships>
         </class>

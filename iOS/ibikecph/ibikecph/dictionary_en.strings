@@ -98,6 +98,8 @@ Copenhagen. All rights reserved.
 "{roundabout:yes}" = "roundabout";
 "{area:yes}" = "area";
 
+"search_to_placeholder" = "Enter road, street, postal code";
+
 "direction_number_1" = "1st";
 "direction_number_2" = "2nd";
 "direction_number_3" = "3rd";

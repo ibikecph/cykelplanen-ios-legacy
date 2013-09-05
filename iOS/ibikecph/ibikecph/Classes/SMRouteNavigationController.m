@@ -255,7 +255,6 @@ typedef enum {
     } else {
         [UIApplication sharedApplication].idleTimerDisabled = NO;
     }
-    
         
     if ( self.appDelegate.mapOverlays.pathVisible )
         [self.cargoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
@@ -267,7 +266,6 @@ typedef enum {
         [self.cargoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
     if ( self.appDelegate.mapOverlays.localTrainMarkersVisible )
         [self.cargoTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
-    
 }
 
 
