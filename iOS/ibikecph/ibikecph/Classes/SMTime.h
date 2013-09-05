@@ -10,6 +10,7 @@
 
 @interface SMTime : NSObject
 
++(SMTime*)timeFromString:(NSString*)timeString;
 -(id)initWithTime:(SMTime*)time;
 
 @property(nonatomic, assign) int hour;

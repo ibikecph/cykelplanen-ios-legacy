@@ -496,14 +496,11 @@ typedef enum {
         [overviewTimeDistance setText:[NSString stringWithFormat:@"%@, via %@", formatDistance(self.route.estimatedRouteDistance), self.route.longestStreet]];
     }
     
-    
-    
     NSArray * a = [self.destination componentsSeparatedByString:@","];
     NSString* streetName= [a objectAtIndex:0];
     
-    overviewDestination.lineBreakMode= UILineBreakModeCharacterWrap;
-    overviewDestinationBottom.lineBreakMode= UILineBreakModeTailTruncation;
-    
+    overviewDestination.lineBreakMode= NSLineBreakByCharWrapping;
+    overviewDestinationBottom.lineBreakMode= NSLineBreakByTruncatingTail;
     
     if(streetName){
         NSArray* splittedString= [self splitString:streetName];

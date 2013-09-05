@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SMSingleRouteInfo.h"
-@interface SMRouteInfoViewController : UIViewController<UITableViewDataSource, UITableViewDataSource>
+@interface SMRouteInfoViewController : UIViewController<UITableViewDataSource, UITableViewDataSource, NSXMLParserDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

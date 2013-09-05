@@ -1362,18 +1362,20 @@ typedef enum {
         [destViewController setSource:self.source];
         [destViewController setJsonRoot:self.jsonRoot];
         
-        NSDictionary * d = @{
-                             @"endLat": [NSNumber numberWithDouble:((CLLocation*)[params objectForKey:@"end"]).coordinate.latitude],
-                             @"endLong": [NSNumber numberWithDouble:((CLLocation*)[params objectForKey:@"end"]).coordinate.longitude],
-                             @"startLat": [NSNumber numberWithDouble:((CLLocation*)[params objectForKey:@"start"]).coordinate.latitude],
-                             @"startLong": [NSNumber numberWithDouble:((CLLocation*)[params objectForKey:@"start"]).coordinate.longitude],
-                             @"destination": self.destination,
-                             };
-        
-        NSString * s = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"lastRoute.plist"];
-        BOOL x = [d writeToFile:s atomically:NO];
-        if (x == NO) {
-            NSLog(@"Temp route not saved!");
+        if(self.destination){
+            NSDictionary * d = @{
+                                 @"endLat": [NSNumber numberWithDouble:((CLLocation*)[params objectForKey:@"end"]).coordinate.latitude],
+                                 @"endLong": [NSNumber numberWithDouble:((CLLocation*)[params objectForKey:@"end"]).coordinate.longitude],
+                                 @"startLat": [NSNumber numberWithDouble:((CLLocation*)[params objectForKey:@"start"]).coordinate.latitude],
+                                 @"startLong": [NSNumber numberWithDouble:((CLLocation*)[params objectForKey:@"start"]).coordinate.longitude],
+                                 @"destination": self.destination,
+                                 };
+
+            NSString * s = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent: @"lastRoute.plist"];
+            BOOL x = [d writeToFile:s atomically:NO];
+            if (x == NO) {
+                NSLog(@"Temp route not saved!");
+            }
         }
     } else if ([segue.identifier isEqualToString:@"mainToSearch"]) {
         SMSearchController *destViewController = segue.destinationViewController;
@@ -2160,24 +2162,23 @@ float lerp(float a, float b, float t) {
                     new_name = [NSString stringWithFormat:@"%f, %f", self.endLoc.latitude, self.endLoc.longitude];
                 }
             
+                if(new_address && new_name){
+                    NSDictionary * d = @{
+                                         @"name" : new_name,
+                                         @"address" : new_address,
+                                         @"startDate" : [NSDate date],
+                                         @"endDate" : [NSDate date],
+                                         @"source" : @"searchHistory",
+                                         @"subsource" : @"",
+                                         @"lat" : [NSNumber numberWithDouble:cEnd.coordinate.latitude],
+                                         @"long" : [NSNumber numberWithDouble:cEnd.coordinate.longitude],
+                                         @"order" : @1
+                                         };
+                
+                    [SMSearchHistory saveToSearchHistory:d];
+                }
 
-                NSDictionary * d = @{
-                                     @"name" : new_name,
-                                     @"address" : new_address,
-                                     @"startDate" : [NSDate date],
-                                     @"endDate" : [NSDate date],
-                                     @"source" : @"searchHistory",
-                                     @"subsource" : @"",
-                                     @"lat" : [NSNumber numberWithDouble:cEnd.coordinate.latitude],
-                                     @"long" : [NSNumber numberWithDouble:cEnd.coordinate.longitude],
-                                     @"order" : @1
-                                     };
-                [SMSearchHistory saveToSearchHistory:d];
-
-
-                [self dismissViewControllerAnimated:YES completion:^{
-                   
-                }];
+                [self dismissViewControllerAnimated:YES completion:nil];
             
 
             }];

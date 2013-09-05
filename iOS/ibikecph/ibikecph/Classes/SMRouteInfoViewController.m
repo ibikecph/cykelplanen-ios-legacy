@@ -10,13 +10,18 @@
 #import "SMTransportation.h"
 #import "SMRouteTimeInfo.h"
 #import "SMTrain.h"
+#import "SMRouteTimeInfo.h"
 @interface SMRouteInfoViewController ()
 
 @end
 
 @implementation SMRouteInfoViewController{
     NSDateFormatter* dateFormatter;
-    NSArray* times;
+    NSMutableArray* times;
+    NSXMLParser* idParser;
+    NSXMLParser* tripParser;
+    
+    SMRouteTimeInfo* currentTimeInfo;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -52,7 +57,7 @@
     SMTime* cTime=[SMTime new];
     cTime.hour= hour;
     cTime.minutes= mins;
-
+    
     if(self.singleRouteInfo.type == SMStationInfoTypeLocalTrain){
         // temp
         NSArray* trains= [SMTransportation instance].trains;
@@ -99,7 +104,14 @@
         }while(hasDuplicates);
         times= [NSArray arrayWithArray:timesArray];
 
-    }else if(self.singleRouteInfo.type == SMStationInfoTypeTrain){
+    }else{
+        NSString* urlString= [NSString stringWithFormat:@"http://xmlopen.rejseplanen.dk/bin/rest.exe/location?input=%@",self.singleRouteInfo.sourceStation.name];
+        idParser= [[NSXMLParser alloc] initWithContentsOfURL:[NSURL URLWithString:urlString]];
+        idParser.delegate= self;
+        [idParser parse];
+    }
+    /*
+    else if(self.singleRouteInfo.type == SMStationInfoTypeTrain){
         TravelTime time;
         // determine current time (weekday / weekend / weekend night)
         
@@ -140,7 +152,7 @@
         }
         
         times= [NSArray arrayWithArray:arr];
-    }
+    } */
     [self.tableView reloadData];
 
 }
@@ -270,4 +282,93 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
+
+#pragma mark - parser delegate
+
+-(NSString*)eightCharacterFormattedDouble:(double)val{
+    NSString* str= [NSString stringWithFormat:@"%lf",val];
+    str= [str stringByReplacingOccurrencesOfString:@"." withString:@""];
+    if(str.length>8){
+        str= [str substringToIndex:8];
+    }
+    
+    while (str.length<8) {
+        str= [str stringByAppendingString:@"0"];
+    }
+    
+    return str;
+}
+
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict{
+    if(parser== idParser && [elementName isEqualToString:@"StopLocation"]){
+        NSString* stationID= [attributeDict objectForKey:@"id"];
+        [parser abortParsing];
+        
+        double lat= self.singleRouteInfo.destStation.latitude;
+        double lon= self.singleRouteInfo.destStation.longitude;
+        
+        NSString* destX= [self eightCharacterFormattedDouble:lon];
+        NSString* destY= [self eightCharacterFormattedDouble:lat];
+        NSString* destCoordName= [self.singleRouteInfo.destStation.name urlEncode];
+
+        NSCalendar* cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        NSDate* date= [NSDate new];
+        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:date];
+        NSDateComponents *timeComponents =[cal components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:date];
+        
+        int hour= [timeComponents hour];
+        int mins= [timeComponents minute];
+        NSString* dateString= [NSString stringWithFormat:@"%02d.%02d",[components day], [components month]];
+        NSString* timeString= [NSString stringWithFormat:@"%d:%d",hour, mins];
+        NSString* URLString= [NSString stringWithFormat:@"http://xmlopen.rejseplanen.dk/bin/rest.exe/trip?originId=%@&destCoordX=%@&destCoordY=%@&destCoordName=%@&date=%@&time=%@&useBus=0",
+                              stationID, destX, destY, destCoordName, dateString, timeString];
+        [self performSelectorOnMainThread:@selector(parseTripsWithURLString:) withObject:URLString waitUntilDone:NO];
+//        NSLog(@"Parsed %@",(parsed)?@"YES":@"NO");
+    }else if( parser == tripParser){
+        if([elementName isEqualToString:@"Leg"]){
+            NSString* type= [attributeDict objectForKey:@"type"];
+            if([type isEqualToString:@"S"] || [type isEqualToString:@"M"]){
+                currentTimeInfo= [SMRouteTimeInfo new];
+                currentTimeInfo.routeInfo= self.singleRouteInfo;
+            }else{
+                currentTimeInfo= nil;
+            }
+        }else if([elementName isEqualToString:@"Origin"]){
+            if(currentTimeInfo)
+                currentTimeInfo.sourceTime= [SMTime timeFromString:[attributeDict objectForKey:@"time"]];
+        }else if([elementName isEqualToString:@"Destination"]){
+            if(currentTimeInfo){
+                currentTimeInfo.destTime= [SMTime timeFromString:[attributeDict objectForKey:@"time"]];
+                if(!times){
+                    times= [NSMutableArray new];
+                }
+                [times addObject:currentTimeInfo];
+                [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+            }
+        }
+    }
+}
+
+-(void)parseTripsWithURLString:(NSString*)URLString{
+    NSError* error;
+
+    NSString* string= [NSString stringWithContentsOfURL:[NSURL URLWithString:URLString] encoding:NSUTF8StringEncoding error:&error];
+
+    if(error){
+        NSLog(@"%@",error.localizedDescription);
+    }else{
+        NSLog(@"%@",string);
+    }
+    tripParser= [[NSXMLParser alloc] initWithContentsOfURL:[NSURL URLWithString:URLString]];
+    tripParser.delegate= self;
+    BOOL parsed= [tripParser parse];
+    if(!parsed){
+        NSLog(@"%@",tripParser.parserError.localizedDescription);
+    }
+}
+
+- (void)parserDidEndDocument:(NSXMLParser *)parser{
+
+}
+
 @end

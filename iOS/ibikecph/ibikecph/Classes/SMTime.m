@@ -10,6 +10,15 @@
 
 @implementation SMTime
 
++(SMTime*)timeFromString:(NSString*)timeString{
+    NSArray* timeArr= [timeString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@":"]];
+    SMTime* time= [[SMTime alloc] init];
+    time.hour= ((NSString*)timeArr[0]).intValue;
+    time.minutes= ((NSString*)timeArr[1]).intValue;
+    
+    return time;
+}
+
 -(id)initWithTime:(SMTime*)pTime{
     if(self=[super init]){
         self.hour= pTime.hour;
