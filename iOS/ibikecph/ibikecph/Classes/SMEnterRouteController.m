@@ -428,8 +428,33 @@ typedef enum {
             
         NSDictionary * currentRow = [[self.groupedList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         SMEnterRouteCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        
+        NSString* str = [currentRow objectForKey:@"name"];
+        NSData *utf8Data = [str dataUsingEncoding:NSUTF8StringEncoding];
+        NSString* utf8String = [[NSString alloc] initWithData:utf8Data encoding:NSUTF8StringEncoding];
+        
         [cell.nameLabel setText:[currentRow objectForKey:@"name"]];
-        NSLog(@"Past route name: %@", currentRow);
+        NSString* strName = [currentRow objectForKey:@"name"];
+        
+        const char* cstr = "hellÃ¸"; //[strName cStringUsingEncoding:NSASCIIStringEncoding]; //NSNonLossyASCIIStringEncoding];
+        //NSString* strNew = [NSString stringWithCString:cstr encoding:NSISOLatin1StringEncoding];
+        if ( [strName cStringUsingEncoding:NSISOLatin1StringEncoding] ) {
+            NSLog(@"STRING IS NULL");
+        } else {
+            //NSString* strNew = [NSString stringWithUTF8String:(char*)[strName cStringUsingEncoding:NSISOLatin1StringEncoding]];
+            //NSString* strNew = [[NSString alloc] initWithCString:(char*)[strName cStringUsingEncoding:NSISOLatin1StringEncoding] encoding:NSUTF8StringEncoding];
+            const char* temp = [strName cStringUsingEncoding:NSISOLatin1StringEncoding];// encoding:NSUTF8StringEncoding];
+            if ( temp != NULL ) {
+                NSString* strNew = [NSString stringWithCString:temp encoding:NSUTF8StringEncoding]; //  [[NSString stringWithCString:temp encoding:NSUTF8StringEncoding];
+                [cell.nameLabel setText:strNew];
+            }
+        }
+        
+        NSString *decodedString = [str stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        [cell.nameLabel setText:decodedString];
+        
+        //NSLog(@"Past route name: %@", strNew);
+        //printf("CSTR: %s\n", cstr);
         
         if ([[currentRow objectForKey:@"source"] isEqualToString:@"fb"]) {
             [cell.iconImage setImage:[UIImage imageNamed:@"findRouteCalendar"]];

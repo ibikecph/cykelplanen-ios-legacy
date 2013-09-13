@@ -254,6 +254,18 @@
             if (sd == nil) {
                 sd = [NSDate date];
             }
+            
+            //NSString* newStr = [NSString stringWithUTF8String: [[[d objectForKey:@"toName"] lowercaseString] cStringUsingEncoding:NSASCIIStringEncoding]];
+            //NSLog(@"DECODED: %@", newStr);
+            
+            NSString *name2 = [NSString
+                               stringWithCString:[[[d objectForKey:@"toName"] lowercaseString] cStringUsingEncoding:NSUTF8StringEncoding]
+                               encoding:NSNonLossyASCIIStringEncoding];
+            
+            NSString* name = [[d objectForKey:@"toName"] lowercaseString];
+            
+            NSLog(@"DECODED: %@ std: %@ lowerCase: %@", name2, [d objectForKey:@"toName"], name);
+            
             NSDictionary * dc = @{
                                  @"name" : [d objectForKey:@"toName"],
                                  @"address" : [d objectForKey:@"toName"],

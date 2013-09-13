@@ -821,6 +821,8 @@ typedef enum {
 
 -(void)displayDestinationNameWithLocation:(CLLocation*)loc{
     [SMGeocoder reverseGeocode:loc.coordinate completionHandler:^(NSDictionary *response, NSError *error) {
+        NSLog(@"reverse geocode error: %@", error);
+        NSLog(@"Pin at: %@", [response objectForKey:@"title"]);
         [routeStreet setText:[response objectForKey:@"title"]];
         if ([routeStreet.text isEqualToString:@""]) {
             [routeStreet setText:[NSString stringWithFormat:@"%f, %f", loc.coordinate.latitude, loc.coordinate.longitude]];

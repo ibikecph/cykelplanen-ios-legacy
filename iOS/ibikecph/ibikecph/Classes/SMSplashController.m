@@ -208,7 +208,8 @@ typedef enum {
     if(! [[SMReminder sharedInstance] isReminderScreenShown]){
         [self performSegueWithIdentifier:@"loginToReminder" sender:nil];
     }else{
-        [self performSegueWithIdentifier:@"goToFavorites" sender:nil];
+        //[self performSegueWithIdentifier:@"goToFavorites" sender:nil];
+        [self performSegueWithIdentifier:@"splashToMain" sender:nil];
     }
 }
 

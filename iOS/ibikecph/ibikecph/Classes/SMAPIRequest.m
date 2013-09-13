@@ -127,6 +127,9 @@
     if (service) {
         NSData * data = [NSJSONSerialization dataWithJSONObject:params options:0 error:nil];
         
+        NSLog(@"POST DATA: %@", data);
+        NSLog(@"PARAMS: %@", params);
+        
         NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", API_SERVER, [service objectForKey:@"service"]]]];
         [req setHTTPMethod:[service objectForKey:@"transferMethod"]];
         [req setHTTPBody:data];

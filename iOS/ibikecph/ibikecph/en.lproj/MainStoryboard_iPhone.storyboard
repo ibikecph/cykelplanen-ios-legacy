@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="P1j-kR-ci6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="P1j-kR-ci6">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -1568,7 +1568,7 @@ God tur og tak fordi du cykler!</string>
                                             <outlet property="delegate" destination="2" id="eMy-zd-rYP"/>
                                         </connections>
                                     </tableView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="drop_shadow_sliding_image.png" id="cuc-uu-tGr">
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="drop_shadow_sliding_image.png" id="cuc-uu-tGr">
                                         <rect key="frame" x="255" y="0.0" width="5" height="568"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                     </imageView>
@@ -2263,7 +2263,7 @@ God tur og tak fordi du cykler!</string>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
-                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="drop_shadow_sliding_image.png" id="aQl-EY-jry">
+                                    <imageView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="drop_shadow_sliding_image.png" id="aQl-EY-jry">
                                         <rect key="frame" x="255" y="0.0" width="5" height="461"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2271,10 +2271,15 @@ God tur og tak fordi du cykler!</string>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3yz-md-642" userLabel="Center View" customClass="FlickableView">
+                            <view opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3yz-md-642" userLabel="Center View" customClass="FlickableView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                 <subviews>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="drop_shadow_sliding_image.png" id="UNO-wv-GPM">
+                                        <rect key="frame" x="-9" y="0.0" width="10" height="461"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </imageView>
                                     <view multipleTouchEnabled="YES" contentMode="scaleToFill" id="ofn-G7-PqS" customClass="RMMapView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2589,7 +2594,7 @@ God tur og tak fordi du cykler!</string>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="drop_shadow_sliding_image.png" id="Cmp-xp-Ka4">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="drop_shadow_sliding_image.png" id="Cmp-xp-Ka4">
                                 <rect key="frame" x="255" y="0.0" width="5" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -2597,6 +2602,10 @@ God tur og tak fordi du cykler!</string>
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="drop_shadow_sliding_image.png" id="Gu0-ha-GMw">
+                                        <rect key="frame" x="-9" y="0.0" width="10" height="568"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                     <view contentMode="scaleToFill" id="QUG-vO-bMD" userLabel="map container">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3129,7 +3138,7 @@ God tur og tak fordi du cykler!</string>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -5208,8 +5217,8 @@ God tur og tak fordi du cykler!</string>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="yP5-9Q-UWd"/>
         <segue reference="SAG-9b-Vbu"/>
-        <segue reference="DqZ-cl-vTA"/>
+        <segue reference="yP5-9Q-UWd"/>
+        <segue reference="6eV-Lw-Uga"/>
     </inferredMetricsTieBreakers>
 </document>

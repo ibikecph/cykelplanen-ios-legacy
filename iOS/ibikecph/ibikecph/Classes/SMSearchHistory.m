@@ -123,13 +123,32 @@
     [df setDateFormat:@"EEE, dd MMMM YYYY HH:mm:ss zzz"];
     NSString * date = [df stringFromDate:[NSDate date]];
     
+    NSString* utf8Str = [NSString stringWithUTF8String:"ø ø ø"];
+    [srchData objectForKey:@"name"];
+    NSLog(@"3456: %@", [srchData objectForKey:@"name"]);
+    NSString* sName = @"ø ø ø";
+    
+    //UTF8 Encode
+    NSString *originalString = [srchData objectForKey:@"name"];//@"hellø";
+    const char *c = [originalString cStringUsingEncoding:NSUTF8StringEncoding];
+    const char *cc = [originalString cStringUsingEncoding:NSISOLatin1StringEncoding];
+    NSString *encodedString=[[NSString alloc] initWithCString:c encoding:NSASCIIStringEncoding];
+    //NSLog(@"UTF8: %@ original: %@", encodedString, originalString);
+    
+    const char *news = [originalString UTF8String];
+    NSString* nsNew = [NSString stringWithCString:news encoding:NSASCIIStringEncoding];
+    
+    printf("UTF8: %s original: %s encoded: %s encoded(wrong):%s\n", news, [originalString cString], c, cc);
+    NSString* cc2 = [[NSString alloc] initWithCString:cc];
+    NSLog(@"%@", nsNew);
+    
     [self.apr executeRequest:API_ADD_HISTORY withParams:@{
      @"auth_token":[self.appDelegate.appSettings objectForKey:@"auth_token"], @
      "route": @{
      @"from_name": @"N/A",
      @"from_lattitude": @0,
      @"from_longitude": @0,
-     @"to_name": [srchData objectForKey:@"name"],
+     @"to_name": [originalString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], //nsNew,//[srchData objectForKey:@"name"], // stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
      @"to_lattitude": [NSString stringWithFormat:@"%f", [[srchData objectForKey:@"lat"] doubleValue]],
      @"to_longitude": [NSString stringWithFormat:@"%f", [[srchData objectForKey:@"long"] doubleValue]],
      @"start_date" : date }}
