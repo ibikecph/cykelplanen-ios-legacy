@@ -105,7 +105,7 @@
         times= [NSArray arrayWithArray:timesArray];
 
     }else{
-        NSString* urlString= [NSString stringWithFormat:@"http://xmlopen.rejseplanen.dk/bin/rest.exe/location?input=%@",self.singleRouteInfo.sourceStation.name];
+        NSString* urlString= [NSString stringWithFormat:@"http://xmlopen.rejseplanen.dk/bin/rest.exe/location?input=%@",[self.singleRouteInfo.sourceStation.name urlEncode]];
         idParser= [[NSXMLParser alloc] initWithContentsOfURL:[NSURL URLWithString:urlString]];
         idParser.delegate= self;
         [idParser parse];
@@ -412,11 +412,19 @@
 
         NSCalendar* cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
         NSDate* date= [NSDate new];
-        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:date];
-        NSDateComponents *timeComponents =[cal components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:date];
+        
+        // Rejseplanen returns trains that are already departed
+        // So adding 5 minutes to current time might help here
+        NSDate *datePlusFiveMinutes = [date dateByAddingTimeInterval:60*5];
+        
+        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:datePlusFiveMinutes];
+        NSDateComponents *timeComponents =[cal components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:datePlusFiveMinutes];
         
         int hour= [timeComponents hour];
         int mins= [timeComponents minute];
+        
+        NSLog(@"Modified TIME: %d:%d", hour, mins);
+
         NSString* dateString= [NSString stringWithFormat:@"%02d.%02d",[components day], [components month]];
         NSString* timeString= [NSString stringWithFormat:@"%d:%d",hour, mins];
         NSString* URLString= [NSString stringWithFormat:@"http://xmlopen.rejseplanen.dk/bin/rest.exe/trip?originId=%@&destCoordX=%@&destCoordY=%@&destCoordName=%@&date=%@&time=%@&useBus=0",
@@ -468,6 +476,10 @@
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser{
 
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
 @end

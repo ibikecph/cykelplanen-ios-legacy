@@ -2241,4 +2241,9 @@ typedef enum {
 -(void)setDestination:(NSString *)pDestination{
     _destination= pDestination;
 }
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
 @end

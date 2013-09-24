@@ -31,8 +31,16 @@
 }
 
 -(void)setup{
-    self.backgroundColor= [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.7];
-    self.opaque= NO;
+    
+//    NSString* verStr = [[UIDevice currentDevice] systemVersion];
+//    double ver = [verStr doubleValue];
+//    if ( ver >= 7 ) {
+        self.backgroundColor= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+        self.opaque= YES;
+//    } else {
+//        self.backgroundColor= [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.7];
+//        self.opaque= NO;
+//    }
     self.addressType= AddressTypeUndefined;
     
     self.sourceCurrentIndex= 0;
@@ -60,8 +68,8 @@
             options:UIViewAnimationOptionCurveEaseOut
             animations:^{
                 CGRect frm= self.frame;
-                float viewHeight= self.pickerView.frame.origin.y+self.pickerView.frame.size.height + PICKER_BOTTOM_MARGIN;
-                frm.origin.y= self.superview.frame.size.height - viewHeight;
+                float viewHeight= self.pickerView.frame.origin.y+self.pickerView.frame.size.height + PICKER_BOTTOM_MARGIN - 64;
+                frm.origin.y= self.superview.frame.size.height - viewHeight - 32;
                 self.frame= frm;
             }
             completion:nil];

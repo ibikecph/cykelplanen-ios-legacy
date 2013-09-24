@@ -33,6 +33,7 @@ typedef enum {
 
 @property (weak, nonatomic) IBOutlet UIButton *btnRegisterWithMail;
 @property (weak, nonatomic) IBOutlet UIButton *btnSkip;
+@property (weak, nonatomic) IBOutlet UILabel *subtitle;
 
 @property (nonatomic, strong) SMAPIRequest * apr;
 @property (nonatomic, strong) UIImage * profileImage;
@@ -66,6 +67,8 @@ typedef enum {
     self.btnRegisterWithMail.titleLabel.adjustsFontSizeToFitWidth= YES;
     [self.btnRegisterWithMail setTitle:translateString(@"register_with_mail") forState:UIControlStateNormal];
     [self.btnSkip setTitle:translateString(@"btn_skip") forState:UIControlStateNormal];
+    
+    [self.subtitle setText:translateString(@"intro_subtitle")];
 }
 
 

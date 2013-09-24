@@ -218,4 +218,9 @@
     scrlView = nil;
     [super viewDidUnload];
 }
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
 @end

@@ -20,7 +20,7 @@
 //	[[UIApplication sharedApplication] setStatusBarHidden:YES];
     [scrlView setContentSize:CGSizeMake(265.0f, 520.0f)];
     
-    //[self.textView setText:translateString(@"about_text")];
+    [self.textView setText:translateString(@"about_text")];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,4 +39,9 @@
     [self setTextView:nil];
     [super viewDidUnload];
 }
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
 @end

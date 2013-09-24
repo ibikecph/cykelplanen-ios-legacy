@@ -891,7 +891,7 @@ typedef enum {
     
     NSDictionary * d = @{
                          @"name" : routeStreet.text,
-                         @"address" : routeStreet.text,
+                         @"address" : [routeStreet.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
                          @"startDate" : [NSDate date],
                          @"endDate" : [NSDate date],
                          @"source" : @"favorites",
@@ -992,6 +992,12 @@ typedef enum {
     if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
         addFavAddress.text = [self.locDict objectForKey:@"address"];
         addFavName.text = [self.locDict objectForKey:@"name"];
+        
+        if ( [addFavAddress.text isKindOfClass:[NSString class]] ) {
+            addFavAddress.text = [addFavAddress.text stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            addFavName.text = [addFavName.text stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]; //[addFavName.text stringByRemovingPercentEncoding];
+        }
+        
         editTitle.text = translateString(@"edit_favorite");
         [addSaveButton setHidden:YES];
         [editSaveButton setHidden:NO];
@@ -1726,6 +1732,85 @@ typedef enum {
     return NO;
 }
 
+//- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+//	//	Grip customization code goes in here...
+//	for(UIView* view in cell.subviews) {
+//		if([[[view class] description] isEqualToString:@"UITableViewCellReorderControl"]) {
+//			UIView* resizedGripView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetMaxX(view.frame), CGRectGetMaxY(view.frame))];
+//			[resizedGripView addSubview:view];
+//			[cell addSubview:resizedGripView];
+//            
+//			CGSize sizeDifference = CGSizeMake(resizedGripView.frame.size.width - view.frame.size.width, resizedGripView.frame.size.height - view.frame.size.height);
+//			CGSize transformRatio = CGSizeMake(resizedGripView.frame.size.width / view.frame.size.width, resizedGripView.frame.size.height / view.frame.size.height);
+//            
+//			//	Original transform
+//			CGAffineTransform transform = CGAffineTransformIdentity;
+//            
+//			//	Scale custom view so grip will fill entire cell
+//			transform = CGAffineTransformScale(transform, transformRatio.width, transformRatio.height);
+//            
+//			//	Move custom view so the grip's top left aligns with the cell's top left
+//			transform = CGAffineTransformTranslate(transform, -sizeDifference.width / 2.0, -sizeDifference.height / 2.0);
+//            
+//			[resizedGripView setTransform:transform];
+//            
+//			for(UIImageView* cellGrip in view.subviews)
+//			{
+//				if([cellGrip isKindOfClass:[UIImageView class]])
+//					[cellGrip setImage:nil];
+//			}
+//		}
+//	}
+//}
+
+//- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    UIView* view;
+//    for(UIView* v in cell.subviews) {
+//        if([[[v class] description] isEqualToString:@"UITableViewCellReorderControl"]) {
+//            view = v;
+//            break;
+//        }
+//    }
+//    
+//    if (view) {
+//        [view setExclusiveTouch:NO];
+//        UIView* resizedGripView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetMaxX(view.frame), CGRectGetMaxY(view.frame))];
+//        [resizedGripView addSubview:view];
+//        [cell addSubview:resizedGripView];
+//        
+//        
+//        CGSize sizeDifference = CGSizeMake(resizedGripView.frame.size.width - view.frame.size.width, resizedGripView.frame.size.height - view.frame.size.height);
+//        CGSize transformRatio = CGSizeMake(resizedGripView.frame.size.width / view.frame.size.width, resizedGripView.frame.size.height / view.frame.size.height);
+//        
+//        // Original transform
+//        CGAffineTransform transform = CGAffineTransformIdentity;
+//        
+//        // Scale custom view so grip will fill entire cell
+//        transform = CGAffineTransformScale(transform, transformRatio.width, transformRatio.height);
+//        
+//        // Move custom view so the grip's top left aligns with the cell's top left
+//        transform = CGAffineTransformTranslate(transform, -sizeDifference.width / 2.0, -sizeDifference.height / 2.0);
+//        
+//        [resizedGripView setTransform:transform];
+//        
+//        for(UIImageView* cellGrip in view.subviews) {
+//            if([cellGrip isKindOfClass:[UIImageView class]]) {
+//                [cellGrip setImage:nil];
+//                }
+//            }
+//        
+//        UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [btn setFrame:CGRectMake(208.0f, 0.0f, 52.0f, cell.frame.size.height)];
+//        [btn setTag:indexPath.row];
+//        [btn addTarget:self action:@selector(rowSelected:) forControlEvents:UIControlEventTouchUpInside];
+//        [cell addSubview:btn];
+//        }
+//}
+//
+//- (IBAction)rowSelected:(id)sender {
+//    [self tableView:tblMenu didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:((UIButton*)sender).tag inSection:0]];
+//}
+
 - (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
 	//	Grip customization code goes in here...
 	for(UIView* view in cell.subviews) {
@@ -1756,6 +1841,7 @@ typedef enum {
 		}
 	}
 }
+
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     if (tableView == tblMenu && section == 0) {
@@ -2003,10 +2089,10 @@ float lerp(float a, float b, float t) {
 //            }
 //        }
 //    }
-    
+    NSLog(@"ANNOTATION SELECTED: %@", annotation.annotationType.lowercaseString);
     if([annotation.annotationType.lowercaseString isEqualToString:@"station"]){
         SMStationInfo* station= [annotation.userInfo objectForKey:@"station"];
-        if(station){
+        //if(station){
             [self showPinDrop];
             [self displayDestinationNameWithString:station.name];
             [self setDestinationAnnotation:annotation withLocation:station.location];
@@ -2021,7 +2107,7 @@ float lerp(float a, float b, float t) {
 
 //            layer.frame= CGRectMake(layer.frame.origin.x-layer.frame.size.width/4, layer.frame.origin.y-layer.frame.size.height/4, 1.5*layer.frame.size.width, 1.5*layer.frame.size.height);
 //            [layer setNeedsDisplay];
-        }
+        //}
     }
     
 }
@@ -2346,6 +2432,14 @@ float lerp(float a, float b, float t) {
             [v removeFromSuperview];
         }];
     }];
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+//    if (menuView.frame.origin.x > 0)
+//        return UIStatusBarStyleLightContent;
+//    else
+//        return UIStatusBarStyleDefault;
+    return UIStatusBarStyleLightContent;
 }
 
 @end

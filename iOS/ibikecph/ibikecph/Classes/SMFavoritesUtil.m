@@ -105,11 +105,17 @@
     SMAPIRequest * ap = [[SMAPIRequest alloc] initWithDelegeate:self];
     [self setApr:ap];
     [self.apr setRequestIdentifier:@"addFavorite"];
+    
+    NSString* name = [favData objectForKey:@"name"];
+    NSString* address = [favData objectForKey:@"address"];
+    NSString* encodedName = [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString* encodedAddress = [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
     [self.apr executeRequest:API_ADD_FAVORITE withParams:@{
      @"auth_token":[self.appDelegate.appSettings objectForKey:@"auth_token"], @
      "favourite": @{
-     @"name": [favData objectForKey:@"name"],
-     @"address": [favData objectForKey:@"address"],
+     @"name": encodedName, //[favData objectForKey:@"name"],
+     @"address": address, //[favData objectForKey:@"address"],
      @"lattitude": [NSString stringWithFormat:@"%f", [[favData objectForKey:@"lat"] doubleValue]],
      @"longitude": [NSString stringWithFormat:@"%f", [[favData objectForKey:@"long"] doubleValue]],
      @"source": @"favourites",
@@ -179,10 +185,15 @@
         if ([req.requestIdentifier isEqualToString:@"fetchList"]) {
             NSMutableArray * arr = [NSMutableArray arrayWithCapacity:result.count];
             for (NSDictionary * d in [result objectForKey:@"data"]) {
+            
+                NSString* name = [d objectForKey:@"name"];
+                NSString* address = [d objectForKey:@"address"];
+                NSString* decodedName = [name stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                NSString* decodedAddress = [address stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                 [arr addObject:@{
                                 @"id": [d objectForKey:@"id"],
-                                @"name": [d objectForKey:@"name"],
-                                @"address": [d objectForKey:@"address"],
+                                @"name": decodedName, //@"New Fav", //[d objectForKey:@"name"],
+                                @"address": decodedAddress, //[d objectForKey:@"address"],
                                 @"startDate": [NSDate date],
                                 @"endDate": [NSDate date],
                                 @"lat": [NSNumber numberWithDouble:[[d objectForKey:@"lattitude"] doubleValue]],

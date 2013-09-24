@@ -1166,6 +1166,12 @@
       "coords":"12.613183 56.033122",
       "line":"940R Hillerød-Gilleje-Helsingør",
       "type":"local-train"
+    },
+    {
+        "name":"Vanløse",
+        "coords":"12.4917 55.6871",
+        "line":"s-train",
+        "type":"s-train"
     }
   ]
 }

@@ -48,9 +48,9 @@ typedef enum {
     [fromLabel setText:CURRENT_POSITION_STRING];
     [locationArrow setHidden:NO];
     CGRect frame = fromLabel.frame;
-    frame.origin.x = locationArrow.frame.origin.x + 20.0f;
-    frame.size.width = 269.0f - frame.origin.x;
-    [fromLabel setFrame:frame];
+//    frame.origin.x = locationArrow.frame.origin.x + 20.0f;
+//    frame.size.width = 269.0f - frame.origin.x;
+//    [fromLabel setFrame:frame];
     [fromLabel setTextColor:[UIColor colorWithRed:7.0f/255.0f green:86.0f/255.0f blue:135.0f/255.0f alpha:1.0f]];
     
     toLabel.placeholder= translateString(@"search_to_placeholder");
@@ -425,7 +425,7 @@ typedef enum {
             }
     
         }
-            
+        
         NSDictionary * currentRow = [[self.groupedList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         SMEnterRouteCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         
@@ -510,7 +510,8 @@ typedef enum {
     } else if (section == 1) {
         historyOpen = !historyOpen;
     }
-    [tblView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];    
+    [tblView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [tblView reloadData];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -592,16 +593,16 @@ typedef enum {
             if ([[locationDict objectForKey:@"source"] isEqualToString:@"currentPosition"]) {
                 [locationArrow setHidden:NO];
                 CGRect frame = fromLabel.frame;
-                frame.origin.x = locationArrow.frame.origin.x + 20.0f;
-                frame.size.width = 269.0f - frame.origin.x;
-                [fromLabel setFrame:frame];
+                //frame.origin.x = locationArrow.frame.origin.x + 20.0f;
+                //frame.size.width = 269.0f - frame.origin.x;
+                //[fromLabel setFrame:frame];
                 [fromLabel setTextColor:[UIColor colorWithRed:39.0f/255.0f green:111.0f/255.0f blue:183.0f/255.0f alpha:1.0f]];
             } else {
                 [locationArrow setHidden:YES];
                 CGRect frame = fromLabel.frame;
-                frame.origin.x = locationArrow.frame.origin.x;
-                frame.size.width = 269.0f - frame.origin.x;
-                [fromLabel setFrame:frame];
+                //frame.origin.x = locationArrow.frame.origin.x;
+                //frame.size.width = 269.0f - frame.origin.x;
+                //[fromLabel setFrame:frame];
                 [fromLabel setTextColor:[UIColor blackColor]];
             }
             break;

@@ -3700,6 +3700,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ibikecph/Libs/GA v2.0b4\"/**",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
@@ -3720,6 +3721,7 @@
 				PRODUCT_NAME = "I Bike CPH";
 				PROVISIONING_PROFILE = "42D716B8-4A08-4A56-84C6-17F93DD81634";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "35D47EAA-973E-4FEB-8784-CC211B5A3957";
+				SEPARATE_STRIP = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -3755,6 +3757,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ibikecph/Libs/GA v2.0b4\"/**",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
@@ -3774,6 +3777,7 @@
 				);
 				PRODUCT_NAME = "I Bike CPH";
 				PROVISIONING_PROFILE = "42D716B8-4A08-4A56-84C6-17F93DD81634";
+				SEPARATE_STRIP = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

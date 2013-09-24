@@ -356,7 +356,19 @@
 
 -(void)displayAddressViewWithAddressType:(AddressType)pAddressType model:(NSArray*)pModel{
     addressPickerView.addressType= pAddressType;
-    pickerModel= pModel;
+    //pickerModel= pModel;
+    
+    pickerModel = [pModel sortedArrayUsingComparator:^NSComparisonResult(id a, id b)
+    {
+        if (![a isKindOfClass:[SMStationInfo class]] || ![b isKindOfClass:[SMStationInfo class]]) {
+            return NO;
+        } else {
+            SMStationInfo* stationA = (SMStationInfo*)a;
+            SMStationInfo* stationB = (SMStationInfo*)b;
+            return [stationA.name compare:stationB.name];
+        }
+    }];
+    
     [addressPickerView displayAnimated];
 }
 
@@ -568,6 +580,10 @@
     
     tempStartRoute= nil;
     tempFinishRoute= nil;
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
 @end
