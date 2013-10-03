@@ -480,6 +480,7 @@
 		7819214A179551300082BFE2 /* SMBreakRouteHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 78192149179551300082BFE2 /* SMBreakRouteHeader.m */; };
 		78192152179566540082BFE2 /* SMBreakRouteButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78192151179566540082BFE2 /* SMBreakRouteButtonCell.m */; };
 		7819216A1795AC530082BFE2 /* metro_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 781921691795AC530082BFE2 /* metro_icon@2x.png */; };
+		783AF4EA17FB0EAD003410E0 /* UIView+LocateSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = 783AF4E917FB0EAD003410E0 /* UIView+LocateSubview.m */; };
 		783BBD66179D39B500A79D35 /* blue_btn_ibike_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 783BBD62179D39B500A79D35 /* blue_btn_ibike_pressed.png */; };
 		783BBD67179D39B500A79D35 /* blue_btn_ibike_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 783BBD63179D39B500A79D35 /* blue_btn_ibike_pressed@2x.png */; };
 		783BBD68179D39B500A79D35 /* blue_btn_ibike.png in Resources */ = {isa = PBXBuildFile; fileRef = 783BBD64179D39B500A79D35 /* blue_btn_ibike.png */; };
@@ -1295,6 +1296,8 @@
 		78192151179566540082BFE2 /* SMBreakRouteButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMBreakRouteButtonCell.m; sourceTree = "<group>"; };
 		7819215C17958C1D0082BFE2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		781921691795AC530082BFE2 /* metro_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "metro_icon@2x.png"; sourceTree = "<group>"; };
+		783AF4E817FB0EAD003410E0 /* UIView+LocateSubview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LocateSubview.h"; sourceTree = "<group>"; };
+		783AF4E917FB0EAD003410E0 /* UIView+LocateSubview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LocateSubview.m"; sourceTree = "<group>"; };
 		783BBD62179D39B500A79D35 /* blue_btn_ibike_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_btn_ibike_pressed.png; sourceTree = "<group>"; };
 		783BBD63179D39B500A79D35 /* blue_btn_ibike_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue_btn_ibike_pressed@2x.png"; sourceTree = "<group>"; };
 		783BBD64179D39B500A79D35 /* blue_btn_ibike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_btn_ibike.png; sourceTree = "<group>"; };
@@ -1622,6 +1625,8 @@
 		4B4E9AB516D4CA49002A6766 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				783AF4E817FB0EAD003410E0 /* UIView+LocateSubview.h */,
+				783AF4E917FB0EAD003410E0 /* UIView+LocateSubview.m */,
 				4BA5295616D5230B000CA4A2 /* AsyncImageView.h */,
 				4BA5295716D5230B000CA4A2 /* AsyncImageView.m */,
 				4B7DC93216BA847C00198F72 /* SMUtil.h */,
@@ -3552,6 +3557,7 @@
 				F69227841787003A00C8CD76 /* SMTransportationLine.m in Sources */,
 				F6922787178700BC00C8CD76 /* SMTransportation.m in Sources */,
 				F692278E17870A7700C8CD76 /* SMStationInfo.m in Sources */,
+				783AF4EA17FB0EAD003410E0 /* UIView+LocateSubview.m in Sources */,
 				F692279117870DAF00C8CD76 /* SMRouteTransportationInfo.m in Sources */,
 				F69227941787181600C8CD76 /* SMBreakRouteViewController.m in Sources */,
 				F6922798178718C400C8CD76 /* SMBikeWaypointCell.m in Sources */,

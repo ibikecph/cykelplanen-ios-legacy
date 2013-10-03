@@ -45,6 +45,8 @@
 #import "SMStationInfo.h"
 #import "SMLoadStationsView.h"
 
+#import "UIView+LocateSubview.h"
+
 typedef enum {
     menuFavorites = 0,
     menuAccount = 1,
@@ -1763,85 +1765,89 @@ typedef enum {
 //	}
 //}
 
+- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    UIView* view = [cell subviewWithClassName:@"UITableViewCellReorderControl"];
+    
+    if (view) {
+        [view setExclusiveTouch:NO];
+        UIView* resizedGripView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetMaxX(view.frame), CGRectGetMaxY(view.frame))];
+        [resizedGripView addSubview:view];
+        [cell addSubview:resizedGripView];
+        
+        
+        CGSize sizeDifference = CGSizeMake(resizedGripView.frame.size.width - view.frame.size.width, resizedGripView.frame.size.height - view.frame.size.height);
+        CGSize transformRatio = CGSizeMake(resizedGripView.frame.size.width / view.frame.size.width, resizedGripView.frame.size.height / view.frame.size.height);
+        
+        //	Original transform
+        CGAffineTransform transform = CGAffineTransformIdentity;
+        
+        //	Scale custom view so grip will fill entire cell
+        transform = CGAffineTransformScale(transform, transformRatio.width, transformRatio.height);
+        
+        //	Move custom view so the grip's top left aligns with the cell's top left
+        transform = CGAffineTransformTranslate(transform, -sizeDifference.width / 2.0, -sizeDifference.height / 2.0);
+        
+        [resizedGripView setTransform:transform];
+        
+        for(UIImageView* cellGrip in view.subviews) {
+            if([cellGrip isKindOfClass:[UIImageView class]]) {
+                [cellGrip setImage:nil];
+            }
+        }
+        
+        UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [btn setFrame:CGRectMake(208.0f, 0.0f, 52.0f, cell.frame.size.height)];
+        [btn setTag:indexPath.row];
+        [btn addTarget:self action:@selector(rowSelected:) forControlEvents:UIControlEventTouchUpInside];
+        [cell addSubview:btn];
+    }
+}
+
+- (IBAction)rowSelected:(id)sender {
+    [self tableView:tblMenu didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:((UIButton*)sender).tag inSection:0]];
+}
+
+
 //- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UIView* view;
-//    for(UIView* v in cell.subviews) {
-//        if([[[v class] description] isEqualToString:@"UITableViewCellReorderControl"]) {
-//            view = v;
-//            break;
-//        }
-//    }
-//    
-//    if (view) {
-//        [view setExclusiveTouch:NO];
-//        UIView* resizedGripView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetMaxX(view.frame), CGRectGetMaxY(view.frame))];
-//        [resizedGripView addSubview:view];
-//        [cell addSubview:resizedGripView];
-//        
-//        
-//        CGSize sizeDifference = CGSizeMake(resizedGripView.frame.size.width - view.frame.size.width, resizedGripView.frame.size.height - view.frame.size.height);
-//        CGSize transformRatio = CGSizeMake(resizedGripView.frame.size.width / view.frame.size.width, resizedGripView.frame.size.height / view.frame.size.height);
-//        
-//        // Original transform
-//        CGAffineTransform transform = CGAffineTransformIdentity;
-//        
-//        // Scale custom view so grip will fill entire cell
-//        transform = CGAffineTransformScale(transform, transformRatio.width, transformRatio.height);
-//        
-//        // Move custom view so the grip's top left aligns with the cell's top left
-//        transform = CGAffineTransformTranslate(transform, -sizeDifference.width / 2.0, -sizeDifference.height / 2.0);
-//        
-//        [resizedGripView setTransform:transform];
-//        
-//        for(UIImageView* cellGrip in view.subviews) {
-//            if([cellGrip isKindOfClass:[UIImageView class]]) {
-//                [cellGrip setImage:nil];
-//                }
-//            }
+//	//	Grip customization code goes in here...
+//	for(UIView* view in cell.subviews) {
+//		if([[[view class] description] isEqualToString:@"UITableViewCellReorderControl"]) {
+//			UIView* resizedGripView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetMaxX(view.frame), CGRectGetMaxY(view.frame))];
+//			[resizedGripView addSubview:view];
+//			[cell addSubview:resizedGripView];
+//            
+//			CGSize sizeDifference = CGSizeMake(resizedGripView.frame.size.width - view.frame.size.width, resizedGripView.frame.size.height - view.frame.size.height);
+//			CGSize transformRatio = CGSizeMake(resizedGripView.frame.size.width / view.frame.size.width, resizedGripView.frame.size.height / view.frame.size.height);
+//            
+//			//	Original transform
+//			CGAffineTransform transform = CGAffineTransformIdentity;
+//            
+//			//	Scale custom view so grip will fill entire cell
+//			transform = CGAffineTransformScale(transform, transformRatio.width, transformRatio.height);
+//            
+//			//	Move custom view so the grip's top left aligns with the cell's top left
+//			transform = CGAffineTransformTranslate(transform, -sizeDifference.width / 2.0, -sizeDifference.height / 2.0);
+//            
+//			[resizedGripView setTransform:transform];
+//            
+//			for(UIImageView* cellGrip in view.subviews)
+//			{
+//				if([cellGrip isKindOfClass:[UIImageView class]])
+//					[cellGrip setImage:nil];
+//			}
+//		}
 //        
 //        UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
 //        [btn setFrame:CGRectMake(208.0f, 0.0f, 52.0f, cell.frame.size.height)];
 //        [btn setTag:indexPath.row];
 //        [btn addTarget:self action:@selector(rowSelected:) forControlEvents:UIControlEventTouchUpInside];
 //        [cell addSubview:btn];
-//        }
+//	}
 //}
 //
 //- (IBAction)rowSelected:(id)sender {
 //    [self tableView:tblMenu didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:((UIButton*)sender).tag inSection:0]];
 //}
-
-- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-	//	Grip customization code goes in here...
-	for(UIView* view in cell.subviews) {
-		if([[[view class] description] isEqualToString:@"UITableViewCellReorderControl"]) {
-			UIView* resizedGripView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetMaxX(view.frame), CGRectGetMaxY(view.frame))];
-			[resizedGripView addSubview:view];
-			[cell addSubview:resizedGripView];
-            
-			CGSize sizeDifference = CGSizeMake(resizedGripView.frame.size.width - view.frame.size.width, resizedGripView.frame.size.height - view.frame.size.height);
-			CGSize transformRatio = CGSizeMake(resizedGripView.frame.size.width / view.frame.size.width, resizedGripView.frame.size.height / view.frame.size.height);
-            
-			//	Original transform
-			CGAffineTransform transform = CGAffineTransformIdentity;
-            
-			//	Scale custom view so grip will fill entire cell
-			transform = CGAffineTransformScale(transform, transformRatio.width, transformRatio.height);
-            
-			//	Move custom view so the grip's top left aligns with the cell's top left
-			transform = CGAffineTransformTranslate(transform, -sizeDifference.width / 2.0, -sizeDifference.height / 2.0);
-            
-			[resizedGripView setTransform:transform];
-            
-			for(UIImageView* cellGrip in view.subviews)
-			{
-				if([cellGrip isKindOfClass:[UIImageView class]])
-					[cellGrip setImage:nil];
-			}
-		}
-	}
-}
-
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     if (tableView == tblMenu && section == 0) {

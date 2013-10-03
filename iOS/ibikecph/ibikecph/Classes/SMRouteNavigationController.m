@@ -451,10 +451,133 @@ typedef enum {
     
 }
 
+//- (void)showRouteOverview {
+//    oldTrackingMode = RMUserTrackingModeNone;
+//    [self setDirectionsState:directionsHidden];
+////    [self.mpView setZoom:DEFAULT_MAP_ZOOM];
+//    for (RMAnnotation *annotation in self.mpView.annotations) {
+//        if ([annotation.annotationType isEqualToString:@"path"]) {
+//            [self.mpView removeAnnotation:annotation];
+//        }
+//    }
+//    [routeOverview setHidden:NO];
+//    [UIView animateWithDuration:0.4f delay:0.0f options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+//        routeOverview.alpha = 1.0f;
+//    } completion:^(BOOL finished) {
+//        
+//    }];
+//    overviewShown = YES;
+//    self.currentlyRouting = NO;
+//    [progressView setHidden:YES];
+//    [self setDirectionsState:directionsNormal];
+//    // Display new path
+//    
+//    NSMutableArray * coordinates= [NSMutableArray new];
+//    
+//    for(SMRoute* rt in self.brokenRoute.brokenRoutes){
+//        if(rt.routeType == SMRouteTypeNormal)
+//            [coordinates addObject:[self addRouteAnnotation:rt]];
+//    }
+//    [self.mpView setRoutingDelegate:self];
+//    [tblDirections reloadData];
+//    
+//    [self reloadSwipableView];
+//    
+//    [routeOverview setFrame:instructionsView.frame];
+//    
+//    //[overviewTimeDistance setText:[NSString stringWithFormat:@"%@, via %@", formatDistance(self.route.estimatedRouteDistance), self.route.longestStreet]];
+//    if ( [self.brokenRoute.brokenRoutes count] > 1 ) {
+//        float brokenRouteDistance = ((SMRoute*)[self.brokenRoute.brokenRoutes objectAtIndex:0]).estimatedRouteDistance;
+//        brokenRouteDistance += ((SMRoute*)[self.brokenRoute.brokenRoutes objectAtIndex:1]).estimatedRouteDistance;
+//        [overviewTimeDistance setText:[NSString stringWithFormat:@"%@, via %@", formatDistance(brokenRouteDistance), self.brokenRoute.brokenRouteInfo.sourceStation.name]];
+//    } else {
+//        [overviewTimeDistance setText:[NSString stringWithFormat:@"%@, via %@", formatDistance(self.route.estimatedRouteDistance), self.route.longestStreet]];
+//    }
+//    
+//    NSArray * a = [self.destination componentsSeparatedByString:@","];
+//    NSString* streetName= [a objectAtIndex:0];
+//    
+//    overviewDestination.lineBreakMode= NSLineBreakByCharWrapping;
+//    overviewDestinationBottom.lineBreakMode= NSLineBreakByTruncatingTail;
+//    
+//    if(streetName){
+//        NSArray* splittedString= [self splitString:streetName];
+//        
+//        [overviewDestination setText:[splittedString objectAtIndex:0]];
+//        
+//        if(splittedString.count>1){
+//            [overviewDestinationBottom setText:[splittedString objectAtIndex:1]];
+//        }
+//    }else{
+//       overviewDestination.text= @"";
+//        overviewDestinationBottom.text= @"";
+//    }
+//    
+//    CLLocationCoordinate2D sw= CLLocationCoordinate2DMake(DBL_MAX, DBL_MAX);
+//    CLLocationCoordinate2D ne= CLLocationCoordinate2DMake(-DBL_MAX, -DBL_MAX);
+//    
+//    for(NSDictionary* coords in coordinates){
+//        CLLocationCoordinate2D swTemp = ((CLLocation*)[coords objectForKey:@"swCoordinate"]).coordinate;
+//        CLLocationCoordinate2D neTemp= ((CLLocation*)[coords objectForKey:@"neCoordinate"]).coordinate;
+//        
+//        sw.longitude= MIN(sw.longitude, swTemp.longitude);
+//        sw.latitude= MIN(sw.latitude, swTemp.latitude);
+//        
+//        ne.longitude= MAX(ne.longitude, neTemp.longitude);
+//        ne.latitude= MAX(ne.latitude,neTemp.latitude);
+//    }
+//    
+//    float latDiff = (ne.latitude - sw.latitude);
+//    float lonDiff = (ne.longitude - sw.longitude);
+//    
+//    //TODO: check if start or end are in top-left or bottom-right corrner (18%)
+//    // if so, move them a little bit more inside so they dont fell under buttons
+//    float borderCheck = 0.18f;
+//    
+//    
+//    BOOL topLeftObscured =(
+//    (ne.latitude - self.route.locationStart.latitude < borderCheck*latDiff &&  self.route.locationStart.longitude - sw.longitude < borderCheck*lonDiff) ||
+//    (ne.latitude - self.route.locationEnd.latitude < borderCheck*latDiff &&  self.route.locationEnd.longitude - sw.longitude < borderCheck*lonDiff)
+//                           );
+//
+//    BOOL bottomRightObscured =(
+//    (self.route.locationStart.latitude - sw.latitude < borderCheck*latDiff && ne.longitude - self.route.locationStart.longitude < borderCheck*lonDiff) ||
+//    (self.route.locationStart.latitude - sw.latitude < borderCheck*latDiff && ne.longitude - self.route.locationStart.longitude < borderCheck*lonDiff)
+//                               );
+//    
+//    if(topLeftObscured) {
+//        ne.latitude +=  latDiff * borderCheck;
+//        sw.longitude -= lonDiff * borderCheck;
+//    }
+//    
+//    if(bottomRightObscured){
+//        ne.longitude += lonDiff * borderCheck;
+//        sw.latitude -= latDiff * borderCheck;
+//    }
+//    
+//    /////////////////////////////////////////
+//    
+//    
+//    ne.latitude +=  latDiff * LATITUDE_PADDING * 1.75f;
+//    ne.longitude += lonDiff * LONGITUDE_PADDING;
+//
+//    sw.latitude -= latDiff * LATITUDE_PADDING;
+//    sw.longitude -= lonDiff * LONGITUDE_PADDING;
+//
+//    NSLog(@"COORDS %lf %lf",(ne.latitude+sw.latitude) / 2.0, (ne.longitude+sw.longitude) / 2.0);
+//    [self.mpView setCenterCoordinate:CLLocationCoordinate2DMake((ne.latitude+sw.latitude) / 2.0, (ne.longitude+sw.longitude) / 2.0)];
+//    [self.mpView zoomWithLatitudeLongitudeBoundsSouthWest:sw northEast:ne animated:YES];
+//    [self.mpView setCenterCoordinate:CLLocationCoordinate2DMake(60, 40)];
+//    
+//    if (![[GAI sharedInstance].defaultTracker trackEventWithCategory:@"Route" withAction:@"Overview" withLabel:self.destination withValue:0]) {
+//        debugLog(@"error in trackEvent");
+//    }
+//}
+
 - (void)showRouteOverview {
     oldTrackingMode = RMUserTrackingModeNone;
     [self setDirectionsState:directionsHidden];
-//    [self.mpView setZoom:DEFAULT_MAP_ZOOM];
+    [self.mpView rotateMap:0];
     for (RMAnnotation *annotation in self.mpView.annotations) {
         if ([annotation.annotationType isEqualToString:@"path"]) {
             [self.mpView removeAnnotation:annotation];
@@ -471,13 +594,7 @@ typedef enum {
     [progressView setHidden:YES];
     [self setDirectionsState:directionsNormal];
     // Display new path
-    
-    NSMutableArray * coordinates= [NSMutableArray new];
-    
-    for(SMRoute* rt in self.brokenRoute.brokenRoutes){
-        if(rt.routeType == SMRouteTypeNormal)
-            [coordinates addObject:[self addRouteAnnotation:rt]];
-    }
+    NSDictionary * coordinates = [self addRouteAnnotation:self.route];
     [self.mpView setRoutingDelegate:self];
     [tblDirections reloadData];
     
@@ -485,20 +602,15 @@ typedef enum {
     
     [routeOverview setFrame:instructionsView.frame];
     
-    //[overviewTimeDistance setText:[NSString stringWithFormat:@"%@, via %@", formatDistance(self.route.estimatedRouteDistance), self.route.longestStreet]];
-    if ( [self.brokenRoute.brokenRoutes count] > 1 ) {
-        float brokenRouteDistance = ((SMRoute*)[self.brokenRoute.brokenRoutes objectAtIndex:0]).estimatedRouteDistance;
-        brokenRouteDistance += ((SMRoute*)[self.brokenRoute.brokenRoutes objectAtIndex:1]).estimatedRouteDistance;
-        [overviewTimeDistance setText:[NSString stringWithFormat:@"%@, via %@", formatDistance(brokenRouteDistance), self.brokenRoute.brokenRouteInfo.sourceStation.name]];
-    } else {
-        [overviewTimeDistance setText:[NSString stringWithFormat:@"%@, via %@", formatDistance(self.route.estimatedRouteDistance), self.route.longestStreet]];
-    }
+    [overviewTimeDistance setText:[NSString stringWithFormat:@"%@, via %@", formatDistance(self.route.estimatedRouteDistance), self.route.longestStreet]];
     
     NSArray * a = [self.destination componentsSeparatedByString:@","];
     NSString* streetName= [a objectAtIndex:0];
+    //    [overviewDestination setText:[a objectAtIndex:0]];
+    //    [overviewDestination setText:testStreet];
+    overviewDestination.lineBreakMode= UILineBreakModeCharacterWrap;
+    overviewDestinationBottom.lineBreakMode= UILineBreakModeTailTruncation;
     
-    overviewDestination.lineBreakMode= NSLineBreakByCharWrapping;
-    overviewDestinationBottom.lineBreakMode= NSLineBreakByTruncatingTail;
     
     if(streetName){
         NSArray* splittedString= [self splitString:streetName];
@@ -509,23 +621,41 @@ typedef enum {
             [overviewDestinationBottom setText:[splittedString objectAtIndex:1]];
         }
     }else{
-       overviewDestination.text= @"";
+        overviewDestination.text= @"";
         overviewDestinationBottom.text= @"";
     }
     
-    CLLocationCoordinate2D sw= CLLocationCoordinate2DMake(DBL_MAX, DBL_MAX);
-    CLLocationCoordinate2D ne= CLLocationCoordinate2DMake(-DBL_MAX, -DBL_MAX);
+    //    NSInteger characterCountInFirstLine= [self fitString:testStreet intoLabel:overviewDestination size:singleLineSize];
+    //    if(characterCountInFirstLine<testStreet.length){
     
-    for(NSDictionary* coords in coordinates){
-        CLLocationCoordinate2D swTemp = ((CLLocation*)[coords objectForKey:@"swCoordinate"]).coordinate;
-        CLLocationCoordinate2D neTemp= ((CLLocation*)[coords objectForKey:@"neCoordinate"]).coordinate;
-        
-        sw.longitude= MIN(sw.longitude, swTemp.longitude);
-        sw.latitude= MIN(sw.latitude, swTemp.latitude);
-        
-        ne.longitude= MAX(ne.longitude, neTemp.longitude);
-        ne.latitude= MAX(ne.latitude,neTemp.latitude);
+    //        NSString* newValue= [self splitString:testStreet lastCharacterIndex:characterCountInFirstLine-1];
+    //        [overviewDestination setText:newValue];
+    //    }
+    
+    //    [self performSelector:@selector(zoomOut:) withObject:coordinates afterDelay:1.0f];
+    
+    
+    // Fix for iOS 7 scrollView not updating contentOffset correctly
+    if ( [[[UIDevice currentDevice] systemVersion] floatValue] >= 7 ) {
+        self.automaticallyAdjustsScrollViewInsets = NO;
     }
+    [self zoomOut:coordinates];
+    
+    //[self performSelector:@selector(zoomOut:) withObject:coordinates afterDelay:1.0f];
+    
+    if (![[GAI sharedInstance].defaultTracker trackEventWithCategory:@"Route" withAction:@"Overview" withLabel:self.destination withValue:0]) {
+        debugLog(@"error in trackEvent");
+    }
+    
+    CGRect fr = self.mapFade.frame;
+    fr.size.height = 0.0f;
+    self.mapFade.frame = fr;
+    
+}
+
+- (void)zoomOut:(NSDictionary*)coordinates {
+    CLLocationCoordinate2D ne = ((CLLocation*)[coordinates objectForKey:@"neCoordinate"]).coordinate;
+    CLLocationCoordinate2D sw = ((CLLocation*)[coordinates objectForKey:@"swCoordinate"]).coordinate;
     
     float latDiff = (ne.latitude - sw.latitude);
     float lonDiff = (ne.longitude - sw.longitude);
@@ -536,13 +666,13 @@ typedef enum {
     
     
     BOOL topLeftObscured =(
-    (ne.latitude - self.route.locationStart.latitude < borderCheck*latDiff &&  self.route.locationStart.longitude - sw.longitude < borderCheck*lonDiff) ||
-    (ne.latitude - self.route.locationEnd.latitude < borderCheck*latDiff &&  self.route.locationEnd.longitude - sw.longitude < borderCheck*lonDiff)
+                           (ne.latitude - self.route.locationStart.latitude < borderCheck*latDiff &&  self.route.locationStart.longitude - sw.longitude < borderCheck*lonDiff) ||
+                           (ne.latitude - self.route.locationEnd.latitude < borderCheck*latDiff &&  self.route.locationEnd.longitude - sw.longitude < borderCheck*lonDiff)
                            );
-
+    
     BOOL bottomRightObscured =(
-    (self.route.locationStart.latitude - sw.latitude < borderCheck*latDiff && ne.longitude - self.route.locationStart.longitude < borderCheck*lonDiff) ||
-    (self.route.locationStart.latitude - sw.latitude < borderCheck*latDiff && ne.longitude - self.route.locationStart.longitude < borderCheck*lonDiff)
+                               (self.route.locationStart.latitude - sw.latitude < borderCheck*latDiff && ne.longitude - self.route.locationStart.longitude < borderCheck*lonDiff) ||
+                               (self.route.locationStart.latitude - sw.latitude < borderCheck*latDiff && ne.longitude - self.route.locationStart.longitude < borderCheck*lonDiff)
                                );
     
     if(topLeftObscured) {
@@ -560,17 +690,12 @@ typedef enum {
     
     ne.latitude +=  latDiff * LATITUDE_PADDING * 1.75f;
     ne.longitude += lonDiff * LONGITUDE_PADDING;
-
+    
     sw.latitude -= latDiff * LATITUDE_PADDING;
     sw.longitude -= lonDiff * LONGITUDE_PADDING;
-
-    NSLog(@"COORDS %lf %lf",(ne.latitude+sw.latitude) / 2.0, (ne.longitude+sw.longitude) / 2.0);
+    
     [self.mpView setCenterCoordinate:CLLocationCoordinate2DMake((ne.latitude+sw.latitude) / 2.0, (ne.longitude+sw.longitude) / 2.0)];
     [self.mpView zoomWithLatitudeLongitudeBoundsSouthWest:sw northEast:ne animated:YES];
-    
-    if (![[GAI sharedInstance].defaultTracker trackEventWithCategory:@"Route" withAction:@"Overview" withLabel:self.destination withValue:0]) {
-        debugLog(@"error in trackEvent");
-    }
 }
 
 -(NSArray*)splitString:(NSString*)str{
