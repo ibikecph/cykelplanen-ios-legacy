@@ -111,7 +111,7 @@
             float lon = [[coords objectAtIndex:1] floatValue];
             
 //            NSLog(@"%f, %f", lat, lon);
-            CLLocationCoordinate2D point = CLLocationCoordinate2DMake(lon, lat);
+            //CLLocationCoordinate2D point = CLLocationCoordinate2DMake(lon, lat);
 //            CLLocation* location = [CLLocation alloc]
             CLLocation* location = [[CLLocation alloc] initWithLatitude:lon longitude:lat];
             [polyLine addObject:location];
@@ -193,8 +193,8 @@
         NSLog(@"Error %@", err);
     }
     NSArray* stations = [dict valueForKey:@"stations"];
-    NSNumber* lon;
-    NSNumber* lat;
+    //NSNumber* lon;
+    //NSNumber* lat;
     
     for(NSDictionary* station in stations) {
         
@@ -213,8 +213,8 @@
             
             NSString* imageName = @"metro_logo_pin";
             NSString* title = @"metro";
-            NSString* annotationTitle = @"title";
-            NSString* alternateTitle = @"alternate title";
+            //NSString* annotationTitle = @"title";
+            //NSString* alternateTitle = @"alternate title";
             
             SMAnnotation *annotation = [SMAnnotation annotationWithMapView:self.mpView coordinate:coord andTitle:title];
         
