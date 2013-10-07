@@ -723,6 +723,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2D57093F1802C95B005209FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CDA5D2716EF4FA20079AA5E /* HockeySDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1E5A459016F0DFC200B55C04;
+			remoteInfo = HockeySDKTests;
+		};
 		4CA06F3716EF8BE4007603B4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4CDA5D2716EF4FA20079AA5E /* HockeySDK.xcodeproj */;
@@ -1520,7 +1527,7 @@
 		F68C64251768B5B3009B4A21 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		F68E4C1E17B2404500CFC798 /* timetable-new.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "timetable-new.json"; sourceTree = "<group>"; };
 		F68F9DE61765CDC500578FFE /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
-		F68F9DEA1765CEF900578FFE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		F68F9DEA1765CEF900578FFE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		F690C47A178C3395006A6FEA /* smroute_settings_private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = smroute_settings_private.plist; sourceTree = "<group>"; };
 		F691E7DB17A167C9002E822E /* SMUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUser.h; sourceTree = "<group>"; };
 		F691E7DC17A167C9002E822E /* SMUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUser.m; sourceTree = "<group>"; };
@@ -2624,6 +2631,7 @@
 			children = (
 				4CA06F3816EF8BE4007603B4 /* libHockeySDK.a */,
 				4CA06F3A16EF8BE4007603B4 /* HockeySDKResources.bundle */,
+				2D5709401802C95B005209FC /* HockeySDKTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2658,7 +2666,7 @@
 				4CDA6B2A16F086CD00FE2A19 /* libGoogleAnalytics_debug.a */,
 			);
 			name = "GA v2.04b2";
-			path = "../../../../../GoogleAnalyticsiOS_2.0beta4 2/Library";
+			path = ../../../../../../../Documents/GoogleAnalyticsiOS_2.0beta4/Library;
 			sourceTree = "<group>";
 		};
 		C09AB42B176890100098AA9C /* global-utils */ = {
@@ -2864,6 +2872,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		2D5709401802C95B005209FC /* HockeySDKTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = HockeySDKTests.octest;
+			remoteRef = 2D57093F1802C95B005209FC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		4CA06F3816EF8BE4007603B4 /* libHockeySDK.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -3678,8 +3693,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Spoiled Milk Aps";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Igor Jerkovic (39D278YE39)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nemanja Bondzulic (EUG76SP5J4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nemanja Bondzulic (EUG76SP5J4)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ibikecph/Libs/FacebookSDK\"",
@@ -3725,7 +3740,7 @@
 					Security,
 				);
 				PRODUCT_NAME = "I Bike CPH";
-				PROVISIONING_PROFILE = "42D716B8-4A08-4A56-84C6-17F93DD81634";
+				PROVISIONING_PROFILE = "35D47EAA-973E-4FEB-8784-CC211B5A3957";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "35D47EAA-973E-4FEB-8784-CC211B5A3957";
 				SEPARATE_STRIP = NO;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3738,8 +3753,8 @@
 			baseConfigurationReference = 4C48641216F0994600F01A7C /* ibikecph.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Spoiled Milk Aps";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Spoiled Milk Aps";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nemanja Bondzulic (EUG76SP5J4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nemanja Bondzulic (EUG76SP5J4)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ibikecph/Libs/FacebookSDK\"",
@@ -3782,7 +3797,7 @@
 					Security,
 				);
 				PRODUCT_NAME = "I Bike CPH";
-				PROVISIONING_PROFILE = "42D716B8-4A08-4A56-84C6-17F93DD81634";
+				PROVISIONING_PROFILE = "35D47EAA-973E-4FEB-8784-CC211B5A3957";
 				SEPARATE_STRIP = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
