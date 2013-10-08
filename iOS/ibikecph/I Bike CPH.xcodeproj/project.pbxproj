@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D7108F8180444ED00BA5386 /* 80-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7108F6180444ED00BA5386 /* 80-Icon.png */; };
+		2D7108F9180444ED00BA5386 /* 120-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7108F7180444ED00BA5386 /* 120-Icon.png */; };
 		4B7DC93416BA847C00198F72 /* SMUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B7DC93316BA847C00198F72 /* SMUtil.m */; };
 		4B7DC93B16BBD73A00198F72 /* SMDirectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B7DC93916BBD73A00198F72 /* SMDirectionCell.m */; };
 		4BA5295E16D52634000CA4A2 /* SMAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA5294F16D522ED000CA4A2 /* SMAnnotation.m */; };
@@ -754,6 +756,8 @@
 /* Begin PBXFileReference section */
 		2D7108EC180437C300BA5386 /* 80-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "80-Icon.png"; path = "../Assets CSS/iPhone/80-Icon.png"; sourceTree = "<group>"; };
 		2D7108F3180437F700BA5386 /* 120-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "120-Icon.png"; path = "../Assets CSS/iPhone/120-Icon.png"; sourceTree = "<group>"; };
+		2D7108F6180444ED00BA5386 /* 80-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "80-Icon.png"; sourceTree = SOURCE_ROOT; };
+		2D7108F7180444ED00BA5386 /* 120-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "120-Icon.png"; sourceTree = SOURCE_ROOT; };
 		4B7DC93216BA847C00198F72 /* SMUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUtil.h; sourceTree = "<group>"; };
 		4B7DC93316BA847C00198F72 /* SMUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUtil.m; sourceTree = "<group>"; };
 		4B7DC93816BBD73A00198F72 /* SMDirectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDirectionCell.h; sourceTree = "<group>"; };
@@ -2320,6 +2324,8 @@
 		4C73D21516AEDCDA00AED42A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2D7108F6180444ED00BA5386 /* 80-Icon.png */,
+				2D7108F7180444ED00BA5386 /* 120-Icon.png */,
 				7867353B178C432D00DF978F /* 114-Retina-Home-Screen@2x.png */,
 				78673539178C431A00DF978F /* 114-Retina-Home-Screen.png */,
 				4BA915E816B0097C004E04A4 /* kopenhagen_withtimestamps.gpx */,
@@ -2825,6 +2831,11 @@
 				CLASSPREFIX = SM;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "City of Copenhagen";
+				TargetAttributes = {
+					4C73D20916AEDCDA00AED42A = {
+						DevelopmentTeam = 2S6P2V9TSL;
+					};
+				};
 			};
 			buildConfigurationList = 4C73D20416AEDCDA00AED42A /* Build configuration list for PBXProject "I Bike CPH" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2997,6 +3008,7 @@
 				4C8C542916F9C11E009A2738 /* favAddBG.png in Resources */,
 				4C8C542A16F9C11E009A2738 /* favAddBG@2x.png in Resources */,
 				4C8C542B16F9C11E009A2738 /* favEmptyBG.png in Resources */,
+				2D7108F8180444ED00BA5386 /* 80-Icon.png in Resources */,
 				4C8C542C16F9C11E009A2738 /* favEmptyBG@2x.png in Resources */,
 				4C8C542F16F9C11E009A2738 /* favTypeFavoriteButton.png in Resources */,
 				4C8C543016F9C11E009A2738 /* favTypeFavoriteButton@2x.png in Resources */,
@@ -3206,6 +3218,7 @@
 				4CAF3D3917202B0C003C05AA /* register@2x.png in Resources */,
 				4CAF3D3A17202B0C003C05AA /* skip.png in Resources */,
 				4CAF3D3B17202B0C003C05AA /* skip@2x.png in Resources */,
+				2D7108F9180444ED00BA5386 /* 120-Icon.png in Resources */,
 				4CAF3D3E17202BCF003C05AA /* bottom_divider_vertical.png in Resources */,
 				4CAF3D3F17202BCF003C05AA /* bottom_divider_vertical@2x.png in Resources */,
 				4CAF3D4217203072003C05AA /* cloud_red_splash.png in Resources */,
@@ -3625,6 +3638,88 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2D7108F418043ECC00BA5386 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Igor Jerkovic (39D278YE39)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "83E7E6C9-3A87-46BD-AF2A-B9890F24F164";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Distribution;
+		};
+		2D7108F518043ECC00BA5386 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C48641216F0994600F01A7C /* ibikecph.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Region Hovedstaden (2S6P2V9TSL)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Region Hovedstaden (2S6P2V9TSL)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ibikecph/Libs/FacebookSDK\"",
+					"$(SRCROOT)/ibikecph/Libs/MapView/**",
+					"\"$(SRCROOT)/../../../HockeySDK-iOS/Vendor\"",
+					"\"$(SRCROOT)/../../../../../Documents/FacebookSDK\"",
+					"\"$(SRCROOT)/../../../../../FacebookSDK\"",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ibikecph/I Bike CPH-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = TEST_VERSION;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/ibikecph/Libs/MapView/**",
+					"$(SRCROOT)/ibikecph/Libs/HockeySDK-iOS/Classes",
+					"$(SRCROOT)/ibikecph/Libs/GA\\ v2.0b4",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/ibikecph/I Bike CPH-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ibikecph/Libs/GA v2.0b4\"/**",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					CoreText,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					Foundation,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					SystemConfiguration,
+					"-framework",
+					UIKit,
+					"-framework",
+					Security,
+				);
+				PRODUCT_NAME = "I Bike CPH";
+				PROVISIONING_PROFILE = "C669E6DD-4587-4470-918B-7E6F7DFC86E5";
+				SEPARATE_STRIP = NO;
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Distribution;
+		};
 		4C73D22F16AEDCDA00AED42A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3688,7 +3783,7 @@
 			baseConfigurationReference = 4C48641216F0994600F01A7C /* ibikecph.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3711,7 +3806,7 @@
 					"$(SRCROOT)/ibikecph/Libs/GA\\ v2.0b4",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ibikecph/I Bike CPH-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ibikecph/Libs/GA v2.0b4\"/**",
@@ -3735,8 +3830,8 @@
 					Security,
 				);
 				PRODUCT_NAME = "I Bike CPH";
-				PROVISIONING_PROFILE = "3B1CBE5C-3A69-489F-B0F2-D5D050A597CF";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3B1CBE5C-3A69-489F-B0F2-D5D050A597CF";
+				PROVISIONING_PROFILE = "C669E6DD-4587-4470-918B-7E6F7DFC86E5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C669E6DD-4587-4470-918B-7E6F7DFC86E5";
 				SEPARATE_STRIP = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -3748,7 +3843,7 @@
 			baseConfigurationReference = 4C48641216F0994600F01A7C /* ibikecph.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3768,12 +3863,12 @@
 					"$(SRCROOT)/ibikecph/Libs/GA\\ v2.0b4",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ibikecph/I Bike CPH-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ibikecph/Libs/GA v2.0b4\"/**",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
@@ -3792,7 +3887,7 @@
 					Security,
 				);
 				PRODUCT_NAME = "I Bike CPH";
-				PROVISIONING_PROFILE = "3B1CBE5C-3A69-489F-B0F2-D5D050A597CF";
+				PROVISIONING_PROFILE = "C669E6DD-4587-4470-918B-7E6F7DFC86E5";
 				SEPARATE_STRIP = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -3807,6 +3902,7 @@
 			buildConfigurations = (
 				4C73D22F16AEDCDA00AED42A /* Debug */,
 				4C73D23016AEDCDA00AED42A /* Release */,
+				2D7108F418043ECC00BA5386 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -3816,6 +3912,7 @@
 			buildConfigurations = (
 				4C73D23216AEDCDA00AED42A /* Debug */,
 				4C73D23316AEDCDA00AED42A /* Release */,
+				2D7108F518043ECC00BA5386 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
