@@ -25,6 +25,8 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
+				<string>120-Icon</string>
+				<string>80-Icon</string>
 				<string>114-Retina-Home-Screen.png</string>
 				<string>114-Retina-Home-Screen@2x.png</string>
 				<string>Icon-72.png</string>

@@ -752,6 +752,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D7108EC180437C300BA5386 /* 80-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "80-Icon.png"; path = "../Assets CSS/iPhone/80-Icon.png"; sourceTree = "<group>"; };
+		2D7108F3180437F700BA5386 /* 120-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "120-Icon.png"; path = "../Assets CSS/iPhone/120-Icon.png"; sourceTree = "<group>"; };
 		4B7DC93216BA847C00198F72 /* SMUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMUtil.h; sourceTree = "<group>"; };
 		4B7DC93316BA847C00198F72 /* SMUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMUtil.m; sourceTree = "<group>"; };
 		4B7DC93816BBD73A00198F72 /* SMDirectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDirectionCell.h; sourceTree = "<group>"; };
@@ -2250,6 +2252,8 @@
 		4C73D1FF16AEDCDA00AED42A = {
 			isa = PBXGroup;
 			children = (
+				2D7108F3180437F700BA5386 /* 120-Icon.png */,
+				2D7108EC180437C300BA5386 /* 80-Icon.png */,
 				4CDA5D2716EF4FA20079AA5E /* HockeySDK.xcodeproj */,
 				4CAF95BE16D50B39002C047B /* MapView.xcodeproj */,
 				4C73D21416AEDCDA00AED42A /* I Bike CPH */,
@@ -3684,9 +3688,8 @@
 			baseConfigurationReference = 4C48641216F0994600F01A7C /* ibikecph.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Nemanja Bondzulic (EUG76SP5J4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nemanja Bondzulic (EUG76SP5J4)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ibikecph/Libs/FacebookSDK\"",
@@ -3732,8 +3735,8 @@
 					Security,
 				);
 				PRODUCT_NAME = "I Bike CPH";
-				PROVISIONING_PROFILE = "35D47EAA-973E-4FEB-8784-CC211B5A3957";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "35D47EAA-973E-4FEB-8784-CC211B5A3957";
+				PROVISIONING_PROFILE = "3B1CBE5C-3A69-489F-B0F2-D5D050A597CF";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3B1CBE5C-3A69-489F-B0F2-D5D050A597CF";
 				SEPARATE_STRIP = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -3745,8 +3748,8 @@
 			baseConfigurationReference = 4C48641216F0994600F01A7C /* ibikecph.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Nemanja Bondzulic (EUG76SP5J4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nemanja Bondzulic (EUG76SP5J4)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ibikecph/Libs/FacebookSDK\"",
@@ -3789,7 +3792,7 @@
 					Security,
 				);
 				PRODUCT_NAME = "I Bike CPH";
-				PROVISIONING_PROFILE = "35D47EAA-973E-4FEB-8784-CC211B5A3957";
+				PROVISIONING_PROFILE = "3B1CBE5C-3A69-489F-B0F2-D5D050A597CF";
 				SEPARATE_STRIP = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
