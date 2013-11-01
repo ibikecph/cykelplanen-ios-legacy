@@ -30,6 +30,7 @@
 //    if ([turn.shortDescriptionString rangeOfString:@"\\{.+\\:.+\\}" options:NSRegularExpressionSearch].location != NSNotFound) {
 //        [self.lblWayname setText:turn.wayName];
 //    } else {
+    
         [self.lblWayname setText:turn.wayName];
 //    }
         

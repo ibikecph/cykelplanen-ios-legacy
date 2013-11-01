@@ -723,13 +723,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2D57093F1802C95B005209FC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4CDA5D2716EF4FA20079AA5E /* HockeySDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1E5A459016F0DFC200B55C04;
-			remoteInfo = HockeySDKTests;
-		};
 		4CA06F3716EF8BE4007603B4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4CDA5D2716EF4FA20079AA5E /* HockeySDK.xcodeproj */;
@@ -2635,7 +2628,6 @@
 			children = (
 				4CA06F3816EF8BE4007603B4 /* libHockeySDK.a */,
 				4CA06F3A16EF8BE4007603B4 /* HockeySDKResources.bundle */,
-				2D5709401802C95B005209FC /* HockeySDKTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2881,13 +2873,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		2D5709401802C95B005209FC /* HockeySDKTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = HockeySDKTests.octest;
-			remoteRef = 2D57093F1802C95B005209FC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		4CA06F3816EF8BE4007603B4 /* libHockeySDK.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -3669,8 +3654,8 @@
 			baseConfigurationReference = 4C48641216F0994600F01A7C /* ibikecph.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Region Hovedstaden (2S6P2V9TSL)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Region Hovedstaden (2S6P2V9TSL)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nikola Markovic (EE62QX6H34)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nikola Markovic (EE62QX6H34)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ibikecph/Libs/FacebookSDK\"",
@@ -3830,7 +3815,7 @@
 					Security,
 				);
 				PRODUCT_NAME = "I Bike CPH";
-				PROVISIONING_PROFILE = "C669E6DD-4587-4470-918B-7E6F7DFC86E5";
+				PROVISIONING_PROFILE = "2E9FA4A9-85CF-46B6-B075-249A376DBD08";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C669E6DD-4587-4470-918B-7E6F7DFC86E5";
 				SEPARATE_STRIP = NO;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3843,8 +3828,8 @@
 			baseConfigurationReference = 4C48641216F0994600F01A7C /* ibikecph.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nikola Markovic (EE62QX6H34)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nikola Markovic (EE62QX6H34)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ibikecph/Libs/FacebookSDK\"",
