@@ -10,6 +10,7 @@
 #import "HockeySDK.h"
 #import "SMUtil.h"
 #import "SMSearchHistory.h"
+#import "GAIFields.h"
 
 @interface SMAppDelegate(HockeyProtocols) <BITHockeyManagerDelegate, BITUpdateManagerDelegate, BITCrashManagerDelegate> {}
 @property (nonatomic, strong) NSMutableDictionary * fbDict;
@@ -29,16 +30,15 @@
     /**
      * initialize Google Analytics
      */
-    [GAI sharedInstance].debug = YES;
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelError];
     [GAI sharedInstance].dispatchInterval = GOOGLE_ANALYTICS_DISPATCH_INTERVAL;
 #ifdef TEST_VERSION
     [GAI sharedInstance].trackUncaughtExceptions = YES;
 #endif
     self.tracker = [[GAI sharedInstance] trackerWithTrackingId:GOOGLE_ANALYTICS_KEY];
     [[GAI sharedInstance] setDefaultTracker:self.tracker];
-    [[GAI sharedInstance].defaultTracker setAnonymize:GOOGLE_ANALYTICS_ANONYMIZE];
-    [[GAI sharedInstance].defaultTracker setSampleRate:GOOGLE_ANALYTICS_SAMPLE_RATE];
-    [[GAI sharedInstance].defaultTracker setSessionTimeout:GOOGLE_ANALYTICS_SESSION_TIMEOUT];
+    [[GAI sharedInstance].defaultTracker set:kGAISampleRate value:GOOGLE_ANALYTICS_SAMPLE_RATE];
+    [[GAI sharedInstance].defaultTracker set:kGAIAnonymizeIp value:GOOGLE_ANALYTICS_ANONYMIZE];
 
     
     /**

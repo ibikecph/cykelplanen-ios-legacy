@@ -76,7 +76,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) {
+    [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView, BOOL opening, BOOL closing) {
     }];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(inputKeyboardWillHide:)
@@ -270,17 +270,17 @@
             debugLog(@"User updated!!!");
             hasChanged = NO;
             self.userData = @{@"name" : name.text, @"email" : email.text, @"password" : @"", @"repeatPassword" : @"", @"image" : regularImage.image?regularImage.image:[[UIImage alloc] init]};
-            if (![[GAI sharedInstance].defaultTracker trackEventWithCategory:@"Account" withAction:@"Save" withLabel:@"Data" withValue:0]) {
+            if (![GAHelper trackEventWithCategory:@"Account" withAction:@"Save" withLabel:@"Data" withValue:0]) {
                 debugLog(@"error in trackEvent");
             }
             self.profileImage = nil;
         } else if ([req.requestIdentifier isEqualToString:@"changePassword"]) {
-            if (![[GAI sharedInstance].defaultTracker trackEventWithCategory:@"Account" withAction:@"Save" withLabel:@"Password" withValue:0]) {
+            if (![GAHelper trackEventWithCategory:@"Account" withAction:@"Save" withLabel:@"Password" withValue:0]) {
                 debugLog(@"error in trackEvent");
             }
             debugLog(@"Password changed!!!");
         } else if ([req.requestIdentifier isEqualToString:@"deleteUser"]) {
-            if (![[GAI sharedInstance].defaultTracker trackEventWithCategory:@"Account" withAction:@"Delete" withLabel:@"" withValue:0]) {
+            if (![GAHelper trackEventWithCategory:@"Account" withAction:@"Delete" withLabel:@"" withValue:0]) {
                 debugLog(@"error in trackEvent");
             }
             debugLog(@"Account deleted!!!");

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>HockeySDKResources.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-I Bike CPH-Bolts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-I Bike CPH-Facebook-iOS-SDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-I Bike CPH-GoogleAnalytics-iOS-SDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-I Bike CPH-HockeySDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-I Bike CPH.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>1EDE60F36C9BD51BDDA68BEA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>71A2F883DDC13711974F24EE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8F54D82074357C4A1A4E76EB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ABD0F8C5EC0C64C2C77549B2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DCAA550A71981702C2C35AF7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F120629283747500E4B2F28C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
