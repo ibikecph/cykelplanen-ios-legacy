@@ -4,9 +4,6 @@
 [submodule "iOS/ibikecph/ibikecph/Libs/DAKeyboardControl"]
 	path = iOS/ibikecph/ibikecph/Libs/DAKeyboardControl
 	url = https://github.com/danielamitay/DAKeyboardControl.git
-[submodule "iOS/ibikecph/ibikecph/Libs/HockeySDK-iOS"]
-	path = iOS/ibikecph/ibikecph/Libs/HockeySDK-iOS
-	url = https://github.com/bitstadium/HockeySDK-iOS.git
 [submodule "iOS/ibikecph/ibikecph/Libs/route-me"]
 	path = iOS/ibikecph/ibikecph/Libs/route-me
 	url = https://github.com/ibikecph/route-me.git
