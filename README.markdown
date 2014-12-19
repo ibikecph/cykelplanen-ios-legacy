@@ -1,28 +1,31 @@
 <html>
 <body>
-<h2 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 24.0px Helvetica"><b>Dependent Libraries</b></h2>
-<p>The I Bike CPH project makes use of several sub-libraries, listed below. For additional dependencies consult the documentation of relevant libraries.</p>
+<h2 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 24.0px Helvetica"><b>Depencies</b></h2>
+<p>The I Bike CPH project makes use of several sub-libraries (most of which are included as submodules). For additional dependencies consult the documentation of relevant libraries.</p>
 <p>See the individual license files in the sub-libraries for more information on each.</p>
+<p>These libraries have to be included manually:</p>
 <ul>
-  <li><a href="https://github.com/ibikecph/route-me">Route-Me (I Bike CPH fork)</a></li>
-  <li><a href="https://github.com/ibikecph/routing-engine">Routing engine</a></li>
   <li><a href="https://developers.facebook.com/resources/facebook-ios-sdk-current.pkg">Facebook SDK</a></li>
   <li><a href="http://dl.google.com/dl/gaformobileapps/GoogleAnalyticsiOS.zip">Google Analytics SDK</a></li>
-  <li><a href="https://github.com/danielamitay/DAKeyboardControl">DAKeyboardControl</a></li>
-  <li><a href="https://github.com/mattt/TTTAttributedLabel">TTTAttributedLabel</a></li>
-  <li><a href="https://github.com/ivan-pavlovic/UIImage-Categories">UIIMage-Categories</a></li>
-  <li><a href="https://github.com/nicklockwood/Base64">Base64</a></li>
 </ul>
 
 
 <h2 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 24.0px Helvetica"><b>Build</b></h2>
-<p><b>Route-Me:</b> copy or link MapView/ and Proj4/ into main project</p>
-<p><b>Routing engine:</b> copy or link files into main project</p>
-<p><b>Facebook SDK:</b>  install Facebook SDK and then copy or link ~/Documents/FacebookSDK/ into main project</p>
-<p><b>Google Analytics:</b>  copy or link Library/* into main project</p>
-<p><b>DAKeyboardControl:</b> copy or link files into main project</p>
-<p><b>TTTAttributedLabel:</b> copy or link files into main project</p>
-<p><b>UIImage-Categories:</b> copy or link files into main project</p>
-<p><b>Base64:</b> copy or link files into main project</p>
+<p><b>Facebook SDK:</b>  install Facebook SDK and then copy or link ~/Documents/FacebookSDK/ into main project. The best place to create a link would be Libs folder using:<br/> <b>ln -s path_to_FacebookSDK_folder FacebookSDK</b></p>
+<p><b>Google Analytics:</b>  copy or link Library/* into main project. The best place to create a link would be Libs folder using:<br/> <b>ln -s path_to_Google_Analytics_folder GoogleAnalytics</b></p>
+
+
+<h2 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 24.0px Helvetica"><b>Run</b></h2>
+
+<p>In order to run the app you'll need to create a <b>smroute_settings_private.plist</b> in ibikecph folder. A file called <b>EXAMPLE_smroute_settings_private.plist</b> has been placed in the same folder to get you started. Just copy it to <b>smroute_settings_private.plist</b> and change the info. <b>
+
+<br/>DO NOT CHANGE THE EXAMPLE FILE AND COMMIT IT. YOUR LOGIN INFO WILL END UP IN THE REPOSITORY FOR ALL TO SEE.</b>
+
+<br/><br/>Also, you'll need to edit <b>smroute_settings.plist</b> in ibikecph folder. You should not commit changes to this file.<b>
+
+</p>
+
+<p><h2>For more info take a look at the <a href="https://github.com/ibikecph/ibikecph-app/wiki">Wiki</a></h2></p>
+
 </body>
 </html>
