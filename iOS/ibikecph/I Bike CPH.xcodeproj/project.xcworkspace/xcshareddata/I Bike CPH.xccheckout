@@ -12,6 +12,8 @@
 	<dict>
 		<key>0145ED403843D35A6DC92B71A0E30320516A537C</key>
 		<string>https://github.com/nicklockwood/Base64.git</string>
+		<key>04101981B66E318109934C9516F88D824BB96459</key>
+		<string>https://github.com/ccgus/fmdb.git</string>
 		<key>0CA27A43414FB33F98B16BE18013A983CABB105E</key>
 		<string>https://github.com/bitstadium/HockeySDK-iOS.git</string>
 		<key>0CB27FB27B75DD5179C510DD826518B1FD1BF181</key>
@@ -34,23 +36,25 @@
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>0145ED403843D35A6DC92B71A0E30320516A537C</key>
-		<string>../../../..iOS/ibikecph/ibikecph/Libs/Base64/</string>
+		<string>../../../..iOS/ibikecph/ibikecph/Libs/Base64</string>
+		<key>04101981B66E318109934C9516F88D824BB96459</key>
+		<string>../../../../iOS/ibikecph/ibikecph/Libs/route-me/MapView/Map/FMDB/</string>
 		<key>0CA27A43414FB33F98B16BE18013A983CABB105E</key>
 		<string>../../../../../HockeySDK-iOS</string>
 		<key>0CB27FB27B75DD5179C510DD826518B1FD1BF181</key>
-		<string>../../../..iOS/ibikecph/ibikecph/Libs/routing-engine/</string>
+		<string>../../../..iOS/ibikecph/ibikecph/Libs/routing-engine</string>
 		<key>3222A26AC3A957428B88DB8AB6B72415308E4B56</key>
-		<string>../../../..iOS/ibikecph/ibikecph/Libs/UIImage-Categories/</string>
+		<string>../../../..iOS/ibikecph/ibikecph/Libs/UIImage-Categories</string>
 		<key>4388308918DBDE53D1388EAE32C476E97A276398</key>
-		<string>../../../..iOS/ibikecph/ibikecph/Libs/AddressParser/</string>
+		<string>../../../..iOS/ibikecph/ibikecph/Libs/AddressParser</string>
 		<key>9196E87915FA8D89686486B5F5C7D939792C157C</key>
 		<string>../../../..</string>
 		<key>A43B3F8F1FFE63510EF5D0CFDB1DB558C0C67BF9</key>
-		<string>../../../..iOS/ibikecph/ibikecph/Libs/TTTAttributedLabel/</string>
+		<string>../../../..iOS/ibikecph/ibikecph/Libs/TTTAttributedLabel</string>
 		<key>D2343A3007C64EB665FE967B12B8E23F14C116CD</key>
 		<string>../../../../../route-me</string>
 		<key>F5750516C1B1014B205F3FCCB08DDD0226AAA141</key>
-		<string>../../../..iOS/ibikecph/ibikecph/Libs/DAKeyboardControl/</string>
+		<string>../../../..iOS/ibikecph/ibikecph/Libs/DAKeyboardControl</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/ivan-pavlovic/cykelplanen-ios-legacy.git</string>
@@ -91,6 +95,14 @@
 			<string>F5750516C1B1014B205F3FCCB08DDD0226AAA141</string>
 			<key>IDESourceControlWCCName</key>
 			<string>DAKeyboardControl</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>04101981B66E318109934C9516F88D824BB96459</string>
+			<key>IDESourceControlWCCName</key>
+			<string>FMDB</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

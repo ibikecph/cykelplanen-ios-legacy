@@ -238,7 +238,7 @@
     }
     
     [mvc setMessageBody:str isHTML:NO];
-    [self presentModalViewController:mvc animated:YES];
+    [self presentViewController:mvc animated:YES completion:NULL];
 }
 
 - (void)showPicker {
@@ -286,7 +286,7 @@
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
     
     if (result == MFMailComposeResultSent) {
-        [self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:NULL];
         [UIView animateWithDuration:0.4f animations:^{
             [reportSentView setAlpha:1.0f];
         }];
@@ -295,7 +295,7 @@
 //        [av show];
 //        [self dismissModalViewControllerAnimated:YES];
     } else {
-        [controller dismissModalViewControllerAnimated:YES];
+        [controller dismissViewControllerAnimated:YES completion:NULL];
     }
 }
 

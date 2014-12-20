@@ -153,7 +153,7 @@ typedef enum {
 }
 
 - (IBAction)goBack:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (IBAction)findRoute:(id)sender {

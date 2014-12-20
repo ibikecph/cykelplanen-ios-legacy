@@ -190,7 +190,7 @@
     cameraUI.delegate = self;
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        [self presentModalViewController: cameraUI animated: YES];
+        [self presentViewController:cameraUI animated:YES completion:NULL];
     }    
 }
 
