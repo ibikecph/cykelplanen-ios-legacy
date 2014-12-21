@@ -19,7 +19,7 @@
 
 </p>
 
-<p><h2>For more info take a look at the <a href="https://github.com/ibikecph/ibikecph-app/wiki">Wiki</a></h2></p>
+<p><h2>For more info take a look at the <a href="https://github.com/ivan-pavlovic/cykelplanen-ios-legacy/wiki">Wiki</a></h2></p>
 
 </body>
 </html>
