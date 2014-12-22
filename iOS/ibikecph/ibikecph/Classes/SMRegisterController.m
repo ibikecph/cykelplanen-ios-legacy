@@ -31,7 +31,7 @@
     [scrlView setContentSize:CGSizeMake(320.0f, 410.0f)];
     
     UIScrollView * scr = scrlView;
-    [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) {
+    [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView, BOOL opening, BOOL closing) {
         CGRect frame = scr.frame;
         frame.size.height = keyboardFrameInView.origin.y;
         scr.frame = frame;
@@ -134,7 +134,7 @@
     cameraUI.delegate = self;
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        [self presentModalViewController: cameraUI animated: YES];
+        [self presentViewController:cameraUI animated:YES completion:NULL];
     }
 }
 
@@ -184,7 +184,7 @@
             UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"" message:translateString(@"register_successful") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
             [av show];
             [self goBack:nil];
-            if (![[GAI sharedInstance].defaultTracker trackEventWithCategory:@"Register" withAction:@"Completed" withLabel:registerEmail.text withValue:0]) {
+            if (![GAHelper trackEventWithCategory:@"Register" withAction:@"Completed" withLabel:registerEmail.text withValue:0]) {
                 debugLog(@"error in trackEvent");
             }
         }
@@ -217,7 +217,7 @@
 - (void) imagePickerController: (UIImagePickerController *) picker didFinishPickingMediaWithInfo: (NSDictionary *) info {
     self.profileImage = [[info objectForKey:UIImagePickerControllerOriginalImage] resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(560.0f, 560.0f) interpolationQuality:kCGInterpolationHigh];
     [registerImage setImage:self.profileImage];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 #pragma mark - action sheet delegate

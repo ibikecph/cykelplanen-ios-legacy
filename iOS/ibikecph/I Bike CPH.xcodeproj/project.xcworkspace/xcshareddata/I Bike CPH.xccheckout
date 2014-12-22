@@ -10,61 +10,73 @@
 	<string>I Bike CPH</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>058B8659-FCF8-4633-A34C-2295307174A3</key>
+		<key>0145ED403843D35A6DC92B71A0E30320516A537C</key>
 		<string>https://github.com/nicklockwood/Base64.git</string>
-		<key>09D7B487-9338-4D51-B0F0-ADB1D5EEC45B</key>
-		<string>https://github.com/ibikecph/routing-engine.git</string>
-		<key>37EE2149-85D7-418B-9243-0B4CE8580309</key>
-		<string>https://github.com/mattt/TTTAttributedLabel.git</string>
-		<key>6AD38FEC-A927-4C6A-BDB5-C35D523B340B</key>
-		<string>https://github.com/ivan-pavlovic/UIImage-Categories.git</string>
-		<key>6D0AC0DE-3DC2-4CD8-9AB9-10B78FD87B26</key>
-		<string>https://github.com/danielamitay/DAKeyboardControl.git</string>
-		<key>873737EB-541D-4F1D-9D89-AD17EC4AFE11</key>
-		<string>https://github.com/nmarkovic04/Cykelsuperstier-fork.git</string>
-		<key>DC921774-068C-4E72-B3C4-2A52FD7101BD</key>
+		<key>04101981B66E318109934C9516F88D824BB96459</key>
 		<string>https://github.com/ccgus/fmdb.git</string>
-		<key>F6CF8D2A-557A-46ED-A8CA-CEBBF12613EC</key>
-		<string>https://github.com/ibikecph/route-me.git</string>
-		<key>FD676595-6EF2-4D4A-914A-2115F6D6129D</key>
+		<key>0CA27A43414FB33F98B16BE18013A983CABB105E</key>
 		<string>https://github.com/bitstadium/HockeySDK-iOS.git</string>
+		<key>0CB27FB27B75DD5179C510DD826518B1FD1BF181</key>
+		<string>https://github.com/ibikecph/routing-engine.git</string>
+		<key>3222A26AC3A957428B88DB8AB6B72415308E4B56</key>
+		<string>https://github.com/ivan-pavlovic/UIImage-Categories.git</string>
+		<key>4388308918DBDE53D1388EAE32C476E97A276398</key>
+		<string>https://github.com/ibikecph/AddressParser</string>
+		<key>9196E87915FA8D89686486B5F5C7D939792C157C</key>
+		<string>https://github.com/ivan-pavlovic/cykelplanen-ios-legacy.git</string>
+		<key>A43B3F8F1FFE63510EF5D0CFDB1DB558C0C67BF9</key>
+		<string>https://github.com/mattt/TTTAttributedLabel.git</string>
+		<key>D2343A3007C64EB665FE967B12B8E23F14C116CD</key>
+		<string>https://github.com/ibikecph/route-me.git</string>
+		<key>F5750516C1B1014B205F3FCCB08DDD0226AAA141</key>
+		<string>https://github.com/danielamitay/DAKeyboardControl.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>iOS/ibikecph/I Bike CPH.xcodeproj/project.xcworkspace</string>
+	<string>iOS/ibikecph/I Bike CPH.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>058B8659-FCF8-4633-A34C-2295307174A3</key>
-		<string>../../../../../Base64</string>
-		<key>09D7B487-9338-4D51-B0F0-ADB1D5EEC45B</key>
-		<string>../../../../../routing-engine</string>
-		<key>37EE2149-85D7-418B-9243-0B4CE8580309</key>
-		<string>../../../../../TTTAttributedLabel</string>
-		<key>6AD38FEC-A927-4C6A-BDB5-C35D523B340B</key>
-		<string>../../../../../UIImage-Categories</string>
-		<key>6D0AC0DE-3DC2-4CD8-9AB9-10B78FD87B26</key>
-		<string>../../../../../DAKeyboardControl</string>
-		<key>873737EB-541D-4F1D-9D89-AD17EC4AFE11</key>
-		<string>../../../..</string>
-		<key>DC921774-068C-4E72-B3C4-2A52FD7101BD</key>
-		<string>../../../../../route-me/MapView/Map/FMDB</string>
-		<key>F6CF8D2A-557A-46ED-A8CA-CEBBF12613EC</key>
-		<string>../../../../../route-me</string>
-		<key>FD676595-6EF2-4D4A-914A-2115F6D6129D</key>
+		<key>0145ED403843D35A6DC92B71A0E30320516A537C</key>
+		<string>../../../..iOS/ibikecph/ibikecph/Libs/Base64</string>
+		<key>04101981B66E318109934C9516F88D824BB96459</key>
+		<string>../../../../iOS/ibikecph/ibikecph/Libs/route-me/MapView/Map/FMDB/</string>
+		<key>0CA27A43414FB33F98B16BE18013A983CABB105E</key>
 		<string>../../../../../HockeySDK-iOS</string>
+		<key>0CB27FB27B75DD5179C510DD826518B1FD1BF181</key>
+		<string>../../../..iOS/ibikecph/ibikecph/Libs/routing-engine</string>
+		<key>3222A26AC3A957428B88DB8AB6B72415308E4B56</key>
+		<string>../../../..iOS/ibikecph/ibikecph/Libs/UIImage-Categories</string>
+		<key>4388308918DBDE53D1388EAE32C476E97A276398</key>
+		<string>../../../..iOS/ibikecph/ibikecph/Libs/AddressParser</string>
+		<key>9196E87915FA8D89686486B5F5C7D939792C157C</key>
+		<string>../../../..</string>
+		<key>A43B3F8F1FFE63510EF5D0CFDB1DB558C0C67BF9</key>
+		<string>../../../..iOS/ibikecph/ibikecph/Libs/TTTAttributedLabel</string>
+		<key>D2343A3007C64EB665FE967B12B8E23F14C116CD</key>
+		<string>../../../../../route-me</string>
+		<key>F5750516C1B1014B205F3FCCB08DDD0226AAA141</key>
+		<string>../../../..iOS/ibikecph/ibikecph/Libs/DAKeyboardControl</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/nmarkovic04/Cykelsuperstier-fork.git</string>
+	<string>https://github.com/ivan-pavlovic/cykelplanen-ios-legacy.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>873737EB-541D-4F1D-9D89-AD17EC4AFE11</string>
+	<string>9196E87915FA8D89686486B5F5C7D939792C157C</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>058B8659-FCF8-4633-A34C-2295307174A3</string>
+			<string>4388308918DBDE53D1388EAE32C476E97A276398</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AddressParser</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0145ED403843D35A6DC92B71A0E30320516A537C</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Base64</string>
 		</dict>
@@ -72,15 +84,15 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>873737EB-541D-4F1D-9D89-AD17EC4AFE11</string>
+			<string>9196E87915FA8D89686486B5F5C7D939792C157C</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Cykelsuperstier-fork</string>
+			<string>cykelplanen-ios-legacy</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>6D0AC0DE-3DC2-4CD8-9AB9-10B78FD87B26</string>
+			<string>F5750516C1B1014B205F3FCCB08DDD0226AAA141</string>
 			<key>IDESourceControlWCCName</key>
 			<string>DAKeyboardControl</string>
 		</dict>
@@ -88,7 +100,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>DC921774-068C-4E72-B3C4-2A52FD7101BD</string>
+			<string>04101981B66E318109934C9516F88D824BB96459</string>
 			<key>IDESourceControlWCCName</key>
 			<string>FMDB</string>
 		</dict>
@@ -96,7 +108,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>FD676595-6EF2-4D4A-914A-2115F6D6129D</string>
+			<string>0CA27A43414FB33F98B16BE18013A983CABB105E</string>
 			<key>IDESourceControlWCCName</key>
 			<string>HockeySDK-iOS</string>
 		</dict>
@@ -104,7 +116,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>F6CF8D2A-557A-46ED-A8CA-CEBBF12613EC</string>
+			<string>D2343A3007C64EB665FE967B12B8E23F14C116CD</string>
 			<key>IDESourceControlWCCName</key>
 			<string>route-me</string>
 		</dict>
@@ -112,7 +124,15 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>09D7B487-9338-4D51-B0F0-ADB1D5EEC45B</string>
+			<string>D2343A3007C64EB665FE967B12B8E23F14C116CD</string>
+			<key>IDESourceControlWCCName</key>
+			<string>route-me</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0CB27FB27B75DD5179C510DD826518B1FD1BF181</string>
 			<key>IDESourceControlWCCName</key>
 			<string>routing-engine</string>
 		</dict>
@@ -120,7 +140,15 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>37EE2149-85D7-418B-9243-0B4CE8580309</string>
+			<string>0CB27FB27B75DD5179C510DD826518B1FD1BF181</string>
+			<key>IDESourceControlWCCName</key>
+			<string>routing-engine</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>A43B3F8F1FFE63510EF5D0CFDB1DB558C0C67BF9</string>
 			<key>IDESourceControlWCCName</key>
 			<string>TTTAttributedLabel</string>
 		</dict>
@@ -128,7 +156,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>6AD38FEC-A927-4C6A-BDB5-C35D523B340B</string>
+			<string>3222A26AC3A957428B88DB8AB6B72415308E4B56</string>
 			<key>IDESourceControlWCCName</key>
 			<string>UIImage-Categories</string>
 		</dict>

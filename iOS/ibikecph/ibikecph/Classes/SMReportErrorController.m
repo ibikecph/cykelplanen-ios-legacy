@@ -59,17 +59,12 @@
     
 //    UITableView * tableView = tblView;
     UIScrollView * scr = scrlView;
-    [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) {
+    [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView, BOOL opening, BOOL closing) {
         CGRect frame = scr.frame;
         frame.size.height = keyboardFrameInView.origin.y;
         scr.frame = frame;
-
-//        CGRect frame = tableView.frame;
-//        frame.size.height = keyboardFrameInView.origin.y;
-//        tableView.frame = frame;
-
     }];
-    
+
     [tblView reloadData];
     [self arrangeObjects];
     
@@ -78,7 +73,7 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
     
-    if (![[GAI sharedInstance].defaultTracker trackEventWithCategory:@"Report" withAction:@"Start" withLabel:@"" withValue:0]) {
+    if (![GAHelper trackEventWithCategory:@"Report" withAction:@"Start" withLabel:@"" withValue:0]) {
         debugLog(@"error in trackEvent");
     }
 
@@ -243,7 +238,7 @@
     }
     
     [mvc setMessageBody:str isHTML:NO];
-    [self presentModalViewController:mvc animated:YES];
+    [self presentViewController:mvc animated:YES completion:NULL];
 }
 
 - (void)showPicker {
@@ -291,7 +286,7 @@
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
     
     if (result == MFMailComposeResultSent) {
-        [self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:NULL];
         [UIView animateWithDuration:0.4f animations:^{
             [reportSentView setAlpha:1.0f];
         }];
@@ -300,7 +295,7 @@
 //        [av show];
 //        [self dismissModalViewControllerAnimated:YES];
     } else {
-        [controller dismissModalViewControllerAnimated:YES];
+        [controller dismissViewControllerAnimated:YES completion:NULL];
     }
 }
 
@@ -419,7 +414,7 @@
 
 - (void)request:(SMAPIRequest *)req completedWithResult:(NSDictionary *)result {
     if ([[result objectForKey:@"success"] boolValue]) {
-        if (![[GAI sharedInstance].defaultTracker trackEventWithCategory:@"Report" withAction:@"Completed" withLabel:@"" withValue:0]) {
+        if (![GAHelper trackEventWithCategory:@"Report" withAction:@"Completed" withLabel:@"" withValue:0]) {
             debugLog(@"error in trackEvent");
         }
 

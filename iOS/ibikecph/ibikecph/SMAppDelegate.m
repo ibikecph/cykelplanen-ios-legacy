@@ -7,11 +7,11 @@
 //
 
 #import "SMAppDelegate.h"
-#import "HockeySDK.h"
 #import "SMUtil.h"
 #import "SMSearchHistory.h"
+#import "GAIFields.h"
 
-@interface SMAppDelegate(HockeyProtocols) <BITHockeyManagerDelegate, BITUpdateManagerDelegate, BITCrashManagerDelegate> {}
+@interface SMAppDelegate(HockeyProtocols) {}
 @property (nonatomic, strong) NSMutableDictionary * fbDict;
 @end
 
@@ -29,25 +29,15 @@
     /**
      * initialize Google Analytics
      */
-    [GAI sharedInstance].debug = YES;
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelError];
     [GAI sharedInstance].dispatchInterval = GOOGLE_ANALYTICS_DISPATCH_INTERVAL;
 #ifdef TEST_VERSION
     [GAI sharedInstance].trackUncaughtExceptions = YES;
 #endif
     self.tracker = [[GAI sharedInstance] trackerWithTrackingId:GOOGLE_ANALYTICS_KEY];
     [[GAI sharedInstance] setDefaultTracker:self.tracker];
-    [[GAI sharedInstance].defaultTracker setAnonymize:GOOGLE_ANALYTICS_ANONYMIZE];
-    [[GAI sharedInstance].defaultTracker setSampleRate:GOOGLE_ANALYTICS_SAMPLE_RATE];
-    [[GAI sharedInstance].defaultTracker setSessionTimeout:GOOGLE_ANALYTICS_SESSION_TIMEOUT];
-
-    
-    /**
-     * hockey app crash reporting
-     */
-    [[BITHockeyManager sharedHockeyManager] configureWithBetaIdentifier:HOCKEYAPP_BETA_IDENTIFIER
-                                                         liveIdentifier:HOCKEYAPP_LIVE_IDENTIFIER
-                                                               delegate:self];
-    [[BITHockeyManager sharedHockeyManager] startManager];
+    [[GAI sharedInstance].defaultTracker set:kGAISampleRate value:GOOGLE_ANALYTICS_SAMPLE_RATE];
+    [[GAI sharedInstance].defaultTracker set:kGAIAnonymizeIp value:GOOGLE_ANALYTICS_ANONYMIZE];
 
     if ([[NSFileManager defaultManager] fileExistsAtPath:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"settings.plist"]] == NO) {
         NSDictionary * d = @{
@@ -126,85 +116,43 @@
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
 
 }
-
-- (void) fbAuth {
-    if (!self.session.isOpen) {
-        self.session = [[FBSession alloc] initWithPermissions:[NSArray arrayWithObjects:@"publish_stream", @"status_update", nil]];
-        [self.session openWithCompletionHandler:^(FBSession *session,
-                                                  FBSessionState status,
-                                                  NSError *error) {
-            if (status == FBSessionStateOpen) {
-                debugLog(@"New session: %@", [FBSession activeSession]);
-                _fbLoggedIn = YES;
-                
-                FBRequestConnection *connection = [FBRequestConnection new];
-                FBRequestHandler handler =
-                ^(FBRequestConnection *connection, id result, NSError *error) {
-                    [self showAlert:@"" result:result error:error];
-                };
-                
-                FBRequest  * req = [[FBRequest alloc] initWithSession:self.session graphPath:@"me/feed" parameters:[NSDictionary dictionaryWithDictionary:self.fbDict] HTTPMethod:@"POST"];
-                [connection addRequest:req completionHandler:handler];
-                [connection start];
-                [self setFbConnection:connection];
-            }
-        }];
-        
-    } else {
-        debugLog(@"Already active session: %@", [FBSession activeSession]);
-        FBRequestConnection *connection = [FBRequestConnection new];
-        FBRequestHandler handler =
-        ^(FBRequestConnection *connection, id result, NSError *error) {
-            [self showAlert:@"" result:result error:error];
-        };
-        FBRequest  * req = [[FBRequest alloc] initWithSession:self.session graphPath:@"me/feed" parameters:[NSDictionary dictionaryWithDictionary:self.fbDict] HTTPMethod:@"POST"];
-        [connection addRequest:req completionHandler:handler];
-        [connection start];
-        [self setFbConnection:connection];
-    }
-}
-
-- (void)fbGetEvents {
-    if (!self.session.isOpen) {
-        self.session = [[FBSession alloc] initWithPermissions:[NSArray arrayWithObjects:@"publish_stream", @"user_events", nil]];
-        [self.session openWithCompletionHandler:^(FBSession *session,
-                                                  FBSessionState status,
-                                                  NSError *error) {
-            if (status == FBSessionStateOpen) {
-                debugLog(@"New session: %@", [FBSession activeSession]);
-                _fbLoggedIn = YES;
-                
-                FBRequestConnection *connection = [FBRequestConnection new];
-                FBRequestHandler handler =
-                ^(FBRequestConnection *connection, id result, NSError *error) {
-                    [self showAlert:@"" result:result error:error];
-                };
-                
-                FBRequest  * req = [[FBRequest alloc] initWithSession:self.session graphPath:@"me/events" parameters:@{} HTTPMethod:@"POST"];
-                [connection addRequest:req completionHandler:handler];
-                [connection start];
-                [self setFbConnection:connection];
-            }
-        }];
-        
-    } else {
-        debugLog(@"Already active session: %@", [FBSession activeSession]);
-        FBRequestConnection *connection = [FBRequestConnection new];
-        FBRequestHandler handler =
-        ^(FBRequestConnection *connection, id result, NSError *error) {
-            [self showAlert:@"" result:result error:error];
-        };
-        FBRequest  * req = [[FBRequest alloc] initWithSession:self.session graphPath:@"me/events" parameters:@{} HTTPMethod:@"POST"];
-        [connection addRequest:req completionHandler:handler];
-        [connection start];
-        [self setFbConnection:connection];
-    }
-}
-
-- (void) postFbMessage:(NSMutableDictionary*) dict {
-    [self setFbDict:[NSMutableDictionary dictionaryWithDictionary:dict]];
-    [self fbAuth];
-}
+//
+//- (void) fbAuth {
+//    if (!self.session.isOpen) {
+//        self.session = [[FBSession alloc] initWithPermissions:[NSArray arrayWithObjects:@"publish_stream", @"status_update", nil]];
+//        [self.session openWithCompletionHandler:^(FBSession *session,
+//                                                  FBSessionState status,
+//                                                  NSError *error) {
+//            if (status == FBSessionStateOpen) {
+//                debugLog(@"New session: %@", [FBSession activeSession]);
+//                _fbLoggedIn = YES;
+//                
+//                FBRequestConnection *connection = [FBRequestConnection new];
+//                FBRequestHandler handler =
+//                ^(FBRequestConnection *connection, id result, NSError *error) {
+//                    [self showAlert:@"" result:result error:error];
+//                };
+//                
+//                FBRequest  * req = [[FBRequest alloc] initWithSession:self.session graphPath:@"me/feed" parameters:[NSDictionary dictionaryWithDictionary:self.fbDict] HTTPMethod:@"POST"];
+//                [connection addRequest:req completionHandler:handler];
+//                [connection start];
+//                [self setFbConnection:connection];
+//            }
+//        }];
+//        
+//    } else {
+//        debugLog(@"Already active session: %@", [FBSession activeSession]);
+//        FBRequestConnection *connection = [FBRequestConnection new];
+//        FBRequestHandler handler =
+//        ^(FBRequestConnection *connection, id result, NSError *error) {
+//            [self showAlert:@"" result:result error:error];
+//        };
+//        FBRequest  * req = [[FBRequest alloc] initWithSession:self.session graphPath:@"me/feed" parameters:[NSDictionary dictionaryWithDictionary:self.fbDict] HTTPMethod:@"POST"];
+//        [connection addRequest:req completionHandler:handler];
+//        [connection start];
+//        [self setFbConnection:connection];
+//    }
+//}
 
 // UIAlertView helper for post buttons
 - (void)showAlert:(NSString *)message

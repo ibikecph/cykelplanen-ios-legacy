@@ -25,6 +25,8 @@
     #import "SMRouteConsts.h"
     #import "SMRouteUtils.h"
     #import "SMUser.h"
+    #import "GAHelper.h"
+    #import "SMAddressParser.h"
 #endif
 
 #if DISTRIBUTION_VERSION
@@ -38,6 +40,8 @@
 #define CURRENT_POSITION_STRING [SMTranslation decodeString:@"current_position"]
 
 #define ORG_NAME @"ibikecph"
+#define BUNDLE_VERSION [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*) kCFBundleVersionKey]
+#define USER_AGENT [NSString stringWithFormat:@"CSS/%@/iOS", BUNDLE_VERSION]
 
 #define ERROR_FADE 0.2f
 #define ERROR_WAIT 2.0f
@@ -98,9 +102,9 @@
 //#define OIOREST_AUTOCOMPLETE_SEARCH_RADIUS @"20000"
 
 #define GOOGLE_ANALYTICS_DISPATCH_INTERVAL 120
-#define GOOGLE_ANALYTICS_SAMPLE_RATE 100
+#define GOOGLE_ANALYTICS_SAMPLE_RATE @"100"
 #define GOOGLE_ANALYTICS_SESSION_TIMEOUT 1800
-#define GOOGLE_ANALYTICS_ANONYMIZE YES
+#define GOOGLE_ANALYTICS_ANONYMIZE @"YES"
 
 #define DIRECTION_FONT_SIZE 17.0f
 #define WAYPOINT_FONT_SIZE 20.0f
