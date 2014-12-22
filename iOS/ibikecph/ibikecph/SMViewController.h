@@ -10,7 +10,7 @@
 #import "SMContacts.h"
 #import "SMContactsHeader.h"
 #import "SMEnterRouteController.h"
-#import "SMEvents.h"
+//#import "SMEvents.h"
 
 #import "RMMapView.h"
 #import "SMAnnotation.h"

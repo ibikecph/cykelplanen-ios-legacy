@@ -95,7 +95,7 @@ typedef enum {
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) {
+    [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView, BOOL opening, BOOL closing) {
     }];
     
     if ([self.appDelegate.appSettings objectForKey:@"auth_token"]) {
@@ -243,7 +243,7 @@ typedef enum {
         [passwordField setText:@""];
         [passwordRepeatField setText:@""];
         currentDialog = dialogNone;
-        if (![[GAI sharedInstance].defaultTracker trackEventWithCategory:@"Register" withAction:@"Cancel" withLabel:loginEmail.text withValue:0]) {
+        if (![GAHelper trackEventWithCategory:@"Register" withAction:@"Cancel" withLabel:loginEmail.text withValue:0]) {
             debugLog(@"error in trackEvent");
         }
     }];
@@ -287,7 +287,7 @@ typedef enum {
             [registerView setAlpha:1.0f];
         } completion:^(BOOL finished) {
             currentDialog = dialogRegister;
-            if (![[GAI sharedInstance].defaultTracker trackEventWithCategory:@"Register" withAction:@"Start" withLabel:loginEmail.text withValue:0]) {
+            if (![GAHelper trackEventWithCategory:@"Register" withAction:@"Start" withLabel:loginEmail.text withValue:0]) {
                 debugLog(@"error in trackEvent");
             }
         }];
@@ -321,7 +321,7 @@ typedef enum {
     cameraUI.delegate = self;
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        [self presentModalViewController: cameraUI animated: YES];
+        [self presentViewController:cameraUI animated:YES completion:NULL];
     }
 }
 
@@ -532,7 +532,7 @@ typedef enum {
             UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"" message:translateString(@"register_successful") delegate:nil cancelButtonTitle:translateString(@"OK") otherButtonTitles:nil];
             [av show];
             [self hideRegister:nil];
-            if (![[GAI sharedInstance].defaultTracker trackEventWithCategory:@"Register" withAction:@"Completed" withLabel:loginEmail.text withValue:0]) {
+            if (![GAHelper trackEventWithCategory:@"Register" withAction:@"Completed" withLabel:loginEmail.text withValue:0]) {
                 debugLog(@"error in trackEvent");
             }
         }

@@ -80,7 +80,7 @@
 //    [[UIApplication sharedApplication] setStatusBarHidden:YES];
     UITableView * tbl = tblView;
     UIView * fade = tblFade;
-    [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) {
+    [self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView, BOOL opening, BOOL closing) {
         [tbl setFrame:CGRectMake(0.0f, tbl.frame.origin.y, tbl.frame.size.width, keyboardFrameInView.origin.y - tbl.frame.origin.y)];
         [fade setFrame:tbl.frame];
         debugLog(@"%@", NSStringFromCGRect(keyboardFrameInView));
@@ -195,7 +195,7 @@
         if (self.delegate) {
             [self.delegate locationFound:self.locationData];
         }
-        [self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:NULL];
     }
 }
 
@@ -227,7 +227,7 @@
             [SMGeocoder geocode:searchField.text completionHandler:^(NSArray *placemarks, NSError *error) {
                 if ([placemarks count] > 0) {
                     MKPlacemark *coord = [placemarks objectAtIndex:0];
-                    [self dismissModalViewControllerAnimated:YES];
+                    [self dismissViewControllerAnimated:YES completion:NULL];
                     if (self.delegate) {
                         [self.delegate locationFound:@{
                          @"name" : searchField.text,
@@ -276,7 +276,7 @@
 #pragma mark - button actions
 
 - (IBAction)goBack:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 #pragma mark - textfield delegate
@@ -479,7 +479,7 @@
     if (self.delegate) {
         [self.delegate locationFound:self.locationData];
     }
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
 //    [self.destinationPin setNearbyObjects:locations];
 //    [self.destinationPin setSubtitle:owner.subtitle];
 //    [self.destinationPin setTitle:owner.title];
